@@ -1,7 +1,14 @@
-# MSc Digital Health — Coursework & Research Code
+# Digihealth_CU
 
-Code repository for my MSc in Digital Health,
+Coursework, prototypes, and research code for my MSc in Digital Health,
 Faculty of Medicine, Chulalongkorn University.
-https://digihealth.md.chula.ac.th/
 
-**Author:** อานันท์ พรสุขศิริ (Anan Pornsuksiri)
+🔗 **Live:** https://pleuma.github.io/Digihealth_CU/
+
+## Projects
+
+| Project | Description | Live |
+|---|---|---|
+| `projects/ed-waiting/` | Emergency department waiting-time analysis and display | [View](https://pleuma.github.io/Digihealth_CU/ED-waiting-dashboard/) |
+
+## Layout
