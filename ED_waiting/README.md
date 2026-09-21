@@ -58,8 +58,8 @@ The Emergency Severity Index (ESI) is a 5-level triage system used to prioritise
 | Visits exceeding target | 2,377 (36.4%) |
 | Average wait time (all patients) | 55.5 minutes |
 | Average target time (all patients) | 46.0 minutes |
-| Observation period | 91 days (Nov 1, 2025 – Jan 28, 2026) |
-| Average daily visits | ~72 patients/day |
+| Observation period | 89 days (Nov 1, 2025 – Jan 28, 2026) |
+| Average daily visits | ~73 patients/day (84 of 89 days have recorded visits) |
 
 ### 4.2 Compliance by ESI Level
 
@@ -181,7 +181,7 @@ Weekly compliance rates ranged from 60.7% to 67.5% across 14 weeks with no susta
 #### 6.5 Average Excess Minutes by ESI + Shift (Horizontal Bar Chart)
 **Charts used:** Horizontal bar chart sorted by descending excess minutes, colour-coded by ESI level
 
-**Why:** Compliance rate answers "did they miss the target?" but not "by how much?" A patient who waits 31 minutes for an ESI 3 (1 minute over) is a very different problem from one who waits 120 minutes (90 minutes over). This chart shows the average number of minutes over target for breaching patients in each ESI × shift group. Sorting by descending excess makes it a prioritisation tool — the longest bars represent the combinations that would benefit most from intervention. ESI 3 breaches appear at the top of the chart despite lower breach rates, because when ESI 3 patients do breach, they tend to wait extremely long (median excess ~80–107 minutes).
+**Why:** Compliance rate answers "did they miss the target?" but not "by how much?" A patient who waits 31 minutes for an ESI 3 (1 minute over) is a very different problem from one who waits 120 minutes (90 minutes over). This chart shows the average number of minutes over target for breaching patients in each ESI × shift group. Sorting by descending excess makes it a prioritisation tool — the longest bars represent the combinations that would benefit most from intervention. ESI 3 breaches appear at the top of the chart despite lower breach rates, because when ESI 3 patients do breach, they tend to wait extremely long (median excess 99 minutes).
 
 ---
 
@@ -189,7 +189,7 @@ Weekly compliance rates ranged from 60.7% to 67.5% across 14 weeks with no susta
 
 | File | Description |
 |---|---|
-| `Patient_IDVisit_DateShiftEmergen.csv` | Source data (de-identified, 6,530 rows) |
+| `ed_visits.csv` | Source data (de-identified, 6,530 rows) |
 | `ED_Executive_Dashboard.html` | Standalone executive dashboard — open in any browser |
 | `ED_QualityDev_Dashboard.html` | Standalone QD dashboard — open in any browser |
 | `ED_Executive_Dashboard.pdf` | Single-page PDF export of executive dashboard |
