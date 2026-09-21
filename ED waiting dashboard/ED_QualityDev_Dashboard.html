@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ED Wait Times — Quality Development Dashboard</title>
+</head>
+<body>
+<style>
+:root {
+  --surface:#fcfcfb; --surface-alt:#f4f4f1; --page:#f0efec;
+  --ink:#0b0b0b; --ink-2:#52514e; --ink-m:#898781;
+  --grid:#e1e0d9; --baseline:#c3c2b7;
+  --blue:#2a78d6; --orange:#eb6834; --aqua:#1baf7a; --yellow:#eda100;
+  --good:#0ca30c; --warn-txt:#7a5500; --warn-bg:#fff3d6;
+  --crit:#d03b3b; --serious:#ec835a;
+  --border:rgba(11,11,11,0.10); --radius:10px;
+}
+*, *::before, *::after { box-sizing:border-box; margin:0; padding:0; }
+body { font-family:system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--page); color:var(--ink); }
+
+.header { background:#1a3a5c; color:#fff; padding:18px 28px; display:flex; align-items:center; gap:16px; }
+.header-icon { width:40px;height:40px;background:rgba(255,255,255,.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:20px; }
+.header-text h1 { font-size:18px;font-weight:700;letter-spacing:-.01em; }
+.header-text p { font-size:12px;opacity:.65;margin-top:1px; }
+.header-badge { margin-left:auto;background:rgba(255,255,255,.12);border-radius:20px;padding:4px 14px;font-size:11px;opacity:.8; }
+
+.main { padding:20px 24px 32px; max-width:1300px; margin:0 auto; }
+.chart-card { background:var(--surface);border-radius:var(--radius);border:1px solid var(--border);padding:20px 22px 16px;margin-bottom:14px; }
+.chart-title { font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px; }
+.chart-subtitle { font-size:11px;color:var(--ink-m);margin-bottom:14px; }
+.row2 { display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px; }
+.row3 { display:grid;grid-template-columns:1.1fr 1fr;gap:14px;margin-bottom:14px; }
+canvas { display:block;width:100%; }
+
+/* ─── Heatmap ─── */
+.heatmap-wrap { overflow-x:auto; }
+.heatmap-table { border-collapse:collapse;width:100%;min-width:460px; }
+.heatmap-table th {
+  font-size:11px;font-weight:600;color:var(--ink-m);text-transform:uppercase;
+  letter-spacing:.05em;padding:8px 12px;text-align:center;
+}
+.heatmap-table th.row-head { text-align:left;width:200px; }
+.heatmap-table td { padding:0; height:64px; }
+.hm-cell {
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  height:100%;gap:3px;cursor:default;transition:filter .15s;
+  position:relative;
+}
+.hm-cell:hover { filter:brightness(0.92); }
+.hm-cell .pct { font-size:18px;font-weight:700;color:#fff; }
+.hm-cell .sub { font-size:10px;color:rgba(255,255,255,.75); }
+.hm-cell .dark { color:rgba(0,0,0,.65); }
+.hm-cell .dark-sub { color:rgba(0,0,0,.45); }
+.row-label { padding:8px 14px;font-size:13px;font-weight:600;color:var(--ink);vertical-align:middle; }
+.row-label .esi-desc { font-size:10px;color:var(--ink-m);font-weight:400;margin-top:1px; }
+.hm-sep { height:1px;background:var(--page); }
+.legend-strip { display:flex;align-items:center;gap:10px;margin-top:12px; }
+.legend-strip span { font-size:11px;color:var(--ink-m); }
+.legend-grad { height:10px;width:160px;border-radius:5px;background:linear-gradient(to right,#d03b3b,#e8a558,#0ca30c); }
+
+/* ─── Box plot ─── */
+.boxplot-wrap { display:grid;grid-template-columns:repeat(3,1fr);gap:10px; }
+.boxplot-item { text-align:center; }
+.boxplot-label { font-size:11px;font-weight:700;color:var(--ink-m);text-transform:uppercase;letter-spacing:.04em;margin-bottom:6px; }
+
+.footer-note { font-size:10px;color:var(--ink-m);margin-top:16px;text-align:right; }
+</style>
+
+<div class="header">
+  <div class="header-icon">📊</div>
+  <div class="header-text">
+    <h1>Emergency Department — Quality Development Dashboard</h1>
+    <p>Operational detail for root-cause analysis · Nov 2025 – Jan 2026 · 6,530 visits</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- Heatmap -->
+  <div class="chart-card">
+    <div class="chart-title">ESI × Shift Breach Rate Heatmap</div>
+    <div class="chart-subtitle">% of patients who EXCEEDED the target wait time per cell. Darker red = worse performance. Green = compliant.</div>
+    <div class="heatmap-wrap">
+      <table class="heatmap-table" id="heatmapTable">
+        <thead>
+          <tr>
+            <th class="row-head">ESI Level</th>
+            <th>Morning</th>
+            <th>Afternoon</th>
+            <th>Night</th>
+          </tr>
+        </thead>
+        <tbody id="heatmapBody"></tbody>
+      </table>
+    </div>
+    <div class="legend-strip">
+      <span>Breach 0%</span>
+      <div class="legend-grad"></div>
+      <span>Breach 100%</span>
+      <span style="margin-left:16px;font-size:11px;color:var(--ink-m)">Cell shows breach %, then n=patients</span>
+    </div>
+  </div>
+
+  <!-- Box plots + Monthly Trend -->
+  <div class="row3">
+    <div class="chart-card">
+      <div class="chart-title">Wait Time Distribution — Breaching ESI Levels</div>
+      <div class="chart-subtitle">Box = IQR (25th–75th percentile); whiskers = 10th–90th; ▲ = target threshold</div>
+      <canvas id="boxCanvas" height="200"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Monthly Compliance Trend by ESI Level</div>
+      <div class="chart-subtitle">ESI 3, 4 and 5 — is any level improving?</div>
+      <canvas id="monthlyChart" height="200"></canvas>
+    </div>
+  </div>
+
+  <!-- Day of Week + Excess Minutes -->
+  <div class="row2">
+    <div class="chart-card">
+      <div class="chart-title">Compliance Rate by Day of Week</div>
+      <div class="chart-subtitle">Weekends (Sat–Sun) show the lowest compliance — possible staffing gap</div>
+      <canvas id="dowChart" height="200"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Average Minutes Over Target — by ESI + Shift</div>
+      <div class="chart-subtitle">Among patients who breached: how many extra minutes did they wait beyond the target?</div>
+      <canvas id="excessChart" height="200"></canvas>
+    </div>
+  </div>
+
+  <div class="footer-note">Data: de-identified ER visits · Nov 1, 2025 – Jan 28, 2026 · ESI = Emergency Severity Index</div>
+</div>
+
+<script>
+const C = {
+  blue:'#2a78d6', orange:'#eb6834', aqua:'#1baf7a', yellow:'#eda100',
+  good:'#0ca30c', critical:'#d03b3b', serious:'#ec835a', warn:'#fab219',
+  grid:'#e1e0d9', baseline:'#c3c2b7', muted:'#898781',
+  ink:'#0b0b0b', ink2:'#52514e', surface:'#fcfcfb'
+};
+
+// ── Data ──────────────────────────────────────────────────
+const heatmapData = {
+  1:{ Morning:{c:100,n:113}, Afternoon:{c:100,n:135}, Night:{c:100,n:172} },
+  2:{ Morning:{c:100,n:286}, Afternoon:{c:100,n:413}, Night:{c:100,n:323} },
+  3:{ Morning:{c:81.7,n:870}, Afternoon:{c:84,n:1158}, Night:{c:81.7,n:518} },
+  4:{ Morning:{c:25,n:517}, Afternoon:{c:1.2,n:672}, Night:{c:13.9,n:337} },
+  5:{ Morning:{c:53.4,n:326}, Afternoon:{c:27.3,n:439}, Night:{c:50.2,n:251} }
+};
+const ESI_DESCS = {
+  1:'Resuscitation · target: 1 min',
+  2:'Emergent · target: 10 min',
+  3:'Urgent · target: 30 min',
+  4:'Less Urgent · target: 60 min',
+  5:'Non-Urgent · target: 120 min'
+};
+const boxData = {
+  3:{ p10:9, q1:11, med:15, q3:21, p90:40, target:30, n:2546 },
+  4:{ p10:58, q1:72, med:89, q3:107, p90:124, target:60, n:1526 },
+  5:{ p10:89, q1:105, med:128, q3:151, p90:170, target:120, n:1016 }
+};
+const monthlyData = [
+  { m:'Nov', esi3:82.5, esi4:12.9, esi5:38.6 },
+  { m:'Dec', esi3:82.5, esi4:12.2, esi5:43.3 },
+  { m:'Jan', esi3:83.3, esi4:11.2, esi5:42.0 }
+];
+const dowData = [
+  {dow:'Mon',compliance:65.9,breach:310},{dow:'Tue',compliance:62.9,breach:368},
+  {dow:'Wed',compliance:64.7,breach:313},{dow:'Thu',compliance:62.9,breach:344},
+  {dow:'Fri',compliance:65.6,breach:316},{dow:'Sat',compliance:61.8,breach:374},
+  {dow:'Sun',compliance:61.7,breach:352}
+];
+const excessData = [
+  {label:'ESI 3 / Morning',avg:86.5,esi:3},{label:'ESI 3 / Night',avg:80.7,esi:3},
+  {label:'ESI 3 / Afternoon',avg:77.4,esi:3},{label:'ESI 4 / Afternoon',avg:48.3,esi:4},
+  {label:'ESI 5 / Night',avg:46.8,esi:5},{label:'ESI 5 / Afternoon',avg:38.1,esi:5},
+  {label:'ESI 4 / Night',avg:37.7,esi:4},{label:'ESI 4 / Morning',avg:31.6,esi:4},
+  {label:'ESI 5 / Morning',avg:26.7,esi:5}
+];
+
+// ── Heatmap ───────────────────────────────────────────────
+function breachColor(compliance) {
+  // compliance 100 → green, 0 → red
+  const breach = (100 - compliance) / 100;
+  // red: (208,59,59), yellow (242,180,90), green (12,163,12)
+  let r, g, b;
+  if (breach < 0.5) {
+    const t = breach * 2;
+    r = Math.round(12 + (242-12)*t);
+    g = Math.round(163 + (180-163)*t);
+    b = Math.round(12 + (90-12)*t);
+  } else {
+    const t = (breach - 0.5) * 2;
+    r = Math.round(242 + (208-242)*t);
+    g = Math.round(180 + (59-180)*t);
+    b = Math.round(90 + (59-90)*t);
+  }
+  return `rgb(${r},${g},${b})`;
+}
+
+function buildHeatmap() {
+  const tbody = document.getElementById('heatmapBody');
+  [1,2,3,4,5].forEach(esi => {
+    const tr = document.createElement('tr');
+    const tdLabel = document.createElement('td');
+    tdLabel.className = 'row-label';
+    tdLabel.innerHTML = `<div>ESI ${esi}</div><div class="esi-desc">${ESI_DESCS[esi]}</div>`;
+    tr.appendChild(tdLabel);
+    ['Morning','Afternoon','Night'].forEach(shift => {
+      const d = heatmapData[esi][shift];
+      const breach = 100 - d.c;
+      const bg = breachColor(d.c);
+      const isDark = breach < 40;
+      const td = document.createElement('td');
+      td.innerHTML = `<div class="hm-cell" style="background:${bg}" title="ESI ${esi} / ${shift}: ${breach.toFixed(1)}% breach rate, n=${d.n}">
+        <span class="pct ${isDark?'dark':''}">${breach.toFixed(breach<1?1:0)}%</span>
+        <span class="sub ${isDark?'dark-sub':''}">breach · n=${d.n.toLocaleString()}</span>
+      </div>`;
+      tr.appendChild(td);
+    });
+    tbody.appendChild(tr);
+    // separator
+    const sep = document.createElement('tr');
+    sep.innerHTML = `<td colspan="4" class="hm-sep"></td>`;
+    tbody.appendChild(sep);
+  });
+}
+
+// ── Canvas helpers ────────────────────────────────────────
+function dpr(canvas) {
+  const r = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * r;
+  canvas.height = rect.height * r;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(r, r);
+  return { ctx, w: rect.width, h: rect.height };
+}
+
+// ── Box Plot ──────────────────────────────────────────────
+function drawBoxPlots() {
+  const canvas = document.getElementById('boxCanvas');
+  const { ctx, w, h } = dpr(canvas);
+  const pad = { t: 20, r: 16, b: 36, l: 44 };
+  const esis = [3, 4, 5];
+  const colW = (w - pad.l - pad.r) / esis.length;
+  const maxVal = 200;
+
+  // Y axis
+  [0, 50, 100, 150, 200].forEach(v => {
+    const y = h - pad.b - (v / maxVal) * (h - pad.t - pad.b);
+    ctx.beginPath();
+    ctx.strokeStyle = v === 0 ? C.baseline : C.grid;
+    ctx.lineWidth = 1;
+    ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke();
+    ctx.fillStyle = C.muted;
+    ctx.font = '9px system-ui, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(v, pad.l - 5, y);
+  });
+
+  // Y axis label
+  ctx.save();
+  ctx.translate(10, (h - pad.t - pad.b) / 2 + pad.t);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillStyle = C.muted;
+  ctx.font = '9px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('Wait time (minutes)', 0, 0);
+  ctx.restore();
+
+  const ESI_BOX_COLORS = { 3: C.yellow, 4: C.critical, 5: C.serious };
+
+  esis.forEach((esi, i) => {
+    const d = boxData[esi];
+    const cx = pad.l + i * colW + colW / 2;
+    const bw = Math.min(colW * 0.45, 48);
+    const color = ESI_BOX_COLORS[esi];
+
+    const toY = v => h - pad.b - (Math.min(v, maxVal) / maxVal) * (h - pad.t - pad.b);
+    const yP10 = toY(d.p10), yQ1 = toY(d.q1), yMed = toY(d.med), yQ3 = toY(d.q3), yP90 = toY(d.p90);
+    const yTgt = toY(d.target);
+
+    // Whiskers (10th-90th)
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 1.5;
+    ctx.moveTo(cx, yP10); ctx.lineTo(cx, yP90);
+    ctx.stroke();
+    // whisker caps
+    [yP10, yP90].forEach(y => {
+      ctx.beginPath();
+      ctx.moveTo(cx - bw * 0.25, y);
+      ctx.lineTo(cx + bw * 0.25, y);
+      ctx.stroke();
+    });
+
+    // Box Q1–Q3
+    ctx.fillStyle = color;
+    ctx.globalAlpha = 0.18;
+    ctx.fillRect(cx - bw/2, yQ3, bw, yQ1 - yQ3);
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2;
+    ctx.strokeRect(cx - bw/2, yQ3, bw, yQ1 - yQ3);
+
+    // Median line
+    ctx.beginPath();
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.5;
+    ctx.moveTo(cx - bw/2, yMed); ctx.lineTo(cx + bw/2, yMed);
+    ctx.stroke();
+
+    // Median value label
+    ctx.fillStyle = color;
+    ctx.font = 'bold 10px system-ui, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(d.med + 'm', cx + bw/2 + 5, yMed);
+
+    // Target line ▲
+    ctx.beginPath();
+    ctx.strokeStyle = C.good;
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([3,3]);
+    ctx.moveTo(cx - bw/2 - 4, yTgt); ctx.lineTo(cx + bw/2 + 4, yTgt);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = C.good;
+    ctx.font = '8px system-ui, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText('target ' + d.target + 'm', cx - bw/2 - 6, yTgt);
+
+    // ESI label
+    ctx.fillStyle = C.ink;
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillText('ESI ' + esi, cx, h - pad.b + 6);
+    ctx.fillStyle = C.muted;
+    ctx.font = '9px system-ui, sans-serif';
+    ctx.fillText('n=' + d.n.toLocaleString(), cx, h - pad.b + 18);
+  });
+}
+
+// ── Monthly Trend ─────────────────────────────────────────
+function drawMonthly() {
+  const canvas = document.getElementById('monthlyChart');
+  const { ctx, w, h } = dpr(canvas);
+  const pad = { t: 24, r: 70, b: 36, l: 44 };
+  const n = monthlyData.length;
+  const minV = 0, maxV = 100;
+  const series = [
+    { key:'esi3', label:'ESI 3', color: C.yellow },
+    { key:'esi4', label:'ESI 4', color: C.critical },
+    { key:'esi5', label:'ESI 5', color: C.serious }
+  ];
+
+  // Grid
+  [0,25,50,75,100].forEach(v => {
+    const y = h - pad.b - (v / 100) * (h - pad.t - pad.b);
+    ctx.beginPath();
+    ctx.strokeStyle = v === 0 ? C.baseline : C.grid;
+    ctx.lineWidth = 1;
+    ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke();
+    ctx.fillStyle = C.muted;
+    ctx.font = '9px system-ui, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(v + '%', pad.l - 5, y);
+  });
+
+  // Lines
+  series.forEach(s => {
+    const pts = monthlyData.map((d, i) => ({
+      x: pad.l + i / (n - 1) * (w - pad.l - pad.r),
+      y: h - pad.b - (d[s.key] / 100) * (h - pad.t - pad.b)
+    }));
+    ctx.beginPath();
+    ctx.strokeStyle = s.color;
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+    ctx.stroke();
+
+    // Dots
+    pts.forEach(p => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 4, 0, Math.PI*2);
+      ctx.fillStyle = '#fff';
+      ctx.fill();
+      ctx.strokeStyle = s.color;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    });
+
+    // End label
+    const last = pts[pts.length - 1];
+    const lastVal = monthlyData[n-1][s.key];
+    ctx.fillStyle = s.color;
+    ctx.font = 'bold 10px system-ui, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(s.label + ' ' + lastVal + '%', last.x + 8, last.y);
+  });
+
+  // X labels
+  ctx.fillStyle = C.muted;
+  ctx.font = '10px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'top';
+  monthlyData.forEach((d, i) => {
+    const x = pad.l + i / (n - 1) * (w - pad.l - pad.r);
+    ctx.fillText(d.m, x, h - pad.b + 8);
+  });
+}
+
+// ── Day of Week ───────────────────────────────────────────
+function drawDow() {
+  const canvas = document.getElementById('dowChart');
+  const { ctx, w, h } = dpr(canvas);
+  const pad = { t: 20, r: 16, b: 36, l: 44 };
+  const n = dowData.length;
+  const barW = (w - pad.l - pad.r) / n * 0.65;
+  const minV = 55, maxV = 72;
+
+  // Grid
+  [55,60,65,70].forEach(v => {
+    const y = h - pad.b - (v - minV) / (maxV - minV) * (h - pad.t - pad.b);
+    ctx.beginPath();
+    ctx.strokeStyle = v === 55 ? C.baseline : C.grid;
+    ctx.lineWidth = 1;
+    ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke();
+    ctx.fillStyle = C.muted;
+    ctx.font = '9px system-ui, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(v + '%', pad.l - 5, y);
+  });
+
+  dowData.forEach((d, i) => {
+    const cx = pad.l + (i + 0.5) * (w - pad.l - pad.r) / n;
+    const bx = cx - barW / 2;
+    const bh = (d.compliance - minV) / (maxV - minV) * (h - pad.t - pad.b);
+    const by = h - pad.b - bh;
+    const isWknd = d.dow === 'Sat' || d.dow === 'Sun';
+    const color = isWknd ? C.serious : C.blue;
+
+    ctx.fillStyle = color;
+    ctx.globalAlpha = isWknd ? 0.9 : 0.7;
+    ctx.beginPath();
+    ctx.roundRect(bx, by, barW, bh, [4,4,0,0]);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+
+    // Value on top
+    ctx.fillStyle = C.ink;
+    ctx.font = 'bold 11px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(d.compliance + '%', cx, by - 2);
+
+    // Day label
+    ctx.fillStyle = isWknd ? C.serious : C.ink2;
+    ctx.font = (isWknd ? 'bold ' : '') + '11px system-ui, sans-serif';
+    ctx.textBaseline = 'top';
+    ctx.fillText(d.dow, cx, h - pad.b + 8);
+  });
+}
+
+// ── Excess Minutes ────────────────────────────────────────
+function drawExcess() {
+  const canvas = document.getElementById('excessChart');
+  const { ctx, w, h } = dpr(canvas);
+  const pad = { t: 10, r: 54, b: 16, l: 8 };
+  const n = excessData.length;
+  const rowH = (h - pad.t - pad.b) / n;
+  const barH = Math.min(22, rowH * 0.65);
+  const labelW = 120;
+  const barX0 = pad.l + labelW;
+  const barX1 = w - pad.r;
+  const maxVal = 90;
+
+  // Grid
+  [0, 30, 60, 90].forEach(v => {
+    const x = barX0 + v / maxVal * (barX1 - barX0);
+    ctx.beginPath();
+    ctx.strokeStyle = v === 0 ? C.baseline : C.grid;
+    ctx.lineWidth = 1;
+    ctx.moveTo(x, pad.t); ctx.lineTo(x, h - pad.b); ctx.stroke();
+  });
+
+  const ESI_EXCESS_COLORS = { 3: C.yellow, 4: C.critical, 5: C.serious };
+
+  excessData.forEach((d, i) => {
+    const cy = pad.t + i * rowH + rowH / 2;
+    const barY = cy - barH / 2;
+    const color = ESI_EXCESS_COLORS[d.esi];
+    const barW = (d.avg / maxVal) * (barX1 - barX0);
+
+    // Row label
+    ctx.fillStyle = C.ink2;
+    ctx.font = '10.5px system-ui, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(d.label, barX0 - 6, cy);
+
+    // Track
+    ctx.fillStyle = '#f0efec';
+    ctx.beginPath();
+    ctx.roundRect(barX0, barY, barX1 - barX0, barH, 3);
+    ctx.fill();
+
+    // Bar
+    ctx.fillStyle = color;
+    ctx.globalAlpha = 0.85;
+    ctx.beginPath();
+    ctx.roundRect(barX0, barY, barW, barH, 3);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+
+    // Value label
+    ctx.fillStyle = barW > 35 ? '#fff' : C.ink2;
+    ctx.font = 'bold 10px system-ui, sans-serif';
+    ctx.textAlign = barW > 35 ? 'right' : 'left';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('+' + d.avg + 'm', barW > 35 ? barX0 + barW - 5 : barX0 + barW + 5, cy);
+  });
+
+  // x-axis label
+  ctx.fillStyle = C.muted;
+  ctx.font = '9px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'bottom';
+  ctx.fillText('Average minutes over target (among breaching patients)', (barX0 + barX1) / 2, h);
+}
+
+// ── Tooltip ───────────────────────────────────────────────
+let tip = null;
+function getTip() {
+  if (!tip) {
+    tip = document.createElement('div');
+    tip.style.cssText='position:fixed;pointer-events:none;background:#fff;border:1px solid #e1e0d9;border-radius:6px;padding:8px 12px;font:12px system-ui,sans-serif;color:#0b0b0b;box-shadow:0 4px 12px rgba(0,0,0,.12);z-index:9999;display:none';
+    document.body.appendChild(tip);
+  }
+  return tip;
+}
+
+// ── Init ──────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  buildHeatmap();
+  requestAnimationFrame(() => {
+    drawBoxPlots();
+    drawMonthly();
+    drawDow();
+    drawExcess();
+  });
+});
+window.addEventListener('resize', () => {
+  drawBoxPlots(); drawMonthly(); drawDow(); drawExcess();
+});
+</script>
+</body></html>

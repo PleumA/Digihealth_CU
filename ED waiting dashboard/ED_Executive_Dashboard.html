@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ED Wait Times — Executive Dashboard</title>
+</head>
+<body>
+<style>
+:root {
+  --surface: #fcfcfb;
+  --surface-alt: #f4f4f1;
+  --page: #f0efec;
+  --ink: #0b0b0b;
+  --ink-2: #52514e;
+  --ink-m: #898781;
+  --grid: #e1e0d9;
+  --baseline: #c3c2b7;
+  --blue: #2a78d6;
+  --good: #0ca30c;
+  --warning: #fab219;
+  --serious: #ec835a;
+  --critical: #d03b3b;
+  --border: rgba(11,11,11,0.10);
+  --radius: 10px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--page);
+  color: var(--ink);
+  min-height: 100vh;
+  padding: 0;
+}
+.header {
+  background: #1a3a5c;
+  color: #fff;
+  padding: 18px 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.header-icon {
+  width: 40px; height: 40px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.header-text h1 { font-size: 18px; font-weight: 700; letter-spacing: -0.01em; }
+.header-text p { font-size: 12px; opacity: 0.65; margin-top: 1px; }
+.header-badge {
+  margin-left: auto;
+  background: rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 11px;
+  opacity: 0.8;
+}
+
+.main { padding: 20px 24px 32px; max-width: 1280px; margin: 0 auto; }
+
+/* KPI row */
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+.kpi-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.kpi-card.blue::before { background: var(--blue); }
+.kpi-card.good::before { background: var(--good); }
+.kpi-card.warn::before { background: var(--warning); }
+.kpi-card.crit::before { background: var(--critical); }
+.kpi-label { font-size: 11px; font-weight: 600; color: var(--ink-m); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+.kpi-value { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 1; }
+.kpi-value.good { color: var(--good); }
+.kpi-value.warn { color: #b07800; }
+.kpi-value.crit { color: var(--critical); }
+.kpi-sub { font-size: 12px; color: var(--ink-2); margin-top: 6px; }
+.kpi-icon { position: absolute; top: 16px; right: 18px; font-size: 22px; opacity: 0.13; }
+
+/* Chart grid */
+.chart-row { display: grid; gap: 14px; margin-bottom: 14px; }
+.chart-row-1 { grid-template-columns: 1fr; }
+.chart-row-2 { grid-template-columns: 2fr 1.1fr; }
+.chart-row-3 { grid-template-columns: 1fr 1fr; }
+
+.chart-card {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 20px 22px 16px;
+}
+.chart-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+.chart-subtitle {
+  font-size: 11px;
+  color: var(--ink-m);
+  margin-bottom: 14px;
+}
+canvas { display: block; width: 100%; }
+
+/* Alert box */
+.alert-box {
+  background: var(--surface);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 20px 22px;
+  display: flex;
+  gap: 20px;
+}
+.alert-section { flex: 1; }
+.alert-section h3 {
+  font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.05em;
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.alert-section h3 .dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  display: inline-block;
+}
+.dot-good { background: var(--good); }
+.dot-warn { background: var(--warning); }
+.dot-crit { background: var(--critical); }
+
+.finding-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  margin-bottom: 8px; font-size: 12.5px; color: var(--ink-2); line-height: 1.4;
+}
+.finding-item .badge {
+  flex-shrink: 0;
+  font-size: 10px; font-weight: 700;
+  padding: 2px 7px; border-radius: 10px; margin-top: 1px;
+}
+.badge-good { background: #e6f7e6; color: #006300; }
+.badge-warn { background: #fff3d6; color: #7a5500; }
+.badge-crit { background: #fce8e8; color: #8b0000; }
+
+.divider { width: 1px; background: var(--grid); margin: 0 4px; }
+
+.footer-note { font-size: 10px; color: var(--ink-m); margin-top: 16px; text-align: right; }
+</style>
+
+<div class="header">
+  <div class="header-icon">🏥</div>
+  <div class="header-text">
+    <h1>Emergency Department — Executive Dashboard</h1>
+    <p>Patient Wait Time Performance · Nov 2025 – Jan 2026 · 6,530 visits</p>
+  </div>
+</div>
+
+<div class="main">
+
+  <!-- KPI Row -->
+  <div class="kpi-row">
+    <div class="kpi-card warn">
+      <div class="kpi-icon">⏱</div>
+      <div class="kpi-label">Overall Compliance</div>
+      <div class="kpi-value warn">63.6%</div>
+      <div class="kpi-sub">4,153 of 6,530 patients within target</div>
+    </div>
+    <div class="kpi-card blue">
+      <div class="kpi-icon">👥</div>
+      <div class="kpi-label">Total ER Visits</div>
+      <div class="kpi-value" style="color:var(--blue)">6,530</div>
+      <div class="kpi-sub">Over 3 months · avg 72/day</div>
+    </div>
+    <div class="kpi-card good">
+      <div class="kpi-icon">✅</div>
+      <div class="kpi-label">Critical Safety (ESI 1–2)</div>
+      <div class="kpi-value good">100%</div>
+      <div class="kpi-sub">1,442 life-threatening cases · 0 breaches</div>
+    </div>
+    <div class="kpi-card crit">
+      <div class="kpi-icon">⚠</div>
+      <div class="kpi-label">ESI 4 Compliance</div>
+      <div class="kpi-value crit">12.1%</div>
+      <div class="kpi-sub">1,342 of 1,526 patients waited too long</div>
+    </div>
+  </div>
+
+  <!-- Weekly Trend -->
+  <div class="chart-row chart-row-1">
+    <div class="chart-card">
+      <div class="chart-title">Weekly Compliance Rate Trend</div>
+      <div class="chart-subtitle">Percentage of patients seen within ESI target time — all severity levels combined</div>
+      <canvas id="trendChart" height="130"></canvas>
+    </div>
+  </div>
+
+  <!-- ESI + Shift -->
+  <div class="chart-row chart-row-2">
+    <div class="chart-card">
+      <div class="chart-title">Compliance Rate by ESI Triage Level</div>
+      <div class="chart-subtitle">Performance against target for each severity group</div>
+      <canvas id="esiChart" height="220"></canvas>
+    </div>
+    <div class="chart-card">
+      <div class="chart-title">Volume & Compliance by Shift</div>
+      <div class="chart-subtitle">Patient volume (bar) and compliance % (number)</div>
+      <canvas id="shiftChart" height="220"></canvas>
+    </div>
+  </div>
+
+  <!-- Key Findings -->
+  <div class="alert-box">
+    <div class="alert-section">
+      <h3><span class="dot dot-good"></span> What's Working</h3>
+      <div class="finding-item">
+        <span class="badge badge-good">ESI 1</span>
+        All 420 resuscitation-level patients received immediate care (100%). Zero patient safety events.
+      </div>
+      <div class="finding-item">
+        <span class="badge badge-good">ESI 2</span>
+        All 1,022 emergent patients were seen within 10 minutes (100%). Critical pathway is intact.
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="alert-section">
+      <h3><span class="dot dot-warn"></span> Needs Attention</h3>
+      <div class="finding-item">
+        <span class="badge badge-warn">ESI 3</span>
+        17% of urgent patients (439 of 2,546) exceeded the 30-minute target. When they breach, they wait an average of 80+ min over target.
+      </div>
+      <div class="finding-item">
+        <span class="badge badge-warn">Afternoon</span>
+        Afternoon shift has the lowest compliance (58.5%) across all ESI levels, suggesting a staffing or capacity gap.
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="alert-section">
+      <h3><span class="dot dot-crit"></span> Critical Priority</h3>
+      <div class="finding-item">
+        <span class="badge badge-crit">ESI 4</span>
+        Only 12.1% compliance — 1,342 patients waited over 60 minutes. Afternoon ESI 4 is near-total failure: 98.8% breach rate.
+      </div>
+      <div class="finding-item">
+        <span class="badge badge-crit">Trend</span>
+        No improvement observed over the 3-month period. This requires a structural intervention, not incremental adjustment.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-note">Data: de-identified ER visits · Nov 1, 2025 – Jan 28, 2026 · ESI = Emergency Severity Index</div>
+</div>
+
+<script>
+// ── Palette ──────────────────────────────────────────────
+const C = {
+  blue:'#2a78d6', orange:'#eb6834', aqua:'#1baf7a',
+  good:'#0ca30c', warning:'#b07800', serious:'#ec835a', critical:'#d03b3b',
+  grid:'#e1e0d9', baseline:'#c3c2b7', muted:'#898781',
+  ink:'#0b0b0b', ink2:'#52514e', surface:'#fcfcfb'
+};
+
+// ESI colors by level
+const ESI_COLORS = { 1: C.good, 2: C.good, 3: '#b07800', 4: C.critical, 5: C.serious };
+const ESI_LABELS = {
+  1:'ESI 1 · Resuscitation (target: 1 min)',
+  2:'ESI 2 · Emergent (target: 10 min)',
+  3:'ESI 3 · Urgent (target: 30 min)',
+  4:'ESI 4 · Less Urgent (target: 60 min)',
+  5:'ESI 5 · Non-Urgent (target: 120 min)'
+};
+
+// ── Data ─────────────────────────────────────────────────
+const weekly = [
+  {week:'W43',compliance:61.7,total:154},{week:'W44',compliance:61.5,total:520},
+  {week:'W45',compliance:65.5,total:507},{week:'W46',compliance:63.3,total:562},
+  {week:'W47',compliance:63.3,total:357},{week:'W48',compliance:67.5,total:548},
+  {week:'W49',compliance:64.3,total:544},{week:'W50',compliance:62.6,total:540},
+  {week:'W51',compliance:63.6,total:538},{week:'W00',compliance:61.2,total:340},
+  {week:'W01',compliance:60.7,total:593},{week:'W02',compliance:64.6,total:577},
+  {week:'W03',compliance:64.4,total:547},{week:'W04',compliance:64.5,total:203}
+];
+const esiData = [
+  {esi:1,compliance:100,within:420,total:420},
+  {esi:2,compliance:100,within:1022,total:1022},
+  {esi:3,compliance:82.8,within:2107,total:2546},
+  {esi:4,compliance:12.1,within:184,total:1526},
+  {esi:5,compliance:41.3,within:420,total:1016}
+];
+const shiftData = [
+  {shift:'Morning',total:2112,within:1413,compliance:66.9},
+  {shift:'Afternoon',total:2817,within:1649,compliance:58.5},
+  {shift:'Night',total:1601,within:1091,compliance:68.1}
+];
+
+// ── Canvas helpers ────────────────────────────────────────
+function dpr(canvas) {
+  const r = window.devicePixelRatio || 1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width * r;
+  canvas.height = rect.height * r;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(r, r);
+  return { ctx, w: rect.width, h: rect.height };
+}
+
+function gridLines(ctx, x0, y0, x1, y1, steps, orient='h') {
+  ctx.save();
+  ctx.strokeStyle = C.grid;
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps;
+    ctx.beginPath();
+    if (orient === 'h') {
+      const y = y1 - t * (y1 - y0);
+      ctx.moveTo(x0, y); ctx.lineTo(x1, y);
+    }
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+// ── Trend Line Chart ──────────────────────────────────────
+function drawTrend() {
+  const canvas = document.getElementById('trendChart');
+  const { ctx, w, h } = dpr(canvas);
+  const pad = { t: 16, r: 20, b: 36, l: 44 };
+  const cx0 = pad.l, cx1 = w - pad.r, cy0 = pad.t, cy1 = h - pad.b;
+
+  const vals = weekly.map(d => d.compliance);
+  const minV = 55, maxV = 75;
+  const steps = 4;
+
+  // Grid & y-axis
+  ctx.font = '10px system-ui, sans-serif';
+  ctx.fillStyle = C.muted;
+  ctx.textAlign = 'right';
+  ctx.textBaseline = 'middle';
+  for (let i = 0; i <= steps; i++) {
+    const v = minV + (maxV - minV) * i / steps;
+    const y = cy1 - (v - minV) / (maxV - minV) * (cy1 - cy0);
+    ctx.beginPath();
+    ctx.strokeStyle = i === 0 ? C.baseline : C.grid;
+    ctx.lineWidth = 1;
+    ctx.moveTo(cx0, y); ctx.lineTo(cx1, y);
+    ctx.stroke();
+    ctx.fillText(v.toFixed(0) + '%', cx0 - 6, y);
+  }
+
+  // Reference line at 80% target
+  const targetY = cy1 - (80 - minV) / (maxV - minV) * (cy1 - cy0);
+  if (targetY >= cy0 && targetY <= cy1) {
+    ctx.save();
+    ctx.strokeStyle = C.good;
+    ctx.lineWidth = 1.5;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath(); ctx.moveTo(cx0, targetY); ctx.lineTo(cx1, targetY); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = C.good;
+    ctx.textAlign = 'left';
+    ctx.font = '9px system-ui, sans-serif';
+    ctx.fillText('80% goal', cx1 - 52, targetY - 6);
+    ctx.restore();
+  }
+
+  // Area fill
+  const pts = weekly.map((d, i) => ({
+    x: cx0 + i / (weekly.length - 1) * (cx1 - cx0),
+    y: cy1 - (d.compliance - minV) / (maxV - minV) * (cy1 - cy0)
+  }));
+  ctx.save();
+  ctx.beginPath();
+  ctx.moveTo(pts[0].x, cy1);
+  pts.forEach(p => ctx.lineTo(p.x, p.y));
+  ctx.lineTo(pts[pts.length-1].x, cy1);
+  ctx.closePath();
+  const grad = ctx.createLinearGradient(0, cy0, 0, cy1);
+  grad.addColorStop(0, 'rgba(42,120,214,0.18)');
+  grad.addColorStop(1, 'rgba(42,120,214,0)');
+  ctx.fillStyle = grad;
+  ctx.fill();
+  ctx.restore();
+
+  // Line
+  ctx.beginPath();
+  ctx.strokeStyle = C.blue;
+  ctx.lineWidth = 2.5;
+  ctx.lineJoin = 'round';
+  pts.forEach((p, i) => i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y));
+  ctx.stroke();
+
+  // Dots + tooltip data
+  canvas._pts = pts;
+  canvas._data = weekly;
+  pts.forEach((p, i) => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 4, 0, Math.PI*2);
+    ctx.fillStyle = C.surface;
+    ctx.fill();
+    ctx.strokeStyle = C.blue;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+  });
+
+  // x-axis labels
+  ctx.fillStyle = C.muted;
+  ctx.textAlign = 'center';
+  ctx.font = '10px system-ui, sans-serif';
+  ctx.textBaseline = 'top';
+  const months = ['','Nov','','','','Dec','','','','','Jan','','',''];
+  pts.forEach((p, i) => {
+    if (months[i]) ctx.fillText(months[i], p.x, cy1 + 6);
+    else {
+      ctx.beginPath();
+      ctx.strokeStyle = C.grid;
+      ctx.lineWidth = 1;
+      ctx.moveTo(p.x, cy1 + 2);
+      ctx.lineTo(p.x, cy1 + 6);
+      ctx.stroke();
+    }
+  });
+
+  // Tooltip
+  canvas.onmousemove = function(e) {
+    const r = canvas.getBoundingClientRect();
+    const mx = e.clientX - r.left;
+    let closest = 0, dist = Infinity;
+    pts.forEach((p, i) => { const d = Math.abs(p.x - mx); if (d < dist) { dist = d; closest = i; }});
+    if (dist < 30) showTrendTooltip(canvas, pts[closest], weekly[closest], e);
+    else hideTip();
+  };
+  canvas.onmouseleave = hideTip;
+}
+
+// ── ESI Horizontal Bar Chart ──────────────────────────────
+function drawESI() {
+  const canvas = document.getElementById('esiChart');
+  const { ctx, w, h } = dpr(canvas);
+  const pad = { t: 10, r: 80, b: 20, l: 8 };
+  const n = esiData.length;
+  const rowH = (h - pad.t - pad.b) / n;
+  const barH = Math.min(32, rowH * 0.6);
+  const labelW = 32;
+  const barX0 = pad.l + labelW;
+  const barX1 = w - pad.r;
+
+  // Background gridlines
+  [0, 25, 50, 75, 100].forEach(v => {
+    const x = barX0 + v / 100 * (barX1 - barX0);
+    ctx.beginPath();
+    ctx.strokeStyle = v === 0 ? C.baseline : C.grid;
+    ctx.lineWidth = 1;
+    ctx.moveTo(x, pad.t); ctx.lineTo(x, h - pad.b);
+    ctx.stroke();
+    if (v > 0) {
+      ctx.fillStyle = C.muted;
+      ctx.font = '9px system-ui, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'bottom';
+      ctx.fillText(v + '%', x, h - pad.b + 16);
+    }
+  });
+
+  esiData.forEach((d, i) => {
+    const cy = pad.t + i * rowH + rowH / 2;
+    const barY = cy - barH / 2;
+    const color = ESI_COLORS[d.esi];
+    const barW = d.compliance / 100 * (barX1 - barX0);
+
+    // ESI label
+    ctx.fillStyle = C.ink;
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('ESI ' + d.esi, barX0 - 6, cy);
+
+    // Track
+    ctx.fillStyle = '#f0efec';
+    ctx.beginPath();
+    ctx.roundRect(barX0, barY, barX1 - barX0, barH, 4);
+    ctx.fill();
+
+    // Bar
+    if (barW > 0) {
+      ctx.fillStyle = color;
+      ctx.globalAlpha = d.compliance === 100 ? 1 : 0.85;
+      ctx.beginPath();
+      ctx.roundRect(barX0, barY, barW, barH, 4);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+
+    // Value
+    ctx.fillStyle = d.compliance > 50 ? '#fff' : color;
+    ctx.font = 'bold 12px system-ui, sans-serif';
+    ctx.textAlign = d.compliance > 15 ? 'right' : 'left';
+    ctx.textBaseline = 'middle';
+    const vx = barX0 + Math.max(barW, 4);
+    ctx.fillStyle = d.compliance > 15 ? '#fff' : C.ink2;
+    ctx.fillText(d.compliance + '%', d.compliance > 15 ? barX0 + barW - 8 : barX0 + barW + 6, cy);
+
+    // Total count on right
+    ctx.fillStyle = C.muted;
+    ctx.font = '10px system-ui, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('n=' + d.total.toLocaleString(), barX1 + 8, cy);
+  });
+}
+
+// ── Shift Chart ───────────────────────────────────────────
+function drawShift() {
+  const canvas = document.getElementById('shiftChart');
+  const { ctx, w, h } = dpr(canvas);
+  const pad = { t: 20, r: 16, b: 40, l: 44 };
+  const n = shiftData.length;
+  const groupW = (w - pad.l - pad.r) / n;
+  const barW = groupW * 0.55;
+  const maxTotal = Math.max(...shiftData.map(d => d.total));
+  const steps = 4;
+
+  // Y gridlines
+  for (let i = 0; i <= steps; i++) {
+    const v = maxTotal * i / steps;
+    const y = h - pad.b - (v / maxTotal) * (h - pad.t - pad.b);
+    ctx.beginPath();
+    ctx.strokeStyle = i === 0 ? C.baseline : C.grid;
+    ctx.lineWidth = 1;
+    ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke();
+    ctx.fillStyle = C.muted;
+    ctx.font = '9px system-ui, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(v.toFixed(0), pad.l - 5, y);
+  }
+
+  const SHIFT_COLORS = [C.blue, C.orange, C.aqua];
+  shiftData.forEach((d, i) => {
+    const cx = pad.l + i * groupW + groupW / 2;
+    const bx = cx - barW / 2;
+    const bh = (d.total / maxTotal) * (h - pad.t - pad.b);
+    const by = h - pad.b - bh;
+    const color = SHIFT_COLORS[i];
+
+    // Total bar
+    ctx.fillStyle = color;
+    ctx.globalAlpha = 0.22;
+    ctx.beginPath();
+    ctx.roundRect(bx, by, barW, bh, [4,4,0,0]);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+
+    // Within-target portion
+    const wh = (d.within / maxTotal) * (h - pad.t - pad.b);
+    const wy = h - pad.b - wh;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.roundRect(bx, wy, barW, wh, [4,4,0,0]);
+    ctx.fill();
+
+    // Compliance % label — inside the solid within-target bar (no overlap risk)
+    ctx.fillStyle = '#fff';
+    ctx.font = 'bold 15px system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+    ctx.fillText(d.compliance + '%', cx, wy + 10);
+
+    // Shift label
+    ctx.fillStyle = C.ink2;
+    ctx.font = '11px system-ui, sans-serif';
+    ctx.textBaseline = 'top';
+    ctx.fillText(d.shift, cx, h - pad.b + 8);
+
+    // Count label
+    ctx.fillStyle = C.muted;
+    ctx.font = '9px system-ui, sans-serif';
+    ctx.fillText('n=' + d.total.toLocaleString(), cx, h - pad.b + 22);
+  });
+
+  // Legend — placed at bottom after x-axis labels
+  const legY = h - 12;
+  ctx.font = '10px system-ui, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.textBaseline = 'middle';
+  const items = [
+    { label: 'Within target', color: C.blue, full: true },
+    { label: 'Total volume',  color: C.blue, full: false }
+  ];
+  let lx = pad.l;
+  items.forEach(item => {
+    ctx.fillStyle = item.color;
+    ctx.globalAlpha = item.full ? 1 : 0.22;
+    ctx.fillRect(lx, legY - 5, 10, 10);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = C.muted;
+    ctx.fillText(item.label, lx + 14, legY);
+    lx += 96;
+  });
+}
+
+// ── Tooltip ───────────────────────────────────────────────
+let tip = null;
+function getTip() {
+  if (!tip) {
+    tip = document.createElement('div');
+    tip.style.cssText = 'position:fixed;pointer-events:none;background:#fff;border:1px solid #e1e0d9;border-radius:6px;padding:8px 12px;font:12px system-ui,sans-serif;color:#0b0b0b;box-shadow:0 4px 12px rgba(0,0,0,.12);z-index:9999;display:none';
+    document.body.appendChild(tip);
+  }
+  return tip;
+}
+function showTrendTooltip(canvas, pt, d, e) {
+  const t = getTip();
+  t.innerHTML = `<div style="font-weight:700;margin-bottom:3px">${d.week} &nbsp; ${d.compliance}%</div>
+  <div style="color:#898781">${d.total} patients</div>`;
+  t.style.display = 'block';
+  t.style.left = (e.clientX + 12) + 'px';
+  t.style.top = (e.clientY - 32) + 'px';
+}
+function hideTip() { const t = getTip(); t.style.display = 'none'; }
+
+// ── Init ──────────────────────────────────────────────────
+window.addEventListener('load', () => {
+  // Force canvas layout before drawing
+  requestAnimationFrame(() => {
+    drawTrend();
+    drawESI();
+    drawShift();
+  });
+});
+window.addEventListener('resize', () => {
+  drawTrend(); drawESI(); drawShift();
+});
+</script>
+</body></html>
