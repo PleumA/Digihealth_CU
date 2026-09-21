@@ -10,6 +10,18 @@
 
 ---
 
+## Preview
+
+### Executive Dashboard
+![Executive dashboard: overall compliance gauge, compliance by ESI level, weekly trend, and shift breakdown](exec-preview.png)
+
+### Quality Development Dashboard
+![Quality development dashboard: ESI x shift breach heatmap, wait-time distributions, and day-of-week compliance](qd-preview.png)
+
+*Both dashboards are interactive — open the live versions linked above.*
+
+---
+
 ## Quick Start
 
 Open `ED_Executive_Dashboard.html` or `ED_QualityDev_Dashboard.html` in any browser — no install needed.
@@ -115,7 +127,8 @@ Weekly compliance ranged from 60.7% to 67.5% across 14 weeks with no sustained i
 | `ED_Executive_Dashboard.pdf` | Single-page PDF export of the executive dashboard |
 | `ED_QualityDev_Dashboard.pdf` | Single-page PDF export of the QD dashboard |
 | `index.html` | GitHub Pages landing page for this project folder |
-| `METHODOLOGY.md` | Chart-by-chart rationale for every panel in both dashboards |
+| `exec-preview.png` | Static preview of the executive dashboard |
+| `qd-preview.png` | Static preview of the QD dashboard |
 
 ---
 
