@@ -10,7 +10,7 @@ Faculty of Medicine, Chulalongkorn University.
 | Project | Description | Live |
 |---|---|---|
 | `ED_waiting/` | Emergency department wait-time analysis and dashboards | [View](https://pleuma.github.io/Digihealth_CU/ED_waiting/) |
-| `AI_for_Digital_Health_lab/` | AI in healthcare lab notebooks (Lab 1: no-code AI and data exploration) | [Notebook](AI_for_Digital_Health_lab/) |
+| `AI_for_Digital_Health_lab/` | AI in healthcare lab notebooks (Lab 1: no-code AI and data exploration) | [View](https://pleuma.github.io/Digihealth_CU/AI_for_Digital_Health_lab/) |
 
 ## Layout
 
