@@ -11,6 +11,7 @@ Faculty of Medicine, Chulalongkorn University.
 |---|---|---|
 | `ED_waiting/` | Emergency department wait-time analysis and dashboards | [View](https://pleuma.github.io/Digihealth_CU/ED_waiting/) |
 | `AI_for_Digital_Health_lab/` | AI in healthcare lab notebooks (Lab 1: no-code AI and data exploration) | [View](https://pleuma.github.io/Digihealth_CU/AI_for_Digital_Health_lab/) |
+| `software_rquirement/` | Software requirements engineering exam revision notes | [View](https://pleuma.github.io/Digihealth_CU/software_rquirement/exam-revision.html) |
 
 ## Layout
 
