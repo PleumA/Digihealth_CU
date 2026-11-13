@@ -463,7 +463,7 @@ body[data-th="off"] .th-block{display:none}
 
 @media (max-width:720px){
   .tabs{display:none}
-  .mobile-nav{display:block; flex:1 1 100%; order:2; border:1px solid var(--line); background:transparent; color:var(--ink); font:inherit; font-size:14px; padding:8px 10px; border-radius:0}
+  .mobile-nav{display:block; flex:1 1 100%; order:2; border:1px solid var(--line); background:transparent; color:var(--ink); font:inherit; font-size:14px; padding:10px 12px; min-height:44px; border-radius:0}
   .view{max-width:100%}
   .diagram svg{min-width:760px}
   .topbar-inner{gap:10px; padding-block:12px 0}
@@ -550,6 +550,19 @@ body[data-th="off"] .ex-th{display:none}
 .answer .table-scroll{margin:12px 0}
 .answer table{font-size:13px;min-width:640px}
 .answer .table-scroll table{margin:0}
+
+/* Wide tables on phones: edge shadows that appear only while there is more to scroll */
+@media (max-width:720px){
+  .table-scroll{
+    background:
+      linear-gradient(to right, var(--bg), transparent 14px) left / 20px 100% no-repeat local,
+      linear-gradient(to left, var(--bg), transparent 14px) right / 20px 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--ink) 18%, transparent), transparent) left / 12px 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--ink) 18%, transparent), transparent) right / 12px 100% no-repeat scroll,
+      var(--bg);
+  }
+  .table-scroll{scrollbar-width:thin; scrollbar-color:var(--muted) transparent}
+}
 </style>
 
 <div class="topbar">
@@ -713,8 +726,8 @@ body[data-th="off"] .ex-th{display:none}
   </div>
     <div class="callout video">
       <span class="tag video">Local recording, 12 Nov</span>
-      <p style="margin-top:8px">From tonight's review session (8 minutes, not uploaded): the syllabus table on screen confirms <strong>14 Nov, 1:00–4:00 PM, covering Lesson 1–6 (introduction – business process modelling and functional modelling)</strong>, with 13 Nov given to a content review and project-proposal Q&amp;A. She describes the paper as <strong>three parts</strong>: <strong>Part 1 at most ten</strong> True/False statements, <strong>Part 2 about six or seven</strong> short questions with small sub-parts. In the big questions she is deliberately <strong>cutting the number of diagrams</strong> — the sitting measures your own knowledge, not the syntax and semantics of a model, because modelling was the assignment's job. She will not reveal the paper, only what it is meant to measure. Short questions can arrive as a small case — her example was an <strong>airline</strong>, with regulation and process facts to classify — or ask what <strong>requirement partitioning</strong> achieves, or which <strong>aspects of requirement quality</strong> you check. Two one-sided answers she called false as stated: quality checking is <em>only</em> backward testability; prioritisation affects project success <em>only</em>. The long case repeats the homework shape — pull the problem out of the text and name the approach that fits its causes. Her closing line: do not over-worry; last year's cohort passed this style.</p>
-      <p class="th-block" lang="th">จากคาบทบทวนคืนนี้ (คลิป 8 นาที ยังไม่มีลิงก์): ตาราง syllabus ยืนยันสอบ 14 พ.ย. 13:00–16:00 ครอบคลุม Lesson 1–6 (introduction – business process modeling และ functional modeling) และวันที่ 13 พ.ย. เป็นคาบทบทวนเนื้อหาและ Q&amp;A proposal ครูบอกว่าข้อสอบเป็นสาม part: Part 1 ไม่เกินสิบข้อ True/False, Part 2 ประมาณหกถึงเจ็ดข้อพร้อมข้อย่อย ข้อใหญ่ครูตั้งใจลดจำนวนการวาดโมเดล เพราะสอบวัดความรู้ของนิสิตเอง ไม่ได้เน้น syntax/semantic ของโมเดล ซึ่งฝึกไปแล้วในงาน assignment ครูจะไม่บอกข้อสอบ บอกได้แค่ว่าอยากวัดอะไร ข้อสั้นอาจมาเป็นเคสเล็ก เช่น สายการบิน ให้แยกว่าข้อมูลใดเป็นกฎระเบียบและข้อมูลใดเป็น process หรือถามว่า requirement partitioning ช่วยอะไร หรือตรวจคุณภาพความต้องการด้านใดบ้าง คำตอบด้านเดียวที่ครูบอกว่าผิด: ตรวจคุณภาพคือ backward testability อย่างเดียว และ prioritisation ส่งผลต่อความสำเร็จของโครงการอย่างเดียว ข้อใหญ่ใช้รูปแบบเดียวกับการบ้าน — ดึงปัญหาจากเคสแล้วเลือก approach ที่ตรงกับสาเหตุ ครูบอกไม่ต้องกังวล รุ่นก่อนสอบแบบนี้ก็ผ่าน</p>
+      <p style="margin-top:8px">From tonight's review session (8 minutes, not uploaded): the syllabus table on screen confirms <strong>14 Nov, 1:00–4:00 PM, covering Lesson 1–6 (introduction – business process modelling and functional modelling)</strong>, with 13 Nov given to a content review and project-proposal Q&amp;A. She describes the paper as <strong>three parts worth 25 marks in all</strong>: <strong>Part 1 is 10 marks</strong>, <strong>Part 2 about six or seven</strong> short questions with small sub-parts. In the big questions she is deliberately <strong>cutting the number of diagrams</strong> — the sitting measures your own knowledge, not the syntax and semantics of a model, because modelling was the assignment's job. She will not reveal the paper, only what it is meant to measure. Short questions can arrive as a small case — her example was an <strong>airline</strong>, with regulation and process facts to classify — or ask what <strong>requirement partitioning</strong> achieves, or which <strong>aspects of requirement quality</strong> you check. Two one-sided answers she called false as stated: quality checking is <em>only</em> backward testability; prioritisation affects project success <em>only</em>. The long case repeats the homework shape — pull the problem out of the text and name the approach that fits its causes. Her closing line: do not over-worry; last year's cohort passed this style.</p>
+      <p class="th-block" lang="th">จากคาบทบทวนคืนนี้ (คลิป 8 นาที ยังไม่มีลิงก์): ตาราง syllabus ยืนยันสอบ 14 พ.ย. 13:00–16:00 ครอบคลุม Lesson 1–6 (introduction – business process modeling และ functional modeling) และวันที่ 13 พ.ย. เป็นคาบทบทวนเนื้อหาและ Q&amp;A proposal ครูบอกว่าข้อสอบมีสาม part รวม 25 คะแนน: Part 1 = 10 คะแนน, Part 2 ประมาณ 6–7 ข้อพร้อมข้อย่อย ข้อใหญ่ครูตั้งใจลดจำนวนการวาดโมเดล เพราะสอบวัดความรู้ของนิสิตเอง ไม่ได้เน้น syntax/semantic ของโมเดล ซึ่งฝึกไปแล้วในงาน assignment ครูจะไม่บอกข้อสอบ บอกได้แค่ว่าอยากวัดอะไร ข้อสั้นอาจมาเป็นเคสเล็ก เช่น สายการบิน ให้แยกว่าข้อมูลใดเป็นกฎระเบียบและข้อมูลใดเป็น process หรือถามว่า requirement partitioning ช่วยอะไร หรือตรวจคุณภาพความต้องการด้านใดบ้าง คำตอบด้านเดียวที่ครูบอกว่าผิด: ตรวจคุณภาพคือ backward testability อย่างเดียว และ prioritisation ส่งผลต่อความสำเร็จของโครงการอย่างเดียว ข้อใหญ่ใช้รูปแบบเดียวกับการบ้าน — ดึงปัญหาจากเคสแล้วเลือก approach ที่ตรงกับสาเหตุ ครูบอกไม่ต้องกังวล รุ่นก่อนสอบแบบนี้ก็ผ่าน</p>
     </div>
     <div class="callout accent">
       <h3 style="font-size:16px;margin-bottom:6px">Answer formula that earns marks</h3>
@@ -727,6 +740,12 @@ body[data-th="off"] .ex-th{display:none}
     </div>
   </div>
 
+
+  <div class="callout video" style="margin-top:14px">
+    <span class="tag video">Local recording, 13 Nov — Q&amp;A</span>
+    <p style="margin-top:8px">Tonight's Q&amp;A (voice only, 1 h 48 min) narrows the paper further. <strong>Three parts, 25 marks</strong>: one question asks you to analyse the given prompt, the short answers are “as you did the homework”, and one case study that is <strong>not complex</strong>. For diagrams you write <strong>one use case diagram — nothing else</strong>: no activity diagram, no class diagram, and <strong>swim-lanes are an assignment task, not an exam one</strong>; she doubts include/extend will appear at all. She will <strong>not ask you to write user stories</strong>. Answer from the prompt, not from a prepared list — a PDPA paragraph when the prompt never mentions PDPA is off-point and loses about half a mark. If the paper asks which methodology, read the signals: releases → <strong>phased</strong>, users who do not know the system → <strong>prototype</strong>, clear requirements → <strong>waterfall</strong>, teams that can split → <strong>parallel</strong>, document overhead with heavy user involvement → <strong>agile</strong>. The use-case answer is marked on the functions you can extract — itemised, with clear verbs and clear actors; a system can be an actor. It is open book: index your slides now, and ask her to clarify any prompt wording on the day.</p>
+    <p class="th-block" lang="th">ถาม–ตอบคืนนี้ (เสียง 1 ชม. 48 นาที) ชี้ชัดขึ้นอีก: ข้อสอบสาม part รวม 25 คะแนน — ข้อหนึ่งให้วิเคราะห์จากโจทย์, คำถามสั้นตอบแบบการบ้าน, และ case study ที่ไม่ซับซ้อน ส่วนแผนภาพ “เขียน use case diagram แค่หนึ่งอันเท่านั้น” ไม่มี activity หรือ class diagram และ swim-lane ไม่ออกสอบ (เป็นงาน assignment) ไม่ถามการเขียน user story แต่ acceptance criteria ไปอยู่ตอน validation ตอบจากโจทย์เท่านั้น — ถ้าโจทย์ไม่พูดถึง PDPA แล้วตอบ PDPA จะถูกหักประมาณครึ่งคะแนน ถ้าถามเลือก methodology ให้ดูสัญญาณ: มี release → phased, ผู้ใช้ไม่รู้ระบบ → prototype, requirement ชัด → waterfall, แบ่งทีมได้ → parallel, เอกสารน้อยแต่ผู้ใช้มีส่วนร่วมสูง → agile ให้คะแนน use case จาก function ที่ดึงได้ เป็นข้อ ๆ กริยาชัด actor ชัด และ system เป็น actor ได้ สอบแบบเปิดหนังสือ — ทำ index สไลด์ไว้ และถามให้ครูอธิบายโจทย์ได้</p>
+  </div>
 
   <div class="section-head">
     <div><h2>How to use this page</h2></div>
@@ -3384,9 +3403,15 @@ body[data-th="off"] .ex-th{display:none}
   <h1>Structural modelling: the class diagram</h1>
   <p class="lede">Functional models say what the system does; the structural model says what it knows. This lesson covers the class diagram, four ways to find the classes, and the check that keeps the three models consistent.</p>
   <div class="progress" data-lesson="6" style="margin-top:16px;max-width:420px"><span>Verification coverage</span><div class="bar"><i></i></div><span class="pct">0%</span></div>
-  <section class="memo" aria-label="What the deck flags">
-    <p class="memo-head">What the deck flags</p>
+  <section class="memo" aria-label="What she said in the 13 Nov class">
+    <p class="memo-head">What she said in the 13 Nov class, and what the deck flags</p>
     <ul class="memo-list">
+      <li><a class="memo-time" href="https://youtu.be/GZ1EzhXJ4TU?t=76" target="_blank" rel="noopener" aria-label="Watch 1:16 in the recording">1:16</a><span class="memo-said"> The class diagram's inputs come from the functional side: the functional requirements, plus the use case, its description and the activity diagram you already drew.<span class="memo-th" lang="th">ข้อมูลเข้าของ class diagram มาจากฝั่ง functional: requirement, use case, use case description และ activity diagram ที่ทำไว้แล้ว</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/GZ1EzhXJ4TU?t=1761" target="_blank" rel="noopener" aria-label="Watch 29:21 in the recording">29:21</a><span class="memo-said"> She teaches <strong>three</strong> visibility marks — public, private, protected — not the fourth the slide prints; and package visibility is not needed. <span class="memo-jump" href="#" data-card="l6-box" aria-label="Go to clause 4">clause 4</a><span class="memo-th" lang="th">ครูสอนเครื่องหมาย visibility สามแบบ — public, private, protected — ไม่ใช่สี่แบบตามสไลด์ และไม่ต้องใส่ visibility ให้ package</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/GZ1EzhXJ4TU?t=4033" target="_blank" rel="noopener" aria-label="Watch 1:07:13 in the recording">1:07:13</a><span class="memo-said"> Her instruction for the exam, the term project and the assignment alike: <strong>“do only what the question tells you to do.”</strong><span class="memo-th" lang="th">คำสั่งสำหรับข้อสอบ โครงงาน และ assignment เหมือนกัน: “ทำเท่าที่โจทย์บอกให้ทำ”</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/GZ1EzhXJ4TU?t=7315" target="_blank" rel="noopener" aria-label="Watch 2:01:55 in the recording">2:01:55</a><span class="memo-said"> The structural model must be <strong>consistent with the functional model</strong>: whatever the use case description names should appear as a class or an attribute, and those objects become the object flows of the activity diagram.<span class="memo-th" lang="th">structural model ต้องสอดคล้องกับ functional model: สิ่งที่อยู่ใน use case description ต้องปรากฏเป็น class หรือ attribute และกลายเป็น object flow ใน activity diagram</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/GZ1EzhXJ4TU?t=7340" target="_blank" rel="noopener" aria-label="Watch 2:02:20 in the recording">2:02:20</a><span class="memo-said"> “This is only an example — in the exam I won't test deeply that you memorise what relates to what.” <span class="memo-jump" href="#" data-card="l6-steps" aria-label="Go to clause 12">clause 12</a><span class="memo-th" lang="th">“นี่เป็นแค่ตัวอย่าง — ในข้อสอบครูจะไม่ออกลึกถึงขนาดให้จำว่าอะไรสัมพันธ์กับอะไร”</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/GZ1EzhXJ4TU?t=8181" target="_blank" rel="noopener" aria-label="Watch 2:16:21 in the recording">2:16:21</a><span class="memo-said"> The last eight minutes build <strong>package diagrams</strong> from the same models — a participant package holding patient, and dependency arrows showing which package calls which.<span class="memo-th" lang="th">แปดนาทีท้ายสร้าง package diagram จากโมเดลเดิม — package participant ที่มี package patient อยู่ข้างใน และลูกศร dependency ที่บอกว่า package ใดเรียก package ใด</span></span></li>
       <li><span class="memo-ref">slide 2</span><span class="memo-said"> The objectives are verbs: understand the rules, the object-identification approaches and the process, then <strong>create</strong> class diagrams. Expect a drawing question.<span class="memo-th" lang="th">วัตถุประสงค์ใช้คำกริยา: เข้าใจกฎ วิธีหา object และกระบวนการ แล้ว “สร้าง” class diagram — คาดว่าข้อสอบมีข้อวาด</span></span></li>
       <li><span class="memo-ref">slides 46–47</span><span class="memo-said"> The seven steps are the answer skeleton; steps 8–10 (review, patterns, validate) are the part students skip.<span class="memo-th" lang="th">เจ็ดขั้นคือโครงคำตอบ และขั้น 8–10 (ทบทวน ใช้ pattern ตรวจความสอดคล้อง) คือส่วนที่คนข้าม</span></span></li>
       <li><span class="memo-ref">slide 61</span><span class="memo-said"> The revised clinic class diagram is the worked example; it decomposes a complex responsibility across three use cases.<span class="memo-th" lang="th">class diagram ของคลินิกที่แก้แล้วคือตัวอย่างจริง และแสดงการแยกความรับผิดชอบที่ซับซ้อนออกเป็นสาม use case</span></span></li>
@@ -3578,7 +3603,7 @@ body[data-th="off"] .ex-th{display:none}
   <h1>What she showed in class</h1>
   <p class="lede">Your teacher demonstrated examples live that are not in the five decks. These are the ones that appeared on screen, reconstructed from the video frames.</p>
   <div class="callout accent" style="margin-top:16px">
-    <strong>Watch the recordings</strong> (unlisted): <a href="https://youtu.be/egjAfqDqNdI" target="_blank" rel="noopener">Lesson 1</a>, <a href="https://youtu.be/yMPDibTd25o" target="_blank" rel="noopener">Lesson 2, part 1</a>, <a href="https://youtu.be/bQFcFtF19nI" target="_blank" rel="noopener">Lesson 2, part 2</a>, <a href="https://youtu.be/vFAW-JgzgLo" target="_blank" rel="noopener">Lesson 3, Elicitation</a>, <a href="https://youtu.be/BIZVF-hG6Q8" target="_blank" rel="noopener">Lesson 4 analysis (uploaded as Lesson 5)</a>, <a href="https://youtu.be/gsIoHDCYmVE" target="_blank" rel="noopener">Lesson 5 use cases and activity diagrams</a>. Every “watch” link below opens at the right second.
+    <strong>Watch the recordings</strong> (unlisted): <a href="https://youtu.be/egjAfqDqNdI" target="_blank" rel="noopener">Lesson 1</a>, <a href="https://youtu.be/yMPDibTd25o" target="_blank" rel="noopener">Lesson 2, part 1</a>, <a href="https://youtu.be/bQFcFtF19nI" target="_blank" rel="noopener">Lesson 2, part 2</a>, <a href="https://youtu.be/vFAW-JgzgLo" target="_blank" rel="noopener">Lesson 3, Elicitation</a>, <a href="https://youtu.be/BIZVF-hG6Q8" target="_blank" rel="noopener">Lesson 4 analysis (uploaded as Lesson 5)</a>, <a href="https://youtu.be/gsIoHDCYmVE" target="_blank" rel="noopener">Lesson 5 use cases and activity diagrams</a>, <a href="https://youtu.be/GZ1EzhXJ4TU" target="_blank" rel="noopener">Lesson 6 structural modelling, 13 Nov (uploaded as Lesson 7)</a>. Every “watch” link below opens at the right second. The 12 Nov review session and the 13 Nov voice Q&amp;A are local recordings with no upload — their points are in the Overview.
   </div>
 
   <div class="section-head"><div><h2>1 · The use-case diagram she drew the lesson around</h2><p class="muted" style="font-size:13.5px;margin:6px 0 0">The clinic case is now part of Lesson 6 (slides 50–62: functional requirements revisited, detail descriptions and the revised class diagram) and is referenced there. This page keeps the recording’s version because it shows the whole use-case diagram — including <em>Communicate Real Time</em> and <em>Assess via Tele-Health</em> — which the Lesson 6 deck never repeats.</p><p>Integrated Health Clinic Delivery System, from the course textbook: Dennis, Wixom &amp; Tegarden, <em>Systems Analysis and Design: An Object-Oriented Approach with UML</em>, 5th ed., Wiley, Figure 4-4. <a href="https://youtu.be/vFAW-JgzgLo?t=10333" target="_blank" rel="noopener">Watch at 2:52:13</a></p></div></div>
@@ -4033,14 +4058,14 @@ body[data-th="off"] .ex-th{display:none}
   <h1>Practice, with model answers</h1>
   <p class="lede">Write bullet points first, then reveal. Compare the <em>structure</em> of your answer with the model — examiners mark the named parts, not your prose.</p>
 
-  <div class="section-head"><div><h2>Mock midterm — Lessons 1–5</h2><p>Three parts — True/False, short answer, case study — 100 marks, 120 minutes. The announcement says the paper has four parts but names three; this set mirrors the three it names. The mark split is a practice estimate; the real Part 1 runs to at most ten statements and Part 2 to about six or seven questions, so this set is deliberately larger. A fourth block at the end reproduces the three questions photographed from the paper itself (the open-book “2026-1-DH-RE-OpenBook”, pages 6–7).</p></div></div>
+  <div class="section-head"><div><h2>Mock midterm — Lessons 1–5</h2><p>Three parts — True/False, short answer, case study — 100 marks, 120 minutes. The announcement says the paper has four parts but names three; this set mirrors the three it names. The mark split is a practice estimate; the real Part 1 is 10 marks and Part 2 has about six or seven questions, so this set is deliberately larger. A fourth block at the end reproduces the three questions photographed from the paper itself (the open-book “2026-1-DH-RE-OpenBook”, pages 6–7).</p></div></div>
   <div class="callout accent">
     <p><strong>Conditions, as announced:</strong> paper, handwritten, questions in Thai, <strong>one computer device</strong>, no internet and no communication with anyone during the sitting; arrive at least 15 minutes early. Sit it on paper with a timer; reveal only after you have written the whole answer. With three hours in the real hall, the rest of the time goes to redrawing one diagram from memory and re-reading what you wrote — not to learning something new.</p>
     <p style="margin-top:8px"><strong>How it is marked:</strong> the named parts carry the marks — the characteristic, the axis, the justification, the eight fields. An answer that is right in substance but names nothing scores low.</p>
   </div>
   <div class="grid" style="gap:12px">
 
-    <div class="section-head"><div><h2>Part 1 — True/False, with a reason</h2><p>Twelve statements, 2 marks each: one for the verdict, one for the reason. “True” or “False” alone scores nothing. The paper's own Part 1 runs to at most ten statements — this set is two over for extra practice.</p></div></div>
+    <div class="section-head"><div><h2>Part 1 — True/False, with a reason</h2><p>Twelve statements, 2 marks each: one for the verdict, one for the reason. “True” or “False” alone scores nothing. The paper's own Part 1 is worth 10 marks — this set is twelve statements for extra practice.</p></div></div>
 
     <div class="qa quiz-item" data-search="mock true false well-formed verifiable measurable">
       <p class="q"><span>T1</span>“ความต้องการที่ดีต้องตรวจสอบได้และวัดได้เท่านั้นก็เพียงพอ”</p>
@@ -4867,7 +4892,7 @@ body[data-th="off"] .ex-th{display:none}
     <div class="fc-controls">
       <button class="btn bad" id="fc-again">Review again</button>
       <button class="btn good" id="fc-got">Got it</button>
-      <button class="btn" id="fc-next">Next →</button>
+      <button class="btn" id="fc-next">Next</button>
     </div>
     <div class="progress"><span>Known</span><div class="bar"><i id="fc-bar"></i></div><span id="fc-pct">0%</span></div>
   </div>
