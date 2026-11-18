@@ -576,6 +576,7 @@ body[data-th="off"] .ex-th{display:none}
       <button class="tab" role="tab" data-view="lesson4" aria-selected="false">Lesson 4</button>
       <button class="tab" role="tab" data-view="lesson5" aria-selected="false">Lesson 5</button>
       <button class="tab" role="tab" data-view="lesson6" aria-selected="false">Lesson 6</button>
+      <button class="tab" role="tab" data-view="lesson7" aria-selected="false">Lesson 7</button>
       <button class="tab" role="tab" data-view="video" aria-selected="false">Video lab</button>
       <button class="tab" role="tab" data-view="practice" aria-selected="false">Practice</button>
       <button class="tab" role="tab" data-view="hw" aria-selected="false">Homework</button>
@@ -590,6 +591,7 @@ body[data-th="off"] .ex-th{display:none}
       <option value="lesson4">Lesson 4 — Analysis &amp; negotiation</option>
       <option value="lesson5">Lesson 5 — Functional modelling</option>
       <option value="lesson6">Lesson 6 — Structural modelling</option>
+      <option value="lesson7">Lesson 7 — Behavioural modelling</option>
       <option value="video">Video lab</option>
       <option value="practice">Practice</option>
       <option value="hw">Homework — Quiz 1 &amp; Quiz 2</option>
@@ -3597,6 +3599,403 @@ body[data-th="off"] .ex-th{display:none}
   </div>
 </section>
 
+<!-- ============ LESSON 7 ============ -->
+<section class="view" id="lesson7" role="tabpanel" aria-label="Lesson 7" hidden>
+  <div class="eyebrow">Lesson 7, 61 slides</div>
+  <h1>Behavioural modelling: what happens, and in what order</h1>
+  <p class="lede">The class diagram says what the system knows. These two diagrams say what happens over time: which objects talk to whom, in what order, and how one object's state changes across its life.</p>
+  <div class="progress" data-lesson="7" style="margin-top:16px;max-width:420px"><span>Verification coverage</span><div class="bar"><i></i></div><span class="pct">0%</span></div>
+  <section class="memo" aria-label="What the deck flags">
+    <p class="memo-head">What the deck flags</p>
+    <ul class="memo-list">
+      <li><span class="memo-ref">slide 2</span><span class="memo-said"> The objectives are verbs again: understand the rules and style guidelines, understand the process, then <strong>create</strong> the diagrams. Expect a drawing question.<span class="memo-th" lang="th">วัตถุประสงค์เป็นคำกริยาอีกครั้ง: เข้าใจกฎและแนวทางการเขียน เข้าใจกระบวนการ แล้ว “สร้าง” แผนภาพ — คาดว่าข้อสอบมีข้อวาด</span></span></li>
+      <li><span class="memo-ref">slides 19–20</span><span class="memo-said"> Fragments are the part the deck spends two slides on: loop and conditional must be drawn <strong>across the lifelines involved</strong>, each subfragment carrying its own guard.<span class="memo-th" lang="th">fragment คือส่วนที่สไลด์ใช้สองแผ่น: loop และ conditional ต้องวาดคร่อม lifeline ที่เกี่ยวข้อง และแต่ละ subfragment มี guard ของตัวเอง</span></span></li>
+      <li><span class="memo-ref">slide 32</span><span class="memo-said"> The two named defects: a <strong>black hole</strong> has no out-transition, a <strong>miracle</strong> has no in-transition. Guards must be mutually exclusive.<span class="memo-th" lang="th">ข้อบกพร่องสองชื่อ: black hole ไม่มีขาออก ส่วน miracle ไม่มีขาเข้า และ guard ต้องเป็นจริงได้เพียงทางเดียว</span></span></li>
+      <li><span class="memo-ref">slide 39</span><span class="memo-said"> The cross-model rule that earns the last mark: every transition must be a <strong>Create, Update or Delete</strong> message on a sequence diagram and an operation in the class diagram.<span class="memo-th" lang="th">กฎข้ามโมเดลที่ได้คะแนนท้ายข้อ: ทุก transition ต้องเป็นข้อความ Create, Update หรือ Delete บน sequence diagram และเป็น operation ใน class diagram</span></span></li>
+    </ul>
+  </section>
+
+  <div class="grid" style="gap:0">
+
+    <article class="card" data-lesson="7" data-search="behavioural behavior model internal interaction sequence state machine iterative">
+      <div class="card-head"><h3>1 · Two models for time</h3><button class="know" data-id="l7-why" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A <strong>behavioural model</strong> describes the internal behaviour of the system as a set of use cases supported by collaborating objects. Two kinds: an <strong>interaction diagram</strong> (here, the sequence diagram) shows how objects collaborate to provide the functionality of a use case; a <strong>behavioural state machine</strong> shows the states one object passes through in its lifetime. Building them is iterative and can send you back to the class and activity diagrams.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It answers the two questions the other models leave open: who talks to whom in what order, and when does this object change state?</p></div>
+        <div class="example"><b>Example.</b> “Schedule Appointment” becomes messages from the receptionist to a patient list, a bills list and an appointments list — and “Appointment” becomes an object with states Booked, Cancelled and Attended.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Drawing screens, classes or database tables. A behavioural diagram shows <em>objects</em> — instances — not classes and not interfaces.</p>
+      <details><summary>Slide 7</summary><blockquote>“Behavioral models describe the internal behavior of a system … Creating behavioral models is an iterative process which may induce changes in other models (e.g. class diagram, activity diagram).”<cite>Slide 7</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="7" data-search="object instantiation class attribute operation message function call patient somchai">
+      <div class="card-head"><h3>2 · From class to object to message</h3><button class="know" data-id="l7-obj" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> An <strong>object</strong> is an instantiation of a class. <strong>Attributes</strong> describe its state, <strong>operations</strong> are the behaviours it can perform, and a <strong>message</strong> is information sent to an object telling it to run one of its operations — a function call from one object to another.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">Every label in a sequence diagram is written in this vocabulary; confusing class with object is the first mark lost.</p></div>
+        <div class="example"><b>Example.</b> Patient is a class; Somchai Meesuk is an object of it, written <code>aPatient : Patient</code>. The receptionist sends <code>LookUpPatient()</code> to the patient list object, not to the Patient class.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Labelling a lifeline with a bare class name. Write <code>:Patient</code> (anonymous instance), <code>s:Student</code> (named instance) or at least an object name.</p>
+      <details><summary>Slide 8</summary><blockquote>“Messages—information sent to objects to tell them to execute one of their behaviors — A function call from one object to another.”<cite>Slide 8</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="7" data-search="sequence diagram use case scenario generic instance dynamic">
+      <div class="card-head"><h3>3 · Sequence diagrams, and the two flavours</h3><button class="know" data-id="l7-seq" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A sequence diagram illustrates the objects that participate in a <strong>single use case</strong> and the sequence of messages that pass between them. It is a dynamic model, most useful for real-time specifications and complex use cases. A <strong>generic</strong> diagram shows all scenarios of the use case; an <strong>instance</strong> diagram shows one scenario with concrete objects.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It is the model that turns a use-case description into object collaboration, and the one exam question that asks you to draw messages rather than bubbles.</p></div>
+        <div class="example"><b>Example.</b> “Borrow Books when the student has a valid ID and no fines” is an instance scenario; the same diagram with alternatives for an invalid ID and for fines is the generic form.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Mixing scenarios in one instance diagram. Pick the scenario the question names and put the other paths in fragments.</p>
+      <details><summary>Slide 9</summary><blockquote>“Generic diagram shows all scenarios for a use-case; Instance diagrams show a single scenario.”<cite>Slide 9</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="7" data-search="sequence syntax lifeline activation execution occurrence object naming guard">
+      <div class="card-head"><h3>4 · Sequence syntax: lifelines, activation, naming</h3><button class="know" data-id="l7-syn" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Each participant is an actor (stick figure) or an object (rectangle). A dashed <strong>lifeline</strong> drops from it; a narrow <strong>activation bar</strong> (execution occurrence) marks the time the object is doing work; messages are horizontal arrows between lifelines. The object label may be a name, a type, or both: <code>student</code>, <code>:Student</code>, <code>s:Student</code>.</p>
+      <figure class="fig">
+        <div class="fig-scroll">
+          <svg viewBox="0 0 940 320" role="img" aria-label="Sequence-notation legend in two columns: lifeline, activation bar, synchronous message with a filled arrowhead, asynchronous message with an open arrowhead, dashed return; self-message, create message to a new lifeline head, destroy cross, and a bracketed guard">
+            <defs>
+              <marker id="f71a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--ink)"/></marker>
+              <marker id="f71o" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="var(--ink)" stroke-width="1.4"/></marker>
+              <marker id="f71m" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="var(--muted)" stroke-width="1.4"/></marker>
+            </defs>
+            <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="11">
+              <text x="30" y="26" fill="var(--muted)" font-size="10" font-style="italic">objects and their lifelines</text>
+              <rect x="30" y="38" width="96" height="20" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="78" y="52" text-anchor="middle" fill="var(--ink)" font-size="10.5">:Order</text>
+              <line x1="78" y1="58" x2="78" y2="300" stroke="var(--muted)" stroke-dasharray="4 4"/>
+              <text x="150" y="52" fill="var(--ink)">lifeline, dashed</text>
+
+              <rect x="73" y="86" width="10" height="44" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>
+              <text x="150" y="100" fill="var(--ink)">activation bar</text>
+              <text x="150" y="116" fill="var(--muted)">execution occurrence: the object is working</text>
+
+              <line x1="30" y1="168" x2="126" y2="168" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#f71a)"/>
+              <text x="150" y="164" fill="var(--ink)">synchronous call</text>
+              <text x="150" y="180" fill="var(--muted)">filled head — the sender waits</text>
+
+              <line x1="30" y1="216" x2="126" y2="216" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#f71o)"/>
+              <text x="150" y="212" fill="var(--ink)">asynchronous call</text>
+              <text x="150" y="228" fill="var(--muted)">open head — the sender continues</text>
+
+              <line x1="126" y1="264" x2="30" y2="264" stroke="var(--muted)" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#f71m)"/>
+              <text x="150" y="260" fill="var(--ink)">return</text>
+              <text x="150" y="276" fill="var(--muted)">dashed, open head; omit it when obvious</text>
+
+              <text x="520" y="26" fill="var(--muted)" font-size="10" font-style="italic">the shapes that carry meaning</text>
+
+              <line x1="520" y1="52" x2="566" y2="52" stroke="var(--ink)" stroke-width="1.3" marker-end="url(#f71a)"/>
+              <line x1="566" y1="52" x2="566" y2="76" stroke="var(--ink)" stroke-width="1.3"/>
+              <line x1="566" y1="76" x2="524" y2="76" stroke="var(--ink)" stroke-width="1.3" marker-end="url(#f71a)"/>
+              <text x="600" y="58" fill="var(--ink)">self-message</text>
+              <text x="600" y="74" fill="var(--muted)">an object calling its own operation</text>
+
+              <line x1="520" y1="128" x2="596" y2="128" stroke="var(--muted)" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#f71m)"/>
+              <rect x="600" y="118" width="126" height="20" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="663" y="132" text-anchor="middle" fill="var(--ink)" font-size="10">anAppt : Appointment</text>
+              <text x="740" y="126" fill="var(--ink)">create</text>
+              <text x="740" y="142" fill="var(--muted)">dashed, to the head of a new lifeline</text>
+
+              <line x1="540" y1="188" x2="540" y2="232" stroke="var(--muted)" stroke-dasharray="4 4"/>
+              <line x1="531" y1="190" x2="549" y2="208" stroke="var(--trap)" stroke-width="1.7"/>
+              <line x1="549" y1="190" x2="531" y2="208" stroke="var(--trap)" stroke-width="1.7"/>
+              <text x="600" y="196" fill="var(--ink)">destroy</text>
+              <text x="600" y="212" fill="var(--muted)">×, and the lifeline ends there</text>
+
+              <text x="520" y="264" fill="var(--muted)" font-style="italic">[aPatients Exists]</text>
+              <text x="628" y="264" fill="var(--ink)">LookUpBills()</text>
+              <text x="520" y="286" fill="var(--muted)">guard in brackets before the message name</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>Fig. 7.1 — The odd symbols, in one strip. <span lang="th">สัญลักษณ์ที่มักวาดผิด: lifeline, activation, ลูกศร sync/async, return, self, create, destroy และ guard</span></figcaption>
+      </figure>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">The exam marks the marks: a solid return arrow, an object without a type, a missing activation bar.</p></div>
+        <div class="example"><b>Example.</b> In the clinic scenario the appointment object does not exist until the create message that makes it, drawn dashed to its label.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Drawing a return as a solid arrow. Return is dashed; a solid arrow changes state or starts work.</p>
+      <details><summary>Slide 21</summary><blockquote>“Both name and type are optional, but at least one of them should be present.”<cite>Slide 21</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="7" data-search="synchronous asynchronous return create destroy self message">
+      <div class="card-head"><h3>5 · Synchronous, asynchronous, return, create, destroy</h3><button class="know" data-id="l7-msg" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A <strong>synchronous</strong> call sends the message and suspends the sender while it waits for the response. An <strong>asynchronous</strong> call proceeds immediately without waiting. A <strong>return</strong> is dashed and may be omitted when the value is obvious. A <strong>create</strong> message points at the head of a new lifeline; a <strong>destroy</strong> ends a lifeline with an <code>×</code>.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">Choosing sync or async is a requirements decision: a booking that must not double-book is synchronous; a reminder that can fire and forget is asynchronous.</p></div>
+        <div class="example"><b>Example.</b> Booking: <code>reserveSlot()</code> is synchronous — the receptionist cannot confirm until the answer arrives. Reminder: <code>sendSMS()</code> is asynchronous — the booking does not wait for the phone.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Drawing an asynchronous call with a filled arrowhead, the same as a synchronous one.</p>
+      <details><summary>Slide 18</summary><blockquote>“Synchronous call — send message and suspend execution while waiting for response … Asynchronous call — send message and proceed immediately without waiting for return value.”<cite>Slide 18</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="7" data-search="fragment loop alt opt par break ref interaction use guard">
+      <div class="card-head"><h3>6 · Fragments: loop, alt, opt, par, break, ref</h3><button class="know" data-id="l7-frag" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A <strong>loop</strong> has one subfragment executed while its guard holds. An <strong>alt</strong> has two or more subfragments, each with its own guard; exactly one runs. An <strong>opt</strong> is an alt with a single branch — run if the guard is true, omitted if false. <strong>par</strong> runs subfragments concurrently, <strong>break</strong> leaves the enclosing interaction, and <strong>ref</strong> reuses another interaction.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">This is how one diagram survives the generic case; the fragment label and the guard are two separate marks.</p></div>
+        <div class="example"><b>Example.</b> Borrow Books: <code>loop [more book]</code> around <code>FindBooks()</code> and <code>Checkout()</code>. Search Book: <code>alt [author entered]</code> search / <code>[author not entered]</code> error.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Wrapping a fragment around one lifeline only, or writing a fragment without its guard.</p>
+      <details><summary>Slide 19</summary><blockquote>“The optional fragment is a special case with a single subfragment that is executed if its guard condition is true and omitted if the condition is false.”<cite>Slide 19</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="7" data-search="building sequence diagram steps context actors objects lifelines messages validate">
+      <div class="card-head"><h3>7 · Building a sequence diagram</h3><button class="know" data-id="l7-build" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Set the context (the use case or one scenario); identify the actors and objects; draw a lifeline for each; add messages left to right and top to bottom, with guards and parameters, omitting obvious returns; add activation bars; validate that every step of the scenario appears. Guidelines: initiator on the left, same name for the actor and the object of the same idea, name duplicates (<code>aDailyReport: Report</code>), show returns only when they add information, justify labels near the arrowhead.</p>
+      <figure class="fig">
+        <div class="fig-scroll">
+          <svg viewBox="0 0 960 420" role="img" aria-label="Sequence diagram of the Make Appointment scenario: aPatient requests an appointment from aReceptionist, who looks up the patient, looks up unpaid bills under the guard aPatients Exists, asks the patient about cancellation charges and appointment times, matches appointments in Appointments list, and creates anAppt Appointment">
+            <defs>
+              <marker id="f72a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--ink)"/></marker>
+              <marker id="f72o" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="var(--muted)" stroke-width="1.3"/></marker>
+            </defs>
+            <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="11">
+              <!-- actor icons -->
+              <g stroke="var(--ink)" fill="none" stroke-width="1.5">
+                <circle cx="70" cy="34" r="8"/><line x1="70" y1="42" x2="70" y2="64"/><line x1="56" y1="52" x2="84" y2="52"/><line x1="70" y1="64" x2="58" y2="82"/><line x1="70" y1="64" x2="82" y2="82"/>
+                <circle cx="205" cy="34" r="8"/><line x1="205" y1="42" x2="205" y2="64"/><line x1="191" y1="52" x2="219" y2="52"/><line x1="205" y1="64" x2="193" y2="82"/><line x1="205" y1="64" x2="217" y2="82"/>
+              </g>
+              <text x="70" y="100" text-anchor="middle" fill="var(--ink)">aPatient</text>
+              <text x="205" y="100" text-anchor="middle" fill="var(--ink)">aReceptionist</text>
+              <!-- object labels -->
+              <rect x="320" y="20" width="104" height="24" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="372" y="36" text-anchor="middle" fill="var(--ink)" font-size="10.5">Patients:List</text>
+              <rect x="460" y="20" width="124" height="24" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="522" y="36" text-anchor="middle" fill="var(--ink)" font-size="10.5">UnpaidBills:List</text>
+              <rect x="620" y="20" width="130" height="24" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="685" y="36" text-anchor="middle" fill="var(--ink)" font-size="10.5">Appointments:List</text>
+              <!-- lifelines -->
+              <g stroke="var(--muted)" stroke-dasharray="4 4">
+                <line x1="70" y1="104" x2="70" y2="390"/>
+                <line x1="205" y1="104" x2="205" y2="390"/>
+                <line x1="372" y1="44" x2="372" y2="390"/>
+                <line x1="522" y1="44" x2="522" y2="390"/>
+                <line x1="685" y1="44" x2="685" y2="390"/>
+                <line x1="870" y1="330" x2="870" y2="390"/>
+              </g>
+              <!-- activations -->
+              <rect x="65" y="112" width="10" height="164" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>
+              <rect x="200" y="112" width="10" height="252" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>
+              <rect x="367" y="120" width="10" height="40" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>
+              <rect x="517" y="190" width="10" height="34" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>
+              <rect x="680" y="250" width="10" height="34" fill="var(--accent-soft)" stroke="var(--accent)" stroke-width="1"/>
+              <!-- messages -->
+              <g stroke="var(--ink)" stroke-width="1.4">
+                <line x1="75" y1="130" x2="198" y2="130" marker-end="url(#f72a)"/>
+                <line x1="210" y1="160" x2="365" y2="160" marker-end="url(#f72a)"/>
+                <line x1="210" y1="200" x2="515" y2="200" marker-end="url(#f72a)"/>
+                <line x1="198" y1="236" x2="77" y2="236" marker-end="url(#f72a)"/>
+                <line x1="198" y1="266" x2="77" y2="266" marker-end="url(#f72a)"/>
+                <line x1="210" y1="260" x2="678" y2="260" marker-end="url(#f72a)"/>
+              </g>
+              <text x="92" y="124" fill="var(--ink)">RequestAppt()</text>
+              <text x="226" y="154" fill="var(--ink)">LookUpPatient()</text>
+              <text x="226" y="194" fill="var(--ink)" font-style="italic">[aPatients Exists]</text>
+              <text x="330" y="188" fill="var(--ink)">LookUpBills()</text>
+              <text x="86" y="230" fill="var(--ink)">NewCancelChargeAppt?()</text>
+              <text x="92" y="260" fill="var(--ink)">ApptTimes?()</text>
+              <text x="380" y="254" fill="var(--ink)">MatchAppts()</text>
+              <!-- create -->
+              <line x1="205" y1="318" x2="796" y2="318" stroke="var(--muted)" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#f72o)"/>
+              <text x="330" y="312" fill="var(--muted)">create</text>
+              <rect x="802" y="306" width="150" height="24" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="877" y="322" text-anchor="middle" fill="var(--ink)" font-size="10.5">anAppt:Appointment</text>
+              <text x="205" y="408" text-anchor="middle" fill="var(--muted)" font-size="10">order: top to bottom, left to right · initiator on the left</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>Fig. 7.2 — The deck's Make-Appt example, drawn as an instance scenario. <span lang="th">ตัวอย่าง Make Appt ของสไลด์: ผู้ป่วยขอคิว receptionist ค้นหาผู้ป่วยและบิลค้าง ก่อนสร้าง Appointment เมื่อเงื่อนไขผ่าน</span></figcaption>
+      </figure>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">The validation step is a mark of its own: every numbered step of the description must be visible as a message.</p></div>
+        <div class="example"><b>Example.</b> If the description says “the system checks unpaid bills before confirming”, a diagram with no LookUpBills message fails validation even if the drawing is clean.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Messages drawn out of order, or two objects of one class left unnamed.</p>
+      <details><summary>Slide 13</summary><blockquote>“Order messages from left to right, top to bottom … Only show return values when they are not obvious … Justify messages near the arrowhead for improved readability.”<cite>Slide 13</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="7" data-search="behavioural state machine object lifetime complex object patient states">
+      <div class="card-head"><h3>8 · Behaviour state machines: one object's life</h3><button class="know" data-id="l7-smwhy" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A sequence diagram shows many objects over one scenario; a <strong>behavioural state machine</strong> shows one object over its whole life — the states it passes through, the events that move it, and the actions it performs. The deck's example is the patient: <strong>new</strong> (not yet seen), <strong>current</strong> (receiving treatment), <strong>former</strong> (no longer seen). Use it only for complex objects.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">Status fields are everywhere in health systems — appointment booked/cancelled/attended, claim submitted/approved/paid. This diagram is how you make that field honest.</p></div>
+        <div class="example"><b>Example.</b> An Appointment object: Booked → Attended or Cancelled; Attended → Archived after the note is signed. Each arrow is caused by an operation on the class diagram.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Drawing a state machine for every class. If the object has no meaningful lifecycle, it does not get one.</p>
+      <details><summary>Slide 28</summary><blockquote>“The behavioral state machine described the state change through which an object traverses during its lifetime … Typically used only for complex objects.”<cite>Slide 28</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="7" data-search="states events transitions guard condition action components">
+      <div class="card-head"><h3>9 · States, events, transitions</h3><button class="know" data-id="l7-smcomp" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A <strong>state</strong> is a set of attribute values at a point in time at which the object satisfies a condition, performs an action or waits for something. An <strong>event</strong> is the cause of the change. A <strong>transition</strong> is the movement between states, and may carry a <strong>guard</strong> (a condition that must hold) and an <strong>action</strong> (work done on the way).</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">Every transition label has up to three parts — event, guard, action — and the marker counts them separately.</p></div>
+        <div class="example"><b>Example.</b> Appointment: <code>cancel() [!attended] / setStatus(Cancelled)</code> — the operation is the event, the guard blocks cancelling an attended visit, the action writes the status.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Writing an event as a state (“patient waiting”) or a state as an action (“cancelling”).</p>
+      <details><summary>Slide 29</summary><blockquote>“States — values of an object's attributes at a point in time … Events — the cause of the change in values of the object's attributes … Transitions — movement of an object from one state to another.”<cite>Slide 29</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="7" data-search="state machine syntax initial final state event guard action transition">
+      <div class="card-head"><h3>10 · State-machine syntax</h3><button class="know" data-id="l7-smsyn" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A filled circle is the <strong>initial state</strong>; a bullseye is the <strong>final state</strong>; a rounded rectangle is a state. A transition is an arrow labelled <code>event [guard] / action</code> — the event causes it, the guard allows it, the action runs. A composite state contains its own start and end.</p>
+      <figure class="fig">
+        <div class="fig-scroll">
+          <svg viewBox="0 0 900 190" role="img" aria-label="State-machine notation: filled initial circle, transition labelled event with guard and action, rounded state, self-transition, final bullseye, and a composite state containing a nested initial state">
+            <defs>
+              <marker id="f73a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--muted)"/></marker>
+            </defs>
+            <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="11">
+              <circle cx="40" cy="96" r="9" fill="var(--ink)"/>
+              <line x1="50" y1="96" x2="112" y2="96" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#f73a)"/>
+              <text x="56" y="88" fill="var(--muted)">start</text>
+              <rect x="118" y="72" width="150" height="48" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="193" y="101" text-anchor="middle" fill="var(--ink)">Booked</text>
+              <line x1="272" y1="96" x2="384" y2="96" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#f73a)"/>
+              <text x="340" y="58" text-anchor="middle" fill="var(--ink)" font-style="italic" font-size="10.5">attend() [slot passed]</text><text x="340" y="114" text-anchor="middle" fill="var(--muted)" font-style="italic" font-size="10.5">/ setStatus()</text>
+              <rect x="390" y="72" width="150" height="48" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="465" y="101" text-anchor="middle" fill="var(--ink)">Attended</text>
+              <line x1="544" y1="96" x2="636" y2="96" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#f73a)"/>
+              <circle cx="650" cy="96" r="10" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+              <circle cx="650" cy="96" r="5" fill="var(--ink)"/>
+              <text x="596" y="130" fill="var(--muted)">final</text>
+              <!-- self transition -->
+              <path d="M193 72 C193 40 260 40 260 72" fill="none" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f73a)"/>
+              <text x="200" y="34" fill="var(--ink)" font-style="italic">reschedule() / newSlot()</text>
+              <!-- composite -->
+              <rect x="700" y="46" width="180" height="106" rx="6" fill="none" stroke="var(--line)"/>
+              <text x="790" y="64" text-anchor="middle" fill="var(--ink)" font-size="10.5">In Treatment (composite)</text>
+              <circle cx="724" cy="96" r="6" fill="var(--ink)"/>
+              <line x1="731" y1="96" x2="756" y2="96" stroke="var(--muted)" marker-end="url(#f73a)"/>
+              <rect x="760" y="84" width="74" height="26" rx="10" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="797" y="101" text-anchor="middle" fill="var(--ink)" font-size="10">Ward</text>
+              <text x="700" y="170" fill="var(--muted)" font-size="10">composite state: its own start and end inside</text>
+              <text x="40" y="170" fill="var(--muted)" font-size="10">label order: event [guard] / action</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>Fig. 7.3 — State-machine notation, with the label anatomy. <span lang="th">สัญลักษณ์ state machine และลำดับของ label: event [guard] / action</span></figcaption>
+      </figure>
+      <p class="trap"><b>Exam trap</b>A final state with no incoming arrow, or a state with a guard that can be true at the same time as another.</p>
+      <details><summary>Slide 30</summary><blockquote>“A set of values that describes an object at a specific point in time at which it satisfies some condition, performs some action, or waits for something to happen.”<cite>Slide 30</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="7" data-search="guidelines black hole miracle mutually exclusive guards states versus subclasses student">
+      <div class="card-head"><h3>11 · Guidelines, black holes and the states-versus-subclasses trap</h3><button class="know" data-id="l7-smguide" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Use state machines only for complex objects; draw the initial state top-left and the final state bottom-right; name states simply and descriptively; hunt for <strong>black holes</strong> (no out-transition) and <strong>miracles</strong> (no in-transition); make guards mutually exclusive; tie every transition to a message and an operation. And do not model lifecycle stages as subclasses: Freshman–Senior is four <em>states</em> of Undergraduate, not four subclasses, because the behaviour and attributes do not differ.</p>
+      <figure class="fig">
+        <div class="fig-scroll">
+          <svg viewBox="0 0 960 230" role="img" aria-label="Patient state machine: initial to Entering, Checks In to Admitted; if diagnosis unhealthy, Under Observation, then Released when healthy; if healthy, straight to Released; after more than two weeks, the final state">
+            <defs>
+              <marker id="f74a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--muted)"/></marker>
+            </defs>
+            <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="11">
+              <circle cx="36" cy="86" r="9" fill="var(--ink)"/>
+              <line x1="46" y1="86" x2="96" y2="86" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#f74a)"/>
+              <rect x="102" y="62" width="118" height="48" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="161" y="91" text-anchor="middle" fill="var(--ink)">Entering</text>
+              <line x1="220" y1="86" x2="286" y2="86" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#f74a)"/>
+              <text x="226" y="76" fill="var(--muted)">Checks In</text>
+              <rect x="292" y="62" width="118" height="48" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="351" y="91" text-anchor="middle" fill="var(--ink)">Admitted</text>
+              <line x1="410" y1="86" x2="560" y2="86" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#f74a)"/>
+              <text x="420" y="72" fill="var(--muted)" font-style="italic">[Diagnosis = Healthy]</text>
+              <rect x="566" y="62" width="118" height="48" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="625" y="91" text-anchor="middle" fill="var(--ink)">Released</text>
+              <line x1="684" y1="86" x2="806" y2="86" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#f74a)"/>
+              <text x="700" y="72" fill="var(--muted)" font-style="italic">[&gt; 2 weeks]</text>
+              <circle cx="822" cy="86" r="10" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+              <circle cx="822" cy="86" r="5" fill="var(--ink)"/>
+              <!-- branch down -->
+              <line x1="351" y1="110" x2="351" y2="164" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#f74a)"/>
+              <text x="360" y="140" fill="var(--muted)" font-style="italic">[Diagnosis = Unhealthy]</text>
+              <rect x="292" y="168" width="150" height="46" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="367" y="196" text-anchor="middle" fill="var(--ink)">Under Observation</text>
+              <path d="M442 191 H 540 V 112" fill="none" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#f74a)"/>
+              <text x="450" y="212" fill="var(--muted)" font-style="italic">[Diagnosis = Healthy]</text>
+              <text x="36" y="40" fill="var(--muted)" font-size="10">patient lifecourse — initial top-left, final bottom-right</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>Fig. 7.4 — The deck's patient machine; the final state is reached only after two weeks. <span lang="th">state machine ของผู้ป่วยจากสไลด์: เข้าพบแพทย์ admitted แล้วแยกตามผลวินิจฉัย และสิ้นสุดหลังสองสัปดาห์</span></figcaption>
+      </figure>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">Black hole and miracle are named marks; so is “Freshman is a state, not a subclass”.</p></div>
+        <div class="example"><b>Example.</b> In the deck's order machine, Denied has two exits — customer edits (back to In Process) and customer withdraws (to final). Without them it would be a black hole.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Four subclasses for four lifecycle stages. Model the stages as states when behaviour is identical.</p>
+      <details><summary>Slide 32</summary><blockquote>“Look out for ‘black holes’ (no out-transition) and ‘miracles’ (no in-transition) … Ensure guard conditions are mutually exclusive.”<cite>Slide 32</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="7" data-search="verify validate behavioural models actors consistent transitions create update delete CRUD matrix">
+      <div class="card-head"><h3>12 · Verifying the behaviour models</h3><button class="know" data-id="l7-verify" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Four checks close the lesson. <strong>Actors</strong> must match across the use case, sequence and state diagrams. The <strong>order of messages</strong> must match the top-down order of the scenario. Every <strong>transition</strong> in a state machine must correspond to a message on a sequence diagram (and an operation on the class diagram) that is a <strong>Create, Update or Delete</strong> — because a state change is a data change. All diagram-specific syntax and semantics are enforced. The deck's Figure 8-4 links these through the CRUD matrix.</p>
+      <figure class="fig">
+        <div class="fig-scroll">
+          <svg viewBox="0 0 940 240" role="img" aria-label="Order state machine: initial to In Process, Ordered, Processing, Placed, Shipped, Received, and final; a denied branch from Processing returns to In Process when the customer edits, or ends when the customer withdraws">
+            <defs>
+              <marker id="f75a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--muted)"/></marker>
+              <marker id="f75t" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--trap)"/></marker>
+            </defs>
+            <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10.5">
+              <circle cx="28" cy="66" r="8" fill="var(--ink)"/>
+              <line x1="37" y1="66" x2="66" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <rect x="72" y="46" width="104" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="124" y="70" text-anchor="middle" fill="var(--ink)">In Process</text>
+              <line x1="176" y1="66" x2="216" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <text x="199" y="38" text-anchor="middle" fill="var(--ink)">submit()</text>
+              <rect x="222" y="46" width="92" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="268" y="70" text-anchor="middle" fill="var(--ink)">Ordered</text>
+              <line x1="314" y1="66" x2="352" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <text x="336" y="38" text-anchor="middle" fill="var(--ink)">to CCC</text>
+              <rect x="358" y="46" width="100" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="408" y="70" text-anchor="middle" fill="var(--ink)">Processing</text>
+              <line x1="458" y1="66" x2="500" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <text x="482" y="38" text-anchor="middle" fill="var(--muted)" font-style="italic">approved</text>
+              <rect x="506" y="46" width="84" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="548" y="70" text-anchor="middle" fill="var(--ink)">Placed</text>
+              <line x1="590" y1="66" x2="630" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <text x="613" y="38" text-anchor="middle" fill="var(--ink)">deliver</text>
+              <rect x="636" y="46" width="88" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="680" y="70" text-anchor="middle" fill="var(--ink)">Shipped</text>
+              <line x1="724" y1="66" x2="768" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <text x="749" y="38" text-anchor="middle" fill="var(--ink)">accepts</text>
+              <rect x="774" y="46" width="94" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="821" y="70" text-anchor="middle" fill="var(--ink)">Received</text>
+              <line x1="868" y1="66" x2="896" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <circle cx="908" cy="66" r="9" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
+              <circle cx="908" cy="66" r="4.5" fill="var(--ink)"/>
+              <!-- denied branch -->
+              <line x1="408" y1="86" x2="408" y2="150" stroke="var(--trap)" stroke-width="1.3" marker-end="url(#f75t)"/>
+              <text x="416" y="120" fill="var(--trap)" font-style="italic">= Denied</text>
+              <rect x="356" y="154" width="104" height="40" rx="12" fill="var(--surface-2)" stroke="var(--trap-line)" stroke-width="1.2"/>
+              <text x="408" y="178" text-anchor="middle" fill="var(--ink)">Denied</text>
+              <path d="M356 174 H 124 V 92" fill="none" stroke="var(--trap)" stroke-width="1.3" marker-end="url(#f75t)"/>
+              <text x="150" y="188" fill="var(--trap)">customer edits</text>
+              <line x1="460" y1="174" x2="506" y2="174" stroke="var(--trap)" stroke-width="1.3" marker-end="url(#f75t)"/>
+              <text x="468" y="166" fill="var(--trap)">withdraws</text>
+              <circle cx="518" cy="174" r="9" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
+              <circle cx="518" cy="174" r="4.5" fill="var(--ink)"/>
+              <text x="28" y="220" fill="var(--muted)" font-size="10">the denial path is drawn in the trap colour — every other transition is event [guard]</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption>Fig. 7.5 — The deck's order machine, with the denial path that returns or ends. <span lang="th">state machine ของ order: ถ้า authorization ไม่ผ่านจะไปที่ Denied แล้วกลับมาแก้หรือสิ้นสุด</span></figcaption>
+      </figure>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">This is the check that links all five models; an examiner can ask it in one line and mark it in four.</p></div>
+        <div class="example"><b>Example.</b> The transition Admitted → Released must exist as an <code>updatePatientStatus()</code> message on the sequence diagram and as an operation on Patient. If the sequence has no such message, one of the two models is wrong.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>A transition justified by a “read” message. Read does not change state — the message must be Create, Update or Delete.</p>
+      <details><summary>Slide 39</summary><blockquote>“Transitions in a behavior state machine must be associated with a message on a sequence diagram (as operation/method in Class diagram), and it must be a Create, Update, or Delete (as there is a state change).”<cite>Slide 39</cite></blockquote></details>
+    </article>
+
+  </div>
+</section>
+
 <!-- ============ VIDEO ============ -->
 <section class="view" id="video" role="tabpanel" aria-label="Video-only material" hidden>
   <div class="eyebrow">Not in the PDFs, captured from the recordings</div>
@@ -4855,6 +5254,66 @@ body[data-th="off"] .ex-th{display:none}
     </div>
   </div>
 
+  <div class="section-head"><div><h2>Lesson 7</h2><p>8 questions. Sequence diagrams, state machines, and the check between them.</p></div></div>
+  <div class="grid" style="gap:12px">
+
+    <div class="qa" data-search="lesson 7 sequence diagram cancel appointment instance scenario messages">
+      <p class="q"><span>Q1</span>Draw, or write out in order, the instance sequence diagram for “cancel an appointment”: name every participant, and give five messages with the right arrow type.</p>
+      <p class="marker">Marker wants: objects not classes; one scenario; sync vs async chosen and justified; order top to bottom; the slot released in the same scenario.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>Participants: <code>aPatient</code>, <code>:AppointmentUI</code>, <code>:Appointment</code>, <code>:SlotList</code>, <code>:Notification</code>. Messages in order: (1) <code>cancelRequest(apptID)</code>, synchronous, patient → UI (the patient waits for confirmation); (2) <code>lookup(apptID)</code>, synchronous, UI → Appointment; (3) <code>updateStatus(Cancelled)</code>, synchronous, UI → Appointment, guarded <code>[status = Booked]</code>; (4) <code>releaseSlot(slot)</code>, synchronous, Appointment → SlotList — without it the slot is lost; (5) <code>sendConfirmation()</code>, asynchronous, UI → Notification, because the receipt does not block the cancellation. Activation bars on UI and Appointment for the duration of their handling; the lookup return can be omitted (obvious), the confirmation ID kept (not obvious).</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 7 sequence notation errors repair return activation destroy guard">
+      <p class="q"><span>Q2</span>A classmate's diagram has: a solid arrow labelled <code>return</code>, no activation bars, a lifeline labelled <code>Appointment</code>, a destroy drawn as a dashed return, and an <code>alt</code> with no guards. Name each fault and the fix.</p>
+      <p class="marker">Marker wants: fault → fix pairs, all five, with the rule behind each.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>(1) Return must be dashed, with an open arrowhead. (2) Every object that is doing work carries an activation bar; without it the reader cannot see who is busy. (3) A bare <code>Appointment</code> is a class — write <code>:Appointment</code> or <code>aAppt : Appointment</code>; at least a name or a type must be present. (4) Destroy is an <code>×</code> at the end of a lifeline (optionally <code>&lt;&lt;destroy&gt;&gt;</code>), not a return; the lifeline stops there. (5) Each subfragment of an <code>alt</code> starts with its own guard in square brackets, and the guards must be mutually exclusive.</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 7 fragment choose loop opt alt par retry referral parallel">
+      <p class="q"><span>Q3</span>Choose the fragment for each: (a) send the reminder, retrying up to three times; (b) if the patient is outside the catchment, send a referral instead; (c) run three lab tests at the same time.</p>
+      <p class="marker">Marker wants: the fragment named, its guard written, and the distinction between alt and opt stated.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>(a) <code>loop [attempt ≤ 3 and not delivered]</code> — one subfragment, repeated while its guard holds. (b) <code>alt [outside catchment]</code> / <code>[inside catchment]</code> if the diagram then continues differently; <code>opt [outside catchment]</code> if the referral is only an extra and the remaining flow is unchanged — that is the single-alternative case the deck defines. (c) <code>par</code> around the three requests, which then join; the tests are concurrent, not alternative. In all three the fragment rectangle spans the lifelines of the objects involved, and each subfragment carries its own guard.</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 7 building sequence steps context actors lifelines messages validate">
+      <p class="q"><span>Q4</span>List the six steps for building a sequence diagram, and state two style rules that are marked in the drawing itself.</p>
+      <p class="marker">Marker wants: ordered steps; rules about order and naming, not vague style advice.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>Steps: (1) set the context — the use case or one scenario; (2) identify the actors and objects; (3) draw a lifeline for each; (4) add messages left to right and top to bottom, with guards and parameters, omitting obvious returns; (5) add the activation bar to each object's lifeline; (6) validate — every step of the use-case description must appear as a message. Style rules that are marked: the initiator sits on the left; an actor and the object representing the same idea carry the same name; several objects of one class are named individually (<code>aDailyReport : Report</code>); returns are omitted when obvious.</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 7 appointment states triggers transitions lifecycle book cancel attend">
+      <p class="q"><span>Q5</span>Give the states of an Appointment object in a clinic system, with the event that moves it into each state.</p>
+      <p class="marker">Marker wants: states (nouns) separate from events (operations); no black hole; each transition tied to an operation.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>States: <strong>Booked</strong> (after <code>book()</code>), <strong>Rescheduled</strong> (after <code>reschedule()</code> with a new slot), <strong>Attended</strong> (after <code>attend()</code> at check-in), <strong>NoShow</strong> (after <code>markNoShow()</code> when the slot passes), <strong>Cancelled</strong> (after <code>cancel() [!attended]</code>), <strong>Archived</strong> (after <code>archive()</code> once the note is signed). Every state except Archived has at least one exit; Archived is the only one with no out-transition — and no state is a miracle: each has an incoming arrow. Reschedule is modelled as a state, or as a self-transition on Booked if the system overwrites the slot — either is acceptable if the behaviour is stated.</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 7 transition label event guard action pharmacy order">
+      <p class="q"><span>Q6</span>Write three transition labels for a pharmacy dispensing order in the form <code>event [guard] / action</code>.</p>
+      <p class="marker">Marker wants: the three parts in the right order; guards mutually exclusive; actions that are operations of the object.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>Examples: <code>submit() [payment verified] / setStatus(Packed)</code>; <code>dispense() [stock available] / setStatus(Ready)</code>; <code>collect() [ID checked] / setStatus(Collected)</code>. The event is the operation that triggers the move; the guard is the condition that must hold, and no two guards out of one state may be true together; the action is an operation on the object, not a description (“pack the box” is not a label).</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 7 black hole miracle fix orphan state validation">
+      <p class="q"><span>Q7</span>A machine has <strong>Cancelled</strong> with no out-transition and <strong>Attended</strong> with no in-transition. Name each defect and repair it.</p>
+      <p class="marker">Marker wants: the two named defects; a repair that keeps the lifecycle consistent with the other models.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p><strong>Cancelled</strong> is a <em>black hole</em> — the object can enter and never leave, so the state grows without an exit. Repair with <code>archive() [retention expired]</code> to the final state, or make it terminal on purpose by acknowledging it as the end of the object's life. <strong>Attended</strong> is a <em>miracle</em> — it is reachable by nothing, so it can never occur. Repair by adding the transition that the sequence diagram already implies: <code>attend() [slot passed]</code> from Booked. A machine with either defect contradicts the use-case description even if each arrow is drawn correctly.</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 7 verification consistency transition message create update delete actors">
+      <p class="q"><span>Q8</span>The order machine has Processing → Denied, but the sequence diagram has no message for it. What must be added, where, and why is a “read” message not enough?</p>
+      <p class="marker">Marker wants: the message named with C/U/D classification; its place on both diagrams; the reason a read cannot change state.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>Add an <strong>Update</strong> message <code>updateOrderStatus(Denied)</code> on the sequence diagram, after the credit-card-clearance response and before the customer edit or withdrawal; the same operation must exist on the class diagram as an operation of Order. A <strong>read</strong> only copies state to the caller — it changes no attribute value, so no transition can be caused by it. The deck's rule is exact: every transition must correspond to a Create, Update or Delete message; then check that the actors match between the use case, the sequence diagram and the state machine, and that the message order matches the scenario.</p></div>
+    </div>
+  </div>
+
 </section>
 
 <!-- ============ FLASHCARDS ============ -->
@@ -4870,6 +5329,9 @@ body[data-th="off"] .ex-th{display:none}
         <option value="2">Lesson 2</option>
         <option value="3">Lesson 3</option>
         <option value="4">Lesson 4</option>
+        <option value="5">Lesson 5</option>
+        <option value="6">Lesson 6</option>
+        <option value="7">Lesson 7</option>
         <option value="v">Video only</option>
       </select>
       <button class="btn" id="fc-shuffle">Shuffle</button>
@@ -5244,7 +5706,7 @@ window.__SAID__ = {
 <script>
 window.__TH__ = {
   tabs: {
-    overview: "ภาพรวม", lesson1: "บทที่ 1", lesson2: "บทที่ 2", lesson3: "บทที่ 3", lesson4: "บทที่ 4", lesson5: "บทที่ 5", lesson6: "บทที่ 6",
+    overview: "ภาพรวม", lesson1: "บทที่ 1", lesson2: "บทที่ 2", lesson3: "บทที่ 3", lesson4: "บทที่ 4", lesson5: "บทที่ 5", lesson6: "บทที่ 6", lesson7: "บทที่ 7",
     video: "วิดีโอ", practice: "แบบฝึกหัด", hw: "งาน", cards: "แฟลชการ์ด", cheat: "สรุปย่อ"
   },
   cards: {
@@ -5342,6 +5804,18 @@ window.__TH__ = {
     "l5-symbols": "สัญลักษณ์: initial (วงกลมทึบ) · action (สี่เหลี่ยมมุมมน) · object · decision/merge (สี่เหลี่ยมข้าวหลามตัด) · fork/join (แท่ง) · final (วงกลมมีจุด) · swimlane กับดัก: decision ต้องมี guard และ fork ต้องมี join",
     "l5-swim": "swimlane แบ่งตามผู้รับผิดชอบ ใช้ decision/merge และ fork/join พร้อม object flow และจัดวางซ้าย→ขวา/บน→ล่าง ลดเส้นตัด กับดัก: fork ที่ไม่มี join เสียคะแนน",
     "l5-interlock": "requirement → use case diagram → description → activity diagram เป็นสามมุมมองของ functional model เดียว กับดัก: ไม่ใช่ลำดับที่ทำเสร็จแล้วทิ้ง",
+    "l7-why": "โมเดลพฤติกรรม (behavioural model) อธิบายพฤติกรรมภายในของระบบ โดยมองระบบเป็นชุด use case ที่มี object หลายตัวทำงานร่วมกัน มีสองชนิด: interaction diagram (ในบทนี้คือ sequence diagram) แสดงลำดับข้อความระหว่าง object เพื่อให้ use case หนึ่งสำเร็จ กับ behavioural state machine แสดงสถานะที่ object ตัวเดียวผ่านไปตลอดอายุ การสร้างเป็นกระบวนการวนซ้ำ และอาจทำให้ต้องกลับไปแก้ class diagram หรือ activity diagram กับดัก: ข้อสอบให้วาดจากโจทย์ — ต้องเริ่มจาก object ไม่ใช่หน้าจอหรือ class",
+    "l7-obj": "object คือ instance ของ class ตัวอย่างเช่น Patient เป็น class และ Somchai Meesuk เป็น object ของ Patient attribute คือค่าที่บอกสถานะ operation คือสิ่งที่ object ทำได้ และ message คือการเรียก operation จาก object หนึ่งไปยังอีก object หนึ่ง (function call) ในแผนภาพจึงต้องเขียนชื่อ object กับชนิด เช่น aPatient : Patient หรือ :Patient ถ้าไม่ระบุชื่อ กับดัก: เขียนชื่อ class เดี่ยว ๆ บน lifeline แทนที่จะเป็น object",
+    "l7-seq": "sequence diagram แสดง object ที่เข้าร่วมใน use case เดียวและลำดับข้อความที่ส่งถึงกัน จึงเป็น dynamic model ที่เหมาะกับ use case ที่ซับซ้อนหรือระบบเรียลไทม์ มีสองแบบ: generic diagram แสดงทุก scenario ของ use case และ instance diagram แสดง scenario เดียวด้วย object จริง กับดัก: ข้อสอบให้ scenario เดียวแล้วผสมหลาย scenario ไว้ในแผนภาพเดียว ควรแยกเส้นทางอื่นไว้ใน fragment",
+    "l7-syn": "paticipant แต่ละตัวเป็น actor (คน) หรือ object (สี่เหลี่ยม) มี lifeline เป็นเส้นประห้อยลงมา activation bar คือช่วงที่ object กำลังทำงาน ข้อความคือลูกศรแนวนอนระหว่าง lifeline และชื่อ object ต้องมีชื่อหรือชนิดอย่างน้อยหนึ่งอย่าง เช่น student, :Student, s:Student กับดัก: วาด lifeline โดยไม่มี activation ทำให้อ่านไม่ออกว่าใครทำงานอยู่ และวาด return เป็นลูกศรทึบ",
+    "l7-msg": "synchronous call คือส่งข้อความแล้วผู้ส่งหยุดรอคำตอบ (ลูกศรหัวทึบ) asynchronous call คือส่งแล้วไปทำอย่างอื่นต่อทันที (ลูกศรหัวเปิด) return เป็นเส้นประและละได้ถ้าค่าไม่สำคัญ create คือข้อความที่ชี้ไปยังหัว lifeline ใหม่ destroy คือเครื่องหมายกากบาทที่ทำให้ lifeline จบ กับดัก: เลือก sync/async ผิด — การจองที่ห้ามซ้ำต้อง sync เพราะต้องรอผล แต่การส่ง SMS เตือนเป็น async ได้",
+    "l7-frag": "fragment ใช้ห่อส่วนของแผนภาพ: loop มี subfragment เดียวทำซ้ำตาม guard, alt มีหลาย subfragment แต่ละอันมี guard และรันเพียงอันเดียว, opt คือ alt ที่มีทางเลือกเดียว (รันถ้า guard จริง ถ้าเท็จก็ข้าม), par รันพร้อมกัน, break ออกจาก interaction, ref เรียก interaction อื่นมาใช้ ต้องวาดคร่อม lifeline ของ object ที่เกี่ยวข้องเสมอ กับดัก: ลืมเขียน guard หรือวาด fragment คร่อม lifeline เดียว",
+    "l7-build": "ขั้นสร้าง sequence diagram: กำหนด context (use case หรือ scenario) → ระบุ actor และ object → ลาก lifeline → ใส่ข้อความจากซ้ายไปขวา บนลงล่าง พร้อม guard ในวงเล็บเหลี่ยมและ parameter ในวงเล็บ → ใส่ activation bar → ตรวจว่าทุกขั้นของ use case description ปรากฏเป็นข้อความ กฎที่ได้คะแนน: ผู้เริ่ม scenario อยู่ซ้ายสุด, actor กับ object ที่หมายถึงสิ่งเดียวกันใช้ชื่อเดียวกัน, object หลายตัวของ class เดียวต้องตั้งชื่อแยก, return ที่ชัดเจนอยู่แล้วละได้ และ label วางชิดหัวลูกศร กับดัก: ข้อความสลับลำดับ",
+    "l7-smwhy": "behavioural state machine แสดงสถานะของ object ตัวเดียวตลอดอายุ ต่างจาก sequence diagram ที่แสดง object หลายตัวใน scenario เดียว ใช้กับ object ที่ซับซ้อนจริง ๆ เช่น ผู้ป่วยมีสถานะ new (ยังไม่เคยตรวจ), current (กำลังรักษา), former (ไม่รักษาแล้ว) หรือ order ที่มีสถานะ many กับดัก: วาด state machine ให้ทุก class ทั้งที่ไม่มี lifecycle และสับสนระหว่าง state กับ subclass",
+    "l7-smcomp": "state คือชุดค่า attribute ณ เวลาหนึ่งที่ object ผ่านเงื่อนไข ทำ action หรือรออะไรบางอย่าง event คือสาเหตุที่ทำให้ค่าเปลี่ยน และ transition คือการเคลื่อนจาก state หนึ่งไปอีก state มี guard (เงื่อนไขที่ต้องจริง) และ action (งานที่ทำตอนข้าม) ได้ กับดัก: เขียน event เป็น state เช่น “patient waiting” หรือเขียน state เป็น action เช่น “cancelling”",
+    "l7-smsyn": "สัญลักษณ์ของ state machine: วงกลมทึบคือ initial state, วงกลมมีจุดตรงกลางคือ final state, สี่เหลี่ยมมุมมนคือ state และ transition เขียนกำกับเป็น event [guard] / action เช่น cancel() [!attended] / setStatus(Cancelled) composite state มีจุดเริ่มและจุดจบของตัวเองอยู่ข้างใน กับดัก: final state ไม่มีขาเข้า หรือเขียน guard สองอันที่จริงพร้อมกันได้",
+    "l7-smguide": "แนวทางเขียน state machine: ใช้เฉพาะ object ที่ซับซ้อน (ดูจาก CRUDE matrix), วาง initial ที่มุมซ้ายบนและ final ที่มุมขวาล่าง, ตั้งชื่อ state ให้สั้นแต่สื่อความหมาย, ระวัง black hole (state ที่ไม่มีขาออก) และ miracle (state ที่ไม่มีขาเข้า), guard ต้องแยกกันชัดเจน, และทุก transition ต้องผูกกับ message หรือ operation และอย่าแยกขั้นของ lifecycle เป็น subclass — Freshman ถึง Senior เป็น state ของ Undergraduate ไม่ใช่ subclass เพราะพฤติกรรมและ attribute ไม่ต่างกัน",
+    "l7-verify": "การตรวจสอบ behaviour models มีสี่ข้อ: actor ต้องตรงกันระหว่าง use case, sequence และ state machine; ลำดับข้อความต้องตรงกับลำดับบนลงล่างของ scenario; ทุก transition ต้องมีข้อความบน sequence diagram (และเป็น operation ใน class diagram) ที่เป็น Create, Update หรือ Delete เพราะการเปลี่ยน state คือการเปลี่ยนข้อมูล; และกฎไวยากรณ์/ความหมายของแต่ละแผนภาพต้องถูกต้อง กับดัก: อ้าง read message ที่ไม่เปลี่ยนค่าอะไร จึงไม่ทำให้เกิด transition",
   },
   qa: [
     "อธิบาย 4 ระยะของ SDLC และบอกว่าวิศวกรรมความต้องการอยู่ตรงไหน",
@@ -5415,7 +5889,15 @@ window.__TH__ = {
     "ทำไม Person เป็น abstract แต่ Doctor เป็น concrete และส่งผลอย่างไรกับแผนภาพ",
     "ใช้ textual analysis กับประโยค “The clinic assigns a doctor to each appointment.”",
     "ระบุเจ็ดขั้นของการสร้าง structural model และสามขั้นตรวจสอบที่ตามมา",
-    "คำอธิบายบอกว่า “ระบบส่ง reminder ให้ผู้ป่วย” แต่ class diagram ไม่มี Reminder — ผิดตรงไหน และขั้นใดจับได้"
+    "คำอธิบายบอกว่า “ระบบส่ง reminder ให้ผู้ป่วย” แต่ class diagram ไม่มี Reminder — ผิดตรงไหน และขั้นใดจับได้",
+    "วาดหรืออธิบาย sequence diagram ของกรณี “ยกเลิกนัดที่คลินิก” โดยระบุ actor, object และห้าข้อความตามลำดับ",
+    "หาข้อผิดของแผนภาพ: return เป็นลูกศรทึบ, ไม่มี activation bar, lifeline เขียนชื่อ class เดี่ยว และ destroy วาดเป็น return",
+    "เลือก fragment ให้ถูก: ส่ง SMS ซ้ำไม่เกิน 3 ครั้ง, ผู้ป่วยนอกเขตให้ส่งต่อ, ตรวจเลือดหลายรายการพร้อมกัน",
+    "อธิบายขั้นตอนการสร้าง sequence diagram และกฎการเรียงข้อความ",
+    "ระบุสถานะและ trigger ของ object Appointment พร้อมบอกว่าแต่ละ transition ผูกกับ operation ใด",
+    "เขียน transition label สามอันของ order ยาในรูป event [guard] / action",
+    "หา black hole และ miracle ใน state machine ที่ให้มา แล้วแก้ให้ถูก",
+    "แผนภาพ state machine มี transition Processing → Denied แต่ sequence diagram ไม่มีข้อความนั้น ต้องเพิ่มอะไร และเพราะเหตุใด"
   ]
 };
 </script>
@@ -5524,7 +6006,13 @@ window.__FC__ = [
   {l:"5",tag:"Lesson 5",q:"What does SVDPI mean?",a:"Subject–verb–direct object–preposition–indirect object: the sentence form for each normal-flow step.",th:"subject–verb–direct object–preposition–indirect object"},
   {l:"5",tag:"Lesson 5",q:"Four parts of a sensible normal flow?",a:"Actor requests, system validates, system processes and may change state, system returns the result.",th:"request → validate → process → return"},
   {l:"5",tag:"Lesson 5",q:"Decision vs merge vs fork vs join?",a:"Decision chooses a guarded path; merge rejoins alternatives; fork splits into parallel paths; join waits for all of them.",th:"decision เลือกทาง · merge รวม · fork แยกขนาน · join รอทุกทาง"},
-  {l:"5",tag:"Lesson 5",q:"Activity-diagram layout rules?",a:"Minimise crossing lines; lay out left-to-right and/or top-to-bottom; most important lane at top or left; object flows between activities.",th:"ลดเส้นตัด · ซ้าย→ขวา/บน→ล่าง · lane สำคัญอยู่บน/ซ้าย · มี object flow"}
+  {l:"5",tag:"Lesson 5",q:"Activity-diagram layout rules?",a:"Minimise crossing lines; lay out left-to-right and/or top-to-bottom; most important lane at top or left; object flows between activities.",th:"ลดเส้นตัด · ซ้าย→ขวา/บน→ล่าง · lane สำคัญอยู่บน/ซ้าย · มี object flow"},
+  {l:"7",tag:"Lesson 7",q:"What is a behavioural model, and what are its two kinds?",a:"The internal behaviour of the system: objects collaborating to deliver use cases (sequence diagram) and the states one object passes through (behavioural state machine). Building them is iterative and can change the class and activity diagrams.",th:"behavioural model = พฤติกรรมภายในของระบบ: object ทำงานร่วมกัน (sequence) และสถานะของ object เดียว (state machine)"},
+  {l:"7",tag:"Lesson 7",q:"Generic vs instance sequence diagram?",a:"Generic shows every scenario of the use case; instance shows one scenario with concrete objects and messages. In an exam, pick the scenario the question names.",th:"generic = ทุก scenario, instance = scenario เดียว — ข้อสอบให้ทำอันที่โจทย์ระบุ"},
+  {l:"7",tag:"Lesson 7",q:"Synchronous vs asynchronous message?",a:"Synchronous: sender suspends until the response returns (filled arrowhead). Asynchronous: sender continues immediately (open arrowhead).",th:"sync ส่งแล้วรอคำตอบ (หัวทึบ) · async ส่งแล้วไปต่อทันที (หัวเปิด)"},
+  {l:"7",tag:"Lesson 7",q:"alt vs opt fragment?",a:"alt has two or more subfragments, each with a guard; exactly one runs. opt is a single branch: run when its guard is true, omit when false.",th:"alt มีหลาย branch เลือกหนึ่งตาม guard · opt มี branch เดียว รันถ้า guard จริง"},
+  {l:"7",tag:"Lesson 7",q:"Black hole and miracle in a state machine?",a:"A black hole is a state with no out-transition; a miracle is a state with no in-transition. Both are validation defects.",th:"black hole = ไม่มีขาออก · miracle = ไม่มีขาเข้า"},
+  {l:"7",tag:"Lesson 7",q:"Which check links the state machine to the other models?",a:"Every transition must correspond to a Create, Update or Delete message on a sequence diagram and to an operation on the class diagram — a read does not change state.",th:"ทุก transition ต้องมีข้อความ Create/Update/Delete และ operation ใน class diagram — read เปลี่ยนสถานะไม่ได้"}
 ];
 </script>
 
@@ -5787,7 +6275,7 @@ window.__FC__ = [
   (function(){
     var TH = window.__TH__;
     if(!TH) return;
-    document.querySelectorAll("#lesson1 .card, #lesson2 .card, #lesson3 .card, #lesson4 .card, #lesson5 .card, #lesson6 .card").forEach(function(card){
+    document.querySelectorAll("#lesson1 .card, #lesson2 .card, #lesson3 .card, #lesson4 .card, #lesson5 .card, #lesson6 .card, #lesson7 .card").forEach(function(card){
       var b = card.querySelector(".know");
       var id = b && b.getAttribute("data-id");
       var txt = id && TH.cards[id];
