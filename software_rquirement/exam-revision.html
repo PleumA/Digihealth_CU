@@ -612,7 +612,7 @@ body[data-th="off"] .ex-th{display:none}
 <section class="view" id="overview" role="tabpanel" aria-label="Overview">
   <div class="eyebrow">Course 2110623, Digital Health</div>
   <h1>Software Requirements Engineering Revision</h1>
-  <p class="lede">A written-exam guide to Lessons 1–5, built from the five lecture decks and the examples shown only in the recorded classes. The exam is prose, so this page trains explanation, classification, rewriting and negotiation.</p>
+  <p class="lede">A written-exam guide to Lessons 1–7, built from the seven lecture decks and the examples shown only in the recorded classes. The exam is prose, so this page trains explanation, classification, rewriting and negotiation.</p>
 
   <div class="drill" id="drill">
     <p class="drill-label">Rewrite it before you read anything else</p>
@@ -2865,7 +2865,7 @@ body[data-th="off"] .ex-th{display:none}
             </g>
           </svg>
         </div>
-        <figcaption><span class="fig-n">Fig. 5.1.</span> Every exam diagram is marked on these five elements; the ellipses alone are not a diagram. <span lang="th">แผนภาพในข้อสอบได้คะแนนจากองค์ประกอบทั้งห้านี้ — ellipse อย่างเดียวไม่ใช่แผนภาพ</span></figcaption>
+        <figcaption><span class="fig-n">Fig. 5.1.</span> Every exam diagram is marked on these five elements; the ellipses alone are not a diagram. <span lang="th">อ่านจากนอกกรอบเข้ามา: actor ที่เป็นคนหรือระบบอยู่ด้านนอก system boundary, use case คือวงรีที่อยู่ข้างในกรอบ, เส้น association เชื่อม actor กับ use case ที่เขาใช้, ชื่อระบบเขียนไว้บนกรอบ และลูกศรระหว่าง use case (include / extend / generalization) คือองค์ประกอบชิ้นที่ห้า — ถ้าขาด boundary หรือชื่อระบบ จะอ่านไม่ออกว่าใครรับผิดชอบอะไร</span></figcaption>
       </figure>
       <div class="duo">
         <div><span class="lbl">Why it matters</span><p class="why">The boundary is a scope decision, not decoration: anything outside it is another system's job.</p></div>
@@ -3174,7 +3174,7 @@ body[data-th="off"] .ex-th{display:none}
             </g>
           </svg>
         </div>
-        <figcaption><span class="fig-n">Fig. 5.7.</span> SVDPI is what lets a use case description seed the class model: patient, office and appointment are candidate classes. <span lang="th">SVDPI ทำให้ use case description ต่อยอดเป็น class model ได้ — patient, office และ appointment คือ candidate class</span></figcaption>
+        <figcaption><span class="fig-n">Fig. 5.7.</span> SVDPI is what lets a use case description seed the class model: patient, office and appointment are candidate classes. <span lang="th">ประโยคเดียวแบ่งได้ห้าส่วน: subject (patient) คือผู้กระทำ, verb (contacts) คือกริยา, direct object (the office) คือสิ่งที่ถูกกระทำ, preposition (regarding) และ indirect object (the appointment) — การเขียนแบบ SVDPI ทำให้ทุกขั้นมีผู้กระทำและผู้รับชัดเจน และคำนามที่ปรากฏในประโยค (patient, office, appointment) กลายเป็น candidate class ใน class diagram</span></figcaption>
       </figure>
       <div class="duo">
         <div><span class="lbl">Why it matters</span><p class="why">The sentence pattern is marked mechanically: a step without a subject or a receiver loses the point even if the behaviour is right.</p></div>
@@ -3262,7 +3262,7 @@ body[data-th="off"] .ex-th{display:none}
             </g>
           </svg>
         </div>
-        <figcaption><span class="fig-n">Fig. 5.8.</span> Decision asks a question; merge rejoins. Fork splits into parallel work; join waits for all of it — never a fork without a join. <span lang="th">decision ถามคำถาม, merge รวมเส้นกลับ, fork แยกงานขนาน, join รอทุกเส้น — ห้ามมี fork โดยไม่มี join</span></figcaption>
+        <figcaption><span class="fig-n">Fig. 5.8.</span> Decision asks a question; merge rejoins. Fork splits into parallel work; join waits for all of it — never a fork without a join. <span lang="th">จุดเริ่ม (initial node) เป็นวงกลมทึบ และการจบมีสองแบบ — final activity หยุดทั้งกิจกรรม ส่วน final flow หยุดเฉพาะเส้นทางเดียว กล่อง action คือขั้นตอน, decision (เพชร) ถามคำถามและมี guard ที่ขาออก, merge รวมเส้นกลับ, fork แยกงานขนานและ join ต้องรอให้ครบทุกเส้น (ห้ามมี fork ที่ไม่มี join) สี่เหลี่ยมคือ object node และเส้นทึบ/เส้นประคือ control flow / object flow</span></figcaption>
       </figure>
       <div class="duo">
         <div><span class="lbl">Why it matters</span><p class="why">Most marks are lost on a fork with no join, or a decision drawn as a merge.</p></div>
@@ -3479,7 +3479,7 @@ body[data-th="off"] .ex-th{display:none}
             </g>
           </svg>
         </div>
-        <figcaption><span class="fig-n">Fig. 6.1.</span> Three compartments, and a visibility mark on every member. Trivial getters and setters are left out. <span lang="th">สามช่อง ชื่อ ค่าคุณลักษณะ และ operation พร้อมเครื่องหมาย visibility — ไม่ต้องใส่ getter/setter</span></figcaption>
+        <figcaption><span class="fig-n">Fig. 6.1.</span> Three compartments, and a visibility mark on every member. Trivial getters and setters are left out. <span lang="th">กล่องคลาสมีสามช่อง: ชื่อคลาส, attribute พร้อมเครื่องหมาย visibility (+, −, #) และ operation — ในข้อสอบควรมีเครื่องหมาย visibility อย่างน้อยหนึ่งตัว ห้ามใส่ getter/setter ธรรมดา และ attribute กับ operation ต้องไม่ปนกัน (คำกริยาเป็น operation ไม่ใช่ attribute)</span></figcaption>
       </figure>
       <div class="duo">
         <div><span class="lbl">Why it matters</span><p class="why">Visibility is information hiding made visible, and it is a cheap mark in a “draw the class diagram” question.</p></div>
@@ -3503,31 +3503,53 @@ body[data-th="off"] .ex-th{display:none}
       <p class="what"><strong>What it is.</strong> Both are whole–part relationships. <strong>Aggregation</strong> (hollow diamond): the part can exist without the whole and can belong to another whole. <strong>Composition</strong> (filled diamond): the whole creates and destroys its parts, a part belongs to one whole only, and if the whole dies the part dies with it.</p>
       <figure class="fig">
         <div class="fig-scroll">
-          <svg viewBox="0 0 760 210" role="img" aria-label="Four relationship notations: association with multiplicity, aggregation with hollow diamond, composition with filled diamond, and generalisation with a hollow triangle">
+          <svg viewBox="0 0 760 280" role="img" aria-label="Four class-diagram notations drawn between named classes: association Patient one to Appointment many; aggregation Ward holding Bed as a hollow diamond, part survives; composition Appointment whole with Slot as a filled diamond, part dies; generalisation Doctor with a hollow triangle pointing to Person">
+            <defs>
+              <marker id="f62t" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M1,1 L11,6 L1,11 Z" fill="var(--bg)" stroke="var(--muted)" stroke-width="1.2"/></marker>
+            </defs>
             <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10.5">
-              <text x="26" y="26" fill="var(--ink)" font-weight="600">association</text>
-              <line x1="30" y1="60" x2="180" y2="60" stroke="var(--muted)" stroke-width="1.4"/>
-              <text x="34" y="52" fill="var(--muted)">1</text><text x="168" y="52" fill="var(--muted)">*</text>
-              <text x="26" y="86" fill="var(--muted)">one patient, many appointments</text>
+              <text x="24" y="26" fill="var(--ink)" font-weight="600">association</text>
+              <rect x="24" y="36" width="112" height="26" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="80" y="53" text-anchor="middle" fill="var(--ink)">Patient</text>
+              <rect x="204" y="36" width="118" height="26" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="263" y="53" text-anchor="middle" fill="var(--ink)">Appointment</text>
+              <line x1="136" y1="49" x2="204" y2="49" stroke="var(--muted)" stroke-width="1.4"/>
+              <text x="140" y="43" fill="var(--muted)">1</text><text x="192" y="43" fill="var(--muted)">*</text>
+              <text x="24" y="82" fill="var(--muted)">one patient, many appointments</text>
 
-              <text x="216" y="26" fill="var(--ink)" font-weight="600">aggregation</text>
-              <path d="M220,60 L234,53 L248,60 L234,67 Z" fill="var(--bg)" stroke="var(--muted)" stroke-width="1.3"/>
-              <line x1="248" y1="60" x2="380" y2="60" stroke="var(--muted)" stroke-width="1.4"/>
-              <text x="216" y="86" fill="var(--muted)">hollow diamond, part survives</text>
+              <text x="420" y="26" fill="var(--ink)" font-weight="600">aggregation</text>
+              <rect x="420" y="36" width="86" height="26" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="463" y="53" text-anchor="middle" fill="var(--ink)">Ward</text>
+              <rect x="588" y="36" width="86" height="26" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="631" y="53" text-anchor="middle" fill="var(--ink)">Bed</text>
+              <line x1="506" y1="49" x2="588" y2="49" stroke="var(--muted)" stroke-width="1.4"/>
+              <path d="M506 49 L517 42 L528 49 L517 56 Z" fill="var(--bg)" stroke="var(--muted)" stroke-width="1.2"/>
+              <text x="550" y="43" fill="var(--muted)">1</text><text x="574" y="43" fill="var(--muted)">*</text>
+              <text x="420" y="82" fill="var(--muted)">hollow diamond: the part survives the whole</text>
 
-              <text x="26" y="126" fill="var(--ink)" font-weight="600">composition</text>
-              <path d="M30,160 L44,153 L58,160 L44,167 Z" fill="var(--muted)" stroke="var(--muted)" stroke-width="1.3"/>
-              <line x1="58" y1="160" x2="180" y2="160" stroke="var(--muted)" stroke-width="1.4"/>
-              <text x="26" y="186" fill="var(--muted)">filled diamond, part dies with the whole</text>
+              <text x="24" y="130" fill="var(--ink)" font-weight="600">composition</text>
+              <rect x="24" y="140" width="118" height="26" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="83" y="157" text-anchor="middle" fill="var(--ink)">Appointment</text>
+              <rect x="222" y="140" width="76" height="26" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="260" y="157" text-anchor="middle" fill="var(--ink)">Slot</text>
+              <line x1="142" y1="153" x2="222" y2="153" stroke="var(--muted)" stroke-width="1.4"/>
+              <path d="M142 153 L153 146 L164 153 L153 160 Z" fill="var(--ink)" stroke="var(--ink)" stroke-width="1"/>
+              <text x="176" y="147" fill="var(--muted)">1</text><text x="210" y="147" fill="var(--muted)">1</text>
+              <text x="24" y="186" fill="var(--muted)">filled diamond: the part dies with the whole</text>
 
-              <text x="216" y="126" fill="var(--ink)" font-weight="600">generalisation</text>
-              <line x1="234" y1="160" x2="380" y2="160" stroke="var(--muted)" stroke-width="1.4"/>
-              <path d="M234,152 L234,168 L220,160 Z" fill="var(--bg)" stroke="var(--muted)" stroke-width="1.3"/>
-              <text x="216" y="186" fill="var(--muted)">hollow triangle points at the general class</text>
+              <text x="420" y="130" fill="var(--ink)" font-weight="600">generalisation</text>
+              <rect x="420" y="140" width="86" height="26" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="463" y="157" text-anchor="middle" fill="var(--ink)">Doctor</text>
+              <rect x="588" y="140" width="86" height="26" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="631" y="157" text-anchor="middle" fill="var(--ink)">Person</text>
+              <line x1="506" y1="153" x2="576" y2="153" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#f62t)"/>
+              <text x="420" y="186" fill="var(--muted)">triangle points at the general class</text>
+
+              <text x="24" y="246" fill="var(--muted)" font-size="10">all four are drawn at the same size: the shape carries the claim, not the label</text>
             </g>
           </svg>
         </div>
-        <figcaption><span class="fig-n">Fig. 6.2.</span> Four notations, four different claims: a link, a part that survives, a part that dies, and an inheritance. <span lang="th">สี่สัญลักษณ์ สี่ความหมาย: ความสัมพันธ์, ส่วนที่อยู่ต่อได้, ส่วนที่ตายกับทั้ง, และการสืบทอด</span></figcaption>
+        <figcaption><span class="fig-n">Fig. 6.2.</span> Four notations, four different claims: a link, a part that survives, a part that dies, and an inheritance. <span lang="th">อ่านทีละคู่: Patient หนึ่งคนมี Appointment ได้หลายรายการ (1 ต่อ *) · Ward กับ Bed ใช้เพชรกลวง (aggregation) เพราะเตียงยังอยู่ได้แม้ปิดวอร์ด · Appointment กับ Slot ใช้เพชรทึบ (composition) เพราะเมื่อนัดถูกยกเลิก slot หายไปด้วย · Doctor กับ Person ใช้สามเหลี่ยมกลวงชี้ไปที่ Person แปลว่า Doctor สืบทอดจาก Person — รูปทรงคือความหมาย ไม่ใช่แค่เส้นเชื่อม</span></figcaption>
       </figure>
       <div class="duo">
         <div><span class="lbl">Why it matters</span><p class="why">It is a lifecycle claim, not a strength claim — and the filled diamond is the one worth remembering.</p></div>
@@ -3605,9 +3627,13 @@ body[data-th="off"] .ex-th{display:none}
   <h1>Behavioural modelling: what happens, and in what order</h1>
   <p class="lede">The class diagram says what the system knows. These two diagrams say what happens over time: which objects talk to whom, in what order, and how one object's state changes across its life.</p>
   <div class="progress" data-lesson="7" style="margin-top:16px;max-width:420px"><span>Verification coverage</span><div class="bar"><i></i></div><span class="pct">0%</span></div>
-  <section class="memo" aria-label="What the deck flags">
-    <p class="memo-head">What the deck flags</p>
+  <section class="memo" aria-label="What she said in the 19 Nov class">
+    <p class="memo-head">What she corrected in the 19 Nov class, and what the deck flags</p>
     <ul class="memo-list">
+      <li><a class="memo-time" href="https://youtu.be/AUm9TBaGvDg?t=3859" target="_blank" rel="noopener" aria-label="Watch 1:04:19 in the recording">1:04:19</a><span class="memo-said"> On the deck’s order machine she flags the <strong>guard-condition syntax</strong> as slightly wrong, then moves on without stating the fix on the recording. The page writes guards in square brackets (<code>[approved]</code>, <code>[denied]</code>), the standard form. <span class="memo-jump" href="#" data-card="l7-smsyn" aria-label="Go to clause 10">clause 10</a><span class="memo-th" lang="th">ใน state machine ของ order ครูบอกว่า syntax ของ guard ผิดเล็กน้อย แล้วไปต่อโดยไม่ได้บอกคำแก้ในคลิป หน้าเว็บจึงเขียน guard ในวงเล็บเหลี่ยม [approved] [denied] ตามรูปแบบมาตรฐาน</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/AUm9TBaGvDg?t=4229" target="_blank" rel="noopener" aria-label="Watch 1:10:29 in the recording">1:10:29</a><span class="memo-said"> The deck draws <strong>two stop states</strong>; there should be <strong>one</strong> — the withdraw path joins that single final and the second is cut. She would also make “order is closed” a <strong>state</strong> before termination, not a label on the arrow. Fig. 7.5 below is drawn her way. <span class="memo-jump" href="#" data-card="l7-smguide" aria-label="Go to clause 11">clause 11</a><span class="memo-th" lang="th">สไลด์วาด final state สองอัน แต่ควรมีอันเดียว — เส้นทาง withdraw ต้องไปรวมที่ final เดียวและตัดอีกอันออก และ “order is closed” ควรเป็น state ก่อน terminate ไม่ใช่ label บนลูกศร Fig. 7.5 ด้านล่างวาดตามที่ครูแก้</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/AUm9TBaGvDg?t=3142" target="_blank" rel="noopener" aria-label="Watch 52:22 in the recording">52:22</a><span class="memo-said"> Her exam scope for this deck: the sequence-diagram question stays with <strong>if/then/else, parallel and call reference</strong> — she <strong>will not ask for synchronous or asynchronous messages</strong>. <span class="memo-jump" href="#" data-card="l7-msg" aria-label="Go to clause 5">clause 5</a><span class="memo-th" lang="th">ขอบเขตข้อสอบของบทนี้: sequence diagram ออกแค่ if/then/else, parallel และ ref — ครูจะไม่ออก synchronous/asynchronous message</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/AUm9TBaGvDg?t=3784" target="_blank" rel="noopener" aria-label="Watch 1:03:04 in the recording">1:03:04</a><span class="memo-said"> The <strong>time-interval notation</strong> on the sequence diagram is not covered in the exam either. <span class="memo-th" lang="th">สัญลักษณ์ช่วงเวลา (time interval) บน sequence diagram ก็ไม่ออกสอบเช่นกัน</span></span></li>
       <li><span class="memo-ref">slide 2</span><span class="memo-said"> The objectives are verbs again: understand the rules and style guidelines, understand the process, then <strong>create</strong> the diagrams. Expect a drawing question.<span class="memo-th" lang="th">วัตถุประสงค์เป็นคำกริยาอีกครั้ง: เข้าใจกฎและแนวทางการเขียน เข้าใจกระบวนการ แล้ว “สร้าง” แผนภาพ — คาดว่าข้อสอบมีข้อวาด</span></span></li>
       <li><span class="memo-ref">slides 19–20</span><span class="memo-said"> Fragments are the part the deck spends two slides on: loop and conditional must be drawn <strong>across the lifelines involved</strong>, each subfragment carrying its own guard.<span class="memo-th" lang="th">fragment คือส่วนที่สไลด์ใช้สองแผ่น: loop และ conditional ต้องวาดคร่อม lifeline ที่เกี่ยวข้อง และแต่ละ subfragment มี guard ของตัวเอง</span></span></li>
       <li><span class="memo-ref">slide 32</span><span class="memo-said"> The two named defects: a <strong>black hole</strong> has no out-transition, a <strong>miracle</strong> has no in-transition. Guards must be mutually exclusive.<span class="memo-th" lang="th">ข้อบกพร่องสองชื่อ: black hole ไม่มีขาออก ส่วน miracle ไม่มีขาเข้า และ guard ต้องเป็นจริงได้เพียงทางเดียว</span></span></li>
@@ -3710,7 +3736,7 @@ body[data-th="off"] .ex-th{display:none}
             </g>
           </svg>
         </div>
-        <figcaption>Fig. 7.1 — The odd symbols, in one strip. <span lang="th">สัญลักษณ์ที่มักวาดผิด: lifeline, activation, ลูกศร sync/async, return, self, create, destroy และ guard</span></figcaption>
+        <figcaption><span class="fig-n">Fig. 7.1.</span> The odd symbols, in one strip. <span lang="th">อ่านแถวซ้ายก่อน: object :Order มี lifeline เป็นเส้นประ และ activation bar คือช่วงที่ object กำลังทำงาน จากนั้นดูชนิดลูกศร — ลูกศรทึบคือ synchronous (ผู้ส่งหยุดรอผล) ลูกศรหัวเปิดคือ asynchronous (ส่งแล้วไปต่อทันที) และเส้นประหัวเปิดคือ return ที่ละได้ถ้าค่าไม่สำคัญ แถวขวาคือรูปที่เหลือ: self-message คือ object เรียก operation ของตัวเอง, create คือเส้นประที่ชี้ไปยังหัว lifeline ใหม่, destroy คือ × ที่ทำให้ lifeline จบ, และ guard อยู่ในวงเล็บเหลี่ยมหน้าชื่อข้อความ</span></figcaption>
       </figure>
       <div class="duo">
         <div><span class="lbl">Why it matters</span><p class="why">The exam marks the marks: a solid return arrow, an object without a type, a missing activation bar.</p></div>
@@ -3724,7 +3750,7 @@ body[data-th="off"] .ex-th{display:none}
       <div class="card-head"><h3>5 · Synchronous, asynchronous, return, create, destroy</h3><button class="know" data-id="l7-msg" aria-pressed="false">Mark verified</button></div>
       <p class="what"><strong>What it is.</strong> A <strong>synchronous</strong> call sends the message and suspends the sender while it waits for the response. An <strong>asynchronous</strong> call proceeds immediately without waiting. A <strong>return</strong> is dashed and may be omitted when the value is obvious. A <strong>create</strong> message points at the head of a new lifeline; a <strong>destroy</strong> ends a lifeline with an <code>×</code>.</p>
       <div class="duo">
-        <div><span class="lbl">Why it matters</span><p class="why">Choosing sync or async is a requirements decision: a booking that must not double-book is synchronous; a reminder that can fire and forget is asynchronous.</p></div>
+        <div><span class="lbl">Why it matters</span><p class="why">Choosing sync or async is a requirements decision: a booking that must not double-book is synchronous; a reminder that can fire and forget is asynchronous. <em>Her exam note (52:22): this distinction is not asked — the sequence question stops at if/then/else, parallel and call reference.</em></p></div>
         <div class="example"><b>Example.</b> Booking: <code>reserveSlot()</code> is synchronous — the receptionist cannot confirm until the answer arrives. Reminder: <code>sendSMS()</code> is asynchronous — the booking does not wait for the phone.</div>
       </div>
       <p class="trap"><b>Exam trap</b>Drawing an asynchronous call with a filled arrowhead, the same as a synchronous one.</p>
@@ -3807,7 +3833,7 @@ body[data-th="off"] .ex-th{display:none}
             </g>
           </svg>
         </div>
-        <figcaption>Fig. 7.2 — The deck's Make-Appt example, drawn as an instance scenario. <span lang="th">ตัวอย่าง Make Appt ของสไลด์: ผู้ป่วยขอคิว receptionist ค้นหาผู้ป่วยและบิลค้าง ก่อนสร้าง Appointment เมื่อเงื่อนไขผ่าน</span></figcaption>
+        <figcaption><span class="fig-n">Fig. 7.2.</span> The deck's Make-Appt example, drawn as an instance scenario. <span lang="th">อ่านจากบนลงล่าง: aPatient ส่ง RequestAppt() ให้ aReceptionist (synchronous เพราะผู้ป่วยรอคำตอบ) receptionist ค้นหาผู้ป่วยใน Patients:List และเมื่อ guard [aPatients Exists] เป็นจริงจึงถาม UnpaidBills:List ต่อ จากนั้นถามผู้ป่วยเรื่องค่าธรรมเนียมการยกเลิกและเวลาว่าง แล้วจับคู่คิวใน Appointments:List เส้นประที่ลากไปทาง anAppt:Appointment คือ create — object นี้ยังไม่เกิดจนถึงจังหวะนั้น และ lifeline ของมันเริ่มที่กล่อง ไม่ใช่ที่ด้านบน</span></figcaption>
       </figure>
       <div class="duo">
         <div><span class="lbl">Why it matters</span><p class="why">The validation step is a mark of its own: every numbered step of the description must be visible as a message.</p></div>
@@ -3877,7 +3903,7 @@ body[data-th="off"] .ex-th{display:none}
             </g>
           </svg>
         </div>
-        <figcaption>Fig. 7.3 — State-machine notation, with the label anatomy. <span lang="th">สัญลักษณ์ state machine และลำดับของ label: event [guard] / action</span></figcaption>
+        <figcaption><span class="fig-n">Fig. 7.3.</span> State-machine notation, with the label anatomy. <span lang="th">อ่านจากซ้ายไปขวา: วงกลมทึบคือจุดเริ่ม กล่องมุมมนคือ state (Booked และ Attended) เส้นที่มี label คือ transition โดย label เรียงเป็น event [guard] / action — reschedule() คือ self-transition ที่วกกลับ state เดิม วงกลมที่มีจุดตรงกลางคือ final state ทางขวาสุดคือ composite state ที่มีจุดเริ่มและจุดจบของตัวเองอยู่ข้างใน ใช้เมื่อ state หนึ่งมี state ย่อย</span></figcaption>
       </figure>
       <p class="trap"><b>Exam trap</b>A final state with no incoming arrow, or a state with a guard that can be true at the same time as another.</p>
       <details><summary>Slide 30</summary><blockquote>“A set of values that describes an object at a specific point in time at which it satisfies some condition, performs some action, or waits for something to happen.”<cite>Slide 30</cite></blockquote></details>
@@ -3920,7 +3946,7 @@ body[data-th="off"] .ex-th{display:none}
             </g>
           </svg>
         </div>
-        <figcaption>Fig. 7.4 — The deck's patient machine; the final state is reached only after two weeks. <span lang="th">state machine ของผู้ป่วยจากสไลด์: เข้าพบแพทย์ admitted แล้วแยกตามผลวินิจฉัย และสิ้นสุดหลังสองสัปดาห์</span></figcaption>
+        <figcaption><span class="fig-n">Fig. 7.4.</span> The deck's patient machine; the final state is reached only after two weeks. <span lang="th">เส้นทางหลัก: Entering → Checks In → Admitted ถ้าผลวินิจฉัยปกติ ([Diagnosis = Healthy]) ไป Released ได้เลย ถ้าผิดปกติจะไป Under Observation และกลับมา Released เมื่อหายแล้ว หลังผ่านไปเกินสองสัปดาห์ ([> 2 weeks]) จึงเข้าสู่ final state — สังเกตว่า final มีขาเข้าและทุก state มีทางออก ไม่มี black hole หรือ miracle</span></figcaption>
       </figure>
       <div class="duo">
         <div><span class="lbl">Why it matters</span><p class="why">Black hole and miracle are named marks; so is “Freshman is a state, not a subclass”.</p></div>
@@ -3935,55 +3961,56 @@ body[data-th="off"] .ex-th{display:none}
       <p class="what"><strong>What it is.</strong> Four checks close the lesson. <strong>Actors</strong> must match across the use case, sequence and state diagrams. The <strong>order of messages</strong> must match the top-down order of the scenario. Every <strong>transition</strong> in a state machine must correspond to a message on a sequence diagram (and an operation on the class diagram) that is a <strong>Create, Update or Delete</strong> — because a state change is a data change. All diagram-specific syntax and semantics are enforced. The deck's Figure 8-4 links these through the CRUD matrix.</p>
       <figure class="fig">
         <div class="fig-scroll">
-          <svg viewBox="0 0 940 240" role="img" aria-label="Order state machine: initial to In Process, Ordered, Processing, Placed, Shipped, Received, and final; a denied branch from Processing returns to In Process when the customer edits, or ends when the customer withdraws">
+          <svg viewBox="0 0 960 260" role="img" aria-label="Order state machine corrected as in class: initial, In Process, Ordered, Processing, Placed, Shipped, Received, then Closed and one single final state; a denied branch from Processing to Denied returns to In Process when the customer edits, and the withdraw path joins the same single final">
             <defs>
               <marker id="f75a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--muted)"/></marker>
               <marker id="f75t" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--trap)"/></marker>
             </defs>
             <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10.5">
-              <circle cx="28" cy="66" r="8" fill="var(--ink)"/>
-              <line x1="37" y1="66" x2="66" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
-              <rect x="72" y="46" width="104" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
-              <text x="124" y="70" text-anchor="middle" fill="var(--ink)">In Process</text>
-              <line x1="176" y1="66" x2="216" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
-              <text x="199" y="38" text-anchor="middle" fill="var(--ink)">submit()</text>
-              <rect x="222" y="46" width="92" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
-              <text x="268" y="70" text-anchor="middle" fill="var(--ink)">Ordered</text>
-              <line x1="314" y1="66" x2="352" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
-              <text x="336" y="38" text-anchor="middle" fill="var(--ink)">to CCC</text>
-              <rect x="358" y="46" width="100" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
-              <text x="408" y="70" text-anchor="middle" fill="var(--ink)">Processing</text>
-              <line x1="458" y1="66" x2="500" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
-              <text x="482" y="38" text-anchor="middle" fill="var(--muted)" font-style="italic">approved</text>
-              <rect x="506" y="46" width="84" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
-              <text x="548" y="70" text-anchor="middle" fill="var(--ink)">Placed</text>
-              <line x1="590" y1="66" x2="630" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
-              <text x="613" y="38" text-anchor="middle" fill="var(--ink)">deliver</text>
-              <rect x="636" y="46" width="88" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
-              <text x="680" y="70" text-anchor="middle" fill="var(--ink)">Shipped</text>
-              <line x1="724" y1="66" x2="768" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
-              <text x="749" y="38" text-anchor="middle" fill="var(--ink)">accepts</text>
-              <rect x="774" y="46" width="94" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
-              <text x="821" y="70" text-anchor="middle" fill="var(--ink)">Received</text>
-              <line x1="868" y1="66" x2="896" y2="66" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
-              <circle cx="908" cy="66" r="9" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
-              <circle cx="908" cy="66" r="4.5" fill="var(--ink)"/>
-              <!-- denied branch -->
-              <line x1="408" y1="86" x2="408" y2="150" stroke="var(--trap)" stroke-width="1.3" marker-end="url(#f75t)"/>
-              <text x="416" y="120" fill="var(--trap)" font-style="italic">= Denied</text>
-              <rect x="356" y="154" width="104" height="40" rx="12" fill="var(--surface-2)" stroke="var(--trap-line)" stroke-width="1.2"/>
-              <text x="408" y="178" text-anchor="middle" fill="var(--ink)">Denied</text>
-              <path d="M356 174 H 124 V 92" fill="none" stroke="var(--trap)" stroke-width="1.3" marker-end="url(#f75t)"/>
-              <text x="150" y="188" fill="var(--trap)">customer edits</text>
-              <line x1="460" y1="174" x2="506" y2="174" stroke="var(--trap)" stroke-width="1.3" marker-end="url(#f75t)"/>
-              <text x="468" y="166" fill="var(--trap)">withdraws</text>
-              <circle cx="518" cy="174" r="9" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
-              <circle cx="518" cy="174" r="4.5" fill="var(--ink)"/>
-              <text x="28" y="220" fill="var(--muted)" font-size="10">the denial path is drawn in the trap colour — every other transition is event [guard]</text>
+              <circle cx="28" cy="70" r="8" fill="var(--ink)"/>
+              <line x1="37" y1="70" x2="66" y2="70" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <rect x="72" y="50" width="104" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="124" y="74" text-anchor="middle" fill="var(--ink)">In Process</text>
+              <line x1="176" y1="70" x2="206" y2="70" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <text x="191" y="42" text-anchor="middle" fill="var(--ink)">submit()</text>
+              <rect x="212" y="50" width="92" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="258" y="74" text-anchor="middle" fill="var(--ink)">Ordered</text>
+              <line x1="304" y1="70" x2="334" y2="70" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <text x="319" y="42" text-anchor="middle" fill="var(--ink)">to CCC</text>
+              <rect x="340" y="50" width="100" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="390" y="74" text-anchor="middle" fill="var(--ink)">Processing</text>
+              <line x1="440" y1="70" x2="474" y2="70" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <text x="457" y="42" text-anchor="middle" fill="var(--muted)" font-style="italic">[approved]</text>
+              <rect x="480" y="50" width="84" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="522" y="74" text-anchor="middle" fill="var(--ink)">Placed</text>
+              <line x1="564" y1="70" x2="594" y2="70" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <text x="579" y="42" text-anchor="middle" fill="var(--ink)">deliver</text>
+              <rect x="600" y="50" width="88" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="644" y="74" text-anchor="middle" fill="var(--ink)">Shipped</text>
+              <line x1="688" y1="70" x2="718" y2="70" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <text x="703" y="42" text-anchor="middle" fill="var(--ink)">accepts</text>
+              <rect x="724" y="50" width="92" height="40" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="770" y="74" text-anchor="middle" fill="var(--ink)">Received</text>
+              <line x1="770" y1="90" x2="770" y2="140" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <text x="778" y="120" fill="var(--ink)">close()</text>
+              <rect x="726" y="144" width="88" height="36" rx="12" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="770" y="166" text-anchor="middle" fill="var(--ink)">Closed</text>
+              <line x1="770" y1="180" x2="770" y2="212" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f75a)"/>
+              <circle cx="770" cy="224" r="9" fill="none" stroke="var(--ink)" stroke-width="1.3"/>
+              <circle cx="770" cy="224" r="4.5" fill="var(--ink)"/>
+              <line x1="390" y1="90" x2="390" y2="172" stroke="var(--trap)" stroke-width="1.3" marker-end="url(#f75t)"/>
+              <text x="398" y="140" fill="var(--trap)" font-style="italic">[denied]</text>
+              <rect x="340" y="176" width="100" height="36" rx="12" fill="var(--surface-2)" stroke="var(--trap-line)" stroke-width="1.2"/>
+              <text x="390" y="198" text-anchor="middle" fill="var(--ink)">Denied</text>
+              <path d="M340 194 H 124 V 96" fill="none" stroke="var(--trap)" stroke-width="1.3" marker-end="url(#f75t)"/>
+              <text x="176" y="216" fill="var(--trap)">customer edits</text>
+              <path d="M440 194 H 714 V 212" fill="none" stroke="var(--trap)" stroke-width="1.3" marker-end="url(#f75t)"/>
+              <text x="470" y="188" fill="var(--trap)">customer withdraws — to the same final state</text>
+              <text x="28" y="236" fill="var(--muted)" font-size="10">corrected in class: one stop state, guards in brackets — the deck prints two finals</text>
             </g>
           </svg>
         </div>
-        <figcaption>Fig. 7.5 — The deck's order machine, with the denial path that returns or ends. <span lang="th">state machine ของ order: ถ้า authorization ไม่ผ่านจะไปที่ Denied แล้วกลับมาแก้หรือสิ้นสุด</span></figcaption>
+        <figcaption><span class="fig-n">Fig. 7.5.</span> The deck's order machine <strong>as she corrected it in class</strong>: guards in brackets, “Closed” as a state, and one stop state that both paths reach. <span lang="th">ภาพนี้วาดตามที่ครูแก้ในคลาส ไม่ใช่ตามสไลด์: เส้นทางหลัก In Process → Ordered → Processing → Placed → Shipped → Received → Closed แล้วจึงถึง final state เดียว ถ้า authorization ไม่ผ่านจะไป Denied (เส้นสีแดง) แล้วเลือกได้สองทาง — แก้ข้อมูลแล้วกลับไป In Process หรือถอนคำสั่งซื้อและไปจบที่ final เดียวกัน สังเกตว่า guard อยู่ในวงเล็บเหลี่ยม ([approved], [denied]) และไม่มี final state ที่สองเหมือนในสไลด์</span></figcaption>
       </figure>
       <div class="duo">
         <div><span class="lbl">Why it matters</span><p class="why">This is the check that links all five models; an examiner can ask it in one line and mark it in four.</p></div>
@@ -4000,9 +4027,9 @@ body[data-th="off"] .ex-th{display:none}
 <section class="view" id="video" role="tabpanel" aria-label="Video-only material" hidden>
   <div class="eyebrow">Not in the PDFs, captured from the recordings</div>
   <h1>What she showed in class</h1>
-  <p class="lede">Your teacher demonstrated examples live that are not in the five decks. These are the ones that appeared on screen, reconstructed from the video frames.</p>
+  <p class="lede">Your teacher demonstrated examples live that are not in the six decks. These are the ones that appeared on screen, reconstructed from the video frames.</p>
   <div class="callout accent" style="margin-top:16px">
-    <strong>Watch the recordings</strong> (unlisted): <a href="https://youtu.be/egjAfqDqNdI" target="_blank" rel="noopener">Lesson 1</a>, <a href="https://youtu.be/yMPDibTd25o" target="_blank" rel="noopener">Lesson 2, part 1</a>, <a href="https://youtu.be/bQFcFtF19nI" target="_blank" rel="noopener">Lesson 2, part 2</a>, <a href="https://youtu.be/vFAW-JgzgLo" target="_blank" rel="noopener">Lesson 3, Elicitation</a>, <a href="https://youtu.be/BIZVF-hG6Q8" target="_blank" rel="noopener">Lesson 4 analysis (uploaded as Lesson 5)</a>, <a href="https://youtu.be/gsIoHDCYmVE" target="_blank" rel="noopener">Lesson 5 use cases and activity diagrams</a>, <a href="https://youtu.be/GZ1EzhXJ4TU" target="_blank" rel="noopener">Lesson 6 structural modelling, 13 Nov (uploaded as Lesson 7)</a>. Every “watch” link below opens at the right second. The 12 Nov review session and the 13 Nov voice Q&amp;A are local recordings with no upload — their points are in the Overview.
+    <strong>Watch the recordings</strong> (unlisted): <a href="https://youtu.be/egjAfqDqNdI" target="_blank" rel="noopener">Lesson 1</a>, <a href="https://youtu.be/yMPDibTd25o" target="_blank" rel="noopener">Lesson 2, part 1</a>, <a href="https://youtu.be/bQFcFtF19nI" target="_blank" rel="noopener">Lesson 2, part 2</a>, <a href="https://youtu.be/vFAW-JgzgLo" target="_blank" rel="noopener">Lesson 3, Elicitation</a>, <a href="https://youtu.be/BIZVF-hG6Q8" target="_blank" rel="noopener">Lesson 4 analysis (uploaded as Lesson 5)</a>, <a href="https://youtu.be/gsIoHDCYmVE" target="_blank" rel="noopener">Lesson 5 use cases and activity diagrams</a>, <a href="https://youtu.be/GZ1EzhXJ4TU" target="_blank" rel="noopener">Lesson 6 structural modelling, 13 Nov (uploaded as Lesson 7)</a>, <a href="https://youtu.be/AUm9TBaGvDg" target="_blank" rel="noopener">Lesson 7 behavioural modelling, 19 Nov (uploaded as Lesson 8)</a>. Every “watch” link below opens at the right second. The 12 Nov review session and the 13 Nov voice Q&amp;A are local recordings with no upload — their points are in the Overview.
   </div>
 
   <div class="section-head"><div><h2>1 · The use-case diagram she drew the lesson around</h2><p class="muted" style="font-size:13.5px;margin:6px 0 0">The clinic case is now part of Lesson 6 (slides 50–62: functional requirements revisited, detail descriptions and the revised class diagram) and is referenced there. This page keeps the recording’s version because it shows the whole use-case diagram — including <em>Communicate Real Time</em> and <em>Assess via Tele-Health</em> — which the Lesson 6 deck never repeats.</p><p>Integrated Health Clinic Delivery System, from the course textbook: Dennis, Wixom &amp; Tegarden, <em>Systems Analysis and Design: An Object-Oriented Approach with UML</em>, 5th ed., Wiley, Figure 4-4. <a href="https://youtu.be/vFAW-JgzgLo?t=10333" target="_blank" rel="noopener">Watch at 2:52:13</a></p></div></div>
@@ -4180,6 +4207,14 @@ body[data-th="off"] .ex-th{display:none}
     <p style="color:var(--ink)">A Word document titled <em>Quiz-1</em>, three pages, with numbered questions and blank space for prose. Question 10 read:</p>
     <blockquote style="background:var(--surface);border-color:var(--video)">“ให้ระบุปัญหาของกระบวนการวิศวกรรมความต้องการ และแนวทางในการแก้ไขมา 2 รายการ”<br><span style="color:var(--muted)">State two problems of the requirements-engineering process and the approach to solving each.</span></blockquote>
     <p style="margin-top:10px;color:var(--muted)">So: expect “state / explain / compare / give examples” verbs, 2–4 marks each, and answers that need a named concept plus a remedy. Practise in bullet points first, then prose. The full paper, with a lesson guide and a covered model answer for each item, is in the Homework tab, together with Quiz 2.</p>
+  </div>
+
+  <div class="section-head"><div><h2>6 · The 19 Nov class on behavioural models</h2><p>From the recording, not the deck. <a href="https://youtu.be/AUm9TBaGvDg?t=4605" target="_blank" rel="noopener">Watch at 1:16:45</a></p></div></div>
+  <div class="grid two" style="gap:14px">
+    <div class="panel"><h3>Text first, diagram second</h3><p>She gives the specification to a chat model and asks it to generate <strong>PlantUML</strong>; draw.io then loads the PlantUML and renders the state machine. Her warning: part of that pipeline is not reliable yet — check the picture it produces. Two smaller tips from the same stretch: some tools number return messages for you (1, 1.1), and operation names start lowercase (<code>searchByAuthor</code>), the textbook’s convention.</p><p class="th-block" lang="th">ครูเริ่มจากเขียน specification เป็นข้อความ แล้วให้ chat model สร้าง PlantUML จากนั้นนำ PlantUML เข้า draw.io เพื่อดูภาพ state machine — แต่เตือนว่าบางขั้นของ pipeline ยังไม่เสถียร ต้องตรวจภาพที่ได้ อีกสองทิป: บางเครื่องมือใส่เลข return ให้เอง (1, 1.1) และชื่อ operation เริ่มด้วยตัวเล็ก (searchByAuthor) ตามตำรา</p></div>
+    <div class="panel"><h3>Bank ATM, walked end to end</h3><p>Left, the high-level machine: IDLE loops on displaying a message, Insert Card → Active, Cancel or finishing → Readiness; a technician’s repair runs through Out of Service and back. Right, the fuller version: Off → self-test → IDLE, a failed self-test goes to Out of Service, and <em>Serving Customer</em> is a composite state with entry (read card) and exit (eject card).</p><p class="th-block" lang="th">แผนภาพซ้ายคือภาพระดับสูง: IDLE วนแสดงข้อความ Insert Card → Active, Cancel หรือทำงานเสร็จ → Readiness และช่างซ่อมวิ่งผ่าน Out of Service แล้วกลับมา แผนภาพขวาละเอียดกว่า: Off → self-test → IDLE, self-test ล้มเหลวไป Out of Service และ Serving Customer เป็น composite state ที่มี entry (อ่านบัตร) และ exit (คืนบัตร)</p></div>
+    <div class="panel"><h3>“Does the book need an unavailable state?”</h3><p>A student asked. No: <em>Checked Out</em> and <em>Requested by another borrower</em> already mean the book is unavailable, so an extra state would duplicate them. She added that a third borrower can request an already-requested book — a loop — which you may store as a <em>requested by</em> value.</p><p class="th-block" lang="th">นิสิตถามว่าหนังสือต้องมีสถานะ unavailable ไหม คำตอบคือไม่ เพราะ Checked Out กับ Requested by another borrower แปลว่าไม่ว่างอยู่แล้ว การเพิ่มสถานะจะซ้ำซ้อน และถ้าคนที่สามขอหนังสือที่ถูกขออยู่แล้วจะเกิดลูป จึงอาจเก็บค่า requested by ไว้</p></div>
+    <div class="panel"><h3>Two corrections to the deck</h3><p>She flags the guard-condition syntax on the order machine, wants “order is closed” as a <strong>state</strong> before termination, and cuts the deck’s second final state so both paths reach one stop state. Fig. 7.5 in Lesson 7 is drawn her way; the memo there carries both moments.</p><p class="th-block" lang="th">ครูแก้สไลด์สองจุด: guard ต้องเขียนให้ถูก syntax, “order is closed” ควรเป็น state ก่อน terminate, และตัด final state ที่สองออกให้เหลือจุดจบเดียว — Fig. 7.5 ใน Lesson 7 วาดตามคำแก้ และ memo ในบทนั้นมี timestamp ของทั้งสองช่วง</p></div>
   </div>
 </section>
 
