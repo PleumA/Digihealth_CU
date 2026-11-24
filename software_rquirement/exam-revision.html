@@ -581,6 +581,12 @@ body[data-th="off"] .ex-th{display:none}
 /* video watch list: a narrow lesson column, tighter rows */
 .watch-table th:first-child,.watch-table td:first-child{width:1%;white-space:nowrap;padding-right:22px}
 .watch-table td,.watch-table th{padding-top:7px;padding-bottom:7px}
+
+/* HW4 drawn answers: keep the diagram legible inside a narrow answer column */
+.hw4fig svg{min-width:820px}
+
+/* the two drawn HW4 answers need more than 72ch for a legible diagram */
+.qa.wide .answer{max-width:none}
 </style>
 
 <div class="topbar">
@@ -598,6 +604,7 @@ body[data-th="off"] .ex-th{display:none}
       <button class="tab" role="tab" data-view="lesson8" aria-selected="false">Lesson 8</button>
       <button class="tab" role="tab" data-view="lesson9" aria-selected="false">Lesson 9</button>
       <button class="tab" role="tab" data-view="lesson10" aria-selected="false">Lesson 10</button>
+      <button class="tab" role="tab" data-view="lesson11" aria-selected="false">Lesson 11</button>
       <button class="tab" role="tab" data-view="video" aria-selected="false">Video lab</button>
       <button class="tab" role="tab" data-view="practice" aria-selected="false">Practice</button>
       <button class="tab" role="tab" data-view="hw" aria-selected="false">Homework</button>
@@ -616,6 +623,7 @@ body[data-th="off"] .ex-th{display:none}
       <option value="lesson8">Lesson 8 — Non-functional requirements</option>
       <option value="lesson9">Lesson 9 — The SRS</option>
       <option value="lesson10">Lesson 10 — Validation, prototyping, UI design</option>
+      <option value="lesson11">Lesson 11 — Validation and management</option>
       <option value="video">Video lab</option>
       <option value="practice">Practice</option>
       <option value="hw">Homework — Quiz 1 &amp; Quiz 2</option>
@@ -636,7 +644,7 @@ body[data-th="off"] .ex-th{display:none}
 <section class="view" id="overview" role="tabpanel" aria-label="Overview">
   <div class="eyebrow">Course 2110623, Digital Health</div>
   <h1>Software Requirements Engineering Revision</h1>
-  <p class="lede">A written-exam guide to Lessons 1–10, built from the ten lecture decks and the examples shown only in the recorded classes. The exam is prose, so this page trains explanation, classification, rewriting and negotiation.</p>
+  <p class="lede">A written-exam guide to Lessons 1–11, built from the eleven lecture decks and the examples shown only in the recorded classes. The exam is prose, so this page trains explanation, classification, rewriting and negotiation.</p>
 
   <div class="drill" id="drill">
     <p class="drill-label">Rewrite it before you read anything else</p>
@@ -654,7 +662,7 @@ body[data-th="off"] .ex-th{display:none}
     </div>
   </div>
 
-  <p class="sources">Drafted from Assoc. Prof. Nakornthip Prompoon's ten decks and twelve class recordings; revised 22 November 2026.</p>
+  <p class="sources">Drafted from Assoc. Prof. Nakornthip Prompoon's eleven decks and twelve class recordings; revised 24 November 2026.</p>
 
   <div class="section-head">
     <div><h2>How the course is marked</h2><p>From the course syllabus, semester 1/2569.</p></div>
@@ -664,7 +672,7 @@ body[data-th="off"] .ex-th{display:none}
       <thead><tr><th>Component</th><th>Weight</th><th>Detail</th></tr></thead>
       <tbody>
         <tr><td>Midterm exam</td><td>25%</td><td>Written paper, 14 November, 13:00–16:00, Building 4, Floor M, Room 07/3. Four parts (three named: True/False with reasons, short answer, case study). Covers the syllabus's sessions 1–6 — introduction through business-process and functional modelling — which is every deck on this page; session 3 (definition and specification) sits inside Lessons 1–2.</td></tr>
-        <tr><td>Final exam</td><td>25%</td><td>Written paper, <strong>28 November, 13:30–16:30, on-site</strong>. The 19–20 Nov classes describe what it asks: an NFR derived from a stated goal or an external fact, and a screen designed from a use case or flow with input validation.</td></tr>
+        <tr><td>Final exam</td><td>25%</td><td>Written paper, <strong>28 November, 13:30–16:30, on-site</strong>. Her 24 Nov note gives its shape: <strong>Part 1 multiple choice, about 16</strong> (some requiring analysis); <strong>Part 2 short questions on an Online Ticket Reservation case</strong>, 8–9 with sub-parts and one UI design; <strong>Part 3 a little modelling</strong>.</td></tr>
         <tr><td>Quizzes and assignments</td><td>20%</td><td>Four times, 5% each. Quiz #1 covers requirements fundamentals; Quiz #2 covers elicitation; Quiz #3 is the Happy Fitness modelling assignment (use case, activity, class, sequence and state machine).</td></tr>
         <tr><td>Group paper presentation</td><td>5%</td><td>Research or academic article on requirements engineering</td></tr>
         <tr><td>Group term project</td><td>25%</td><td>Proposal 5%, prototype 5%, full SyRS/SRS report 10%, process report 5%</td></tr>
@@ -775,14 +783,20 @@ body[data-th="off"] .ex-th{display:none}
 
   <div class="callout accent" style="margin-top:14px">
     <h3 style="font-size:16px;margin-bottom:6px">Final exam, 28 November</h3>
-    <p>The syllabus schedules the final for <strong>28 November, 13:30–16:30, on-site</strong>, after the structural, behavioural, non-functional and SRS sessions. The two classes on 19–20 Nov say what it asks; the callout below carries them. Lessons 7 to 10 fall after the midterm cut, so they are final material and final-project material, not midterm material.</p>
-    <p class="th-block" lang="th">syllabus กำหนดสอบปลายภาควันที่ 28 พฤศจิกายน 13:30–16:30 สอบในห้อง หลังคาบ structural, behavioural, non-functional และ SRS สองคาบวันที่ 19–20 พ.ย. บอกว่าข้อสอบถามอะไร — อยู่ในกล่องถัดไป บทที่ 7 ถึง 10 อยู่หลังจุดตัดของกลางภาค จึงเป็นเนื้อหาของปลายภาคและของโครงงาน</p>
+    <p>The syllabus schedules the final for <strong>28 November, 13:30–16:30, on-site</strong>, after the structural, behavioural, non-functional and SRS sessions. Her note on 24 Nov gives the paper's shape, and the 19–20 Nov classes say what the questions want; the two callouts below carry them. Lessons 7 to 10 fall after the midterm cut, so they are final material and final-project material, not midterm material.</p>
+    <p class="th-block" lang="th">syllabus กำหนดสอบปลายภาควันที่ 28 พฤศจิกายน 13:30–16:30 สอบในห้อง หลังคาบ structural, behavioural, non-functional และ SRS คลิป 24 พ.ย. บอกโครงข้อสอบ และสองคาบวันที่ 19–20 พ.ย. บอกว่าคำถามต้องการอะไร — อยู่ในกล่องถัดไป บทที่ 7 ถึง 10 อยู่หลังจุดตัดของกลางภาค จึงเป็นเนื้อหาของปลายภาคและของโครงงาน</p>
+  </div>
+
+  <div class="callout accent" style="margin-top:14px">
+    <span class="tag">Local recording, 24 Nov</span>
+    <p style="margin-top:8px">In an 85-second note after the last class she describes the paper itself. <strong>Part 1 is multiple choice, about 16 questions</strong>, and not all of them are recall — some ask you to analyse. <strong>Part 2 is short questions over a case</strong>, and the case is <strong>Online Ticket Reservation</strong> — the one she has been discussing, not the airline example: about <strong>8 or 9 questions with sub-parts</strong>, and one sub-part asks for a <strong>UI design</strong>. <strong>Part 3 is modelling</strong>, but only a little, “so that at least the loop is complete”. She adds that on <strong>25 Nov</strong> two groups present their papers at 20 minutes each, and that she will teach the <strong>architecture part</strong> in that session; work already done for assignment 4 can be proposed there.</p>
+    <p class="th-block" lang="th">ในคลิปสั้น 85 วินาทีหลังคาบสุดท้าย ครูอธิบายตัวข้อสอบ: Part 1 เป็น multiple choice ประมาณ 16 ข้อ และไม่ใช่แค่ท่องมาแล้วตอบได้ มีข้อที่ต้องวิเคราะห์ Part 2 เป็นคำถามสั้นบนโจทย์กรณีศึกษา ซึ่งเป็นกรณี Online Ticket Reservation (ไม่ใช่ตัวอย่างสายการบิน) ประมาณ 8–9 ข้อ มีข้อย่อย และมีข้อย่อยที่ให้ออกแบบ UI ด้วย Part 3 เป็นการทำโมเดลเล็กน้อย “เพื่อให้ได้ครบลูป” ครูยังบอกว่า 25 พ.ย. มีนำเสนอ paper สองกลุ่ม กลุ่มละ 20 นาที และครูจะสอนส่วน architecture ในคาบนั้น งานที่ทำใน assignment 4 แล้วสามารถ propose ได้</p>
   </div>
 
   <div class="callout video" style="margin-top:14px">
     <span class="tag video">Recordings, 19–20 Nov</span>
-    <p style="margin-top:8px">The last two classes narrow the final the way the 13 Nov Q&amp;A narrowed the midterm. From the <a href="https://youtu.be/FmKEhxXrYws" target="_blank" rel="noopener"><strong>NFR class (19 Nov)</strong></a>: a question can hand you an <strong>external environment fact or regulation</strong> and ask what capability the system then needs, and any goal question expects the movement <strong>from enterprise goal down to NFR</strong>, defended on qualities such as usability and availability. From the <a href="https://youtu.be/rJTZXJR3Wy8" target="_blank" rel="noopener"><strong>UI class (20 Nov)</strong></a>: <strong>UI design is 5 project marks</strong>, and the exam question is to <strong>design a screen from a use case or a flow, applying the principles and the standards of that deck</strong>, with <strong>input validation</strong> named as the focus. Her words on the scope: “that is about all I will examine”. One schedule change: on <strong>24 Nov she will not teach architectural modelling</strong> — the workload is too heavy — so that session becomes requirements validation and management, and 26–27 Nov are left for revision and the term project. On 28 Nov the project is presented in the morning and the paper is written in the afternoon.</p>
-    <p class="th-block" lang="th">สองคาบสุดท้ายชี้ขอบเขตปลายภาคเหมือนที่ Q&amp;A 13 พ.ย. ชี้ขอบเขตกลางภาค จากคาบ NFR (19 พ.ย.): โจทย์อาจยกข้อเท็จจริงหรือกฎระเบียบของสภาพแวดล้อมมาให้ แล้วถามว่าระบบต้องมีความสามารถอะไร และข้อที่ถามเรื่องเป้าหมายจะต้องไล่จาก enterprise goal ลงมาเป็น NFR พร้อมป้องกันด้วย usability และ availability จากคาบ UI (20 พ.ย.): UI design คือ 5 คะแนนของโครงงาน และข้อสอบคือออกแบบหน้าจอจาก use case หรือ flow โดยประยุกต์หลักการและมาตรฐานในบทนั้น โดยเน้น input validation ครูพูดถึงขอบเขตว่า “จะออกข้อสอบแค่ประมาณนี้” มีการเปลี่ยนตารางหนึ่งอย่าง: วันที่ 24 พ.ย. ครูจะไม่สอน architectural modeling เพราะงานเยอะ คาบนั้นจึงเหลือ requirements validation และ management และวันที่ 26–27 พ.ย. ปล่อยให้ทบทวนกับทำโครงงาน วันที่ 28 พ.ย. นำเสนอโครงงานตอนเช้าและสอบข้อเขียนตอนบ่าย</p>
+    <p style="margin-top:8px">The last two classes narrow the final the way the 13 Nov Q&amp;A narrowed the midterm. From the <a href="https://youtu.be/FmKEhxXrYws" target="_blank" rel="noopener"><strong>NFR class (19 Nov)</strong></a>: a question can hand you an <strong>external environment fact or regulation</strong> and ask what capability the system then needs, and any goal question expects the movement <strong>from enterprise goal down to NFR</strong>, defended on qualities such as usability and availability. From the <a href="https://youtu.be/rJTZXJR3Wy8" target="_blank" rel="noopener"><strong>UI class (20 Nov)</strong></a>: <strong>UI design is 5 project marks</strong>, and the exam question is to <strong>design a screen from a use case or a flow, applying the principles and the standards of that deck</strong>, with <strong>input validation</strong> named as the focus. Her words on the scope: “that is about all I will examine”. One schedule change: on <strong>24 Nov she did not teach architectural modelling</strong> — the workload was too heavy — so that session became requirements validation and management; the <strong>25 Nov</strong> session covers the architecture part briefly after the paper presentations, and 26–27 Nov are left for revision and the term project. On 28 Nov the project is presented in the morning and the paper is written in the afternoon.</p>
+    <p class="th-block" lang="th">สองคาบสุดท้ายชี้ขอบเขตปลายภาคเหมือนที่ Q&amp;A 13 พ.ย. ชี้ขอบเขตกลางภาค จากคาบ NFR (19 พ.ย.): โจทย์อาจยกข้อเท็จจริงหรือกฎระเบียบของสภาพแวดล้อมมาให้ แล้วถามว่าระบบต้องมีความสามารถอะไร และข้อที่ถามเรื่องเป้าหมายจะต้องไล่จาก enterprise goal ลงมาเป็น NFR พร้อมป้องกันด้วย usability และ availability จากคาบ UI (20 พ.ย.): UI design คือ 5 คะแนนของโครงงาน และข้อสอบคือออกแบบหน้าจอจาก use case หรือ flow โดยประยุกต์หลักการและมาตรฐานในบทนั้น โดยเน้น input validation ครูพูดถึงขอบเขตว่า “จะออกข้อสอบแค่ประมาณนี้” มีการเปลี่ยนตารางหนึ่งอย่าง: วันที่ 24 พ.ย. ครูไม่ได้สอน architectural modeling เพราะงานเยอะ คาบนั้นจึงเป็น requirements validation และ management ส่วนวันที่ 25 พ.ย. มีนำเสนอ paper แล้วตามด้วยการสอน architecture สั้น ๆ และวันที่ 26–27 พ.ย. ปล่อยให้ทบทวนกับทำโครงงาน วันที่ 28 พ.ย. นำเสนอโครงงานตอนเช้าและสอบข้อเขียนตอนบ่าย</p>
   </div>
 
   <div class="section-head">
@@ -5606,6 +5620,401 @@ body[data-th="off"] .ex-th{display:none}
   </div>
 </section>
 
+<!-- ============ LESSON 11 ============ -->
+<section class="view" id="lesson11" role="tabpanel" aria-label="Lesson 11" hidden>
+  <div class="eyebrow">Lesson 11, 38 slides</div>
+  <h1>Check it, then keep it true</h1>
+  <p class="lede">Validation asks whether the document describes the right software; management keeps that document true after it is approved. This is the last content lesson before the final.</p>
+  <p class="watch-line">Class recording: <a href="https://youtu.be/dqz3BFqwTRM" target="_blank" rel="noopener">Lesson 11 validation and management, 24 Nov</a><span class="th-line" lang="th"> วิดีโอบันทึกการสอน</span></p>
+  <div class="progress" data-lesson="11" style="margin-top:16px;max-width:420px"><span>Verification coverage</span><div class="bar"><i></i></div><span class="pct">0%</span></div>
+  <section class="memo" aria-label="What the deck flags">
+    <p class="memo-head">What she said in class, and what the deck flags</p>
+    <ul class="memo-list">
+      <li><a class="memo-time" href="https://youtu.be/dqz3BFqwTRM?t=2485" target="_blank" rel="noopener" aria-label="Watch 41:25 in the recording">41:25</a><span class="memo-said"> The exam has <strong>multiple choice this time</strong>, and the material around this part of the deck is more likely to arrive as an MC item than as a task. From the term project and the assignments you should at least know <strong>how the models relate to each other</strong>. <span class="memo-jump" href="#" data-card="l11-four" aria-label="Go to clause 2">clause 2</a><span class="memo-th" lang="th">ข้อสอบครั้งนี้มี multiple choice และครึ่งหลังของสไลด์ชุดนี้เป็นเนื้อหาที่มักออกเป็นข้อเลือกตอบมากกว่าข้อที่ต้องลงมือทำ จากโครงงานและการบ้าน อย่างน้อยต้องรู้ว่าโมเดลแต่ละตัวสัมพันธ์กันอย่างไร</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/dqz3BFqwTRM?t=2567" target="_blank" rel="noopener" aria-label="Watch 42:47 in the recording">42:47</a><span class="memo-said"> <strong>Goal decomposition and concern decomposition may come back</strong>, with a new case. Her illustration: a Sky Train goal of “no trains colliding” — manage traffic and logistics — then the question <em>what functions must the system have</em> to prevent collisions. She says that example is not the actual prompt. <span class="memo-jump" href="#" data-card="l8-goal" aria-label="Go to Lesson 8, clause 6">Lesson 8, clause 6</a><span class="memo-th" lang="th">goal decomposition กับ concern decomposition อาจกลับมาออกอีกครั้งในเคสใหม่ ตัวอย่างที่ครูยกคือเป้าหมาย Sky Train ว่า “ไม่ให้รถชนกัน” แล้วถามว่า ระบบต้องมีฟังก์ชันอะไรเพื่อกันการชน ครูบอกว่าตัวอย่างนี้ไม่ใช่โจทย์จริง</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/dqz3BFqwTRM?t=2952" target="_blank" rel="noopener" aria-label="Watch 49:12 in the recording">49:12</a><span class="memo-said"> A likely Part 2 sub-question: <strong>“generate acceptance criteria from the flow given”</strong>. Her model is the check-in slide — read the flow, then check what input each function needs and what data type it takes. <span class="memo-jump" href="#" data-card="l11-accept" aria-label="Go to clause 8">clause 8</a><span class="memo-th" lang="th">ข้อย่อยของ Part 2 ที่น่าจะออก: “สร้าง acceptance criteria จากโฟลว์ที่ให้มา” ตัวอย่างที่ครูใช้คือสไลด์เช็คอิน — อ่านโฟลว์แล้วดูว่าแต่ละฟังก์ชันต้องรับ input อะไรและเป็น data type อะไร</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/dqz3BFqwTRM?t=4596" target="_blank" rel="noopener" aria-label="Watch 1:16:36 in the recording">1:16:36</a><span class="memo-said"> The chart example she shows is <strong>not examined</strong>; it is there so the idea is clear. <span class="memo-jump" href="#" data-card="l11-trace" aria-label="Go to clause 11">clause 11</a><span class="memo-th" lang="th">ตัวอย่างกราฟที่ครูเปิดให้ดูนั้นไม่ออกสอบ เอาไว้ให้เห็นภาพเท่านั้น</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/dqz3BFqwTRM?t=5330" target="_blank" rel="noopener" aria-label="Watch 1:28:50 in the recording">1:28:50</a><span class="memo-said"> Tracing is not only upward and downward: <strong>dependency</strong> is the third link. When a requirement changes, dependency tells you what else hangs off it — “as she had already set in an earlier exam”. <span class="memo-jump" href="#" data-card="l11-trace" aria-label="Go to clause 11">clause 11</a><span class="memo-th" lang="th">traceability ไม่ใช่แค่ upward กับ downward — dependency คือเส้นที่สาม เวลา requirement เปลี่ยน dependency บอกว่ามีอะไรขึ้นอยู่กับมันอีก “อย่างที่ครูออกข้อสอบไปแล้ว”</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/dqz3BFqwTRM?t=5427" target="_blank" rel="noopener" aria-label="Watch 1:30:27 in the recording">1:30:27</a><span class="memo-said"> The 25 Nov plan: the <strong>P7 presentation</strong> (NFR list and system architecture) first, then two individual presentations, then her questions. <span class="memo-jump" href="#" data-card="l11-four" aria-label="Go to clause 2">clause 2</a><span class="memo-th" lang="th">แผนวันที่ 25 พ.ย.: นำเสนอ P7 (NFR list กับ system architecture) ก่อน แล้วตามด้วยงานเดี่ยวอีกสองคน จากนั้นครูจะถาม</span></span></li>
+      <li><span class="memo-ref">slide 3</span><span class="memo-said"> The objectives split cleanly: <strong>four validation practices</strong>, then <strong>change management, tracing, measuring and attributes</strong>. Expect a question from each half.<span class="memo-jump" href="#" data-card="l11-four" aria-label="Go to clause 2">clause 2</a><span class="memo-th" lang="th">วัตถุประสงค์แบ่งชัดเป็นสองครึ่ง: วิธีตรวจสอบสี่วิธี กับการจัดการ (change management, tracing, measuring, attributes) — คาดว่าข้อสอบมีจากทั้งสองครึ่ง</span></span></li>
+      <li><span class="memo-ref">slides 14–15</span><span class="memo-said"> The four worked defects — ambiguous, incomplete, contradictory, infeasible — each come with a rewrite. That pair, defect and rewrite, is the answer shape for a review question.<span class="memo-jump" href="#" data-card="l11-defects" aria-label="Go to clause 5">clause 5</a><span class="memo-th" lang="th">ข้อบกพร่องที่ยกตัวอย่างสี่ชนิด — กำกวม ไม่ครบ ขัดกัน ทำไม่ได้จริง — มีคำเขียนใหม่ให้ทุกข้อ รูปแบบ “บอกข้อบกพร่องแล้วเขียนใหม่” คือคำตอบของข้อสอบ review</span></span></li>
+      <li><span class="memo-ref">slides 16</span><span class="memo-said"> Prototyping cuts requirement volatility because stakeholder and engineer have agreed on something they can see — but it carries one named risk: <strong>cosmetic issues distract users from the underlying functionality</strong>.<span class="memo-jump" href="#" data-card="l11-proto" aria-label="Go to clause 6">clause 6</a><span class="memo-th" lang="th">prototype ลดความผันผวนของ requirement เพราะผู้มีส่วนได้ส่วนเสียกับวิศวกรเห็นสิ่งเดียวกันแล้ว แต่มีความเสี่ยงที่สไลด์ระบุไว้: เรื่องความสวยงามจะดึงความสนใจออกจากฟังก์ชันจริง</span></span></li>
+      <li><span class="memo-ref">slide 20</span><span class="memo-said"> The eight verification rules between a use case description and an activity diagram are numbered; a question can ask for any of them by number.<span class="memo-jump" href="#" data-card="l11-model" aria-label="Go to clause 7">clause 7</a><span class="memo-th" lang="th">กฎตรวจสอบแปดข้อระหว่าง use case description กับ activity diagram มีเลขกำกับ — ข้อสอบถามข้อใดข้อหนึ่งได้</span></span></li>
+      <li><span class="memo-ref">slide 22</span><span class="memo-said"> Acceptance tests are easy for functional requirements and <strong>hard for non-functional ones</strong>: an NFR must first be decomposed until it can be expressed quantitatively.<span class="memo-jump" href="#" data-card="l11-accept" aria-label="Go to clause 8">clause 8</a><span class="memo-th" lang="th">acceptance test ทำได้ง่ายกับ functional แต่ยากกับ non-functional — NFR ต้องถูกแยกย่อยจนเขียนเป็นปริมาณได้ก่อน</span></span></li>
+      <li><span class="memo-ref">slide 35</span><span class="memo-said"> Of all the attributes, one is called the most important: <strong>an identifier that makes the requirement uniquely and unambiguously identifiable</strong>.<span class="memo-jump" href="#" data-card="l11-attrs" aria-label="Go to clause 13">clause 13</a><span class="memo-th" lang="th">ในบรรดา attribute ทั้งหมด สไลด์บอกว่าตัวที่สำคัญที่สุดคือ identifier ที่ทำให้ requirement ระบุได้ไม่ซ้ำและไม่กำกวม</span></span></li>
+    </ul>
+  </section>
+
+  <div class="grid" style="gap:0">
+
+    <article class="card" data-lesson="11" data-search="validation verification defect right software conforms user need organisation standard document set requirement">
+      <div class="card-head"><h3>1 · Validation, verification, and what a defect is</h3><button class="know" data-id="l11-defect" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A <strong>defect</strong> is an imperfection or deficiency in a work product that does not meet its requirements or specifications and needs to be repaired or replaced. <strong>Validation</strong> asks whether the requirements define the right software, the one users expect. <strong>Verification</strong> asks whether the document conforms to the organisation's standard and carries the characteristics of a good requirement — consistency, clarity, completeness. The deck points out that both apply at three levels: the whole specification document, the set of requirements, and an individual requirement.</p>
+      <figure class="fig">
+        <div class="fig-scroll">
+          <svg viewBox="0 0 940 300" role="img" aria-label="Validation and verification applied at three levels: the specification document, the set of requirements, and one requirement, each with the question it asks">
+            <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="11">
+              <text x="300" y="26" text-anchor="middle" fill="var(--accent)" font-size="12" font-weight="600">Validation — the right software?</text>
+              <text x="700" y="26" text-anchor="middle" fill="var(--ink)" font-size="12" font-weight="600">Verification — conforms to standard?</text>
+
+              <rect x="30" y="46" width="270" height="60" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="165" y="72" text-anchor="middle" fill="var(--ink)">the document</text>
+              <text x="165" y="90" text-anchor="middle" fill="var(--muted)" font-size="9.5">the specification as a whole</text>
+              <rect x="330" y="46" width="270" height="60" rx="4" fill="var(--accent-soft)" stroke="var(--accent)"/>
+              <text x="465" y="72" text-anchor="middle" fill="var(--ink)">does it describe what users expect?</text>
+              <text x="465" y="90" text-anchor="middle" fill="var(--muted)" font-size="9.5">stakeholders review it</text>
+              <rect x="630" y="46" width="280" height="60" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="770" y="72" text-anchor="middle" fill="var(--ink)">is it complete and consistent?</text>
+              <text x="770" y="90" text-anchor="middle" fill="var(--muted)" font-size="9.5">company standard, terminology</text>
+
+              <rect x="30" y="126" width="270" height="60" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="165" y="152" text-anchor="middle" fill="var(--ink)">the set of requirements</text>
+              <text x="165" y="170" text-anchor="middle" fill="var(--muted)" font-size="9.5">all 120 of them together</text>
+              <rect x="330" y="126" width="270" height="60" rx="4" fill="var(--accent-soft)" stroke="var(--accent)"/>
+              <text x="465" y="152" text-anchor="middle" fill="var(--ink)">does the set cover the need?</text>
+              <text x="465" y="170" text-anchor="middle" fill="var(--muted)" font-size="9.5">no gap, no duplicate</text>
+              <rect x="630" y="126" width="280" height="60" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="770" y="152" text-anchor="middle" fill="var(--ink)">is the set traceable?</text>
+              <text x="770" y="170" text-anchor="middle" fill="var(--muted)" font-size="9.5">every item has an ID and a source</text>
+
+              <rect x="30" y="206" width="270" height="60" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="165" y="232" text-anchor="middle" fill="var(--ink)">one requirement</text>
+              <text x="165" y="250" text-anchor="middle" fill="var(--muted)" font-size="9.5">REQ-APPT-014</text>
+              <rect x="330" y="206" width="270" height="60" rx="4" fill="var(--accent-soft)" stroke="var(--accent)"/>
+              <text x="465" y="232" text-anchor="middle" fill="var(--ink)">is it what the user meant?</text>
+              <text x="465" y="250" text-anchor="middle" fill="var(--muted)" font-size="9.5">read it back to the source</text>
+              <rect x="630" y="206" width="280" height="60" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="770" y="232" text-anchor="middle" fill="var(--ink)">is it well formed?</text>
+              <text x="770" y="250" text-anchor="middle" fill="var(--muted)" font-size="9.5">one shall, measurable, bounded</text>
+
+              <text x="30" y="290" fill="var(--muted)" font-size="10">Same three levels, two questions. A document can pass one column and fail the other.</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption><span class="fig-n">Fig. 11.1.</span> Validate and verify, at three levels each. <span lang="th">อ่านเป็นตารางสองคอลัมน์: ซ้ายคือคำถามแบบ validation (ได้ซอฟต์แวร์ที่ใช่หรือไม่) ขวาคือ verification (ตรงมาตรฐานและเขียนดีหรือไม่) และสามแถวคือระดับที่ถาม — ทั้งเอกสาร ชุด requirement และ requirement เดี่ยวๆ สังเกตว่าเอกสารเดียวกันผ่านคอลัมน์หนึ่งและตกอีกคอลัมน์ได้ เช่น เขียนสวยแต่ไม่ตรงความต้องการจริง ถ้าโจทย์ให้ประโยคมาแล้วถามว่า “ควรตรวจแบบไหน” ให้ตอบทั้งระดับและคำถาม</span></figcaption>
+      </figure>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">The two words are the most-swapped pair in the course. This deck gives them a definition each: validation is about users, verification is about the standard and the shape of the sentence.</p></div>
+        <div class="example"><b>Example.</b> “The system shall answer a lookup within 2 seconds” passes verification (measurable, one shall) and fails validation if the clinic actually needs it at the bedside in under 1 second.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Defining validation as “testing”. Testing is one technique; validation is the question being answered.</p>
+      <details><summary>Slide 5</summary><blockquote>“Validate - define the right software conforms to users need • Verify – requirements conform to organization standard, requirements good characteristics.”<cite>Slide 5</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="four fundamental practices review prototyping model validation acceptance testing">
+      <div class="card-head"><h3>2 · Four ways to validate</h3><button class="know" data-id="l11-four" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> The deck names four fundamental practices and nothing else: <strong>requirements review</strong>, <strong>prototyping</strong>, <strong>model validation</strong>, and <strong>acceptance testing</strong>. Each answers a different question — does the document say the right thing, does the built thing match what was meant, do the models agree with each other, and will the finished product satisfy each requirement.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">Four names is a one-line answer, and matching a situation to the right one is the usual question.</p></div>
+        <div class="example"><b>Example.</b> A clinic SRS in review: a checklist review finds an ambiguous sentence; a storyboard session finds a missing step; a class-to-sequence check finds a transition with no message; the acceptance test list finds a requirement nobody can test.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Answering “walkthrough” or “inspection” as a fifth practice. They are forms of the first one, review.</p>
+      <details><summary>Slide 8</summary><blockquote>“Fundamental practices of requirements validation 1) requirements review, 2) prototyping, 3) model validation, and 4) acceptance testing.”<cite>Slide 8</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="requirements review checklist summary report participants scope defect types pass fail notes">
+      <div class="card-head"><h3>3 · The review, and the report it leaves</h3><button class="know" data-id="l11-review" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Reviews are the most common means of validation: a group is assigned a brief to look for errors, mistaken assumptions, lack of clarity and deviation from standard practice, and at least one customer representative belongs to that group on a customer-driven project. Reviewers work from <strong>checklists</strong>, and a review is constituted at the end of the system definition, the system specification, the software requirements specification, a baseline for a new release, or any other step. The summary report carries: objective, scope, participants, date and time, terms and a <strong>list of defect types</strong>, the checklist, results, open issues with action and responsibility, and an explanation for every reviewed item.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">The report is the deliverable. A review with no defect-type list and no record of who fixes what leaves nothing an auditor can check.</p></div>
+        <div class="example"><b>Example.</b> Results are a two-dimensional table: rows are checklist items, columns are the requirements reviewed, and each cell says Pass, Fail or Notes with the reason and the fix. In the clinic review, “nurse can see history” fails with “no measurable time” and the note “rewrite with 2 seconds”.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Listing participants and date but not the defect types. The defect-type list is what makes the results comparable between reviews.</p>
+      <details><summary>Slide 10</summary><blockquote>“Examples of topics shall be included in the review summary report – Objective of the review – Scope of the review (document under revision) – Participants (reviewed by whom) – Date, time – Terms and definition (shall have a list of defect types) – List of checklist – Review results.”<cite>Slide 10</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="review checklist 38 items organisation structure completeness correctness consistency clarity traceability special issues">
+      <div class="card-head"><h3>4 · The checklist, in five groups</h3><button class="know" data-id="l11-check" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> The deck's checklist has 38 items in five groups. <strong>Organisation and structure</strong> (1–6): adherence to documentation standards and whether the requirements give an adequate basis for design and test. <strong>Completeness and correctness</strong> (7–25): cross-references, user classes and needs, inputs and outputs, system dependencies, interfaces, life-cycle support, constraints, reliability, security, safety, privacy, timing, regulation, quality attributes. <strong>Consistency and clarity</strong> (26–31): alignment with higher-level documents, freedom from duplication and conflict, single interpretation, testability. <strong>Traceability</strong> (32–33): unique identification and a traceable source. <strong>Special issues</strong> (34–38): scope, requirements that are really design solutions, resource consumption, internationalisation.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It is a ready-made review script for the project, and the group names are the marker's vocabulary for “what did you check”.</p></div>
+        <div class="example"><b>Example.</b> Applied to a clinic SRS: group 2 catches the missing privacy requirement, group 3 catches the contradiction between “notify within 1 hour” and “batch overnight”, group 5 catches a requirement that is really a design choice (“use a message queue”).</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Memorising 38 items. Learn the five group names and one example from each.</p>
+      <details><summary>Slide 11</summary><blockquote>“Organization and Structure … Standards / Unverifiable … Completeness and Correctness … Correctness / Incomplete / Interface … Consistency and Clarity … Inconsistent / Ambiguous / Unverifiable … Traceability … Special Issues … Others.”<cite>Slide 11</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="defect types ambiguous incomplete contradictory infeasible rewrite example review">
+      <div class="card-head"><h3>5 · Four defects, and how each is rewritten</h3><button class="know" data-id="l11-defects" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> The deck works four defects and repairs each. <strong>Ambiguous</strong>: “reports within a reasonable timeframe” — “reasonable” is subjective, so it becomes a 3-second limit under a stated load. <strong>Incomplete</strong>: “delete inactive user profiles” — “inactive” is undefined and the linked data is unaddressed, so it becomes 365 days plus a rule for retaining anonymised records. <strong>Contradictory</strong>: a 15-minute logout against a 45-minute uninterrupted video, repaired by pausing the timer while the video plays. <strong>Infeasible</strong>: face and iris matching against a billion records in 0.001 ms, repaired to on-device biometrics within 500 ms.</p>
+      <div class="table-scroll">
+        <table class="spec">
+          <thead><tr><th>Defect</th><th>The sentence that carries it</th><th>The repair</th></tr></thead>
+          <tbody>
+            <tr><td>Ambiguous</td><td>“reports within a reasonable timeframe”</td><td>3.0 seconds at 500 concurrent users</td></tr>
+            <tr><td>Incomplete</td><td>“delete inactive user profiles”</td><td>365 days without login; credentials removed, anonymised records kept</td></tr>
+            <tr><td>Contradictory</td><td>15-minute logout vs a 45-minute video</td><td>timer pauses while the video plays</td></tr>
+            <tr><td>Infeasible</td><td>billion-record match in 0.001 ms</td><td>on-device biometrics, 500 ms</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">A review question almost always wants the pair: name the defect type, then write the sentence that removes it. The deck's four are the vocabulary.</p></div>
+        <div class="example"><b>Example.</b> “The system shall keep patient data secure” is ambiguous (secure against what?) and incomplete (no retention rule). The repair names the controls and the period: TLS 1.2, role-based access, five-year retention.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Rewriting an ambiguous requirement by swapping one adjective for another. The repair adds a number, a condition or a named standard.</p>
+      <details><summary>Slide 15</summary><blockquote>“Infeasible requirements: These defects demand things that are technically impossible, break physical laws, or cannot be built within budget and time boundaries.”<cite>Slide 15</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="prototyping validation volatility cosmetic distraction animated user interface">
+      <div class="card-head"><h3>6 · Prototyping as validation, and its one risk</h3><button class="know" data-id="l11-proto" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A prototype validates the engineer's interpretation of the requirements and elicits new ones. Its advantage is that assumptions become visible: the dynamic behaviour of a user interface is easier to judge from an animated prototype than from prose or a diagram. The deck adds a consequence worth quoting: a requirement defined <em>after</em> prototyping has extremely low volatility, because stakeholder and engineer have agreed on something they can both see — which is why it helps for safety-critical and crucial features. The named disadvantage is that <strong>cosmetic issues or quality problems in the prototype distract users from the underlying functionality</strong>.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It explains why prototyping sits in the validation list at all, and gives the counter-argument for a question that asks for disadvantages.</p></div>
+        <div class="example"><b>Example.</b> A ward tablet prototype with placeholder colours draws every comment about colour and none about the two-step medication check — the team then re-skins it in hospital colours before the second session.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Presenting prototyping as risk-free. The deck names both the volatility benefit and the distraction cost.</p>
+      <details><summary>Slide 16</summary><blockquote>“There are also disadvantages – These include the danger of users’ attention being distracted from the core underlying functionality by cosmetic issues or quality problems with the prototype.”<cite>Slide 16</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="model validation static analysis uml cross model rules verification eight rules use case activity">
+      <div class="card-head"><h3>7 · Model validation, and the eight cross-model rules</h3><button class="know" data-id="l11-model" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Models built during analysis are validated too. For object models, a static analysis checks that communication paths exist between objects across the class and sequence diagrams; the deck's focus is the UML set — validation <em>among</em> functional, structural, behavioural and architectural models. The eight rules make the functional pair checkable: every action on the activity diagram has one recorded event in the use-case description; every object on the activity diagram appears in an event; the sequences match; there is one and only one description per use case; every actor in the description appears on the use-case diagram; stakeholders may appear (check local policy); every relationship in the description is drawn; and all diagram-specific rules are enforced.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">These eight are the page's whole argument in rule form — the models are one description seen four ways, and a mismatch is a defect in the requirements, not in the drawing.</p></div>
+        <div class="example"><b>Example.</b> A clinic activity diagram shows “check insurance” as an action, but no event in the use-case description records it — rule 1 fails, and either the description or the diagram is wrong.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Treating the rules as diagram syntax. They compare two documents, so a syntactically perfect diagram can still fail all eight.</p>
+      <details><summary>Slide 20</summary><blockquote>“1. Ensure one recorded event in the flows of the use-case description for each action/activity on the activity diagram … 8. All diagram-specific rules must be enforced.”<cite>Slide 20</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="acceptance tests acceptance criteria quantitative nfr decompose verifiable patient appointment AC">
+      <div class="card-head"><h3>8 · Acceptance tests and acceptance criteria</h3><button class="know" data-id="l11-accept" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> An essential property of a requirement is that the finished product can be shown to satisfy it, so each requirement gets a planned way of verifying it. Acceptance tests do this for the way end users actually conduct business; for non-functional requirements the deck says this is <strong>difficult</strong>, and that an NFR must first be analysed and decomposed until it can be expressed quantitatively. The worked example is a patient appointment system: registration with four acceptance criteria (blank fields blocked, email format validated, verification link sent, duplicate email rejected) and check-in with four more (daily roster, one-click check-in, status turns Arrived, doctor's dashboard alerted).</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It ties the whole course together: an NFR with no decomposed measure has no acceptance test, and a requirement with no acceptance test cannot be marked as met.</p></div>
+        <div class="example"><b>Example.</b> “The app shall be usable one-handed” has no test; decomposed to “all primary actions within the lower third, targets at least 44 px”, the test is a screen measurement at 375 px width.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Writing one acceptance criterion per requirement. Registration needed four, one for each way it can go wrong.</p>
+      <details><summary>Slide 22</summary><blockquote>“Identifying and designing acceptance tests may be difficult for nonfunctional requirements • To be validated, nonfunctional requirements must first be analyzed and decomposed to the point where they can be expressed quantitatively.”<cite>Slide 22</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="requirements management evolving baseline creep iso 15288 12207 frozen core">
+      <div class="card-head"><h3>9 · Requirements management, and requirements creep</h3><button class="know" data-id="l11-mgmt" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Requirements management records and maintains the evolving requirements with their context and history, and sets procedures for defining, controlling and publishing the baseline at every level of the system of interest; the deck places it inside the project and technical processes of ISO/IEC 15288 and 12207. Requirements likely to evolve are identified and communicated to acquirer and technical community alike — its example is an interest rate set by the policy holder — and a core subset may be <strong>frozen early</strong>. Every proposed new requirement is assessed for its impact on the baseline's intent. The warning: a significant proportion of requirements will change, often because the environment changed rather than because the analysis was wrong, and <strong>uncontrolled change becomes requirements creep</strong>, with cost overrun, delay, design error, dissatisfaction or cancellation.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It gives the honest answer to “why manage requirements”: change is inevitable, and the job is to keep it visible instead of letting it accumulate.</p></div>
+        <div class="example"><b>Example.</b> A clinic adds “send reminders by LINE as well as SMS” three weeks before release. Managed, it is a change request with an impact on cost and test scope; unmanaged, it is creep, and the reminder test plan silently stops covering both channels.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Calling all change a failure of analysis. The deck says much of it is an inevitable consequence of a changing environment.</p>
+      <details><summary>Slide 29</summary><blockquote>“While changes may be unavoidable, excessive uncontrolled changes can result in “requirements creep” that can result in cost overruns, schedule delays, design errors, buyer dissatisfaction, or even cancellation of the project.”<cite>Slide 29</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="change management baselines functional allocated developmental product change request ccb source of requests">
+      <div class="card-head"><h3>10 · Change management and the four baselines</h3><button class="know" data-id="l11-change" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Change is managed by sending every proposed change through a defined <strong>impact assessment, review and approval</strong>, backed by tracing and version control. The deck names four baselines. <strong>Functional</strong>: the reviewed system requirements, including external interface descriptions. <strong>Allocated</strong>: the reviewed system-element requirement specifications, interfaces included. <strong>Developmental</strong>: the evolving configuration at selected points in the life cycle, with change authority resting mainly with the supplier. <strong>Product</strong>: the completed system. Which baseline applies, and who may approve a change to it, is set in the project's configuration management plan. Requests arrive from problem reports, users wanting enhancements, other projects through interfaces, underlying software such as a new OS version, and senior management changing strategy.</p>
+      <figure class="fig">
+        <div class="fig-scroll">
+          <svg viewBox="0 0 940 260" role="img" aria-label="The four baselines in order: functional system requirements, allocated element requirements, developmental configuration, and product, each with who holds change authority">
+            <defs>
+              <marker id="f111a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--muted)"/></marker>
+            </defs>
+            <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="11">
+              <rect x="20" y="60" width="200" height="80" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="120" y="86" text-anchor="middle" fill="var(--ink)" font-size="12">Functional</text>
+              <text x="120" y="104" text-anchor="middle" fill="var(--muted)" font-size="9.5">reviewed system requirements</text>
+              <text x="120" y="120" text-anchor="middle" fill="var(--muted)" font-size="9.5">plus external interfaces</text>
+
+              <rect x="255" y="60" width="200" height="80" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="355" y="86" text-anchor="middle" fill="var(--ink)" font-size="12">Allocated</text>
+              <text x="355" y="104" text-anchor="middle" fill="var(--muted)" font-size="9.5">element requirements</text>
+              <text x="355" y="120" text-anchor="middle" fill="var(--muted)" font-size="9.5">with interface specs</text>
+
+              <rect x="490" y="60" width="200" height="80" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="590" y="86" text-anchor="middle" fill="var(--ink)" font-size="12">Developmental</text>
+              <text x="590" y="104" text-anchor="middle" fill="var(--muted)" font-size="9.5">the evolving configuration</text>
+              <text x="590" y="120" text-anchor="middle" fill="var(--muted)" font-size="9.5">authority: the supplier</text>
+
+              <rect x="725" y="60" width="195" height="80" rx="4" fill="var(--accent-soft)" stroke="var(--accent)"/>
+              <text x="822" y="86" text-anchor="middle" fill="var(--ink)" font-size="12">Product</text>
+              <text x="822" y="104" text-anchor="middle" fill="var(--muted)" font-size="9.5">the completed system</text>
+              <text x="822" y="120" text-anchor="middle" fill="var(--muted)" font-size="9.5">delivered</text>
+
+              <line x1="222" y1="100" x2="251" y2="100" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f111a)"/>
+              <line x1="457" y1="100" x2="486" y2="100" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f111a)"/>
+              <line x1="692" y1="100" x2="721" y2="100" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#f111a)"/>
+
+              <text x="470" y="176" text-anchor="middle" fill="var(--ink)" font-size="10.5">A change request names the baseline it touches; the configuration management plan names who may approve it.</text>
+              <text x="470" y="200" text-anchor="middle" fill="var(--muted)" font-size="10">Impact assessment → review → approval, with tracing and version control behind all three.</text>
+              <text x="470" y="232" text-anchor="middle" fill="var(--muted)" font-size="9.5">Requests come from problem reports, users, other projects, new underlying software, and senior management.</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption><span class="fig-n">Fig. 11.2.</span> Four baselines, in the order they are established. <span lang="th">อ่านจากซ้ายไปขวา: baseline สี่ตัวเรียงตามวงจร — functional (requirement ของระบบที่รีวิวแล้ว) → allocated (requirement ขององค์ประกอบระบบ) → developmental (สิ่งที่กำลังพัฒนา ซึ่งอำนาจอนุมัติอยู่กับผู้จัดทำ) → product (ระบบที่เสร็จแล้ว) ใต้แต่ละกล่องคือสิ่งที่มันบรรจุ สังเกตว่าการเปลี่ยนแต่ละครั้งต้องระบุว่ากระทบ baseline ตัวไหน และใครมีอำนาจอนุมัติ ซึ่งกำหนดไว้ใน configuration management plan</span></figcaption>
+      </figure>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">“Who may approve this change” is a different answer at each baseline, and that is the point of having four.</p></div>
+        <div class="example"><b>Example.</b> A new clinic policy changes the cancellation window. It touches the functional baseline (a system requirement) and the product baseline (the released system), and both are approved by different people.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Naming a single baseline for the whole project. The deck lists four and ties each to a level of authority.</p>
+      <details><summary>Slide 30</summary><blockquote>“Functional baseline corresponds to the reviewed system requirements … Allocated baseline corresponds to the reviewed system element requirements specifications … Developmental baseline represents the evolving system … Product baseline corresponds to the completed system.”<cite>Slide 30</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="requirements tracing backward forward traceability matrix impact analysis source design code test">
+      <div class="card-head"><h3>11 · Tracing, backward and forward</h3><button class="know" data-id="l11-trace" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Tracing recovers where a requirement came from and predicts what a change will touch. <strong>Backward</strong>: a software requirement traces to the system requirement and the stakeholder who motivated it. <strong>Forward</strong>: a requirement traces into the requirements elaborated from it, the design entities, the implementation modules, the test cases and even the user-manual section that describes it. The traceability matrix has to be maintained for the whole life of the product; if it is not updated as requirements change, it becomes unreliable exactly when impact analysis needs it.</p>
+      <figure class="fig">
+        <div class="fig-scroll">
+          <svg viewBox="0 0 940 280" role="img" aria-label="A requirement traced backward to the business goal and stakeholder, and forward through design, code and test cases, with the traceability matrix in the middle">
+            <defs>
+              <marker id="f113a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--muted)"/></marker>
+            </defs>
+            <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10.5">
+              <text x="230" y="26" text-anchor="middle" fill="var(--accent)" font-size="11.5" font-weight="600">backward — where it came from</text>
+              <text x="700" y="26" text-anchor="middle" fill="var(--ink)" font-size="11.5" font-weight="600">forward — what it touches</text>
+
+              <rect x="20" y="46" width="180" height="44" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="110" y="64" text-anchor="middle" fill="var(--ink)">business goal</text>
+              <text x="110" y="80" text-anchor="middle" fill="var(--muted)" font-size="9">cut no-shows by 15%</text>
+              <rect x="20" y="104" width="180" height="44" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="110" y="122" text-anchor="middle" fill="var(--ink)">stakeholder</text>
+              <text x="110" y="138" text-anchor="middle" fill="var(--muted)" font-size="9">clinic manager</text>
+              <rect x="20" y="162" width="180" height="44" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="110" y="180" text-anchor="middle" fill="var(--ink)">system requirement</text>
+              <text x="110" y="196" text-anchor="middle" fill="var(--muted)" font-size="9">remind 24 h before</text>
+
+              <rect x="330" y="86" width="230" height="80" rx="4" fill="var(--accent-soft)" stroke="var(--accent)"/>
+              <text x="445" y="116" text-anchor="middle" fill="var(--ink)" font-size="11.5">REQ-APPT-042</text>
+              <text x="445" y="136" text-anchor="middle" fill="var(--muted)" font-size="9.5">the requirement</text>
+              <text x="445" y="152" text-anchor="middle" fill="var(--muted)" font-size="9">and its row in the matrix</text>
+
+              <rect x="660" y="46" width="260" height="36" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="790" y="69" text-anchor="middle" fill="var(--ink)">design entity</text>
+              <rect x="660" y="94" width="260" height="36" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="790" y="117" text-anchor="middle" fill="var(--ink)">code module</text>
+              <rect x="660" y="142" width="260" height="36" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="790" y="165" text-anchor="middle" fill="var(--ink)">test case</text>
+              <rect x="660" y="190" width="260" height="36" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="790" y="213" text-anchor="middle" fill="var(--ink)">manual section</text>
+
+              <line x1="204" y1="68" x2="326" y2="112" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f113a)"/>
+              <line x1="204" y1="126" x2="326" y2="126" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f113a)"/>
+              <line x1="204" y1="184" x2="326" y2="140" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f113a)"/>
+              <line x1="564" y1="108" x2="656" y2="64" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f113a)"/>
+              <line x1="564" y1="120" x2="656" y2="112" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f113a)"/>
+              <line x1="564" y1="136" x2="656" y2="160" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f113a)"/>
+              <line x1="564" y1="148" x2="656" y2="208" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f113a)"/>
+
+              <text x="470" y="252" text-anchor="middle" fill="var(--muted)" font-size="10">Keep the matrix current, or it fails exactly when a change arrives and impact analysis needs it.</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption><span class="fig-n">Fig. 11.3.</span> One requirement, traced both ways. <span lang="th">อ่านสองฝั่งของ requirement ตรงกลาง: ฝั่งซ้ายคือ backward trace — จาก requirement ย้อนขึ้นไปหา system requirement ผู้มีส่วนได้ส่วนเสีย และเป้าหมายธุรกิจที่ทำให้มันมีอยู่ ฝั่งขวาคือ forward trace — จาก requirement ลงไปสู่ design entity, code module, test case และส่วนของคู่มือที่อธิบายมัน เส้นทั้งสองฝั่งคือแถวเดียวกันใน traceability matrix ถ้าโจทย์ถามว่า change request หนึ่งจะกระทบอะไร คำตอบคือการเดินตามเส้นไปข้างหน้า</span></figcaption>
+      </figure>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It is the mechanism behind impact analysis: without a current matrix, “what does this change touch?” can only be answered by searching.</p></div>
+        <div class="example"><b>Example.</b> The cancellation window moves from 48 to 24 hours: backward, it traces to a board policy; forward, to one screen, two test cases and a manual paragraph — all of which must change in the same release.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Drawing tracing as one direction. The deck defines both, and impact analysis needs the forward one.</p>
+      <details><summary>Slide 32</summary><blockquote>“A requirement should be traceable backward to the requirements and stakeholders that motivated it … Conversely, a requirement should be traceable forward into the requirements, design entities, implementation module, and test cases that satisfy it.”<cite>Slide 32</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="measuring requirements volume complexity functional size measurement use case point function point">
+      <div class="card-head"><h3>12 · Measuring the requirements</h3><button class="know" data-id="l11-measure" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Knowing the <strong>volume</strong> of a requirement set gives a measure of its complexity. The number is used to size a change, to estimate development or maintenance cost, or as the denominator of other measurements. The technique the deck names is <strong>functional size measurement</strong>, with two approaches: the <strong>use case point</strong> approach and the <strong>function point</strong> approach.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It answers “how big is this project” with something countable before a line of code exists, and it gives the change request a size as well as a direction.</p></div>
+        <div class="example"><b>Example.</b> A clinic module with 12 use cases and 40 business rules scores one size; the “LINE reminders” change adds two use cases and three rules, so its cost is reasoned about as a proportion, not a guess.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Confusing the volume of requirements with the size of the software. It measures the requirement set, which is what estimates are made from.</p>
+      <details><summary>Slide 34</summary><blockquote>“Functional size measurement (FSM) is a technique for evaluating the size of a body of functional requirements. – Use case point approach – Function point approach.”<cite>Slide 34</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="11" data-search="requirements attributes identifier rationale source change history risk dependency priority verification method REQ-PAS">
+      <div class="card-head"><h3>13 · Attributes: the five groups a requirement carries</h3><button class="know" data-id="l11-attrs" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Attributes are defined, recorded and updated as the software evolves. At minimum: the classification dimensions and the <strong>verification method or acceptance-test section</strong>. Beyond that: an identifier, a summary rationale, the source, change history, risk level, dependency and priority. The deck singles one out as most important — <strong>an identifier that lets the requirement be uniquely and unambiguously identified</strong>. Its worked example groups the rest into five: identification and core data, ownership and accountability, life cycle and prioritisation, traceability links, and change control with the audit log.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">Attributes are what make the rest of the deck possible: change management needs priority and ownership, tracing needs links, review needs the verification method.</p></div>
+        <div class="example"><b>Example.</b> REQ-PAS-042: cancel up to 24 hours before, no fee; owner the clinic chief; priority Must; traces up to “no-shows −15%” and down to two test cases; version 2.1, changed from 48 to 24 hours by the October board.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Stopping at an ID and a description. Without the verification method and the trace links, the attribute set cannot support change or testing.</p>
+      <details><summary>Slide 35</summary><blockquote>“The most important requirements attribute is an identifier that allows the requirements to be uniquely and unambiguously identified.”<cite>Slide 35</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="10" data-search="deployment diagram architecture nodes device execution environment artifact communication path nfr ptsims web responsive">
+      <div class="card-head"><h3>18 · Deployment diagrams, the part she could not teach</h3><button class="know" data-id="l10-deploy" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A deployment diagram is the physical view: the <strong>nodes</strong> the software runs on, the <strong>artifacts</strong> deployed to each node, and the <strong>communication paths</strong> between them. A node is drawn as a box and may carry a stereotype — <code>«device»</code> for hardware such as a phone or a server, <code>«execution environment»</code> for software that hosts other software, such as an application server or a browser. An artifact is a deployable file — the war, the jar, the database schema — and a path is labelled with its protocol: HTTPS, SQL, SMTP. This is the one model the course needs and the deck does not contain, because the 24 Nov session lost its architectural-modelling half.</p>
+      <figure class="fig">
+        <div class="fig-scroll">
+          <svg viewBox="0 0 940 330" role="img" aria-label="Deployment diagram for PTSIMS: client devices reach a load balancer over HTTPS, which forwards to an application server holding the web application artifact; the application server talks to a database server over SQL, to a mail server over SMTP, and to the external card gateway over HTTPS; a legend names node, device, execution environment, artifact and communication path">
+            <defs>
+              <marker id="f1011a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--muted)"/></marker>
+            </defs>
+            <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10.5">
+              <text x="470" y="24" text-anchor="middle" fill="var(--muted)" font-size="10">PTSIMS as a responsive web application — the two NFRs decide how many nodes there are and what protects them</text>
+
+              <rect x="470" y="54" width="130" height="78" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="535" y="70" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+              <text x="535" y="86" text-anchor="middle" fill="var(--ink)">Client devices</text>
+              <text x="535" y="102" text-anchor="middle" fill="var(--muted)" font-size="9">member phone · PT tablet</text>
+              <text x="535" y="116" text-anchor="middle" fill="var(--muted)" font-size="9">PT-AM desktop</text>
+
+              <rect x="640" y="54" width="110" height="78" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="695" y="70" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+              <text x="695" y="86" text-anchor="middle" fill="var(--ink)">Load balancer</text>
+              <text x="695" y="102" text-anchor="middle" fill="var(--muted)" font-size="9">TLS termination</text>
+              <text x="695" y="116" text-anchor="middle" fill="var(--muted)" font-size="9">two app servers behind</text>
+
+              <rect x="790" y="44" width="130" height="98" rx="3" fill="var(--accent-soft)" stroke="var(--accent)"/>
+              <text x="855" y="60" text-anchor="middle" fill="var(--muted)" font-size="9">«execution environment»</text>
+              <text x="855" y="76" text-anchor="middle" fill="var(--ink)">Application server</text>
+              <rect x="806" y="86" width="98" height="20" rx="2" fill="var(--surface)" stroke="var(--line)"/>
+              <text x="855" y="100" text-anchor="middle" fill="var(--ink)" font-size="9">«artifact» ptsims.war</text>
+              <text x="855" y="124" text-anchor="middle" fill="var(--muted)" font-size="9">serves the responsive UI</text>
+
+              <rect x="470" y="196" width="130" height="70" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="535" y="212" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+              <text x="535" y="228" text-anchor="middle" fill="var(--ink)">Mail server</text>
+              <text x="535" y="244" text-anchor="middle" fill="var(--muted)" font-size="9">receipts and notices</text>
+
+              <rect x="620" y="196" width="130" height="70" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="685" y="212" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+              <text x="685" y="228" text-anchor="middle" fill="var(--ink)">Database server</text>
+              <rect x="632" y="236" width="106" height="18" rx="2" fill="var(--surface)" stroke="var(--line)"/>
+              <text x="685" y="249" text-anchor="middle" fill="var(--ink)" font-size="9">«artifact» schema</text>
+
+              <rect x="790" y="196" width="130" height="70" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="855" y="212" text-anchor="middle" fill="var(--muted)" font-size="9">«device» external</text>
+              <text x="855" y="228" text-anchor="middle" fill="var(--ink)">Card company</text>
+              <text x="855" y="244" text-anchor="middle" fill="var(--muted)" font-size="9">authorisation gateway</text>
+
+              <line x1="604" y1="93" x2="636" y2="93" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f1011a)"/>
+              <text x="620" y="85" text-anchor="middle" fill="var(--muted)" font-size="8.5">HTTPS</text>
+              <line x1="754" y1="93" x2="786" y2="93" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f1011a)"/>
+              <text x="770" y="85" text-anchor="middle" fill="var(--muted)" font-size="8.5">HTTPS</text>
+
+              <path d="M855 142 V 192" fill="none" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f1011a)"/>
+              <text x="863" y="170" fill="var(--bad)" font-size="8.5">HTTPS · PCI-DSS</text>
+              <path d="M810 142 V 160 H 685 V 192" fill="none" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f1011a)"/>
+              <text x="694" y="154" fill="var(--muted)" font-size="8.5">SQL over TLS</text>
+              <path d="M830 142 V 176 H 535 V 192" fill="none" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f1011a)"/>
+              <text x="545" y="170" fill="var(--muted)" font-size="8.5">SMTP</text>
+
+              <rect x="30" y="196" width="150" height="52" rx="3" fill="none" stroke="var(--line)" stroke-dasharray="3 2"/>
+              <text x="105" y="216" text-anchor="middle" fill="var(--muted)" font-size="9">«device» / «execution environment»</text>
+              <text x="105" y="232" text-anchor="middle" fill="var(--ink)">a node is hardware or a host</text>
+              <rect x="30" y="258" width="150" height="22" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="105" y="273" text-anchor="middle" fill="var(--ink)" font-size="9">«artifact» a deployable file</text>
+              <line x1="30" y1="296" x2="120" y2="296" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#f1011a)"/>
+              <text x="130" y="300" fill="var(--ink)" font-size="9">communication path, labelled with its protocol</text>
+
+              <text x="470" y="300" fill="var(--muted)" font-size="9.5">Member, PT and PT-AM are three actors on one client node; the agent stays outside your boundary.</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption><span class="fig-n">Fig. 10.9.</span> PTSIMS as a deployment, with the two NFRs visible in the shape. <span lang="th">อ่านจากซ้ายไปขวา: ผู้ใช้สามกลุ่ม (สมาชิก PT และ PT-AM) อยู่ใน node ของ client แล้ววิ่งผ่าน HTTPS ไปที่ load balancer ซึ่งตัด TLS และกระจายไปยัง application server สองตัว กล่อง «execution environment» คือที่ที่ซอฟต์แวร์รัน และ «artifact» คือไฟล์ที่ติดตั้งลงไป จาก application server มีสามเส้นออก: ไป database ด้วย SQL, ไป mail server ด้วย SMTP และไป gateway ของบริษัทบัตรด้วย HTTPS ซึ่งอยู่นอกขอบเขตของเรา สังเกตว่าจำนวน node และเส้นพวกนี้ไม่ได้มาจากความสวย แต่มาจาก NFR สองข้อ — availability ทำให้ต้องมีสอง app server หลัง load balancer และ security ทำให้ทุกเส้นเป็น TLS กับแยก gateway ออกไป</span></figcaption>
+      </figure>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It is where an NFR stops being a sentence and becomes hardware. “99.5% available” is the second application server; “card data protected” is the gateway outside the boundary and TLS on every path.</p></div>
+        <div class="example"><b>Example.</b> The happy-fitness assignment asks for exactly this: two NFRs, then a deployment where nodes serve the member, the trainer and the assistant manager, and the card company sits outside as an external node.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Drawing a component or class diagram and calling it deployment. A deployment diagram answers “what runs where, and over which protocol”, not “what calls what in code”.</p>
+      <details><summary>Not in the deck</summary><blockquote>“Requirements validation … model validation … architectural modeling” — the 24 Nov slide list keeps architectural modelling, but the class did not cover it; this card fills the gap for the assignment.</blockquote></details>
+    </article>
+
+  </div>
+</section>
+
 <!-- ============ VIDEO ============ -->
 <section class="view" id="video" role="tabpanel" aria-label="Video-only material" hidden>
   <div class="eyebrow">Not in the PDFs, captured from the recordings</div>
@@ -5626,6 +6035,7 @@ body[data-th="off"] .ex-th{display:none}
             <tr><td>7</td><td><a href="https://youtu.be/AUm9TBaGvDg" target="_blank" rel="noopener">Lesson 7 behavioural modelling, 19 Nov (uploaded as Lesson 8)</a></td></tr>
             <tr><td>8</td><td><a href="https://youtu.be/FmKEhxXrYws" target="_blank" rel="noopener">Lesson 8 non-functional requirements, 19 Nov (uploaded as Lesson 9)</a></td></tr>
             <tr><td>9–10</td><td><a href="https://youtu.be/rJTZXJR3Wy8" target="_blank" rel="noopener">Lessons 9–10, SRS and UI design, 20 Nov (uploaded as Lesson 10)</a></td></tr>
+            <tr><td>11</td><td><a href="https://youtu.be/dqz3BFqwTRM" target="_blank" rel="noopener">Lesson 11 validation and management, 24 Nov</a></td></tr>
         </tbody>
       </table>
     </div>
@@ -5844,7 +6254,7 @@ body[data-th="off"] .ex-th{display:none}
 <section class="view" id="hw" role="tabpanel" aria-label="Homework" hidden>
   <div class="eyebrow">Individual assignments</div>
   <h1>Homework, with model answers</h1>
-  <p class="lede">Quiz 1 covers the fundamentals; Quiz 2 covers elicitation, analysis and negotiation; Quiz 3 is the modelling assignment on the Happy Fitness case; P7 and P8 are the two assignments set after the midterm. Read the guide, cover the answer, then write yours.</p>
+  <p class="lede">Quiz 1 covers the fundamentals; Quiz 2 covers elicitation, analysis and negotiation; Quiz 3 is the modelling assignment on the Happy Fitness case; Quiz 4 is the individual assignment on PTSIMS; P7 and P8 are the two assignments set after the midterm. Read the guide, cover the answer, then write yours.</p>
 
   <div class="section-head"><div><h2>Quiz 1 — the ten questions</h2><p>20 marks, 10 × 2, about 30 minutes. Read the guide, cover the answer, then write yours; the models are Thai with English terms.</p></div></div>
   <div class="grid" style="gap:12px">
@@ -6128,6 +6538,178 @@ body[data-th="off"] .ex-th{display:none}
       <p class="marker">Marker wants: the three containers in the deck's order, every section named inside them, the qualifiers that are easy to miss, and the modelling list the project must contain. A bare list of chapter numbers does not answer the question — say what each section holds.</p>
       <button class="reveal" aria-expanded="false">Show model answer</button>
       <div class="answer"><p>รายการหัวข้อคือสารบัญของ SRS ตาม Lesson 9 ซึ่งมีสามกล่องใหญ่ <strong>(1) general content</strong> — identification (ชื่อเรื่องและ revision notice), สารบัญ รายการรูป และรายการตาราง, definitions, references ที่แยก Compliance กับ Guidance, และรายการคำย่อ <strong>(2) product overview</strong> — product perspective แปดข้อ (system, user, hardware, software และ communications interfaces, memory, operations, site adaptation), product functions, user characteristics, limitations, assumptions and dependencies, และ apportioning <strong>(3) specific requirements</strong> — external interfaces (สิบสองช่องต่อ interface), functions, usability, performance ที่แยก static กับ dynamic, logical database, design constraints, standards compliance, software system attributes ห้าตัว, verification ที่เขียนคู่ขนานกับ 3.1–3.10, และ supporting information ที่ต้องบอกชัดว่าเป็นส่วนหนึ่งของ requirement หรือไม่ ปิดท้ายด้วยรายการโมเดลที่โครงงานต้องมีตามสไลด์ 65: use case diagram 1, use case description 2 (detail, essential), activity diagram 2 ที่มี object flow, class diagram 1 จากสอง use case description, sequence diagram 2, state machine 1 พร้อมคำอธิบาย, deployment diagram 1 กับ network model 1 พร้อม spec ฮาร์ดแวร์และซอฟต์แวร์ และ UI design ของสอง use case description ที่มีการตรวจข้อมูลเข้าและข้อความโต้ตอบ สังเกตว่าอาจารย์พูดในคาบ 20 พ.ย. ว่า SRS ของรายวิชานี้เป็นฉบับย่อในรูปสไลด์ — เนื้อหาสำคัญ ตัวเล่มไม่สำคัญ</p></div>
+    </div>
+  </div>
+
+  <div class="section-head"><div><h2>Quiz 4 — Happy Fitness, PTSIMS (individual assignment 4)</h2><p>25 points: two NFRs and their effect on the architecture (5), a deployment diagram (10), a UI design for the report section with two principles named (10).</p></div></div>
+  <div class="grid" style="gap:12px">
+
+    <div class="qa quiz-item" data-search="quiz4 nfr two non-functional requirements technique architecture availability security ptsims happy fitness">
+      <p class="q"><span>Q1</span>Applying the technique for defining two non-functional requirements, explain how they affect the system or the system architecture. (5 points)<span class="th-line" lang="th">เลือก NFR สองข้อโดยใช้เทคนิคที่เรียน แล้วอธิบายว่ามันกระทบระบบหรือสถาปัตยกรรมอย่างไร</span></p>
+      <p class="guide"><b>Use</b> Lesson 8 · <a href="#" data-card="l8-goal">clause 6</a>, <a href="#" data-card="l8-testable">clause 9</a>, <a href="#" data-card="l8-metrics">clause 10</a> · Lesson 11 · <a href="#" data-card="l11-accept">clause 8</a></p>
+      <p class="marker">Marker wants: two NFRs, each written as a measurable statement with a source; the technique named; one architecture consequence per NFR that can be seen in the deployment diagram. A wish with an adjective scores nothing.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>ใช้ <strong>quality attribute scenario</strong> ของ Lesson 8 เป็นเทคนิค แล้วเขียนสองข้อนี้ <strong>(1) Availability:</strong> source = สมาชิกและ PT, stimulus = เปิดตารางจองหรือบันทึก session, environment = เวลาทำการ จ.–ส. 06:00–22:00, artifact = ระบบ PTSIMS, response = ระบบให้บริการต่อโดยไม่ต้องให้ผู้ใช้ลองใหม่, measure = พร้อมใช้งาน 99.5% ของเวลาทำการ และกู้คืนภายใน 5 นาทีเมื่อ node หนึ่งล้ม <strong>(2) Security:</strong> source = ผู้ใช้ทั่วไปบนอินเทอร์เน็ต, stimulus = ส่งข้อมูลบัตรเพื่อซื้อโปรแกรม, environment = การชำระเงินผ่านหน้าเว็บ, artifact = โมดูลชำระเงิน, response = ข้อมูลบัตรไม่ถูกเก็บในฐานข้อมูลของเราและการสื่อสารทุกเส้นเข้ารหัส, measure = TLS 1.2 ขึ้นไปทุกเส้น, ไม่มี PAN ในฐานข้อมูล, และตรวจ PCI-DSS ได้ ผลต่อสถาปัตยกรรม: availability บังคับให้มี <strong>load balancer กับ application server สองตัว</strong> และฐานข้อมูลที่มี backup/replica; security บังคับให้ <strong>gateway ของบริษัทบัตรอยู่นอกขอบเขต</strong> ระบบเราเห็นแค่ผลอนุมัติ ไม่เห็นเลขบัตร และทุกเส้นทางเป็น TLS — ทั้งสองข้อนี้คือสิ่งที่ต้องเห็นใน deployment diagram ของข้อ 2</p></div>
+    </div>
+
+    <div class="qa quiz-item wide" data-search="quiz4 deployment diagram nodes device execution environment artifact communication path responsive web ptsims">
+      <p class="q"><span>Q2</span>Draw a deployment diagram for PTSIMS as a responsive web-based application, applying the two non-functional requirements from question 1. The architecture shall contain nodes responsible for all user actor types. (10 points)<span class="th-line" lang="th">วาด deployment diagram ของ PTSIMS โดยใช้ NFR สองข้อจากข้อ 1 และต้องมี node ที่รองรับผู้ใช้ทุกประเภท</span></p>
+      <p class="guide"><b>Use</b> Lesson 10 · <a href="#" data-card="l10-deploy">clause 18</a> and Fig. 10.9 · Lesson 8 · <a href="#" data-card="l8-class">clause 2</a></p>
+      <p class="marker">Marker wants: nodes stereotyped («device», «execution environment») and the artifacts placed on them; every communication path labelled with its protocol; all three actor types reachable; the external card company outside your boundary; the two NFRs visible as structure, not as labels.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <p>สอง NFR จากข้อ 1 คือเหตุผลของรูปร่างแผนภาพ ไม่ใช่ป้ายที่แปะไว้:</p>
+        <figure class="fig hw4fig">
+          <div class="fig-scroll">
+            <svg viewBox="0 0 940 340" role="img" aria-label="Deployment answer for PTSIMS: client devices for member, trainer and assistant manager reach a load balancer with TLS over HTTPS, then two application servers holding the ptsims.war artifact; the application server connects to a database over SQL, a mail server over SMTP, and the external card gateway over HTTPS; badges mark where each of the two NFRs shapes the diagram">
+              <defs>
+                <marker id="fhw4a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--muted)"/></marker>
+              </defs>
+              <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10.5">
+                <text x="470" y="22" text-anchor="middle" fill="var(--ink)" font-size="12">PTSIMS — deployment answer</text>
+
+                <rect x="400" y="46" width="150" height="86" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="475" y="62" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+                <text x="475" y="78" text-anchor="middle" fill="var(--ink)">Client devices</text>
+                <text x="475" y="94" text-anchor="middle" fill="var(--muted)" font-size="9">member phone</text>
+                <text x="475" y="108" text-anchor="middle" fill="var(--muted)" font-size="9">PT tablet</text>
+                <text x="475" y="122" text-anchor="middle" fill="var(--muted)" font-size="9">PT-AM desktop</text>
+
+                <rect x="600" y="46" width="120" height="86" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="660" y="62" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+                <text x="660" y="78" text-anchor="middle" fill="var(--ink)">Load balancer</text>
+                <text x="660" y="94" text-anchor="middle" fill="var(--muted)" font-size="9">TLS termination</text>
+                <text x="660" y="108" text-anchor="middle" fill="var(--muted)" font-size="9">routes to two</text>
+                <text x="660" y="122" text-anchor="middle" fill="var(--muted)" font-size="9">app servers</text>
+
+                <rect x="770" y="36" width="150" height="106" rx="3" fill="var(--accent-soft)" stroke="var(--accent)"/>
+                <text x="845" y="52" text-anchor="middle" fill="var(--muted)" font-size="9">«execution environment»</text>
+                <text x="845" y="68" text-anchor="middle" fill="var(--ink)">Application servers (2)</text>
+                <rect x="784" y="78" width="122" height="20" rx="2" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="845" y="92" text-anchor="middle" fill="var(--ink)" font-size="9">«artifact» ptsims.war</text>
+                <text x="845" y="112" text-anchor="middle" fill="var(--muted)" font-size="9">responsive web UI</text>
+                <text x="845" y="126" text-anchor="middle" fill="var(--muted)" font-size="9">for all three actors</text>
+
+                <circle cx="912" cy="44" r="9" fill="var(--accent)"/>
+                <text x="912" y="48" text-anchor="middle" fill="var(--accent-ink)" font-size="10" font-weight="700">1</text>
+
+                <rect x="400" y="210" width="140" height="72" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="470" y="226" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+                <text x="470" y="242" text-anchor="middle" fill="var(--ink)">Mail server</text>
+                <text x="470" y="258" text-anchor="middle" fill="var(--muted)" font-size="9">receipts, notices</text>
+
+                <rect x="580" y="210" width="140" height="72" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="650" y="226" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+                <text x="650" y="242" text-anchor="middle" fill="var(--ink)">Database server</text>
+                <rect x="592" y="250" width="116" height="18" rx="2" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="650" y="263" text-anchor="middle" fill="var(--ink)" font-size="9">«artifact» schema</text>
+
+                <rect x="770" y="210" width="150" height="72" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="845" y="226" text-anchor="middle" fill="var(--muted)" font-size="9">«device» external</text>
+                <text x="845" y="242" text-anchor="middle" fill="var(--ink)">Card company</text>
+                <text x="845" y="258" text-anchor="middle" fill="var(--muted)" font-size="9">authorisation gateway</text>
+                <circle cx="912" cy="218" r="9" fill="var(--bad)"/>
+                <text x="912" y="222" text-anchor="middle" fill="var(--accent-ink)" font-size="10" font-weight="700">2</text>
+
+                <line x1="554" y1="88" x2="596" y2="88" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fhw4a)"/>
+                <text x="575" y="80" text-anchor="middle" fill="var(--muted)" font-size="8.5">HTTPS</text>
+                <line x1="724" y1="88" x2="766" y2="88" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fhw4a)"/>
+                <text x="745" y="80" text-anchor="middle" fill="var(--muted)" font-size="8.5">HTTPS</text>
+
+                <path d="M830 142 V 206" fill="none" stroke="var(--bad)" stroke-width="1.2" marker-end="url(#fhw4a)"/>
+                <text x="838" y="178" fill="var(--bad)" font-size="8.5">HTTPS · PCI-DSS</text>
+                <path d="M800 142 V 176 H 650 V 206" fill="none" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fhw4a)"/>
+                <text x="658" y="170" fill="var(--muted)" font-size="8.5">SQL over TLS</text>
+                <path d="M780 142 V 190 H 470 V 206" fill="none" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fhw4a)"/>
+                <text x="480" y="184" fill="var(--muted)" font-size="8.5">SMTP</text>
+
+                <text x="40" y="308" fill="var(--accent)" font-size="10">1 · availability NFR — two application servers behind the load balancer, database backed up</text>
+                <text x="40" y="326" fill="var(--bad)" font-size="10">2 · security NFR — the card gateway sits outside the boundary; TLS on every path; no card number stored</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Two actors' devices and the assistant manager's desktop share one client node; every path is labelled; the external agent is outside the system boundary.</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="qa quiz-item wide" data-search="quiz4 ui design report section 8 mode summary export excel csv steps messages principles layout minimal effort ptsims">
+      <p class="q"><span>Q3</span>Create a user interface design for section 8 (including 8.1 and 8.2). Identify the two UI design principles applied. The main screen shall let the user select the two report modes. (10 points)<span class="th-line" lang="th">ออกแบบหน้าจอสำหรับส่วนที่ 8 รวม 8.1 และ 8.2 โดยหน้าจอหลักต้องเลือกโหมดรายงานได้สองแบบ และระบุหลักการออกแบบสองข้อที่ใช้</span></p>
+      <p class="guide"><b>Use</b> Lesson 10 · <a href="#" data-card="l10-principles">clause 7</a>, <a href="#" data-card="l10-process">clause 11</a>, <a href="#" data-card="l10-output">clause 16</a>, <a href="#" data-card="l10-nav">clause 14</a></p>
+      <p class="marker">Marker wants: the steps listed before the screen; the messages the user will meet; a screen whose mode selector is obvious; two principles named and pointed at, not just listed; the layout and content awareness visible in the sketch.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <p><strong>วิธีที่ครูบอกให้ทำข้อนี้</strong> (คาบ 20 พ.ย. <a class="memo-time" href="https://youtu.be/rJTZXJR3Wy8?t=6864" target="_blank" rel="noopener" aria-label="Watch 1:54:24 in the recording">1:54:24</a>): ไม่ต้องวาดภาพสวย ๆ — วาดเป็นกล่องสี่เหลี่ยมแทนรูปหรือปุ่มได้ เพราะสิ่งที่ตรวจคือ “แต่ละหน้าจอมีอะไรปรากฏ” ไม่ใช่ศิลปะ และ flow ต้องตรงกับ use case description (สไลด์ 82)</p>
+        <p><strong>ขั้นตอนตาม use case (scenario):</strong> เปิดเมนู Reports → เลือกโหมด (Mode 1 summary หรือ Mode 2 export) → เลือกเดือนและปี → Preview → Export (Mode 2) หรือ Print (Mode 1)</p>
+        <p><strong>ข้อความที่ผู้ใช้จะเจอ:</strong> delay ระหว่างประมวลผล (“กำลังสร้างรายงาน อาจใช้เวลาถึง 30 วินาที”), acknowledgment เมื่อไฟล์เสร็จ (“ไฟล์ถูกสร้างแล้ว — ดาวน์โหลด”), confirmation ก่อนออกจากหน้าที่ยังไม่บันทึก, error เมื่อเดือนที่เลือกไม่มีข้อมูล (“ไม่พบ session ที่เสร็จสิ้นในเดือนนี้”)</p>
+        <figure class="fig hw4fig">
+          <div class="fig-scroll">
+            <svg viewBox="0 0 940 440" role="img" aria-label="Wireframe of the PTSIMS reports screen: title bar, a mode row with two radio options, a period row with month, year and a preview button, a results table with five columns and a total row, and an action row with export CSV, export Excel and print">
+              <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10">
+                <rect x="40" y="20" width="860" height="390" rx="5" fill="var(--surface-2)" stroke="var(--line)"/>
+                <rect x="40" y="20" width="860" height="30" rx="5" fill="var(--surface)" stroke="var(--line)"/>
+                <circle cx="58" cy="35" r="4" fill="var(--muted)"/>
+                <circle cx="72" cy="35" r="4" fill="var(--muted)"/>
+                <circle cx="86" cy="35" r="4" fill="var(--muted)"/>
+                <text x="110" y="39" fill="var(--ink)" font-size="11">PTSIMS — Reports · Personal Training</text>
+                <text x="884" y="39" text-anchor="end" fill="var(--muted)" font-size="9">generated 24 Nov 2026 14:05</text>
+
+                <rect x="60" y="66" width="820" height="58" rx="3" fill="var(--surface)" stroke="var(--accent)"/>
+                <text x="72" y="84" fill="var(--accent)" font-size="9" font-weight="600">1 · MODE</text>
+                <circle cx="92" cy="104" r="6" fill="none" stroke="var(--accent)" stroke-width="2"/>
+                <circle cx="92" cy="104" r="2.5" fill="var(--accent)"/>
+                <text x="106" y="101" fill="var(--ink)">Mode 1 — monthly summary per PT</text>
+                <text x="106" y="115" fill="var(--muted)" font-size="8.5">first name, last name, sessions used and left, amount payable</text>
+                <circle cx="482" cy="104" r="6" fill="none" stroke="var(--line)" stroke-width="2"/>
+                <text x="496" y="101" fill="var(--ink)">Mode 2 — export file</text>
+                <text x="496" y="115" fill="var(--muted)" font-size="8.5">Excel / CSV for the payroll system, same columns</text>
+
+                <rect x="60" y="134" width="820" height="46" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="72" y="152" fill="var(--muted)" font-size="9" font-weight="600">2 · PERIOD</text>
+                <rect x="72" y="158" width="150" height="18" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="80" y="171" fill="var(--ink)" font-size="9">Month: October 2026 ▾</text>
+                <rect x="234" y="158" width="110" height="18" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="242" y="171" fill="var(--ink)" font-size="9">Year: 2026 ▾</text>
+                <rect x="792" y="152" width="76" height="26" rx="3" fill="var(--accent)"/>
+                <text x="830" y="169" text-anchor="middle" fill="var(--accent-ink)" font-weight="600">Preview</text>
+
+                <rect x="60" y="190" width="820" height="150" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="72" y="208" fill="var(--muted)" font-size="9" font-weight="600">3 · RESULT — Mode 1 preview</text>
+                <line x1="60" y1="218" x2="880" y2="218" stroke="var(--line)"/>
+                <g fill="var(--muted)" font-size="8.5">
+                  <text x="76" y="232">PT</text><text x="246" y="232">Member</text><text x="466" y="232">Sessions used</text><text x="606" y="232">Sessions left</text><text x="756" y="232">Amount (THB)</text>
+                </g>
+                <line x1="60" y1="240" x2="880" y2="240" stroke="var(--line)"/>
+                <g fill="var(--ink)" font-size="9">
+                  <text x="76" y="258">Somchai K.</text><text x="246" y="258">Anna P.</text><text x="466" y="258">8</text><text x="606" y="258">2</text><text x="756" y="258">9,600</text>
+                  <text x="76" y="282">Somchai K.</text><text x="246" y="282">Niran S.</text><text x="466" y="282">4</text><text x="606" y="282">6</text><text x="756" y="282">4,800</text>
+                  <text x="76" y="306">Malee T.</text><text x="246" y="306">Pim W.</text><text x="466" y="306">10</text><text x="606" y="306">0</text><text x="756" y="306">12,000</text>
+                </g>
+                <line x1="60" y1="318" x2="880" y2="318" stroke="var(--line)"/>
+                <text x="76" y="332" fill="var(--ink)" font-size="9" font-weight="600">Total</text>
+                <text x="756" y="332" fill="var(--ink)" font-size="9" font-weight="600">26,400</text>
+
+                <rect x="60" y="350" width="820" height="44" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="72" y="368" fill="var(--muted)" font-size="9" font-weight="600">4 · ACTION</text>
+                <rect x="72" y="374" width="96" height="16" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="120" y="386" text-anchor="middle" fill="var(--muted)" font-size="8.5">Export CSV</text>
+                <rect x="176" y="374" width="96" height="16" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="224" y="386" text-anchor="middle" fill="var(--muted)" font-size="8.5">Export Excel</text>
+                <rect x="280" y="374" width="70" height="16" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="315" y="386" text-anchor="middle" fill="var(--muted)" font-size="8.5">Print</text>
+                <text x="366" y="386" fill="var(--muted)" font-size="8.5">export buttons enable only in Mode 2</text>
+
+                <text x="40" y="428" fill="var(--accent)" font-size="9.5">Layout — four zones in the order the task runs: mode, period, preview, action.</text>
+                <text x="900" y="428" text-anchor="end" fill="var(--accent)" font-size="9.5">Minimal effort — Reports → mode → Export: three clicks.</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Wireframe answer: two principles named and pointed at — <strong>Layout</strong> (the four zones follow the task) and <strong>Minimal user effort</strong> (three clicks from the main menu).</figcaption>
+        </figure>
+        <p><strong>สองหลักการที่ระบุ:</strong> <strong>Layout</strong> — สี่โซนเรียงตามลำดับงานจริง คือหัวเรื่อง/ตัวเลือกโหมด/ผลลัพธ์/การกระทำ และกลุ่มที่เกี่ยวข้องอยู่ติดกัน; <strong>minimal user effort</strong> — Reports → mode → Export รวมสามคลิก และค่าเริ่มต้นเป็นเดือนปัจจุบัน ไม่ต้องพิมพ์วันที่</p>
+        <p><strong>Interface standards ที่ใช้</strong> (สไลด์ 43): template = โครงสี่โซนเดียวกันทุกหน้ารายงาน; objects = Mode 1 / Mode 2 / Preview / Export; actions = Preview, Export, Print; icons = ชุด export/print ชุดเดียวทั้งระบบ</p>
+        <p><strong>Input validation และการรับมือข้อผิดพลาด</strong> (สไลด์ 72): ตรวจเดือนและปีว่าไม่เกินเดือนปัจจุบันก่อนกด Preview; Export ปิดไว้จนกว่า preview สำเร็จ; ข้อความ error เขียนเป็นภาษาคนพร้อมวิธีแก้ ไม่ใช่รหัส</p>
+      </div>
     </div>
   </div>
 
@@ -7162,6 +7744,52 @@ body[data-th="off"] .ex-th{display:none}
     </div>
   </div>
 
+  <div class="section-head"><div><h2>Lesson 11</h2><p>6 questions. Validate the document, then keep it true.</p></div></div>
+  <div class="grid" style="gap:12px">
+
+    <div class="qa" data-search="lesson 11 validation verification three levels document set requirement defect">
+      <p class="q"><span>Q1</span>Distinguish requirements validation from requirements verification, and say what each asks at the three levels the deck names.</p>
+      <p class="marker">Marker wants: the two definitions in the deck's own terms; the three levels; one sentence showing a document can pass one and fail the other.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p><strong>Validation</strong> defines the right software — the software that conforms to what users need and expect. <strong>Verification</strong> checks that the requirements conform to the organisation's standard and carry the characteristics of a good requirement: consistency, clarity, completeness. Both apply at three levels: the <strong>specification document</strong> (is the whole thing complete and consistent?), the <strong>set of requirements</strong> (does the set cover the need with no gap or duplicate, and is each item traceable?), and an <strong>individual requirement</strong> (is it well formed, and is it what the user meant?). The two columns are independent: “The system shall answer a lookup within 2 seconds” is well formed and measurable — verification passes — but if the ward needs it at the bedside in under a second, validation fails.</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 11 four practices review prototyping model validation acceptance testing choose">
+      <p class="q"><span>Q2</span>Name the four fundamental validation practices, and choose one for each situation: a 200-page SRS nobody has read; a workflow the nurses cannot describe in words; a class diagram whose objects never appear on any sequence diagram; a requirement about alarm latency.</p>
+      <p class="marker">Marker wants: the four names; the right practice per situation; the reason tied to what each practice can see.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>The four: <strong>requirements review, prototyping, model validation, acceptance testing</strong>. Situations: the unread SRS — <strong>review</strong>, with a checklist and at least one customer representative on the panel; the workflow nobody can describe — <strong>prototyping</strong>, because dynamic behaviour is easier to judge from an animated prototype than from prose; the class objects that never appear in a sequence diagram — <strong>model validation</strong>, a static analysis of communication paths across the structural and behavioural models; the alarm-latency requirement — <strong>acceptance testing</strong>, after the NFR is decomposed to a measurable threshold (“alarm raised within 1 second of the reading crossing the limit”). A review finds what is written wrongly, a prototype finds what was never written, model validation finds two models that disagree, and an acceptance test decides whether the finished product meets the sentence.</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 11 review summary report objective scope participants defect types results matrix open issues">
+      <p class="q"><span>Q3</span>What goes into the summary report of an SRS review, and why is the results table two-dimensional?</p>
+      <p class="marker">Marker wants: the eight contents; the reason for the matrix shape; what a cell holds.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>The report carries: the <strong>objective</strong> of the review; its <strong>scope</strong>, meaning the document under revision; the <strong>participants</strong>, reviewed by whom; <strong>date and time</strong>; <strong>terms and definitions</strong>, including a list of defect types; the <strong>checklist</strong>; the <strong>results</strong>; and the <strong>open issues</strong> with the action on each and who is responsible, with an explanation for every reviewed item. The results table is two-dimensional because a review is not one verdict: rows are checklist items, columns are the requirements reviewed, and each cell holds Pass, Fail or Notes with the specified reason and the way to solve it. That shape lets a reader see both which requirement is weak and which kind of defect keeps appearing — the defect-type list is what makes the results comparable between reviews.</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 11 defect types ambiguous incomplete contradictory infeasible rewrite sentence">
+      <p class="q"><span>Q4</span>Classify each defect, then rewrite two of them: (a) “The system shall store data securely.” (b) “The system shall support up to 500 users and unlimited concurrent users.” (c) “The app shall verify the fingerprint against a national database in 0.01 ms.” (d) “The system shall delete old records.”</p>
+      <p class="marker">Marker wants: four correct labels; rewrites that add a number, a condition or a named control — not a synonym.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>(a) <strong>Ambiguous</strong> and incomplete — “securely” names no control and no scope. (b) <strong>Contradictory</strong> — 500 and unlimited cannot both hold. (c) <strong>Infeasible</strong> — a network round trip and a matching algorithm cannot finish in 0.01 ms. (d) <strong>Incomplete</strong> — “old” is undefined and the linked data is unaddressed. Rewrites: (a) “The system shall encrypt data in transit with TLS 1.2 or later and at rest with AES-256, and shall allow access only to users holding the treating-clinician role.” (c) “The app shall authenticate the user with on-device biometric hardware and grant access within 500 ms of a successful scan.” Note the pattern the deck uses in all four of its examples: the repair adds a number, a condition, or a named standard — never a better adjective.</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 11 eight rules verification use case description activity diagram mismatch">
+      <p class="q"><span>Q5</span>A use case description records four events; its activity diagram shows five actions, one of which is “check insurance”; the diagram also contains an object, InsurancePolicy, that no event mentions. Which of the eight verification rules fail, and what are the two possible repairs?</p>
+      <p class="marker">Marker wants: the rules by name; the two repairs stated as “fix the description” or “fix the diagram”; the reason it is a requirements defect.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p><strong>Rule 1 fails</strong>: every action or activity on the activity diagram needs one recorded event in the flows of the use-case description, and “check insurance” has none. <strong>Rule 2 fails</strong>: every object in the activity diagram must be mentioned in an event, and InsurancePolicy is not. If the actions are also out of order, rule 3 fails as well, and rule 4 would fail if a second description existed for the same use case. Repairs: either the description is incomplete — add the event that checks insurance and names the policy object — or the diagram is wrong — remove an action the use case never performs. The choice is a requirements decision, not a drawing decision: the two models are one description seen twice, so the mismatch means the requirements are not yet settled. Then re-check rules 5 to 8: actors on the diagram, stakeholders per local policy, relationships drawn, and diagram-specific syntax.</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 11 change request baselines traceability impact analysis attributes priority owner">
+      <p class="q"><span>Q6</span>A clinic asks, three weeks before release, to move the cancellation window from 48 to 24 hours. Walk the change through requirements management: which baseline it touches, what tracing tells you, and which attributes you update.</p>
+      <p class="marker">Marker wants: the baseline named; backward and forward tracing used; the attribute groups touched; the creep risk stated.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p><strong>Baseline:</strong> it changes a reviewed system requirement, so it touches the <strong>functional baseline</strong>, and once built it also touches the <strong>product baseline</strong> — two different approval authorities, both named in the configuration management plan. It goes in as a change request with an <strong>impact assessment</strong>, review and approval, not as an edit. <strong>Tracing:</strong> backward, the requirement traces to its source — the board policy or the clinic manager's goal; forward, it traces to the cancellation screen, the two test cases (cancel before and after the window) and the manual paragraph, all of which must change in the same release. <strong>Attributes:</strong> identifier stays, version increments, change history records who changed what and why, the verification method and acceptance-test links are updated, priority and owner are confirmed, and the traceability links are re-pointed at the new test cases. <strong>Creep:</strong> one approved request is management; the same request arriving unlogged, three weeks before release, with nobody assessing its cost, is requirements creep — the deck's list of consequences starts at cost overrun and ends at cancellation.</p></div>
+    </div>
+  </div>
+
 </section>
 
 <!-- ============ FLASHCARDS ============ -->
@@ -7183,6 +7811,7 @@ body[data-th="off"] .ex-th{display:none}
         <option value="8">Lesson 8</option>
         <option value="9">Lesson 9</option>
         <option value="10">Lesson 10</option>
+        <option value="11">Lesson 11</option>
         <option value="v">Video only</option>
       </select>
       <button class="btn" id="fc-shuffle">Shuffle</button>
@@ -7557,7 +8186,7 @@ window.__SAID__ = {
 <script>
 window.__TH__ = {
   tabs: {
-    overview: "ภาพรวม", lesson1: "บทที่ 1", lesson2: "บทที่ 2", lesson3: "บทที่ 3", lesson4: "บทที่ 4", lesson5: "บทที่ 5", lesson6: "บทที่ 6", lesson7: "บทที่ 7", lesson8: "บทที่ 8", lesson9: "บทที่ 9", lesson10: "บทที่ 10",
+    overview: "ภาพรวม", lesson1: "บทที่ 1", lesson2: "บทที่ 2", lesson3: "บทที่ 3", lesson4: "บทที่ 4", lesson5: "บทที่ 5", lesson6: "บทที่ 6", lesson7: "บทที่ 7", lesson8: "บทที่ 8", lesson9: "บทที่ 9", lesson10: "บทที่ 10", lesson11: "บทที่ 11",
     video: "วิดีโอ", practice: "แบบฝึกหัด", hw: "งาน", cards: "แฟลชการ์ด", cheat: "สรุปย่อ"
   },
   cards: {
@@ -7708,6 +8337,20 @@ window.__TH__ = {
     "l10-input": "input design เน้นเก็บข้อมูลให้แม่นและง่าย: online หรือ batch, เก็บที่แหล่งกำเนิด, ลดการพิมพ์ด้วยค่าเริ่มต้น และเลือก control ให้ตรงชนิดข้อมูล การตรวจสอบมีหกข้อ: completeness, format, range, check digit, consistency และ database check กับดัก: ไล่ชื่อหกข้อโดยไม่ยกตัวอย่างข้อมูลที่ทำให้ตกแต่ละข้อ",
     "l10-output": "output design มีหลักสามข้อ: ความถี่ในการใช้กำหนด layout, จัดลำดับความสำคัญของข้อมูลไว้บน, และลด bias โดยเฉพาะกราฟ ชนิดรายงานมีห้า: detail, summary, exception, turnaround และ graph กับดัก: ลืม exception report — รายงานเฉพาะกรณีที่ผิดกฎคือชนิดที่คนมักมองข้าม",
     "l10-uireq": "ตารางสุดท้ายของสไลด์แปลง NFR เป็น UI requirement → ผลต่อหน้าจอ → acceptance criterion ในรูป Given/When/Then สี่หมวดที่ใช้คือ operational, performance, security และ cultural กับดัก: เขียน criterion เป็นการพูดซ้ำ requirement — Given/When/Then ต้องมีสถานการณ์ การกระทำ และผลที่สังเกตได้",
+    "l11-defect": "defect คือความไม่สมบูรณ์ของงานที่ไม่ตรง requirement และต้องซ่อมหรือทำใหม่ validation ถามว่าได้ซอฟต์แวร์ที่ใช่ไหม (ตรงกับที่ผู้ใช้คาดหวัง) ส่วน verification ถามว่าตรงมาตรฐานองค์กรและมีลักษณะของ requirement ที่ดีไหม — consistency, clarity, completeness ทั้งสองอย่างถามได้สามระดับ: เอกสารทั้งฉบับ ชุด requirement และ requirement เดี่ยว ๆ กับดัก: ตอบว่า validation คือการทดสอบ",
+    "l11-four": "วิธีตรวจสอบสี่วิธีของสไลด์: requirements review, prototyping, model validation และ acceptance testing แต่ละวิธีตอบคำถามต่างกัน — เอกสารเขียนถูกไหม สิ่งที่สร้างตรงกับที่ตั้งใจไหม โมเดลตรงกันไหม และผลิตภัณฑ์สุดท้ายตอบแต่ละข้อไหม กับดัก: walkthrough กับ inspection ไม่ใช่วิธีที่ห้า แต่เป็นรูปแบบหนึ่งของ review",
+    "l11-review": "review เป็นวิธีที่ใช้มากที่สุด: กลุ่มผู้ตรวจได้รับโจทย์ให้หาข้อผิด สมมติฐานผิด ความไม่ชัด และการเบี่ยงจากมาตรฐาน โดยมีตัวแทนลูกค้าอย่างน้อยหนึ่งคน และใช้ checklist รายงานสรุปมี objective, scope, participants, วันเวลา, นิยามพร้อมรายการชนิดข้อบกพร่อง, checklist, ผล และ open issues พร้อมผู้รับผิดชอบ กับดัก: ลืมรายการชนิดข้อบกพร่อง ทำให้ผลตรวจเทียบกันข้ามครั้งไม่ได้",
+    "l11-check": "checklist มี 38 ข้อในห้ากลุ่ม: organisation and structure (1–6), completeness and correctness (7–25), consistency and clarity (26–31), traceability (32–33) และ special issues (34–38) กับดัก: ไม่ต้องท่อง 38 ข้อ ให้จำชื่อห้ากลุ่มกับตัวอย่างกลุ่มละหนึ่งข้อ",
+    "l11-defects": "ข้อบกพร่องสี่ชนิดพร้อมวิธีเขียนใหม่: ambiguous (“reasonable timeframe” → 3 วินาทีที่ 500 ผู้ใช้), incomplete (“ลบโปรไฟล์ที่ไม่ใช้งาน” → 365 วันและกฎการเก็บข้อมูล), contradictory (logout 15 นาทีกับวิดีโอ 45 นาที → หยุดตัวจับเวลาระหว่างเล่น) และ infeasible (จับคู่ใบหน้าฝั่ง 1 พันล้านรายการใน 0.001 ms → ทำบนเครื่องภายใน 500 ms) กับดัก: เขียนใหม่ด้วยการเปลี่ยนคำคุณศัพท์เป็นคำคุณศัพท์อีกคำ ไม่ได้คะแนน",
+    "l11-proto": "prototype ใช้ตรวจสอบว่าวิศวกรเข้าใจ requirement ถูกหรือไม่ และใช้eliciting requirement ใหม่ ข้อดีคือสมมติฐานมองเห็นได้ พฤติกรรมของ UI เข้าใจได้จาก prototype ที่เคลื่อนไหวดีกว่าคำบรรยาย และ requirement ที่นิยามหลังทำ prototype จะผันผวนต่ำมาก ข้อเสียที่สไลด์ระบุ: เรื่องความสวยงามหรือปัญหาคุณภาพของ prototype ดึงความสนใจผู้ใช้ออกจากฟังก์ชันจริง กับดัก: ตอบว่า prototyping ไม่มีความเสี่ยง",
+    "l11-model": "model validation ตรวจคุณภาพโมเดลที่ทำในระยะวิเคราะห์ เช่น static analysis ว่า object มีเส้นสื่อสารถึงกันใน class และ sequence diagram และตรวจความสอดคล้องระหว่าง functional, structural, behavioural และ architectural model กฎแปดข้อเชื่อม use case description กับ activity diagram: ทุก action มี event, ทุก object ถูกกล่าวถึง, ลำดับตรงกัน, หนึ่ง use case ต่อหนึ่ง description, actor ครบ, ความสัมพันธ์ครบ และกฎเฉพาะของแผนภาพ กับดัก: แผนภาพถูกไวยากรณ์แต่ยังตกกฎทั้งแปดได้",
+    "l11-accept": "acceptance test คือการวางแผนว่าจะตรวจแต่ละ requirement อย่างไร ทำได้ตรงไปตรงมากับ functional แต่ยากกับ non-functional เพราะ NFR ต้องถูกแยกย่อยจนเขียนเป็นปริมาณได้ก่อน ตัวอย่าง patient appointment: การลงทะเบียนมีสี่ acceptance criteria (ช่องว่าง รูปแบบอีเมล ลิงก์ยืนยัน อีเมลซ้ำ) และการเช็คอินมีอีกสี่ กับดัก: เขียน criterion เดียวต่อ requirement — การลงทะเบียนต้องมีสี่ข้อเพราะผิดได้สี่ทาง",
+    "l11-mgmt": "requirements management บันทึกและดูแล requirement ที่เปลี่ยนไปพร้อมบริบทและประวัติ และกำหนดวิธีนิยาม ควบคุม และเผยแพร่ baseline ทุกระดับ ภายใต้ ISO/IEC 15288 และ 12207 บางส่วนของ requirement อาจถูก freeze ตั้งแต่ต้น และทุกข้อเสนอใหม่ต้องประเมินผลกระทบต่อเจตนาเดิมของ baseline กับดัก: uncontrolled change กลายเป็น requirements creep ซึ่งนำไปสู่ต้นทุนเกิน งานล่าช้า ดีไซน์ผิด ผู้ซื้อไม่พอใจ หรือโครงการถูกยกเลิก",
+    "l11-change": "change management ส่งทุกข้อเสนอผ่าน impact assessment, review และ approval โดยมี tracing กับ version control ค้ำ baseline มีสี่ตัว: functional, allocated, developmental (อำนาจอนุมัติอยู่กับผู้จัดทำ) และ product ว่า baseline ไหนใช้และใครอนุมัติ กำหนดไว้ใน configuration management plan คำขอมาจาก problem report, ผู้ใช้, โครงการอื่น, ซอฟต์แวร์พื้นฐานรุ่นใหม่ และผู้บริหาร กับดัก: ตอบ baseline เดียวทั้งโครงการ",
+    "l11-trace": "requirements tracing หาแหล่งที่มาและคาดผลกระทบของการเปลี่ยนแปลง — backward จาก requirement ไปหา requirement ของระบบและผู้มีส่วนได้ส่วนเสีย, forward ไปหา design, code, test case และคู่มือ ต้องดูแล traceability matrix ตลอดอายุผลิตภัณฑ์ กับดัก: ถ้า matrix ไม่ถูกอัปเดต มันจะเชื่อถือไม่ได้ในจังหวะที่ต้องใช้ประเมินผลกระทบพอดี",
+    "l11-measure": "การวัดปริมาณ requirement ให้ภาพความซับซ้อน ใช้ประเมินขนาดของการเปลี่ยนแปลง ประเมินต้นทุนพัฒนาและบำรุงรักษา หรือเป็นตัวส่วนของการวัดอื่น วิธีที่สไลด์ระบุคือ functional size measurement ซึ่งมีสองแนวทาง: use case point และ function point กับดัก: อย่าสับสนระหว่างขนาดของ requirement กับขนาดของซอฟต์แวร์",
+    "l11-attrs": "requirements attributes ต้องนิยาม บันทึก และอัปเดตตลอดการพัฒนา อย่างน้อยคือมิติการจำแนกและวิธีตรวจสอบหรือหัวข้อ acceptance test เพิ่มเติมได้แก่ identifier, rationale, source, change history, risk, dependency และ priority สไลด์บอกว่าตัวที่สำคัญที่สุดคือ identifier ที่ทำให้ระบุ requirement ได้ไม่ซ้ำ กับดัก: มีแค่ ID กับคำอธิบายไม่พอ ต้องมีวิธีตรวจสอบและ trace link ด้วย",
+    "l10-deploy": "deployment diagram คือมุมมองทางกายภาพ: node ที่ซอฟต์แวร์รันอยู่ artifact ที่ติดตั้งลงไป และเส้นสื่อสารระหว่างกัน node เขียนเป็นกล่องและมี stereotype ได้ — «device» สำหรับฮาร์ดแวร์เช่นมือถือหรือเซิร์ฟเวอร์, «execution environment» สำหรับซอฟต์แวร์ที่โฮสต์ซอฟต์แวร์อื่น เช่น application server หรือ browser artifact คือไฟล์ที่นำไปติดตั้ง เช่น war, jar หรือ schema และเส้นทางต้องกำกับ protocol เช่น HTTPS, SQL, SMTP นี่คือโมเดลเดียวที่การบ้านต้องการแต่สไลด์ไม่มี เพราะคาบ 24 พ.ย. เสียส่วน architectural modelling ไป กับดัก: วาด component หรือ class diagram แล้วเรียกว่า deployment — deployment ตอบว่า “อะไรรันที่ไหนและผ่าน protocol อะไร” ไม่ใช่ “โค้ดเรียกอะไร”",
   },
   qa: [
     "อธิบาย 4 ระยะของ SDLC และบอกว่าวิศวกรรมความต้องการอยู่ตรงไหน",
@@ -7811,7 +8454,13 @@ window.__TH__ = {
     "อธิบาย WND ของการจองนัด และบอกว่าเส้นไหนต้องมีหัวคู่",
     "เลือกวิธีประเมิน interface ให้ตรงกับสถานการณ์",
     "ใช้การตรวจสอบข้อมูลเข้าหกข้อกับฟอร์มลงทะเบียนผู้ป่วย",
-    "แปลง NFR เป็น UI requirement ผลต่อหน้าจอ และ Given/When/Then"
+    "แปลง NFR เป็น UI requirement ผลต่อหน้าจอ และ Given/When/Then",
+    "แยก validation กับ verification และบอกว่าถามอะไรในสามระดับ",
+    "วิธีตรวจสอบสี่วิธี เลือกใช้กับสถานการณ์ที่ให้มาสี่แบบ",
+    "รายงานสรุปการรีวิวมีอะไรบ้าง และทำไมตารางผลเป็นสองมิติ",
+    "จำแนกข้อบกพร่องสี่ชนิดและเขียนประโยคใหม่สองข้อ",
+    "กฎตรวจสอบแปดข้อ ข้อใดตก และแก้อะไรได้บ้าง",
+    "เดิน change request ผ่าน baseline, tracing และ attribute"
   ]
 };
 </script>
@@ -7943,7 +8592,12 @@ window.__FC__ = [
   {l:"10",tag:"Lesson 10",q:"Name the six interface design principles.",a:"Layout, content awareness, aesthetics, user experience, consistency, minimal user effort.",th:"layout · content awareness · aesthetics · user experience · consistency · minimal effort"},
   {l:"10",tag:"Lesson 10",q:"In a WND, what do the single and double arrows mean?",a:"Single: no return to the calling state. Double: a required return.",th:"หัวเดียว = ไม่ต้องกลับ · หัวคู่ = ต้องกลับ"},
   {l:"10",tag:"Lesson 10",q:"The six input validation checks?",a:"Completeness, format, range, check digit, consistency between related data, database check against entity and referential integrity.",th:"completeness · format · range · check digit · consistency · database check"},
-  {l:"10",tag:"Lesson 10",q:"How does an NFR become a UI requirement?",a:"NFR → UI requirement → effect on the screen → Given/When/Then acceptance criterion.",th:"NFR → UI requirement → ผลต่อหน้าจอ → Given/When/Then"}
+  {l:"10",tag:"Lesson 10",q:"How does an NFR become a UI requirement?",a:"NFR → UI requirement → effect on the screen → Given/When/Then acceptance criterion.",th:"NFR → UI requirement → ผลต่อหน้าจอ → Given/When/Then"},
+  {l:"11",tag:"Lesson 11",q:"Validation versus verification?",a:"Validation: does the document define the right software, the one users expect. Verification: does it conform to the organisation's standard and have the characteristics of a good requirement.",th:"validation = ซอฟต์แวร์ที่ใช่ · verification = ตรงมาตรฐานและเขียนดี"},
+  {l:"11",tag:"Lesson 11",q:"The four fundamental validation practices?",a:"Requirements review, prototyping, model validation, acceptance testing.",th:"review · prototyping · model validation · acceptance testing"},
+  {l:"11",tag:"Lesson 11",q:"The four baselines, in order?",a:"Functional (reviewed system requirements), allocated (element requirements), developmental (evolving configuration, supplier authority), product (the completed system).",th:"functional → allocated → developmental → product"},
+  {l:"11",tag:"Lesson 11",q:"Backward versus forward tracing?",a:"Backward: to the system requirement and the stakeholder that motivated it. Forward: to the design entities, modules, test cases and manual sections that satisfy it.",th:"backward หาแหล่งที่มา · forward หาสิ่งที่ถูกกระทบ"},
+  {l:"11",tag:"Lesson 11",q:"The four defect types with rewrites?",a:"Ambiguous, incomplete, contradictory, infeasible — each repaired by adding a number, a condition or a named standard.",th:"กำกวม ไม่ครบ ขัดกัน ทำไม่ได้จริง — แก้ด้วยตัวเลข เงื่อนไข หรือมาตรฐานที่มีชื่อ"}
 ];
 </script>
 
@@ -8206,7 +8860,7 @@ window.__FC__ = [
   (function(){
     var TH = window.__TH__;
     if(!TH) return;
-    document.querySelectorAll("#lesson1 .card, #lesson2 .card, #lesson3 .card, #lesson4 .card, #lesson5 .card, #lesson6 .card, #lesson7 .card, #lesson8 .card, #lesson9 .card, #lesson10 .card").forEach(function(card){
+    document.querySelectorAll("#lesson1 .card, #lesson2 .card, #lesson3 .card, #lesson4 .card, #lesson5 .card, #lesson6 .card, #lesson7 .card, #lesson8 .card, #lesson9 .card, #lesson10 .card, #lesson11 .card").forEach(function(card){
       var b = card.querySelector(".know");
       var id = b && b.getAttribute("data-id");
       var txt = id && TH.cards[id];
