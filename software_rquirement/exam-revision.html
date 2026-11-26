@@ -587,6 +587,25 @@ body[data-th="off"] .ex-th{display:none}
 
 /* the two drawn HW4 answers need more than 72ch for a legible diagram */
 .qa.wide .answer{max-width:none}
+
+/* cheat sheet: keep the recall blocks dense — the page-wide single column is too sparse for a sheet */
+#cheat .grid.two{grid-template-columns:repeat(auto-fit,minmax(330px,1fr))}
+#cheat .grid.three{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+
+/* mock test */
+.mock-scope,.mock-actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0}
+.mock-scope .btn[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.mock-count{font-size:13px;color:var(--muted)}
+.mock-score{font-size:15px;margin:6px 0 0}
+.mock-q{border:1px solid var(--line);border-radius:8px;padding:14px 16px;margin:12px 0;background:var(--surface)}
+.mock-q legend{font-weight:600;padding:0 6px;font-size:14.5px}
+.mock-q label{display:block;padding:5px 0;cursor:pointer;font-size:14.5px}
+.mock-q input{margin-right:8px}
+.mock-q.correct{border-color:var(--good);background:var(--good-bg)}
+.mock-q.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.mock-why{margin-top:8px;font-size:13.5px;color:var(--muted)}
+.mock-why b{color:var(--ink)}
+.mock-q label.mock-right{color:var(--good);font-weight:600}
 </style>
 
 <div class="topbar">
@@ -605,8 +624,10 @@ body[data-th="off"] .ex-th{display:none}
       <button class="tab" role="tab" data-view="lesson9" aria-selected="false">Lesson 9</button>
       <button class="tab" role="tab" data-view="lesson10" aria-selected="false">Lesson 10</button>
       <button class="tab" role="tab" data-view="lesson11" aria-selected="false">Lesson 11</button>
+      <button class="tab" role="tab" data-view="lesson12" aria-selected="false">Lesson 12</button>
       <button class="tab" role="tab" data-view="video" aria-selected="false">Video lab</button>
       <button class="tab" role="tab" data-view="practice" aria-selected="false">Practice</button>
+      <button class="tab" role="tab" data-view="mock" aria-selected="false">Mock test</button>
       <button class="tab" role="tab" data-view="hw" aria-selected="false">Homework</button>
       <button class="tab" role="tab" data-view="cards" aria-selected="false">Flashcards</button>
       <button class="tab" role="tab" data-view="cheat" aria-selected="false">Cheat sheet</button>
@@ -624,8 +645,10 @@ body[data-th="off"] .ex-th{display:none}
       <option value="lesson9">Lesson 9 — The SRS</option>
       <option value="lesson10">Lesson 10 — Validation, prototyping, UI design</option>
       <option value="lesson11">Lesson 11 — Validation and management</option>
+      <option value="lesson12">Lesson 12 — System architecture</option>
       <option value="video">Video lab</option>
       <option value="practice">Practice</option>
+      <option value="mock">Mock test</option>
       <option value="hw">Homework — Quiz 1 &amp; Quiz 2</option>
       <option value="cards">Flashcards</option>
       <option value="cheat">Cheat sheet</option>
@@ -644,7 +667,7 @@ body[data-th="off"] .ex-th{display:none}
 <section class="view" id="overview" role="tabpanel" aria-label="Overview">
   <div class="eyebrow">Course 2110623, Digital Health</div>
   <h1>Software Requirements Engineering Revision</h1>
-  <p class="lede">A written-exam guide to Lessons 1–11, built from the eleven lecture decks and the examples shown only in the recorded classes. The exam is prose, so this page trains explanation, classification, rewriting and negotiation.</p>
+  <p class="lede">A written-exam guide to Lessons 1–12, built from the twelve lecture decks and the examples shown only in the recorded classes. The exam is prose, so this page trains explanation, classification, rewriting and negotiation.</p>
 
   <div class="drill" id="drill">
     <p class="drill-label">Rewrite it before you read anything else</p>
@@ -662,7 +685,7 @@ body[data-th="off"] .ex-th{display:none}
     </div>
   </div>
 
-  <p class="sources">Drafted from Assoc. Prof. Nakornthip Prompoon's eleven decks and twelve class recordings; revised 24 November 2026.</p>
+  <p class="sources">Drafted from Assoc. Prof. Nakornthip Prompoon's twelve decks and twelve class recordings; revised 25 November 2026.</p>
 
   <div class="section-head">
     <div><h2>How the course is marked</h2><p>From the course syllabus, semester 1/2569.</p></div>
@@ -5932,8 +5955,8 @@ body[data-th="off"] .ex-th{display:none}
     </article>
 
     <article class="card" data-lesson="10" data-search="deployment diagram architecture nodes device execution environment artifact communication path nfr ptsims web responsive">
-      <div class="card-head"><h3>18 · Deployment diagrams, the part she could not teach</h3><button class="know" data-id="l10-deploy" aria-pressed="false">Mark verified</button></div>
-      <p class="what"><strong>What it is.</strong> A deployment diagram is the physical view: the <strong>nodes</strong> the software runs on, the <strong>artifacts</strong> deployed to each node, and the <strong>communication paths</strong> between them. A node is drawn as a box and may carry a stereotype — <code>«device»</code> for hardware such as a phone or a server, <code>«execution environment»</code> for software that hosts other software, such as an application server or a browser. An artifact is a deployable file — the war, the jar, the database schema — and a path is labelled with its protocol: HTTPS, SQL, SMTP. This is the one model the course needs and the deck does not contain, because the 24 Nov session lost its architectural-modelling half.</p>
+      <div class="card-head"><h3>18 · Deployment diagrams, for the assignment</h3><button class="know" data-id="l10-deploy" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A deployment diagram is the physical view: the <strong>nodes</strong> the software runs on, the <strong>artifacts</strong> deployed to each node, and the <strong>communication paths</strong> between them. A node is drawn as a box and may carry a stereotype — <code>«device»</code> for hardware such as a phone or a server, <code>«execution environment»</code> for software that hosts other software, such as an application server or a browser. An artifact is a deployable file — the war, the jar, the database schema — and a path is labelled with its protocol: HTTPS, SQL, SMTP. It is here because the assignment needed it before the class reached it; <a href="#" data-card="l12-deploy">Lesson 12, clause 9</a> now carries the full treatment, including the specification and instance levels.</p>
       <figure class="fig">
         <div class="fig-scroll">
           <svg viewBox="0 0 940 330" role="img" aria-label="Deployment diagram for PTSIMS: client devices reach a load balancer over HTTPS, which forwards to an application server holding the web application artifact; the application server talks to a database server over SQL, to a mail server over SMTP, and to the external card gateway over HTTPS; a legend names node, device, execution environment, artifact and communication path">
@@ -6009,7 +6032,283 @@ body[data-th="off"] .ex-th{display:none}
         <div class="example"><b>Example.</b> The happy-fitness assignment asks for exactly this: two NFRs, then a deployment where nodes serve the member, the trainer and the assistant manager, and the card company sits outside as an external node.</div>
       </div>
       <p class="trap"><b>Exam trap</b>Drawing a component or class diagram and calling it deployment. A deployment diagram answers “what runs where, and over which protocol”, not “what calls what in code”.</p>
-      <details><summary>Not in the deck</summary><blockquote>“Requirements validation … model validation … architectural modeling” — the 24 Nov slide list keeps architectural modelling, but the class did not cover it; this card fills the gap for the assignment.</blockquote></details>
+      <details><summary>See Lesson 12</summary><blockquote>“Elements of a deployment diagram – Nodes … – Artifacts … – Communication paths.” The 25 Nov class taught this deck; the card above is the shortest version that answers the assignment’s Q2.</blockquote></details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ============ LESSON 12 ============ -->
+<section class="view" id="lesson12" role="tabpanel" aria-label="Lesson 12" hidden>
+  <div class="eyebrow">Lesson 12, 42 slides</div>
+  <h1>Where the software actually runs</h1>
+  <p class="lede">The last content lesson, and the one the assignment asked for: physical architecture, the deployment diagram, the network model, the hardware and software specification — and the five NFRs that decide all of it.</p>
+  <p class="watch-line">Class recording: <a href="https://youtu.be/CL7Cg2gcOmY" target="_blank" rel="noopener">Lesson 12 system architecture, 25 Nov</a><span class="th-line" lang="th"> วิดีโอบันทึกการสอน</span></p>
+  <div class="progress" data-lesson="12" style="margin-top:16px;max-width:420px"><span>Verification coverage</span><div class="bar"><i></i></div><span class="pct">0%</span></div>
+  <section class="memo" aria-label="What the deck flags">
+    <p class="memo-head">What she said in class, and what the deck flags</p>
+    <ul class="memo-list">
+      <li><a class="memo-time" href="https://youtu.be/CL7Cg2gcOmY?t=2431" target="_blank" rel="noopener" aria-label="Watch 40:31 in the recording">40:31</a><span class="memo-said"> The <strong>DishFlow</strong> example walked live: every branch has a point of sale, connected over the internet to a <strong>centralized cloud environment</strong>, and the <strong>centralized database holds the menu</strong> — branches pull it and switch items on or off. Her point: that is a requirement decision (who owns the menu) showing up as an architecture. <span class="memo-jump" href="#" data-card="l12-nfr" aria-label="Go to clause 12">clause 12</a><span class="memo-th" lang="th">ตัวอย่าง DishFlow ที่ครูเดินให้ดูสด ๆ: แต่ละสาขามี point of sale เชื่อมผ่านอินเทอร์เน็ตเข้า centralized cloud environment และฐานข้อมูลกลางถือเมนูไว้ สาขาดึงเมนูมาแล้วเปิด-ปิดรายการได้ ประเด็นคือการตัดสินใจเรื่อง requirement (ใครเป็นเจ้าของเมนู) กลายเป็นสถาปัตยกรรม</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/CL7Cg2gcOmY?t=2749" target="_blank" rel="noopener" aria-label="Watch 45:49 in the recording">45:49</a><span class="memo-said"> The small-business stack, read as a chain from requirement to product: <strong>Docker</strong> as one lightweight container deployment architecture among many, and <strong>PostgreSQL or MySQL instead of Oracle</strong> because the licence cost follows from the requirement, not from fashion. <span class="memo-jump" href="#" data-card="l12-spec" aria-label="Go to clause 11">clause 11</a><span class="memo-th" lang="th">สแต็กของระบบเล็ก อ่านเป็นลูกโซ่จาก requirement ไปหาผลิตภัณฑ์: Docker เป็น lightweight container deployment architecture แบบหนึ่งในหลายแบบ และเลือก PostgreSQL หรือ MySQL แทน Oracle เพราะต้นทุนสัญญาอนุญาตตามมาจาก requirement ไม่ใช่ตามแฟชั่น</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/CL7Cg2gcOmY?t=2791" target="_blank" rel="noopener" aria-label="Watch 46:31 in the recording">46:31</a><span class="memo-said"> She will <strong>not examine the specification table in that form</strong> — “I won't set this” — but she wants the reasoning kept: a small-business web application implies an operating system, web files, a PDF reader, and modest transaction volume. <span class="memo-jump" href="#" data-card="l12-spec" aria-label="Go to clause 11">clause 11</a><span class="memo-th" lang="th">ครูจะไม่ออกข้อสอบตาราง specification ในรูปแบบนั้น — “ครูจะไม่ได้ออกข้อสอบแบบนี้” — แต่ต้องการให้เก็บเหตุผลไว้: เว็บแอปของธุรกิจเล็กสื่อถึงระบบปฏิบัติการ ไฟล์เว็บ โปรแกรมอ่าน PDF และปริมาณธุรกรรมที่ไม่มาก</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/CL7Cg2gcOmY?t=2535" target="_blank" rel="noopener" aria-label="Watch 42:16 in the recording">42:16</a><span class="memo-said"> An <strong>NPTSIMS</strong> example from a previous cohort is shown to make one point: requirements drive the architecture, so the diagram is the argument, not decoration. <span class="memo-jump" href="#" data-card="l12-phys" aria-label="Go to clause 1">clause 1</a><span class="memo-th" lang="th">ครูยกตัวอย่าง NPTSIMS ของรุ่นก่อนให้ดูเพื่อย้ำจุดเดียว: requirement เป็นตัวกำหนดสถาปัตยกรรม แผนภาพจึงเป็นข้อโต้แย้ง ไม่ใช่ของประดับ</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/CL7Cg2gcOmY?t=3811" target="_blank" rel="noopener" aria-label="Watch 1:03:33 in the recording">1:03:33</a><span class="memo-said"> The microservice picture at the end exists for a practical reason: <strong>architecture is the language you use with developers</strong>. If you cannot draw it, you cannot brief it. <span class="memo-jump" href="#" data-card="l12-deploy" aria-label="Go to clause 9">clause 9</a><span class="memo-th" lang="th">ภาพ microservice ตอนท้ายมีไว้ด้วยเหตุผลเชิงปฏิบัติ: สถาปัตยกรรมคือภาษาที่ใช้สื่อสารกับ developer ถ้าวาดไม่ได้ ก็สั่งงานไม่ได้</span></span></li>
+      <li><span class="memo-ref">slide 3</span><span class="memo-said"> The objectives are all <strong>create</strong>: create a system architecture with a deployment diagram, create a network model, and be familiar with the hardware and software specification. This is the deck the assignment's Q2 came from.<span class="memo-th" lang="th">วัตถุประสงค์เป็น “สร้าง” ทั้งหมด: สร้าง system architecture ด้วย deployment diagram, สร้าง network model และรู้จัก hardware/software specification — สไลด์ชุดนี้คือที่มาของข้อ 2 ในการบ้าน</span></span></li>
+      <li><span class="memo-ref">slide 5</span><span class="memo-said"> NFRs are the frame for the whole lesson: the design, implementation and deployment must conform to them, they act as design goals and as part of system acceptance, and they choose the technology — architecture, hardware and software, and (next lesson) the UI.<span class="memo-th" lang="th">NFR เป็นกรอบของทั้งบท: การออกแบบ การพัฒนา และการติดตั้งต้องสอดคล้องกับมัน มันเป็นทั้งเป้าหมายการออกแบบและส่วนหนึ่งของการตรวจรับ และมันเลือกเทคโนโลยี — สถาปัตยกรรม ฮาร์ดแวร์ซอฟต์แวร์ และหน้าจอ</span></span></li>
+      <li><span class="memo-ref">slide 14</span><span class="memo-said"> The three architectures are compared on six criteria, and no column wins everything: server-based is cheap to develop and secure but poor on scalability; client-server is scalable and low on infrastructure cost but the most expensive to develop.<span class="memo-jump" href="#" data-card="l12-select" aria-label="Go to clause 7">clause 7</a><span class="memo-th" lang="th">สถาปัตยกรรมสามแบบถูกเทียบกันบนหกเกณฑ์ และไม่มีคอลัมน์ไหนชนะทุกด้าน: server-based พัฒนาถูกและปลอดภัยแต่ขยายยาก ส่วน client-server ขยายได้และค่าอุปกรณ์ต่ำแต่พัฒนาสูง</span></span></li>
+      <li><span class="memo-ref">slides 17–19</span><span class="memo-said"> Three elements, and only three: <strong>nodes, artifacts, communication paths</strong>. Everything else on the diagram is a stereotype of one of them.<span class="memo-jump" href="#" data-card="l12-deploy" aria-label="Go to clause 9">clause 9</a><span class="memo-th" lang="th">มีสามองค์ประกอบเท่านั้น: node, artifact และ communication path ที่เหลือบนแผนภาพเป็น stereotype ของหนึ่งในสามนี้</span></span></li>
+      <li><span class="memo-ref">slides 26–28</span><span class="memo-said"> The network model is drawn <strong>twice</strong>: a top-level diagram showing geographic locations and how costly the communication between them is, then a low-level diagram per location.<span class="memo-jump" href="#" data-card="l12-network" aria-label="Go to clause 10">clause 10</a><span class="memo-th" lang="th">network model วาดสองรอบ: รอบบนแสดงที่ตั้งทางภูมิศาสตร์และต้นทุนการสื่อสารระหว่างที่ แล้วรอบล่างลงรายละเอียดทีละที่</span></span></li>
+      <li><span class="memo-ref">slides 36–40</span><span class="memo-said"> Five NFRs, each with one requirement and its architectural consequence: availability, security and privacy, retention, portability, maintainability. That is the answer shape for “how does this NFR affect the architecture”.<span class="memo-jump" href="#" data-card="l12-nfr" aria-label="Go to clause 12">clause 12</a><span class="memo-th" lang="th">NFR ห้าข้อ พร้อม requirement หนึ่งข้อและผลต่อสถาปัตยกรรมของแต่ละข้อ: availability, security/privacy, retention, portability และ maintainability — นี่คือรูปแบบคำตอบของ “NFR นี้กระทบสถาปัตยกรรมอย่างไร”</span></span></li>
+    </ul>
+  </section>
+
+  <div class="grid" style="gap:0">
+
+    <article class="card" data-lesson="12" data-search="physical architecture layer distribution hardware software nfr design goals acceptance">
+      <div class="card-head"><h3>1 · The physical architecture layer</h3><button class="know" data-id="l12-phys" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Modern systems span two or more networked computers, and the physical architecture layer decides <strong>how the system is distributed across them</strong> and <strong>what hardware and software will be used</strong>. The deck situates it as the layer where non-functional requirements become decisions: the design, implementation and deployment must conform to the NFRs, the NFRs are both design goals and part of system acceptance, and they choose the technology — system and software architecture, hardware and software specification, and the user interface in the next lesson. Most designs are also constrained by the systems and networks that already exist.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It answers the question the last four lessons left open: where do these services run? Every NFR from Lesson 8 lands here as a physical decision.</p></div>
+        <div class="example"><b>Example.</b> “The clinic must stay available during ward rounds” is not a sentence about software; it is a second application server, a load balancer and a database replica — the shape drawn in a deployment diagram.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Treating architecture as a free choice. The deck's constraint line — existing systems and networks, plus the NFRs — removes most of the options before you start.</p>
+      <details><summary>Slide 5</summary><blockquote>“The design, implementation, and deployment shall be conformed to the specified non-functional requirements. - NFRs will be used to set as a design goals and a part of an important system acceptance. - The selected design and implementation technology depends on the the NFRs.”<cite>Slide 5</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="12" data-search="architectural components software data storage access application presentation logic hardware clients servers networks">
+      <div class="card-head"><h3>2 · Four logics, three kinds of hardware</h3><button class="know" data-id="l12-comp" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> The deck splits architecture into software and hardware components. The software side has four <strong>logics</strong>: <strong>data storage</strong>, <strong>data access</strong>, <strong>application logic</strong>, and <strong>presentation logic</strong>. The hardware side has <strong>clients</strong> (computers, handhelds, phones), <strong>servers</strong> (mainframes, minis, micros, rack-mounted) and the <strong>networks</strong> that connect them, from dial-up to leased lines.</p>
+      <figure class="fig">
+        <div class="fig-scroll">
+          <svg viewBox="0 0 940 300" role="img" aria-label="Where the four logics sit in each architecture: server-based puts all four on the server; client-based puts storage on the file server and the other three on the client; thin client-server puts data on the server and only presentation on the client; thick client-server puts application and presentation on the client">
+            <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10">
+              <text x="210" y="26" text-anchor="middle" fill="var(--muted)" font-size="10" font-style="italic">client side</text>
+              <text x="700" y="26" text-anchor="middle" fill="var(--muted)" font-size="10" font-style="italic">server side</text>
+
+              <text x="30" y="56" fill="var(--ink)" font-size="10.5">server-based</text>
+              <rect x="150" y="40" width="470" height="26" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="385" y="57" text-anchor="middle" fill="var(--muted)" font-size="9">terminal: keystrokes only</text>
+              <rect x="640" y="40" width="270" height="56" rx="2" fill="var(--accent-soft)" stroke="var(--accent)"/>
+              <text x="775" y="56" text-anchor="middle" fill="var(--ink)" font-size="9">all four logics</text>
+              <text x="775" y="72" text-anchor="middle" fill="var(--muted)" font-size="8.5">storage · access · application</text>
+              <text x="775" y="86" text-anchor="middle" fill="var(--muted)" font-size="8.5">presentation</text>
+
+              <text x="30" y="136" fill="var(--ink)" font-size="10.5">client-based</text>
+              <rect x="150" y="106" width="470" height="56" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="385" y="122" text-anchor="middle" fill="var(--ink)" font-size="9">PC does the work</text>
+              <text x="385" y="138" text-anchor="middle" fill="var(--muted)" font-size="8.5">access · application · presentation</text>
+              <text x="385" y="152" text-anchor="middle" fill="var(--muted)" font-size="8.5">all data downloaded to the client</text>
+              <rect x="640" y="106" width="270" height="56" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="775" y="130" text-anchor="middle" fill="var(--ink)" font-size="9">file server</text>
+              <text x="775" y="146" text-anchor="middle" fill="var(--muted)" font-size="8.5">data storage only</text>
+
+              <text x="30" y="216" fill="var(--ink)" font-size="10.5">thin client-server</text>
+              <rect x="150" y="186" width="470" height="56" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="385" y="210" text-anchor="middle" fill="var(--ink)" font-size="9">presentation logic</text>
+              <text x="385" y="226" text-anchor="middle" fill="var(--muted)" font-size="8.5">the browser and nothing else</text>
+              <rect x="640" y="186" width="270" height="56" rx="2" fill="var(--accent-soft)" stroke="var(--accent)"/>
+              <text x="775" y="210" text-anchor="middle" fill="var(--ink)" font-size="9">storage · access · application</text>
+
+              <text x="30" y="276" fill="var(--ink)" font-size="10.5">thick client-server</text>
+              <rect x="150" y="246" width="470" height="42" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="385" y="264" text-anchor="middle" fill="var(--ink)" font-size="9">presentation + application logic</text>
+              <text x="385" y="280" text-anchor="middle" fill="var(--muted)" font-size="8.5">installed client doing real work</text>
+              <rect x="640" y="246" width="270" height="42" rx="2" fill="var(--accent-soft)" stroke="var(--accent)"/>
+              <text x="775" y="264" text-anchor="middle" fill="var(--ink)" font-size="9">storage + access logic</text>
+              <text x="775" y="280" text-anchor="middle" fill="var(--muted)" font-size="8.5">database server</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption><span class="fig-n">Fig. 12.1.</span> The four logics, and how each architecture distributes them. <span lang="th">อ่านเป็นสี่แถว: แต่ละแถวคือสถาปัตยกรรมหนึ่งแบบ และสองคอลัมน์คือฝั่ง client กับฝั่ง server สิ่งที่ต้องดูคือ “logic สี่ตัวไปอยู่ที่ไหน” — server-based เอาไปไว้ฝั่ง server ทั้งหมด, client-based เอาข้อมูลไว้ที่ file server แต่ที่เหลือไปอยู่ที่เครื่องลูกข่าย, thin client เก็บไว้แค่ presentation ที่ client, และ thick client เอา application logic ลงมาที่ client ด้วย ถ้าโจทย์ถามว่าสถาปัตยกรรมแบบไหนเหมาะกับอะไร ให้ตอบจากการกระจาย logic นี้</span></figcaption>
+      </figure>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">Every architecture question in this deck reduces to one move: which logic runs where. The names are just shorthand for that split.</p></div>
+        <div class="example"><b>Example.</b> A ward tablet that only renders the chart and sends keystrokes is a thin client; the same tablet with offline recording and later sync carries application logic, so it is thick.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Naming thin or thick by device. The label follows where the logic sits, not whether the machine is a phone or a laptop.</p>
+      <details><summary>Slide 7</summary><blockquote>“Software components – Data storage – Data access logic – Application logic – Presentation logic … Hardware components – Clients … – Servers … – Networks.”<cite>Slide 7</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="12" data-search="server based architecture terminal mainframe all four functions control security">
+      <div class="card-head"><h3>3 · Server-based</h3><button class="know" data-id="l12-server" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> In a server-based architecture the server performs all four application functions, and the client — usually a terminal with a display and a keyboard — captures keystrokes and sends them for processing. What the client cannot do, it cannot be asked to do: nothing is installed, nothing is stored, nothing is computed locally.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It is the architecture with the strongest control and security and the weakest scalability — and the cheapest to develop, because there is one program to write.</p></div>
+        <div class="example"><b>Example.</b> A hospital's laboratory analyser console that only sends commands to a central server is server-based; the deck's classic case is the mainframe terminal.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Calling a web application server-based because “the server does the work”. If the browser renders the interface and runs scripts, presentation and some application logic are on the client.</p>
+      <details><summary>Slide 8</summary><blockquote>“The server performs all four application functions • The client (usually a terminal with display and keyboard) captures keystrokes and sends them to the server for processing.”<cite>Slide 8</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="12" data-search="client based architecture file server overloaded network traffic computing power">
+      <div class="card-head"><h3>4 · Client-based</h3><button class="know" data-id="l12-client" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Clients are personal computers on a network and the server is a file server on the same network. It is simple to develop, and it overloads quickly: all data is downloaded to the client for processing, network traffic becomes excessive, and the client may not have enough computing power.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It is the deck's example of an architecture that works at ten users and fails at a hundred — the reason “simple to develop” is a trap rather than a recommendation.</p></div>
+        <div class="example"><b>Example.</b> A clinic that keeps its patient database on a shared drive and installs the program on each reception PC: fine for one branch, painful when every PC pulls the whole file over the network.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Recommending client-based for a low-cost system without naming the ceiling. The deck names three failure modes, not one.</p>
+      <details><summary>Slide 9</summary><blockquote>“Simple to develop, but quickly overloaded – All data is downloaded to the client for processing – Network traffic may become excessive – Client may not have enough computing power.”<cite>Slide 9</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="12" data-search="client server thin thick balance scalable complexity modern systems">
+      <div class="card-head"><h3>5 · Client-server, thin and thick</h3><button class="know" data-id="l12-cs" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Client-server balances processing between client and server, and it is the predominant architecture in modern systems. The amount of client processing varies: a <strong>thin client</strong> does only presentation logic, a <strong>thick client</strong> does presentation and application logic. It is highly scalable at incremental cost, and more complex because applications must be written for both sides.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">Almost every system in the assignments is this shape, and the thin/thick choice is where the NFRs land: offline work pushes logic to the client, security pulls it back.</p></div>
+        <div class="example"><b>Example.</b> PTSIMS with a responsive browser client is thin; a version that must record sessions offline in the gym and sync later is thick, and the sync is now an architectural requirement.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Saying client-server is “the best architecture”. The deck lists its cost: the highest development cost of the three, because two programs have to be written.</p>
+      <details><summary>Slide 10</summary><blockquote>“Balance processing between client and server • Predominant architecture in modern systems … – Thin clients do only presentation logic – Thick clients do presentation and application • Highly scalable at incremental cost • More complex since applications must be written for both client and server.”<cite>Slide 10</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="12" data-search="tiers 2-tier 3-tier n-tier four tier load balancing network demands e-commerce">
+      <div class="card-head"><h3>6 · Tiers: 2, 3, n</h3><button class="know" data-id="l12-tier" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Tiers are defined by how the logic is partitioned. <strong>2-tier</strong>: one server does data storage and access, the client does application and presentation. <strong>3-tier</strong>: storage and access on one server, application logic on another, presentation on the client. <strong>n-tier</strong>: application logic split across two servers with data on another — common in e-commerce, better load balancing, more scalable, and harder on the network. The deck's four-tier example adds a web server in front of the application server.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">“Which tier” is answered by which machine holds which logic — the same question as thin versus thick, counted differently.</p></div>
+        <div class="example"><b>Example.</b> The clinic web app has a browser, a web server, an application server and a database server: four machines, four tiers, and the NFRs (availability, security) decide that the first two are separated at all.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Counting the client as a tier in one answer and not in another. The deck counts tiers by where the logic sits and includes the client in the 2-tier and 3-tier descriptions.</p>
+      <details><summary>Slide 11</summary><blockquote>“2-tier: one server responsible for data storage and access; client responsible for application &amp; presentation logic – 3-tier: data storage and access logic on one server, application logic on another; client responsible for presentation logic – n-tier: application logic split among two servers, data logic on another.”<cite>Slide 11</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="12" data-search="selection criteria cost acquisition development ease interface control security scalability characteristics table">
+      <div class="card-head"><h3>7 · Choosing: six criteria, no winner</h3><button class="know" data-id="l12-select" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> The process is: understand the software and hardware options, then choose among them on six criteria — <strong>cost of acquisition, cost of development, ease of development, interface capabilities, control and security, scalability</strong>. The deck's comparison makes the trade-off visible: server-based has very high infrastructure cost but medium development cost and high control, with low scalability and low interface capability; client-based has medium infrastructure, low development cost and high ease, with low control and medium scalability; client-server has low infrastructure cost but high development cost, high interface capability, medium control and high scalability.</p>
+      <div class="table-scroll">
+        <table class="spec">
+          <thead><tr><th>Criterion</th><th>Server-based</th><th>Client-based</th><th>Client-server</th></tr></thead>
+          <tbody>
+            <tr><td>Cost of infrastructure</td><td>very high</td><td>medium</td><td>low</td></tr>
+            <tr><td>Cost of development</td><td>medium</td><td>low</td><td>high</td></tr>
+            <tr><td>Ease of development</td><td>low</td><td>high</td><td>low–medium</td></tr>
+            <tr><td>Interface capabilities</td><td>low</td><td>high</td><td>high</td></tr>
+            <tr><td>Control and security</td><td>high</td><td>low</td><td>medium</td></tr>
+            <tr><td>Scalability</td><td>low</td><td>medium</td><td>high</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It is the answer to “which architecture should this system use”: name the criterion the project cares about, then read the column.</p></div>
+        <div class="example"><b>Example.</b> A clinic with no capital budget and a small team: client-server wins on infrastructure cost and scalability, and loses on development cost — which is why the NFR comparison has to name what is being traded.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Answering “client-server” without a criterion. The table exists precisely because each column loses somewhere.</p>
+      <details><summary>Slide 14</summary><blockquote>“Architecture Characteristics and selection criteria … Cost of infrastructure … Cost of development … Ease of development … Interface capabilities … Control and Security … Scalability.”<cite>Slide 14</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="12" data-search="cloud computing virtualisation service oriented grid private public hybrid iaas paas saas">
+      <div class="card-head"><h3>8 · Cloud, in the deck's terms</h3><button class="know" data-id="l12-cloud" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> Cloud computing treats IT as a commodity on a pay-as-you-go model, with the “cloud” being the vendor's data centre and service. It is an umbrella over <strong>virtualisation</strong> (virtual rather than actual servers on shared hardware), <strong>service-oriented architectures</strong> (plug-and-play services, purchased or billed by use) and <strong>grid computing</strong> (geographically dispersed computers added or removed with load). Deployment models are <strong>private</strong>, <strong>public</strong> and <strong>hybrid</strong>; service models are <strong>IaaS</strong> (hardware: EC2, S3), <strong>PaaS</strong> (hardware plus libraries and tools: App Engine, SimpleDB) and <strong>SaaS</strong> (a complete application: Salesforce, Google Apps).</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It is the fourth option in the architecture question, and the deck keeps the vocabulary separate from the marketing: deployment model is not service model.</p></div>
+        <div class="example"><b>Example.</b> A small clinic runs its database on the cloud vendor's hardware but installs its own application: IaaS, public. It buys nothing on the private model; a hybrid would keep patient data private and use public storage for backups.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Mixing the axes. “Private cloud” is a deployment model; “PaaS” is a service model; a system can be private-IaaS or public-PaaS.</p>
+      <details><summary>Slide 16</summary><blockquote>“Deployment model – Private: internal, exclusive use to the organization – Public: available to general public … – Hybrid … Service model – Infrastructure as a service (IaaS) … – Platform as a service (PaaS) … – Software as a Service (SaaS).”<cite>Slide 16</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="12" data-search="deployment diagram nodes artifacts communication paths syntax extended node specification instance level">
+      <div class="card-head"><h3>9 · The deployment diagram</h3><button class="know" data-id="l12-deploy" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A deployment diagram represents the relationships between hardware components. It has three elements and only three: <strong>nodes</strong> (any piece of hardware — clients, servers, networks, network devices), <strong>artifacts</strong> (a piece of the information system installed on a node), and <strong>communication paths</strong> (links between nodes). The deck also separates two levels: a <strong>specification-level</strong> diagram shows artifacts deployed to targets without naming instances, while an <strong>instance-level</strong> diagram names them — wsrv-01 running the web application, dbsrv-14 holding the schemas — which is how you show development, staging and production differences.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">This is the diagram the assignment asks for, and the deck's own phrasing is the marking vocabulary: node, artifact, communication path, and which level you drew.</p></div>
+        <div class="example"><b>Example.</b> The PTSIMS answer from the homework is specification level; adding “wsrv-01” and “dbsrv-14” would make it instance level and show the production difference.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Putting logic on the diagram. A deployment diagram shows hardware, what is installed on it, and the links — behaviour belongs to the sequence and activity diagrams.</p>
+      <details><summary>Slide 17</summary><blockquote>“Elements of a deployment diagram – Nodes: any piece of hardware (e.g. client computers, servers, networks or network devices) – Artifacts: a piece of the information system which will be installed on a node – Communication paths: a communication link between the nodes.”<cite>Slide 17</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="12" data-search="network model top level low level geographic locations communication infrastructure complexity">
+      <div class="card-head"><h3>10 · The network model, drawn twice</h3><button class="know" data-id="l12-network" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> A network model depicts the major components and their <strong>geographic locations</strong>. Its purposes are to convey the complexity of the system, to show how the software components fit together, and to help specify hardware and software. The deck's method is two passes: first a <strong>top-level</strong> network model in deployment-diagram form, showing locations and how complex and costly the communication infrastructure will be; then a <strong>low-level</strong> model for each location.</p>
+      <figure class="fig">
+        <div class="fig-scroll">
+          <svg viewBox="0 0 940 320" role="img" aria-label="Network model in two passes: a top-level diagram with three sites connected by links labelled with their cost, then a low-level diagram of one site showing its switch, two servers and the client subnet">
+            <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10">
+              <text x="30" y="22" fill="var(--muted)" font-size="9.5" font-style="italic">1 · top level — locations and the cost of the links</text>
+
+              <rect x="40" y="40" width="150" height="60" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="115" y="64" text-anchor="middle" fill="var(--ink)">Head office</text>
+              <text x="115" y="80" text-anchor="middle" fill="var(--muted)" font-size="8.5">Bangkok</text>
+              <rect x="330" y="40" width="150" height="60" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="405" y="64" text-anchor="middle" fill="var(--ink)">Clinic branch</text>
+              <text x="405" y="80" text-anchor="middle" fill="var(--muted)" font-size="8.5">Nonthaburi</text>
+              <rect x="620" y="40" width="150" height="60" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="695" y="64" text-anchor="middle" fill="var(--ink)">Clinic branch</text>
+              <text x="695" y="80" text-anchor="middle" fill="var(--muted)" font-size="8.5">Chonburi</text>
+
+              <line x1="194" y1="70" x2="326" y2="70" stroke="var(--muted)" stroke-width="1.2"/>
+              <line x1="484" y1="70" x2="616" y2="70" stroke="var(--muted)" stroke-width="1.2"/>
+              <text x="260" y="62" text-anchor="middle" fill="var(--muted)" font-size="8.5">leased line</text>
+              <text x="550" y="62" text-anchor="middle" fill="var(--muted)" font-size="8.5">leased line</text>
+
+              <text x="30" y="146" fill="var(--muted)" font-size="9.5" font-style="italic">2 · low level — one location, redrawn</text>
+              <rect x="40" y="160" width="500" height="130" rx="4" fill="none" stroke="var(--line)" stroke-dasharray="4 3"/>
+              <text x="52" y="176" fill="var(--ink)" font-size="9">Clinic branch, Nonthaburi</text>
+
+              <rect x="60" y="190" width="90" height="34" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="105" y="211" text-anchor="middle" fill="var(--ink)" font-size="9">switch</text>
+              <rect x="200" y="190" width="110" height="34" rx="2" fill="var(--accent-soft)" stroke="var(--accent)"/>
+              <text x="255" y="211" text-anchor="middle" fill="var(--ink)" font-size="9">app server</text>
+              <rect x="360" y="190" width="110" height="34" rx="2" fill="var(--accent-soft)" stroke="var(--accent)"/>
+              <text x="415" y="211" text-anchor="middle" fill="var(--ink)" font-size="9">db server</text>
+
+              <rect x="60" y="246" width="410" height="30" rx="2" fill="var(--surface-2)" stroke="var(--line)"/>
+              <text x="265" y="265" text-anchor="middle" fill="var(--muted)" font-size="8.5">nurse stations and consultation rooms — 12 clients</text>
+
+              <line x1="105" y1="224" x2="105" y2="246" stroke="var(--muted)" stroke-width="1.1"/>
+              <line x1="150" y1="207" x2="196" y2="207" stroke="var(--muted)" stroke-width="1.1"/>
+              <line x1="310" y1="207" x2="356" y2="207" stroke="var(--muted)" stroke-width="1.1"/>
+
+              <text x="600" y="180" fill="var(--muted)" font-size="9">the top level answers “how many sites”,</text>
+              <text x="600" y="196" fill="var(--muted)" font-size="9">the low level answers “what is in each one”,</text>
+              <text x="600" y="212" fill="var(--muted)" font-size="9">and the second one is what the hardware list is built from.</text>
+            </g>
+          </svg>
+        </div>
+        <figcaption><span class="fig-n">Fig. 12.2.</span> The network model in two passes, as the deck prescribes. <span lang="th">อ่านบนลงล่าง: รอบแรกคือ top-level ที่แสดงเฉพาะที่ตั้ง (สำนักงานใหญ่กับสองสาขา) กับเส้นเชื่อมระหว่างที่ ซึ่งบอกว่าค่าการสื่อสารจะแพงแค่ไหน รอบที่สองคือ low-level ของที่เดียว — ในตัวอย่างคือสาขานนทบุรี ที่มี switch, app server, db server และเครื่องลูกข่าย 12 เครื่อง หัวใจคือสองรอบตอบคำถามคนละข้อ: รอบบนตอบ “มีกี่ที่และเชื่อมกันอย่างไร” รอบล่างตอบ “ในแต่ละที่มีอะไร” และรายการฮาร์ดแวร์สร้างจากรอบล่าง</span></figcaption>
+      </figure>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">The two-pass rule is what separates a network model from a deployment diagram: one shows geography and cost, the other shows equipment per site.</p></div>
+        <div class="example"><b>Example.</b> A hospital with three branches and a data centre has one top-level diagram with four nodes and three links, and four low-level diagrams — one per location — each of which produces its own hardware list.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Drawing every server in the top-level diagram. At the top level the sites are the nodes; the equipment belongs to the low level.</p>
+      <details><summary>Slide 26</summary><blockquote>“A network diagram that depicts the major components and their geographic locations in the organization … First, create top-level network model … Second, create low-level network model for each location.”<cite>Slides 26–28</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="12" data-search="hardware software specification operating system dbms training maintenance warranty licensing alternative matrix vendors">
+      <div class="card-head"><h3>11 · Hardware and software specification</h3><button class="know" data-id="l12-spec" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> The hardware and software needed for the new application are recorded in a specification document. <strong>Software</strong>: the operating system, special-purpose software such as a DBMS, and the training, maintenance, warranties and licensing that come with them. <strong>Hardware</strong>: start from the low-level network diagram and list type and quantity of servers, peripherals, storage and backup devices; describe minimum requirements; and use an <strong>alternative matrix</strong> to evaluate vendor proposals. The deck's two samples make the scale explicit — a small-business stack for 50–500 daily users, and an enterprise stack for 50,000+ with load-balanced, auto-scaled clusters, read replicas and out-of-band management.</p>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">It is the third deliverable of the lesson, and it is where the architecture becomes a purchase order: quantities, minimums, and a matrix to compare vendors rather than a favourite brand.</p></div>
+        <div class="example"><b>Example.</b> For the clinic branch in Fig. 12.2 the low-level diagram yields: one 24-port switch, one application server (16 GB RAM, 2×1 TB NVMe RAID 1), one database server (32 GB RAM), twelve client stations, and the UPS and nightly backup drive that the minimum-requirements line forces you to notice.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Writing a specification as a wish list. The deck asks for type and quantity, minimum requirements, and a comparison matrix — three things a vendor can be held to.</p>
+      <details><summary>Slide 33</summary><blockquote>“Hardware requirements – Use low level network diagram as a starting point – Include type &amp; quantity of servers, peripherals, storage &amp; backup devices – Describe minimum requirements – Use an alternative matrix to evaluate vendor proposals.”<cite>Slide 33</cite></blockquote></details>
+    </article>
+
+    <article class="card" data-lesson="12" data-search="nfr impacts architecture availability spof security masking retention worm portability containers maintainability microservices">
+      <div class="card-head"><h3>12 · Five NFRs and what each one builds</h3><button class="know" data-id="l12-nfr" aria-pressed="false">Mark verified</button></div>
+      <p class="what"><strong>What it is.</strong> The deck closes with five NFRs, each carrying one requirement and the architecture it forces. <strong>Availability and reliability</strong>: 99.99% uptime — under 53 minutes a year — removes single points of failure, spreads across zones, and forces database clustering. <strong>Security and privacy</strong>: PII encrypted at rest and in transit and masked in the interface requires masking middleware in the presentation layer. <strong>Retention and compliance</strong>: seven years unalterable forces storage tiering and WORM storage. <strong>Portability</strong>: five platforms without rewriting forces containerisation and a cross-platform front end. <strong>Maintainability</strong>: a new payment gateway in under five person-days forces a decoupled, microservice architecture with creational and structural patterns.</p>
+      <div class="table-scroll">
+        <table class="spec">
+          <thead><tr><th>NFR</th><th>The requirement</th><th>What it builds</th></tr></thead>
+          <tbody>
+            <tr><td>Availability</td><td>99.99% uptime, ≤ 52.56 min down a year</td><td>no single point of failure; multi-zone failover; primary-replica database</td></tr>
+            <tr><td>Security / privacy</td><td>PII encrypted in transit and at rest, masked in the UI</td><td>masking middleware in the presentation layer</td></tr>
+            <tr><td>Retention</td><td>financial records unalterable for 7 years</td><td>storage tiering to cold storage; WORM policy</td></tr>
+            <tr><td>Portability</td><td>Windows, Linux, macOS, iOS, Android, one core</td><td>containers and orchestration; cross-platform front end</td></tr>
+            <tr><td>Maintainability</td><td>new payment gateway in &lt; 5 person-days</td><td>decoupled microservices; strategy and factory patterns</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="duo">
+        <div><span class="lbl">Why it matters</span><p class="why">This table is the answer template for both the assignment and the exam: state the NFR as a number, then name the architectural mechanism it forces.</p></div>
+        <div class="example"><b>Example.</b> The homework's two NFRs are rows from this table: availability gives the second application server behind the load balancer; security gives the external card gateway and TLS on every path.</div>
+      </div>
+      <p class="trap"><b>Exam trap</b>Giving the mechanism without the measure. “We will use containers” is not an answer; “portability across five platforms forces containers” is, because the requirement came first.</p>
+      <details><summary>Slide 36</summary><blockquote>“Non-functional requirements (NFRs) act as the blueprints for a system’s quality attributes, defining how a system should behave rather than what it should do.”<cite>Slide 36</cite></blockquote></details>
     </article>
 
   </div>
@@ -6036,6 +6335,7 @@ body[data-th="off"] .ex-th{display:none}
             <tr><td>8</td><td><a href="https://youtu.be/FmKEhxXrYws" target="_blank" rel="noopener">Lesson 8 non-functional requirements, 19 Nov (uploaded as Lesson 9)</a></td></tr>
             <tr><td>9–10</td><td><a href="https://youtu.be/rJTZXJR3Wy8" target="_blank" rel="noopener">Lessons 9–10, SRS and UI design, 20 Nov (uploaded as Lesson 10)</a></td></tr>
             <tr><td>11</td><td><a href="https://youtu.be/dqz3BFqwTRM" target="_blank" rel="noopener">Lesson 11 validation and management, 24 Nov</a></td></tr>
+            <tr><td>12</td><td><a href="https://youtu.be/CL7Cg2gcOmY" target="_blank" rel="noopener">Lesson 12 system architecture, 25 Nov</a></td></tr>
         </tbody>
       </table>
     </div>
@@ -6554,7 +6854,7 @@ body[data-th="off"] .ex-th{display:none}
 
     <div class="qa quiz-item wide" data-search="quiz4 deployment diagram nodes device execution environment artifact communication path responsive web ptsims">
       <p class="q"><span>Q2</span>Draw a deployment diagram for PTSIMS as a responsive web-based application, applying the two non-functional requirements from question 1. The architecture shall contain nodes responsible for all user actor types. (10 points)<span class="th-line" lang="th">วาด deployment diagram ของ PTSIMS โดยใช้ NFR สองข้อจากข้อ 1 และต้องมี node ที่รองรับผู้ใช้ทุกประเภท</span></p>
-      <p class="guide"><b>Use</b> Lesson 10 · <a href="#" data-card="l10-deploy">clause 18</a> and Fig. 10.9 · Lesson 8 · <a href="#" data-card="l8-class">clause 2</a></p>
+      <p class="guide"><b>Use</b> Lesson 12 · <a href="#" data-card="l12-deploy">clause 9</a> and <a href="#" data-card="l12-nfr">clause 12</a> · Lesson 10 · <a href="#" data-card="l10-deploy">clause 18</a> and Fig. 10.9 · Lesson 8 · <a href="#" data-card="l8-class">clause 2</a></p>
       <p class="marker">Marker wants: nodes stereotyped («device», «execution environment») and the artifacts placed on them; every communication path labelled with its protocol; all three actor types reachable; the external card company outside your boundary; the two NFRs visible as structure, not as labels.</p>
       <button class="reveal" aria-expanded="false">Show model answer</button>
       <div class="answer">
@@ -7790,6 +8090,75 @@ body[data-th="off"] .ex-th{display:none}
     </div>
   </div>
 
+  <div class="section-head"><div><h2>Lesson 12</h2><p>6 questions. Place the logic, choose the architecture, draw what runs where.</p></div></div>
+  <div class="grid" style="gap:12px">
+
+    <div class="qa" data-search="lesson 12 physical architecture layer decides distribution hardware software nfr design goal acceptance">
+      <p class="q"><span>Q1</span>What does the physical architecture layer decide, and what does the deck say about the role of non-functional requirements in it?</p>
+      <p class="marker">Marker wants: the two decisions; the NFR sentence in the deck's terms (design goal, acceptance, technology choice); the three deliverables it names.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>มันตัดสินสองอย่าง: <strong>ระบบถูกกระจายไปบนเครื่องคอมพิวเตอร์อย่างไร</strong> และ<strong>จะใช้อุปกรณ์และซอฟต์แวร์อะไร</strong> ทั้งสองอย่างถูกจำกัดด้วยระบบและเครือข่ายที่มีอยู่แล้ว ส่วนบทบาทของ NFR ตามสไลด์ 5 คือ: การออกแบบ การพัฒนา และการติดตั้งต้องสอดคล้องกับ NFR, NFR ถูกใช้เป็นเป้าหมายการออกแบบและเป็นส่วนหนึ่งของการตรวจรับระบบ และเทคโนโลยีที่เลือกขึ้นกับ NFR — ซึ่งแยกออกเป็นสามผลลัพธ์คือ system/software architecture, hardware และ software specification และ user interface design (บทถัดไป) พูดให้สั้น: physical architecture คือที่ที่ NFR กลายเป็นการตัดสินใจที่จับต้องได้</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 12 four logics storage access application presentation classify server client thin thick">
+      <p class="q"><span>Q2</span>Name the four software logics, then say where each sits in: a mainframe terminal, a clinic with the program installed on every reception PC and the database on a shared drive, a browser-only web client, and a tablet that records sessions offline and syncs later.</p>
+      <p class="marker">Marker wants: the four logics; four correct placements; thin vs thick decided by where the logic sits, not by the device.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>logic สี่ตัวคือ <strong>data storage, data access logic, application logic และ presentation logic</strong> การวาง: (1) mainframe terminal — server-based เพราะทั้งสี่ logic อยู่ที่ server ส่วน terminal ส่งแค่ keystroke; (2) คลินิกที่ติดตั้งโปรแกรมบนเครื่อง reception ทุกเครื่องและฐานข้อมูลอยู่บน shared drive — client-based เพราะ client ทำ access, application และ presentation ส่วน server เป็น file server เก็บ data storage อย่างเดียว; (3) browser-only web client — thin client-server เพราะ client ทำ presentation อย่างเดียว; (4) แท็บเล็ตที่บันทึก session แบบ offline แล้วค่อย sync — thick client-server เพราะ application logic บางส่วนลงมาอยู่ที่ client ด้วย และการ sync กลายเป็น requirement ทางสถาปัตยกรรม เกณฑ์ตัดสินคือ “logic อยู่ที่ไหน” ไม่ใช่ว่าเครื่องเป็นอะไร</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 12 choose architecture six criteria cost development security scalability clinic">
+      <p class="q"><span>Q3</span>A private clinic with no capital budget, one developer and a requirement to grow to five branches within two years must choose an architecture. Use the six criteria, take a position, and name what you give up.</p>
+      <p class="marker">Marker wants: the six criteria named; a decision; the losing column stated; the growth requirement used as evidence.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>เกณฑ์หกข้อ: <strong>cost of acquisition, cost of development, ease of development, interface capabilities, control and security, scalability</strong> คำตอบที่สมเหตุสมผลคือ <strong>client-server</strong> เพราะคอลัมน์นี้ได้ค่าอุปกรณ์ต่ำ (low infrastructure cost) และ scalability สูง ซึ่งตรงกับเงื่อนไข “ขยายเป็นห้าสาขาในสองปี” และได้ interface capabilities สูงซึ่งจำเป็นกับหน้าจอผู้ป่วย สิ่งที่ต้องแลกคือ <strong>cost of development สูง</strong> — ต้องเขียนทั้งฝั่ง client และ server — และ control/security อยู่ระดับกลาง ซึ่งต้องชดเชยด้วย NFR ด้าน security แยก (TLS, RBAC, audit log) ถ้าโรงพยาบาลมีทีมเดียวและงบจำกัดจริง ๆ การเลือก server-based จะถูกกว่าในการพัฒนาและคุม security ได้ดีกว่า แต่ scalability ต่ำ จึงเป็นคำตอบที่ไม่ตรงกับเงื่อนไขการขยาย</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 12 tiers 2-tier 3-tier n-tier four tier web server app server database clinic">
+      <p class="q"><span>Q4</span>For a clinic web application with a browser, a web server, an application server and a database, how many tiers is it, what sits in each, and what does each extra tier buy?</p>
+      <p class="marker">Marker wants: the tier count from the logic split; what each machine holds; the benefit and the cost of the extra tier.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p>ระบบนี้เป็น <strong>n-tier (สี่ชั้น)</strong> ตามคำจำกัดความของสไลด์: ชั้นที่ 1 browser — presentation logic; ชั้นที่ 2 web server — ให้บริการหน้าเว็บและตัด TLS; ชั้นที่ 3 application server — application logic; ชั้นที่ 4 database server — data storage และ data access logic การแยก web server ออกมาเพิ่มจาก 3-tier ซื้ออะไร: (ก) แยกจุดที่รับ traffic จากอินเทอร์เน็ตออกจากที่ประมวลผลธุรกิจ จึงวาง web server ใน DMZ และปิด port อื่นได้ (ข) ทำ load balancing ได้ง่ายกว่า และ (ค) อัปเดต application โดยไม่ต้องแตะ web tier สิ่งที่เสียคือ ความซับซ้อนและจำนวนเครื่องที่ต้องดูแลเพิ่มขึ้น และ network latency ระหว่างชั้น — สอดคล้องกับที่สไลด์บอกว่า n-tier “places higher demands on the network”</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 12 network model top level low level locations three sites hardware list">
+      <p class="q"><span>Q5</span>A clinic group has a head office and two branches. Describe the two network-model diagrams you would draw and what each one is used for.</p>
+      <p class="marker">Marker wants: the two passes in order; what belongs at each level; the link from the low-level diagram to the hardware list.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p><strong>รอบแรก top-level:</strong> วาดสาม node คือสำนักงานใหญ่กับสองสาขา และเส้นเชื่อมระหว่างที่ พร้อมกำกับชนิดและต้นทุนของเส้น (leased line, VPN ผ่านอินเทอร์เน็ต) รอบนี้ตอบว่า “มีกี่ที่ อยู่ห่างกันแค่ไหน และค่าการสื่อสารจะแพงแค่ไหน” จึงใช้ตัดสินงบโครงข่าย <strong>รอบที่สอง low-level:</strong> วาดแยกทีละที่ ลงรายละเอียดภายใน เช่น ที่สาขาหนึ่งมี switch, application server, database server และเครื่องลูกข่ายตามจำนวนห้องตรวจ รอบนี้ตอบว่า “ในแต่ละที่มีอุปกรณ์อะไร” และเป็นจุดตั้งต้นของ hardware specification ตามสไลด์ 33 — ชนิดและจำนวน server, peripheral, storage และ backup ต่อที่ ข้อผิดพลาดที่พบบ่อยคือเอาอุปกรณ์ทั้งหมดไปใส่ในรอบแรก ทำให้ภาพระดับภูมิศาสตร์กลายเป็นภาพระดับเครื่อง</p></div>
+    </div>
+
+    <div class="qa" data-search="lesson 12 nfr availability security architecture mechanisms deployment second server tls gateway">
+      <p class="q"><span>Q6</span>Take the two NFRs from the assignment — availability and security — and state, for each, the requirement as a number and the architectural mechanism it forces. Then name where each mechanism appears on a deployment diagram.</p>
+      <p class="marker">Marker wants: number first, mechanism second; a concrete node or path for each; the point that the NFR is the reason for the structure.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer"><p><strong>Availability:</strong> requirement — พร้อมใช้งาน 99.5% ของเวลาทำการ และกู้คืนภายใน 5 นาที; mechanism — กำจัด single point of failure ด้วย load balancer และ application server สองตัวหลังมัน, ฐานข้อมูลที่มี replica และ backup; บน deployment diagram จะเห็นเป็น <strong>node «device» load balancer</strong> และ <strong>«execution environment» application servers (2)</strong> พร้อม artifact เดียวกันติดตั้งทั้งสองตัว <strong>Security:</strong> requirement — PII เข้ารหัสทั้ง at rest และ in transit และไม่เก็บเลขบัตร; mechanism — TLS ทุกเส้น, gateway ของบริษัทบัตรอยู่นอกขอบเขต, masking ที่ presentation layer, log และ RBAC; บนแผนภาพจะเห็นเป็น <strong>communication path ที่กำกับ HTTPS</strong> ทุกเส้น และ <strong>node «device» external</strong> ที่อยู่นอก boundary ประโยคปิดที่ได้คะแนน: ถ้าลบ NFR สองข้อออก แผนภาพจะเหลือ node เดียวต่อชั้นและเส้นที่ไม่ต้องระบุ protocol — แปลว่าโครงสร้างที่เห็นคือคำตอบของ NFR ไม่ใช่ของแฟชั่นสถาปัตยกรรม</p></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============ MOCK TEST ============ -->
+<section class="view" id="mock" role="tabpanel" aria-label="Mock test" hidden>
+  <div class="eyebrow">Self-marking multiple choice</div>
+  <h1>Mock test</h1>
+  <p class="lede">Ten questions from the scope you pick, marked on submit, each with the reason. The midterm scope is Lessons 1–6; the final scope is Lessons 7–12.</p>
+
+  <div class="mock-scope" role="group" aria-label="Choose the scope">
+    <button class="btn" type="button" data-scope="mid" aria-pressed="true">Midterm · Lessons 1–6</button>
+    <button class="btn" type="button" data-scope="final" aria-pressed="false">Final · Lessons 7–12</button>
+    <button class="btn" type="button" data-scope="all" aria-pressed="false">Both</button>
+  </div>
+
+  <div class="mock-actions">
+    <button class="btn primary" type="button" id="mock-start">Start</button>
+    <button class="btn" type="button" id="mock-submit" hidden>Mark it</button>
+    <button class="btn" type="button" id="mock-again" hidden>New set</button>
+    <span class="mock-count" id="mock-count" aria-live="polite"></span>
+  </div>
+
+  <p class="mock-score" id="mock-score" aria-live="polite"></p>
+  <div id="mock-list"></div>
 </section>
 
 <!-- ============ FLASHCARDS ============ -->
@@ -7812,6 +8181,7 @@ body[data-th="off"] .ex-th{display:none}
         <option value="9">Lesson 9</option>
         <option value="10">Lesson 10</option>
         <option value="11">Lesson 11</option>
+        <option value="12">Lesson 12</option>
         <option value="v">Video only</option>
       </select>
       <button class="btn" id="fc-shuffle">Shuffle</button>
@@ -7884,7 +8254,19 @@ body[data-th="off"] .ex-th{display:none}
         <tr><td>Activity diagram</td><td>A business-process model: the sequence of activities with decisions, parallel paths and responsibilities.</td><td lang="th">แบบจำลองกระบวนการธุรกิจ: ลำดับ activity พร้อม decision งานขนาน และผู้รับผิดชอบ</td><td>5</td></tr>
         <tr><td>Swimlane</td><td>A lane assigning activities to the party responsible; most important lane at top or left.</td><td lang="th">เลนที่กำหนด activity ให้ผู้รับผิดชอบ โดยเลนสำคัญอยู่บนหรือซ้าย</td><td>5</td></tr>
         <tr><td>SVDPI</td><td>Subject–verb–direct object–preposition–indirect object: the sentence form for each normal-flow step.</td><td lang="th">ประธาน–กริยา–กรรมตรง–บุพบท–กรรมรอง: รูปประโยคของแต่ละขั้นใน normal flow</td><td>5</td></tr>
-      </tbody>
+              <tr><td>Sequence diagram</td><td>The objects of one use case and the messages between them, in order. Generic shows every scenario; instance shows one.</td><td lang="th">object ของ use case หนึ่งกับข้อความระหว่างกันตามลำดับ — generic แสดงทุก scenario, instance แสดง scenario เดียว</td><td>7</td></tr>
+        <tr><td>Object · message</td><td>An object is an instance of a class; a message is a call telling an object to run an operation.</td><td lang="th">object คือ instance ของ class · message คือการเรียกให้ object ทำงานหนึ่ง</td><td>7</td></tr>
+        <tr><td>Behavioural state machine</td><td>The states one object passes through, with the events, guards and actions that move it.</td><td lang="th">สถานะที่ object หนึ่งผ่านไป พร้อม event, guard และ action ที่ทำให้เปลี่ยนสถานะ</td><td>7</td></tr>
+        <tr><td>Black hole · miracle</td><td>Black hole: a state with no out-transition. Miracle: a state with no in-transition. Both are defects.</td><td lang="th">black hole ไม่มีขาออก · miracle ไม่มีขาเข้า — ทั้งคู่เป็นข้อบกพร่อง</td><td>7</td></tr>
+        <tr><td>Non-functional requirement</td><td>A property of how the system behaves (performance, reliability, security, usability), not a service it provides; must be objective and testable.</td><td lang="th">คุณสมบัติของ “ทำอย่างไร” ไม่ใช่บริการที่ระบบให้ และต้อง objective กับ testable</td><td>8</td></tr>
+        <tr><td>Product · process · external</td><td>Quality of the system · how the team must work · rules of the world outside the project.</td><td lang="th">คุณภาพของระบบ · วิธีที่ทีมทำงาน · กฎของโลกภายนอก</td><td>8</td></tr>
+        <tr><td>Quality attribute scenario</td><td>Source, stimulus, environment, artifact, response, response measure.</td><td lang="th">source · stimulus · environment · artifact · response · response measure</td><td>8</td></tr>
+        <tr><td>Software requirements specification</td><td>Specifies a software product's capabilities, the conditions and constraints it runs under, and how each requirement will be verified.</td><td lang="th">ระบุความสามารถของซอฟต์แวร์ เงื่อนไขและข้อจำกัด และวิธีตรวจสอบแต่ละข้อ</td><td>9</td></tr>
+        <tr><td>Deployment diagram</td><td>Nodes (hardware), artifacts (what is installed on a node), communication paths (links, labelled with the protocol).</td><td lang="th">node (ฮาร์ดแวร์) · artifact (สิ่งที่ติดตั้งบน node) · communication path (เส้นเชื่อม พร้อม protocol)</td><td>12</td></tr>
+        <tr><td>Requirement tracing</td><td>Backward to the requirement and stakeholder that motivated it; forward to the design, code, tests and manual that satisfy it.</td><td lang="th">backward หาแหล่งที่มา · forward หา design, code, test และคู่มือที่รองรับมัน</td><td>11</td></tr>
+        <tr><td>Baseline</td><td>Functional (reviewed system requirements), allocated (element requirements), developmental (evolving, supplier authority), product (completed).</td><td lang="th">functional → allocated → developmental → product</td><td>11</td></tr>
+        <tr><td>Defect</td><td>An imperfection or deficiency in a work product that does not meet its requirements and must be repaired or replaced.</td><td lang="th">ความไม่สมบูรณ์ของงานที่ไม่ตรง requirement และต้องซ่อมหรือทำใหม่</td><td>11</td></tr>
+</tbody>
     </table>
   </div>
 
@@ -7902,6 +8284,18 @@ body[data-th="off"] .ex-th{display:none}
     <div class="panel flat"><div class="stat">1 · 1000 · 0</div><div class="stat-label">Interaction matrix: conflict / overlap / independent<span class="th-line" lang="th">interaction matrix: ขัดกัน / ซ้ำซ้อน / ไม่เกี่ยวข้อง</span></div></div>
     <div class="panel flat"><div class="stat">≤ 10</div><div class="stat-label">Items on an analysis checklist<span class="th-line" lang="th">จำนวนข้อสูงสุดของ checklist</span></div></div>
     <div class="panel flat"><div class="stat">1–5</div><div class="stat-label">Cost/benefit scoring scale (value vs penalty)<span class="th-line" lang="th">มาตรวัด cost/benefit (value เทียบ penalty)</span></div></div>
+    <div class="panel flat"><div class="stat">4</div><div class="stat-label">Validation practices: review · prototyping · model validation · acceptance testing<span class="th-line" lang="th">วิธีตรวจสอบสี่วิธี</span></div></div>
+    <div class="panel flat"><div class="stat">3</div><div class="stat-label">NFR classes: product · process · external<span class="th-line" lang="th">หมวด NFR สามหมวด</span></div></div>
+    <div class="panel flat"><div class="stat">6</div><div class="stat-label">Parts of a quality attribute scenario<span class="th-line" lang="th">หกส่วนของ quality attribute scenario</span></div></div>
+    <div class="panel flat"><div class="stat">8</div><div class="stat-label">Cross-model verification rules, use case description ↔ activity diagram<span class="th-line" lang="th">กฎตรวจสอบแปดข้อระหว่าง description กับ activity diagram</span></div></div>
+    <div class="panel flat"><div class="stat">4</div><div class="stat-label">Baselines: functional · allocated · developmental · product<span class="th-line" lang="th">baseline สี่ตัว</span></div></div>
+    <div class="panel flat"><div class="stat">38 / 5</div><div class="stat-label">Review checklist items / groups<span class="th-line" lang="th">checklist 38 ข้อในห้ากลุ่ม</span></div></div>
+    <div class="panel flat"><div class="stat">6</div><div class="stat-label">UI principles: layout · content awareness · aesthetics · UX · consistency · minimal effort<span class="th-line" lang="th">หลัก UI หกข้อ</span></div></div>
+    <div class="panel flat"><div class="stat">6</div><div class="stat-label">Input validation checks: completeness · format · range · check digit · consistency · database<span class="th-line" lang="th">การตรวจข้อมูลเข้าหกข้อ</span></div></div>
+    <div class="panel flat"><div class="stat">5 · 4</div><div class="stat-label">Message types (error, confirmation, acknowledgment, delay, help) · evaluation methods<span class="th-line" lang="th">ข้อความห้าแบบ · วิธีประเมินสี่วิธี</span></div></div>
+    <div class="panel flat"><div class="stat">6</div><div class="stat-label">Architecture selection criteria: acquisition · development cost · ease · interface · control and security · scalability<span class="th-line" lang="th">เกณฑ์เลือกสถาปัตยกรรมหกข้อ</span></div></div>
+    <div class="panel flat"><div class="stat">99.99%</div><div class="stat-label">Four nines = at most 52.56 minutes of downtime a year<span class="th-line" lang="th">สี่เก้า = ดาวน์ไม่เกิน 52.56 นาทีต่อปี</span></div></div>
+    <div class="panel flat"><div class="stat">2</div><div class="stat-label">Passes of a network model: top level (locations, link cost), then low level per location<span class="th-line" lang="th">network model สองรอบ</span></div></div>
   </div>
 
   <div class="section-head"><div><h2>Lists you must be able to write out</h2></div></div>
@@ -8025,6 +8419,38 @@ body[data-th="off"] .ex-th{display:none}
       <li><strong>Add a number, a named standard/version, or a test method.</strong> No vague replacement words.<span class="th-line" lang="th">เติมตัวเลข มาตรฐานที่มีชื่อ/เวอร์ชัน หรือวิธีทดสอบ — ห้ามใช้คำกำกวมแทน</span></li>
       <li><strong>Check the modal.</strong> “shall” only.<span class="th-line" lang="th">ตรวจ modal: ใช้ shall เท่านั้น</span></li>
     </ol>
+    <div class="panel">
+      <h3 style="font-size:16px">Sequence notation</h3>
+      <ol class="clean"><li>Lifeline — dashed, from the object box</li><li>Activation bar — the time the object is working</li><li>Synchronous call — filled head, the sender waits</li><li>Asynchronous call — open head, the sender continues</li><li>Return — dashed, omitted when obvious</li><li>Create — dashed, to the head of a new lifeline</li><li>Destroy — × at the end of a lifeline</li></ol>
+    </div>
+    <div class="panel">
+      <h3 style="font-size:16px">Fragments</h3>
+      <ol class="clean"><li>loop — one subfragment, while its guard holds</li><li>alt — two or more subfragments, each with a guard; one runs</li><li>opt — single branch: run if true, omit if false</li><li>par — subfragments run concurrently</li><li>break — leave the enclosing interaction</li><li>ref — reuse another interaction</li></ol>
+    </div>
+    <div class="panel">
+      <h3 style="font-size:16px">State machine, in one line each</h3>
+      <ol class="clean"><li>Label: <code>event [guard] / action</code></li><li>Initial top-left, final bottom-right</li><li>Guards mutually exclusive</li><li>No black hole, no miracle</li><li>Every transition is a Create, Update or Delete message</li></ol>
+    </div>
+    <div class="panel">
+      <h3 style="font-size:16px">The SRS in three containers</h3>
+      <ol class="clean"><li>General content — identification, front matter, definitions, references (compliance / guidance), acronyms</li><li>Product overview — perspective (8), functions, user characteristics, limitations, assumptions, apportioning</li><li>Specific requirements — interfaces (12 fields), functions, usability, performance, database, design constraints, standards, attributes, verification, supporting information</li></ol>
+    </div>
+    <div class="panel">
+      <h3 style="font-size:16px">UI design process</h3>
+      <ol class="clean"><li>Use scenarios — one path through an essential use case</li><li>Interface structure — the WND</li><li>Interface standards — metaphor, objects, actions, icons, templates</li><li>Prototype — storyboard → window layout → HTML → language</li><li>Evaluate — heuristic, walkthrough, interactive, formal test</li></ol>
+    </div>
+    <div class="panel">
+      <h3 style="font-size:16px">Four defect types, and the repair</h3>
+      <ol class="clean"><li>Ambiguous — add a number and a condition</li><li>Incomplete — define the missing term and the linked data</li><li>Contradictory — write the exception that resolves it</li><li>Infeasible — replace with what the hardware can do</li></ol>
+    </div>
+    <div class="panel">
+      <h3 style="font-size:16px">Five NFRs and what each builds</h3>
+      <ol class="clean"><li>Availability → no single point of failure, clustering</li><li>Security → masking middleware, TLS on every path</li><li>Retention → storage tiering, WORM</li><li>Portability → containers, cross-platform front end</li><li>Maintainability → decoupled microservices, patterns</li></ol>
+    </div>
+    <div class="panel">
+      <h3 style="font-size:16px">Review summary report</h3>
+      <ol class="clean"><li>Objective · scope · participants · date and time</li><li>Terms, with the list of defect types</li><li>The checklist</li><li>Results — checklist items × requirements, Pass / Fail / Notes</li><li>Open issues, action and responsibility</li></ol>
+    </div>
   </div>
 
   <div class="section-head"><div><h2>Traps that cost marks</h2></div></div>
@@ -8046,6 +8472,10 @@ body[data-th="off"] .ex-th{display:none}
     <div class="callout warn"><strong>Decision ≠ merge; fork needs a join.</strong> A diamond without a guard is a merge; parallel paths must rejoin.<span class="th-line" lang="th">decision ต้องมี guard, merge ไม่มี · fork ต้องมี join</span></div>
     <div class="callout warn"><strong>Essential ≠ overview.</strong> Essential/real is about technology; overview/detail is about length.<span class="th-line" lang="th">essential/real เรื่องเทคโนโลยี ส่วน overview/detail เรื่องความยาว — คนละแกน</span></div>
     <div class="callout warn"><strong>Sea level is the default.</strong> One user goal, 2–20 minutes; fish and clam are subfunctions.<span class="th-line" lang="th">sea level คือค่าปกติ หนึ่งเป้าหมายผู้ใช้ 2–20 นาที ส่วน fish/clam เป็น subfunction</span></div>
+    <div class="callout warn"><strong>A class is not an object.</strong> Lifelines carry instances — <code>:Patient</code>, <code>s:Student</code> — never a bare class name.<span class="th-line" lang="th">lifeline ต้องเป็น instance ไม่ใช่ชื่อ class เดี่ยว ๆ</span></div>
+    <div class="callout warn"><strong>An adjective is not an NFR.</strong> “Fast”, “secure”, “user-friendly” score nothing until they carry a number, a condition and a test.<span class="th-line" lang="th">คำคุณศัพท์ไม่ใช่ NFR — ต้องมีตัวเลข เงื่อนไข และวิธีทดสอบ</span></div>
+    <div class="callout warn"><strong>Deployment is hardware, not behaviour.</strong> Nodes, artifacts and paths — a component or class diagram is not a deployment diagram.<span class="th-line" lang="th">deployment diagram คือฮาร์ดแวร์ ไม่ใช่พฤติกรรม</span></div>
+    <div class="callout warn"><strong>One final state.</strong> Two stop states, or “closed” written on the arrow instead of as a state, is the mistake she corrected in class.<span class="th-line" lang="th">final state มีอันเดียว และ “closed” ต้องเป็น state ไม่ใช่ label บนลูกศร</span></div>
   </div>
 </section>
 
@@ -8186,8 +8616,8 @@ window.__SAID__ = {
 <script>
 window.__TH__ = {
   tabs: {
-    overview: "ภาพรวม", lesson1: "บทที่ 1", lesson2: "บทที่ 2", lesson3: "บทที่ 3", lesson4: "บทที่ 4", lesson5: "บทที่ 5", lesson6: "บทที่ 6", lesson7: "บทที่ 7", lesson8: "บทที่ 8", lesson9: "บทที่ 9", lesson10: "บทที่ 10", lesson11: "บทที่ 11",
-    video: "วิดีโอ", practice: "แบบฝึกหัด", hw: "งาน", cards: "แฟลชการ์ด", cheat: "สรุปย่อ"
+    overview: "ภาพรวม", lesson1: "บทที่ 1", lesson2: "บทที่ 2", lesson3: "บทที่ 3", lesson4: "บทที่ 4", lesson5: "บทที่ 5", lesson6: "บทที่ 6", lesson7: "บทที่ 7", lesson8: "บทที่ 8", lesson9: "บทที่ 9", lesson10: "บทที่ 10", lesson11: "บทที่ 11", lesson12: "บทที่ 12",
+    video: "วิดีโอ", mock: "ข้อสอบจำลอง", practice: "แบบฝึกหัด", hw: "งาน", cards: "แฟลชการ์ด", cheat: "สรุปย่อ"
   },
   cards: {
     "l1-sdlc": "SDLC คือวงจรชีวิตของระบบ แบ่งเป็น 4 ระยะ: วางแผน วิเคราะห์ ออกแบบ และพัฒนา แต่ละระยะมีเอกสารส่งมอบ (deliverable) ของตัวเอง งานด้านความต้องการอยู่ที่ระยะวิเคราะห์มากที่สุด แต่เริ่มตั้งแต่ระยะวางแผนและย้อนกลับมาตอนออกแบบ กับดัก: SDLC ไม่ใช่ Waterfall — Waterfall เป็นเพียงวิธีจัดลำดับระยะวิธีหนึ่ง",
@@ -8351,6 +8781,18 @@ window.__TH__ = {
     "l11-measure": "การวัดปริมาณ requirement ให้ภาพความซับซ้อน ใช้ประเมินขนาดของการเปลี่ยนแปลง ประเมินต้นทุนพัฒนาและบำรุงรักษา หรือเป็นตัวส่วนของการวัดอื่น วิธีที่สไลด์ระบุคือ functional size measurement ซึ่งมีสองแนวทาง: use case point และ function point กับดัก: อย่าสับสนระหว่างขนาดของ requirement กับขนาดของซอฟต์แวร์",
     "l11-attrs": "requirements attributes ต้องนิยาม บันทึก และอัปเดตตลอดการพัฒนา อย่างน้อยคือมิติการจำแนกและวิธีตรวจสอบหรือหัวข้อ acceptance test เพิ่มเติมได้แก่ identifier, rationale, source, change history, risk, dependency และ priority สไลด์บอกว่าตัวที่สำคัญที่สุดคือ identifier ที่ทำให้ระบุ requirement ได้ไม่ซ้ำ กับดัก: มีแค่ ID กับคำอธิบายไม่พอ ต้องมีวิธีตรวจสอบและ trace link ด้วย",
     "l10-deploy": "deployment diagram คือมุมมองทางกายภาพ: node ที่ซอฟต์แวร์รันอยู่ artifact ที่ติดตั้งลงไป และเส้นสื่อสารระหว่างกัน node เขียนเป็นกล่องและมี stereotype ได้ — «device» สำหรับฮาร์ดแวร์เช่นมือถือหรือเซิร์ฟเวอร์, «execution environment» สำหรับซอฟต์แวร์ที่โฮสต์ซอฟต์แวร์อื่น เช่น application server หรือ browser artifact คือไฟล์ที่นำไปติดตั้ง เช่น war, jar หรือ schema และเส้นทางต้องกำกับ protocol เช่น HTTPS, SQL, SMTP นี่คือโมเดลเดียวที่การบ้านต้องการแต่สไลด์ไม่มี เพราะคาบ 24 พ.ย. เสียส่วน architectural modelling ไป กับดัก: วาด component หรือ class diagram แล้วเรียกว่า deployment — deployment ตอบว่า “อะไรรันที่ไหนและผ่าน protocol อะไร” ไม่ใช่ “โค้ดเรียกอะไร”",
+    "l12-phys": "physical architecture layer ตัดสินสองอย่าง: ระบบกระจายบนเครื่องอย่างไร และใช้อุปกรณ์กับซอฟต์แวร์อะไร ทั้งสองอย่างถูกจำกัดด้วยระบบและเครือข่ายเดิม ส่วน NFR ตามสไลด์ 5 คือกรอบ: การออกแบบ การพัฒนา และการติดตั้งต้องสอดคล้องกับมัน มันเป็นเป้าหมายการออกแบบและส่วนหนึ่งของการตรวจรับ และมันเลือกเทคโนโลยี — architecture, hardware/software specification และ UI กับดัก: คิดว่าสถาปัตยกรรมเลือกได้อิสระ ทั้งที่ constraint และ NFR ตัดตัวเลือกออกไปเกือบหมดแล้ว",
+    "l12-comp": "ซอฟต์แวร์มีสี่ logic: data storage, data access, application logic และ presentation logic ฮาร์ดแวร์มี client, server และ network ที่เชื่อมกัน คำถามสถาปัตยกรรมทุกข้อในบทนี้ย่อเหลือคำถามเดียว: logic ใดรันที่ไหน server-based เอาไว้ที่ server ทั้งหมด client-based เก็บ data ที่ file server ที่เหลืออยู่ที่ client thin client เก็บแค่ presentation และ thick client เอา application ลงมาที่ client ด้วย กับดัก: เรียก thin/thick จากชนิดอุปกรณ์ ต้องดูจากตำแหน่งของ logic",
+    "l12-server": "server-based: server ทำทั้งสี่ฟังก์ชัน client เป็น terminal ที่เก็บ keystroke แล้วส่งไปประมวลผล ข้อดีคือคุมและปลอดภัยที่สุด พัฒนาถูกเพราะเขียนโปรแกรมเดียว ข้อเสียคือ scalability ต่ำและ interface capabilities ต่ำ กับดัก: เรียกเว็บแอปว่า server-based เพราะ “server ทำงาน” — ถ้า browser เรนเดอร์หน้าจอ presentation อยู่ที่ client",
+    "l12-client": "client-based: client เป็น PC บนเครือข่ายและ server เป็น file server ข้อมูลทั้งหมดถูกดาวน์โหลดมาประมวลผลที่ client พัฒนาง่ายแต่รับโหลดได้ไม่นาน network traffic สูงเกิน และ client อาจไม่มีกำลังพอ กับดัก: แนะนำ client-based เพราะ “ถูก” โดยไม่บอกเพดานของมัน — สไลด์ระบุความล้มเหลวสามแบบ",
+    "l12-cs": "client-server: แบ่งการประมวลผลระหว่าง client กับ server เป็นสถาปัตยกรรมหลักของระบบสมัยใหม่ thin client ทำแค่ presentation ส่วน thick client ทำ presentation กับ application ขยายได้ด้วยต้นทุนที่เพิ่มทีละน้อย แต่ซับซ้อนกว่าเพราะต้องเขียนโปรแกรมสองฝั่ง กับดัก: บอกว่า client-server ดีที่สุด — สไลด์บอกว่ามี development cost สูงที่สุดในสามแบบ",
+    "l12-tier": "tier นับจากการแบ่ง logic: 2-tier ให้ server หนึ่งตัวเก็บ data storage และ access ส่วน client ทำ application กับ presentation; 3-tier แยก application logic ไปอีก server; n-tier แยก application logic สอง server กับ data อีกตัว เหมาะกับอีคอมเมิร์ซ โหลดบาลานซ์ดีกว่า แต่เรียกร้องเครือข่ายมากกว่า กับดัก: นับ client เป็น tier บ้างไม่นับบ้าง — สไลด์นับตามตำแหน่ง logic และรวม client ไว้ในคำอธิบาย 2-tier และ 3-tier",
+    "l12-select": "เลือกสถาปัตยกรรมด้วยหกเกณฑ์: cost of acquisition, cost of development, ease of development, interface capabilities, control and security และ scalability ตารางของสไลด์ย้ำว่าไม่มีคอลัมน์ไหนชนะทุกด้าน — server-based แพงเรื่องโครงสร้างพื้นฐานแต่พัฒนาถูกและคุมได้ดี, client-based ถูกและง่ายแต่คุมยาก, client-server ค่าโครงสร้างพื้นฐานต่ำและขยายได้แต่พัฒนาสูง กับดัก: ตอบชื่อสถาปัตยกรรมโดยไม่บอกเกณฑ์ที่ใช้ตัดสิน",
+    "l12-cloud": "cloud computing คือการมอง IT เป็นสินค้าจ่ายตามใช้ ครอบ virtualisation, service-oriented architecture และ grid computing รูปแบบการติดตั้งมี private, public และ hybrid ส่วนรูปแบบบริการคือ IaaS (ฮาร์ดแวร์), PaaS (ฮาร์ดแวร์บวกเครื่องมือ) และ SaaS (แอปสำเร็จรูป) กับดัก: สับสนสองแกน — private cloud เป็น deployment model ส่วน PaaS เป็น service model ระบบหนึ่งเป็น private-IaaS หรือ public-PaaS ได้",
+    "l12-deploy": "deployment diagram แสดงความสัมพันธ์ของฮาร์ดแวร์ มีสามองค์ประกอบเท่านั้น: node (ฮาร์ดแวร์), artifact (ชิ้นส่วนระบบที่ติดตั้งบน node) และ communication path (เส้นเชื่อม) สไลด์แยกสองระดับ: specification level ไม่ระบุ instance และ instance level ระบุชื่อเครื่องจริง เช่น wsrv-01 กับ dbsrv-14 ซึ่งใช้แสดงความต่างของ development, staging และ production กับดัก: ใส่พฤติกรรมลงในแผนภาพ — deployment แสดงฮาร์ดแวร์ อะไรติดตั้งอยู่ และเส้นเชื่อม",
+    "l12-network": "network model แสดงองค์ประกอบหลักและที่ตั้งทางภูมิศาสตร์ วาดสองรอบ: top-level แสดงที่ตั้งและความซับซ้อน/ต้นทุนของโครงข่าย แล้ว low-level ของแต่ละที่ รอบบนตอบ “มีกี่ที่และเชื่อมกันอย่างไร” รอบล่างตอบ “ในแต่ละที่มีอุปกรณ์อะไร” และเป็นจุดตั้งต้นของ hardware specification กับดัก: ใส่ server ทุกตัวลงในรอบบน — ระดับบนใช้ site เป็น node",
+    "l12-spec": "hardware และ software specification ถูกบันทึกเป็นเอกสาร ซอฟต์แวร์: ระบบปฏิบัติการ, ซอฟต์แวร์เฉพาะทางเช่น DBMS และการอบรม/บำรุงรักษา/ประกัน/สัญญาอนุญาต ฮาร์ดแวร์: เริ่มจาก low-level network diagram แล้วระบุชนิดและจำนวน server, peripheral, storage และ backup, ระบุ minimum requirements และใช้ alternative matrix เทียบข้อเสนอผู้ขาย สไลด์ยกตัวอย่างสองสเกล: ระบบเล็ก 50–500 ผู้ใช้ต่อวัน และระบบใหญ่ 50,000+ ที่ต้องมี load-balanced cluster กับ read replica กับดัก: เขียน spec เป็นรายการความอยาก — ต้องมีชนิด จำนวน ขั้นต่ำ และตารางเปรียบเทียบ",
+    "l12-nfr": "NFR ห้าข้อพร้อมผลต่อสถาปัตยกรรม: availability 99.99% (ดาวน์ไม่เกิน 52.56 นาทีต่อปี) → กำจัด single point of failure, หลาย zone, database clustering; security/privacy (PII เข้ารหัสและ mask) → masking middleware ที่ presentation layer; retention 7 ปีแบบแก้ไม่ได้ → storage tiering และ WORM; portability ห้าแพลตฟอร์ม → containerisation กับ cross-platform front end; maintainability เพิ่ม payment gateway ภายใน 5 person-days → microservices และ design pattern กับดัก: ให้ mechanism โดยไม่มีตัวเลข — คำตอบที่ได้คะแนนคือ requirement ก่อน แล้วตามด้วย mechanism",
   },
   qa: [
     "อธิบาย 4 ระยะของ SDLC และบอกว่าวิศวกรรมความต้องการอยู่ตรงไหน",
@@ -8460,12 +8902,118 @@ window.__TH__ = {
     "รายงานสรุปการรีวิวมีอะไรบ้าง และทำไมตารางผลเป็นสองมิติ",
     "จำแนกข้อบกพร่องสี่ชนิดและเขียนประโยคใหม่สองข้อ",
     "กฎตรวจสอบแปดข้อ ข้อใดตก และแก้อะไรได้บ้าง",
-    "เดิน change request ผ่าน baseline, tracing และ attribute"
+    "เดิน change request ผ่าน baseline, tracing และ attribute",
+    "physical architecture layer ตัดสินอะไร และ NFR มีบทบาทอย่างไร",
+    "logic สี่ตัวอยู่ที่ไหนในสถาปัตยกรรมทั้งสี่แบบ",
+    "เลือกสถาปัตยกรรมให้คลินิกด้วยเกณฑ์หกข้อ และบอกสิ่งที่ต้องแลก",
+    "ระบบเว็บคลินิกเป็นกี่ tier อะไรอยู่ในแต่ละชั้น และการเพิ่มชั้นซื้ออะไร",
+    "network model สองรอบสำหรับสำนักงานใหญ่กับสองสาขา",
+    "แปลง NFR สองข้อเป็นการตัดสินใจทางสถาปัตยกรรม และชี้ว่าเห็นที่ไหนบน deployment diagram"
   ]
 };
 </script>
 
 <script>
+window.__MOCK__ = [
+  {l:2,s:"mid",q:"Which is NOT one of the nine individual characteristics of a well-formed requirement?",o:["Verifiable", "Unambiguous", "Prioritised", "Implementation free"],a:2,why:"Priority is an attribute of a requirement (Lesson 2, slide 40), not one of the nine characteristics.",th:"priority เป็น attribute ไม่ใช่ลักษณะเก้าข้อ"},
+  {l:1,s:"mid",q:"Requirements validation asks:",o:["Did we build it right?", "Did we build the right system?", "Is the code efficient?", "Does it meet the coding standard?"],a:1,why:"Validation is the right system, as intended by stakeholders; verification is built right / well formed.",th:"validation = สร้างระบบที่ใช่ · verification = สร้างถูกและเขียนดี"},
+  {l:3,s:"mid",q:"Stakeholders are spread across three provinces and cannot meet. Which technique comes first?",o:["JAD", "Questionnaire", "Observation", "Prototyping"],a:1,why:"A questionnaire reaches many people cheaply; it is broad rather than deep, so pair it with interviews later.",th:"แบบสอบถามเข้าถึงคนจำนวนมาก เหมาะเมื่อประชุมพร้อมกันไม่ได้"},
+  {l:5,s:"mid",q:"In a use case diagram, an include relationship is drawn:",o:["From the included use case to the base, dashed with «include»", "From the base use case to the included one, dashed with «include»", "As a solid line with a hollow triangle", "As a dashed line with an open arrowhead and «extend»"],a:1,why:"Include points base → included, because the base always performs it; extend points extension → base.",th:"include ชี้ base → included ส่วน extend ชี้ extension → base"},
+  {l:5,s:"mid",q:"Cockburn's sea-level use case runs for about:",o:["2–20 minutes", "2–20 hours", "20 seconds", "2–3 days"],a:0,why:"Sea level is one user goal taking 2–20 minutes; cloud, kite, fish and clam sit above and below it.",th:"sea level = หนึ่งเป้าหมายผู้ใช้ 2–20 นาที"},
+  {l:4,s:"mid",q:"Which rethinks the process most radically?",o:["BPA", "BPI", "BPR", "BPMN"],a:2,why:"BPA automates what exists, BPI improves it, BPR asks whether the process should exist in that form at all.",th:"BPA ทำให้อัตโนมัติ · BPI ปรับปรุง · BPR ออกแบบกระบวนการใหม่"},
+  {l:2,s:"mid",q:"Which is one of the four set characteristics?",o:["Necessary", "Bounded", "Singular", "Verifiable"],a:1,why:"The four are complete, consistent, affordable and bounded; the other three are individual characteristics.",th:"ลักษณะของชุด requirement มีสี่ข้อ: complete, consistent, affordable, bounded"},
+  {l:5,s:"mid",q:"A diamond in an activity diagram with no guard on its outgoing flows is really a:",o:["decision", "merge", "fork", "final node"],a:1,why:"A decision chooses one guarded path; a merge simply reunites alternatives and carries no guard.",th:"decision ต้องมี guard · merge ไม่มี guard"},
+  {l:1,s:"mid",q:"Which is an input to the RE process that comes from outside the organisation?",o:["Existing system documentation", "Organisational standards", "Regulation", "Stakeholder needs"],a:2,why:"Regulation is imposed from outside; organisational standards are internal to the organisation.",th:"regulation มาจากภายนอก · organisational standard เป็นของภายในองค์กร"},
+  {l:6,s:"mid",q:"Patient 1 — * Appointment means:",o:["each appointment has exactly one patient", "one patient may have many appointments, each with one patient", "many patients share each appointment", "the association is optional"],a:1,why:"Read it at the Appointment end: one patient, many appointments.",th:"อ่านที่ปลายฝั่ง Appointment: ผู้ป่วยหนึ่งคน มีได้หลายนัด"},
+  {l:6,s:"mid",q:"A filled diamond on an association means:",o:["aggregation", "composition", "generalisation", "dependency"],a:1,why:"Filled diamond is composition — the whole creates and destroys the parts; hollow is aggregation.",th:"เพชรทึบ = composition · เพชรกลวง = aggregation"},
+  {l:4,s:"mid",q:"In an interaction matrix, a code of 1000 means:",o:["no interaction", "some overlap", "complete overlap or a conflict", "not applicable"],a:2,why:"1 = no overlap, 1000 = complete overlap or conflict, 0 = not applicable.",th:"1 = ไม่ทับ · 1000 = ทับหรือขัดกัน · 0 = ไม่เกี่ยว"},
+  {l:2,s:"mid",q:"Which modal verb must a requirement use?",o:["should", "may", "shall", "will"],a:2,why:"Shall is binding; will states a fact, should is a preference, may is permission.",th:"shall เท่านั้นที่ผูกพัน"},
+  {l:4,s:"mid",q:"Which is one of the four results of analysis?",o:["A prototype", "A prioritised list of requirements", "A test plan", "A cost estimate"],a:1,why:"The four are the SRS, the analysis models, a prioritised list and a traceability matrix.",th:"ผลลัพธ์การวิเคราะห์สี่อย่าง: SRS, model, รายการจัดลำดับ, traceability matrix"},
+  {l:3,s:"mid",q:"What does elicitation produce?",o:["An agreed baseline", "A draft requirements document", "A signed contract", "A test plan"],a:1,why:"Elicitation produces a draft; analysis and negotiation turn it into agreement.",th:"elicitation ได้ฉบับร่าง · analysis/negotiation ทำให้เป็นข้อตกลง"},
+  {l:7,s:"final",q:"A dashed arrow with an open head arriving at the head of a new lifeline is a:",o:["return", "create", "destroy", "asynchronous call"],a:1,why:"Create is dashed and points at the new lifeline's head; a return is dashed but goes back along an existing lifeline.",th:"create = เส้นประชี้หัว lifeline ใหม่"},
+  {l:7,s:"final",q:"Which fragment runs its subfragments concurrently?",o:["alt", "par", "opt", "loop"],a:1,why:"par runs them in parallel; alt chooses one; opt runs one or nothing; loop repeats.",th:"par = ทำงานพร้อมกัน"},
+  {l:7,s:"final",q:"A state with no out-transition is called a:",o:["miracle", "black hole", "final state", "composite state"],a:1,why:"Black hole has no exit, miracle has no entry; both are validation defects.",th:"black hole ไม่มีขาออก · miracle ไม่มีขาเข้า"},
+  {l:7,s:"final",q:"Every transition in a state machine must correspond to which kind of message?",o:["Read", "Create, Update or Delete", "Synchronous only", "Return"],a:1,why:"A state change is a data change, so the message must be Create, Update or Delete — a read changes nothing.",th:"transition ต้องเป็น Create/Update/Delete เท่านั้น"},
+  {l:8,s:"final",q:"Which is a non-functional requirement?",o:["The system shall let a doctor record a diagnosis", "The system shall be available 99.8% of clinic hours", "The system shall print a receipt", "The system shall let a patient cancel an appointment"],a:1,why:"Availability is a measurable property of how the system behaves; the others are services.",th:"availability เป็นคุณสมบัติที่วัดได้ ไม่ใช่บริการ"},
+  {l:8,s:"final",q:"Which is NOT one of the six parts of a quality attribute scenario?",o:["Source", "Stimulus", "Budget", "Response measure"],a:2,why:"The six are source, stimulus, environment, artifact, response and response measure.",th:"หกส่วน: source, stimulus, environment, artifact, response, response measure"},
+  {l:8,s:"final",q:"“The team shall develop the system with Scrum in two-week sprints” is a:",o:["product requirement", "process requirement", "external requirement", "functional requirement"],a:1,why:"It constrains how the team works, not what the system does — a process requirement.",th:"บังคับวิธีทำงานของทีม = process requirement"},
+  {l:9,s:"final",q:"In an SRS, the references section is split into:",o:["primary and secondary", "compliance and guidance", "internal and external", "current and archived"],a:1,why:"Compliance lists documents whose requirements are included by citation; guidance informs without binding.",th:"compliance = บังคับใช้ · guidance = ให้ข้อมูล"},
+  {l:10,s:"final",q:"Which is NOT one of the six UI design principles?",o:["Layout", "Content awareness", "Minimal user effort", "Gamification"],a:3,why:"The six are layout, content awareness, aesthetics, user experience, consistency and minimal user effort.",th:"หกหลัก: layout, content awareness, aesthetics, UX, consistency, minimal effort"},
+  {l:10,s:"final",q:"Interactive evaluation cannot be used with:",o:["an HTML prototype", "a storyboard", "a working system", "a language prototype"],a:1,why:"Interactive sessions need something the user can operate; storyboards and window layout diagrams cannot be driven.",th:"interactive ใช้กับ storyboard ไม่ได้ ต้องเป็นสิ่งที่กดได้"},
+  {l:10,s:"final",q:"Validating the 13th digit of a Thai national ID is which check?",o:["format", "range", "check digit", "consistency"],a:2,why:"The final digit is a checksum over the other twelve — a check digit, not a format rule.",th:"หลักสุดท้ายของเลขบัตรเป็น checksum = check digit"},
+  {l:12,s:"final",q:"The three elements of a deployment diagram are:",o:["nodes, artifacts, communication paths", "classes, objects, links", "actors, use cases, boundary", "components, interfaces, ports"],a:0,why:"Nodes are hardware, artifacts are what is installed, communication paths are the links and their protocols.",th:"node · artifact · communication path"},
+  {l:12,s:"final",q:"In the two-pass network model, the top-level diagram shows:",o:["every server in every room", "locations and the cost of the links between them", "the class structure", "the user interface layout"],a:1,why:"The top level answers how many sites and how expensive the communication is; equipment belongs to the low level.",th:"รอบบน = ที่ตั้งและต้นทุนเส้นเชื่อม"},
+  {l:12,s:"final",q:"99.99% availability allows at most:",o:["5 minutes a month", "52.56 minutes a year", "8.76 hours a year", "1 hour a month"],a:1,why:"Four nines is 52.56 minutes down in a year, which is why it forces clustering and multi-zone failover.",th:"สี่เก้า = ดาวน์ไม่เกิน 52.56 นาทีต่อปี"},
+  {l:11,s:"final",q:"Forward traceability links a requirement to:",o:["the stakeholder who asked for it", "the design, code and tests that satisfy it", "the competitor's product", "the project budget"],a:1,why:"Forward goes down into design, code, tests and the manual; backward goes up to the source.",th:"forward ลงไปหา design, code, test · backward ขึ้นไปหาแหล่งที่มา"}
+];
+
+document.addEventListener("DOMContentLoaded", function(){
+  var POOL = window.__MOCK__ || [];
+  var scope = "mid", set = [];
+  var list = document.getElementById("mock-list");
+  var score = document.getElementById("mock-score");
+  var count = document.getElementById("mock-count");
+  var start = document.getElementById("mock-start");
+  var submit = document.getElementById("mock-submit");
+  var again = document.getElementById("mock-again");
+  if (!list || !start) return;
+
+  function pick(){
+    var pool = POOL.filter(function(q){ return scope === "all" || q.s === scope; });
+    for (var i = pool.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = pool[i]; pool[i] = pool[j]; pool[j] = t; }
+    return pool.slice(0, 10);
+  }
+  function render(){
+    list.innerHTML = "";
+    score.textContent = "";
+    set.forEach(function(q, i){
+      var fs = document.createElement("fieldset");
+      fs.className = "mock-q";
+      var lg = document.createElement("legend");
+      lg.textContent = "Q" + (i + 1) + " · Lesson " + q.l;
+      fs.appendChild(lg);
+      q.o.forEach(function(opt, k){
+        var lab = document.createElement("label");
+        var inp = document.createElement("input");
+        inp.type = "radio"; inp.name = "mq" + i; inp.value = String(k);
+        lab.appendChild(inp);
+        lab.appendChild(document.createTextNode(opt));
+        fs.appendChild(lab);
+      });
+      list.appendChild(fs);
+    });
+    count.textContent = set.length + " questions";
+    submit.hidden = false; again.hidden = false; start.hidden = true;
+  }
+  function mark(){
+    var right = 0;
+    Array.prototype.forEach.call(list.children, function(fs, i){
+      var q = set[i], chosen = fs.querySelector("input:checked");
+      fs.classList.remove("correct", "wrong");
+      if (chosen && Number(chosen.value) === q.a) { fs.classList.add("correct"); right++; }
+      else fs.classList.add("wrong");
+      Array.prototype.forEach.call(fs.querySelectorAll("label"), function(lab, k){ if (k === q.a) lab.classList.add("mock-right"); });
+      if (!fs.querySelector(".mock-why")) {
+        var p = document.createElement("p");
+        p.className = "mock-why";
+        p.innerHTML = "<b>Answer: " + q.o[q.a] + ".</b> " + q.why + ' <span class="th-line" lang="th">' + q.th + "</span>";
+        fs.appendChild(p);
+      }
+    });
+    score.textContent = right + " / " + set.length + " correct";
+    submit.hidden = true;
+  }
+  document.querySelectorAll("#mock .mock-scope .btn").forEach(function(b){
+    b.addEventListener("click", function(){
+      scope = b.getAttribute("data-scope");
+      document.querySelectorAll("#mock .mock-scope .btn").forEach(function(x){ x.setAttribute("aria-pressed", String(x === b)); });
+    });
+  });
+  start.addEventListener("click", function(){ set = pick(); render(); });
+  submit.addEventListener("click", mark);
+  again.addEventListener("click", function(){ list.innerHTML = ""; score.textContent = ""; count.textContent = ""; submit.hidden = true; again.hidden = true; start.hidden = false; });
+});
+
 window.__FC__ = [
   {l:"6",tag:"Lesson 6",q:"What does a structural model show, and when is it drawn?",a:"Class and object diagrams: the data of the problem domain. A conceptual model in analysis (no storage detail), evolved into a design model later.",th:"structural model แสดงข้อมูลของโดเมนด้วย class/object diagram: conceptual ใน analysis และ design model ทีหลัง"},
   {l:"6",tag:"Lesson 6",q:"Class, attribute, operation — define each.",a:"Class = template for instances; attribute = state of an instance; operation = action the class can perform.",th:"class = แม่แบบ · attribute = สถานะ · operation = การกระทำ"},
@@ -8597,7 +9145,12 @@ window.__FC__ = [
   {l:"11",tag:"Lesson 11",q:"The four fundamental validation practices?",a:"Requirements review, prototyping, model validation, acceptance testing.",th:"review · prototyping · model validation · acceptance testing"},
   {l:"11",tag:"Lesson 11",q:"The four baselines, in order?",a:"Functional (reviewed system requirements), allocated (element requirements), developmental (evolving configuration, supplier authority), product (the completed system).",th:"functional → allocated → developmental → product"},
   {l:"11",tag:"Lesson 11",q:"Backward versus forward tracing?",a:"Backward: to the system requirement and the stakeholder that motivated it. Forward: to the design entities, modules, test cases and manual sections that satisfy it.",th:"backward หาแหล่งที่มา · forward หาสิ่งที่ถูกกระทบ"},
-  {l:"11",tag:"Lesson 11",q:"The four defect types with rewrites?",a:"Ambiguous, incomplete, contradictory, infeasible — each repaired by adding a number, a condition or a named standard.",th:"กำกวม ไม่ครบ ขัดกัน ทำไม่ได้จริง — แก้ด้วยตัวเลข เงื่อนไข หรือมาตรฐานที่มีชื่อ"}
+  {l:"11",tag:"Lesson 11",q:"The four defect types with rewrites?",a:"Ambiguous, incomplete, contradictory, infeasible — each repaired by adding a number, a condition or a named standard.",th:"กำกวม ไม่ครบ ขัดกัน ทำไม่ได้จริง — แก้ด้วยตัวเลข เงื่อนไข หรือมาตรฐานที่มีชื่อ"},
+  {l:"12",tag:"Lesson 12",q:"What does the physical architecture layer decide?",a:"How the system is distributed across computers, and what hardware and software will be used — constrained by existing systems and by the NFRs.",th:"กระจายระบบอย่างไร และใช้อะไร — ถูกจำกัดด้วยระบบเดิมและ NFR"},
+  {l:"12",tag:"Lesson 12",q:"The four software logics?",a:"Data storage, data access logic, application logic, presentation logic.",th:"storage · data access · application · presentation"},
+  {l:"12",tag:"Lesson 12",q:"Thin versus thick client?",a:"Thin does presentation logic only; thick does presentation and application logic. The label follows the logic, not the device.",th:"thin = presentation เท่านั้น · thick = presentation + application"},
+  {l:"12",tag:"Lesson 12",q:"The three elements of a deployment diagram?",a:"Nodes (hardware), artifacts (what is installed on a node), communication paths (links between nodes).",th:"node · artifact · communication path"},
+  {l:"12",tag:"Lesson 12",q:"The two passes of a network model?",a:"Top level: locations and the cost of the links between them. Low level: one diagram per location, which starts the hardware list.",th:"top level = ที่ตั้งและต้นทุนเส้น · low level = อุปกรณ์ในแต่ละที่"}
 ];
 </script>
 
@@ -8860,7 +9413,7 @@ window.__FC__ = [
   (function(){
     var TH = window.__TH__;
     if(!TH) return;
-    document.querySelectorAll("#lesson1 .card, #lesson2 .card, #lesson3 .card, #lesson4 .card, #lesson5 .card, #lesson6 .card, #lesson7 .card, #lesson8 .card, #lesson9 .card, #lesson10 .card, #lesson11 .card").forEach(function(card){
+    document.querySelectorAll("#lesson1 .card, #lesson2 .card, #lesson3 .card, #lesson4 .card, #lesson5 .card, #lesson6 .card, #lesson7 .card, #lesson8 .card, #lesson9 .card, #lesson10 .card, #lesson11 .card, #lesson12 .card").forEach(function(card){
       var b = card.querySelector(".know");
       var id = b && b.getAttribute("data-id");
       var txt = id && TH.cards[id];
