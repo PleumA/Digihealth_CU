@@ -607,6 +607,10 @@ body[data-th="off"] .ex-th{display:none}
 .mock-why b{color:var(--ink)}
 .mock-q label.mock-right{color:var(--good);font-weight:600}
 .mock-stem{margin:2px 0 8px;font-size:14.5px;color:var(--ink)}
+
+/* mock final */
+.mc{margin:8px 0 0 1.5em;font-size:14.5px}
+.mc li{margin:3px 0}
 </style>
 
 <div class="topbar">
@@ -629,6 +633,7 @@ body[data-th="off"] .ex-th{display:none}
       <button class="tab" role="tab" data-view="video" aria-selected="false">Video lab</button>
       <button class="tab" role="tab" data-view="practice" aria-selected="false">Practice</button>
       <button class="tab" role="tab" data-view="mock" aria-selected="false">Mock test</button>
+      <button class="tab" role="tab" data-view="final" aria-selected="false">Mock final</button>
       <button class="tab" role="tab" data-view="hw" aria-selected="false">Homework</button>
       <button class="tab" role="tab" data-view="cards" aria-selected="false">Flashcards</button>
       <button class="tab" role="tab" data-view="cheat" aria-selected="false">Cheat sheet</button>
@@ -650,6 +655,7 @@ body[data-th="off"] .ex-th{display:none}
       <option value="video">Video lab</option>
       <option value="practice">Practice</option>
       <option value="mock">Mock test</option>
+      <option value="final">Mock final</option>
       <option value="hw">Homework — Quiz 1 &amp; Quiz 2</option>
       <option value="cards">Flashcards</option>
       <option value="cheat">Cheat sheet</option>
@@ -3874,7 +3880,7 @@ body[data-th="off"] .ex-th{display:none}
     <ul class="memo-list">
       <li><a class="memo-time" href="https://youtu.be/AUm9TBaGvDg?t=3859" target="_blank" rel="noopener" aria-label="Watch 1:04:19 in the recording">1:04:19</a><span class="memo-said"> On the deck’s order machine she flags the <strong>guard-condition syntax</strong> as slightly wrong, then moves on without stating the fix on the recording. The page writes guards in square brackets (<code>[approved]</code>, <code>[denied]</code>), the standard form. <span class="memo-jump" href="#" data-card="l7-smsyn" aria-label="Go to clause 10">clause 10</a><span class="memo-th" lang="th">ใน state machine ของ order ครูบอกว่า syntax ของ guard ผิดเล็กน้อย แล้วไปต่อโดยไม่ได้บอกคำแก้ในคลิป หน้าเว็บจึงเขียน guard ในวงเล็บเหลี่ยม [approved] [denied] ตามรูปแบบมาตรฐาน</span></span></li>
       <li><a class="memo-time" href="https://youtu.be/AUm9TBaGvDg?t=4229" target="_blank" rel="noopener" aria-label="Watch 1:10:29 in the recording">1:10:29</a><span class="memo-said"> The deck draws <strong>two stop states</strong>; there should be <strong>one</strong> — the withdraw path joins that single final and the second is cut. She would also make “order is closed” a <strong>state</strong> before termination, not a label on the arrow. Fig. 7.5 below is drawn her way. <span class="memo-jump" href="#" data-card="l7-smguide" aria-label="Go to clause 11">clause 11</a><span class="memo-th" lang="th">สไลด์วาด final state สองอัน แต่ควรมีอันเดียว — เส้นทาง withdraw ต้องไปรวมที่ final เดียวและตัดอีกอันออก และ “order is closed” ควรเป็น state ก่อน terminate ไม่ใช่ label บนลูกศร Fig. 7.5 ด้านล่างวาดตามที่ครูแก้</span></span></li>
-      <li><a class="memo-time" href="https://youtu.be/AUm9TBaGvDg?t=3142" target="_blank" rel="noopener" aria-label="Watch 52:22 in the recording">52:22</a><span class="memo-said"> Her exam scope for this deck: the sequence-diagram question stays with <strong>if/then/else, parallel and call reference</strong> — she <strong>will not ask for synchronous or asynchronous messages</strong>. <span class="memo-jump" href="#" data-card="l7-msg" aria-label="Go to clause 5">clause 5</a><span class="memo-th" lang="th">ขอบเขตข้อสอบของบทนี้: sequence diagram ออกแค่ if/then/else, parallel และ ref — ครูจะไม่ออก synchronous/asynchronous message</span></span></li>
+      <li><a class="memo-time" href="https://youtu.be/AUm9TBaGvDg?t=3142" target="_blank" rel="noopener" aria-label="Watch 52:22 in the recording">52:22</a><span class="memo-said"> Her exam scope for this deck: the sequence-diagram question stays with <strong>if/then/else, loop (as the notation specifies), parallel and call reference</strong> — she <strong>will not ask for synchronous or asynchronous messages</strong>. <span class="memo-jump" href="#" data-card="l7-msg" aria-label="Go to clause 5">clause 5</a><span class="memo-th" lang="th">ขอบเขตข้อสอบของบทนี้: sequence diagram ออกแค่ if/then/else, loop ตาม syntax ของ notation, parallel และ ref — ครูจะไม่ออก synchronous/asynchronous message</span></span></li>
       <li><a class="memo-time" href="https://youtu.be/AUm9TBaGvDg?t=3784" target="_blank" rel="noopener" aria-label="Watch 1:03:04 in the recording">1:03:04</a><span class="memo-said"> The <strong>time-interval notation</strong> on the sequence diagram is not covered in the exam either. <span class="memo-th" lang="th">สัญลักษณ์ช่วงเวลา (time interval) บน sequence diagram ก็ไม่ออกสอบเช่นกัน</span></span></li>
       <li><span class="memo-ref">slide 2</span><span class="memo-said"> The objectives are verbs again: understand the rules and style guidelines, understand the process, then <strong>create</strong> the diagrams. Expect a drawing question.<span class="memo-th" lang="th">วัตถุประสงค์เป็นคำกริยาอีกครั้ง: เข้าใจกฎและแนวทางการเขียน เข้าใจกระบวนการ แล้ว “สร้าง” แผนภาพ — คาดว่าข้อสอบมีข้อวาด</span></span></li>
       <li><span class="memo-ref">slides 19–20</span><span class="memo-said"> Fragments are the part the deck spends two slides on: loop and conditional must be drawn <strong>across the lifelines involved</strong>, each subfragment carrying its own guard.<span class="memo-th" lang="th">fragment คือส่วนที่สไลด์ใช้สองแผ่น: loop และ conditional ต้องวาดคร่อม lifeline ที่เกี่ยวข้อง และแต่ละ subfragment มี guard ของตัวเอง</span></span></li>
@@ -3992,7 +3998,7 @@ body[data-th="off"] .ex-th{display:none}
       <div class="card-head"><h3>5 · Synchronous, asynchronous, return, create, destroy</h3><button class="know" data-id="l7-msg" aria-pressed="false">Mark verified</button></div>
       <p class="what"><strong>What it is.</strong> A <strong>synchronous</strong> call sends the message and suspends the sender while it waits for the response. An <strong>asynchronous</strong> call proceeds immediately without waiting. A <strong>return</strong> is dashed and may be omitted when the value is obvious. A <strong>create</strong> message points at the head of a new lifeline; a <strong>destroy</strong> ends a lifeline with an <code>×</code>. Only some lifelines end that way because the deck separates a <strong>temporary object</strong>, created during the scenario and gone when it ends (the order in this transaction), from a <strong>persistent</strong> entity object that outlives the scenario (the ticket database, the account) and simply runs off the bottom of the diagram.</p>
       <div class="duo">
-        <div><span class="lbl">Why it matters</span><p class="why">Choosing sync or async is a requirements decision: a booking that must not double-book is synchronous; a reminder that can fire and forget is asynchronous. <em>Her exam note (52:22): this distinction is not asked — the sequence question stops at if/then/else, parallel and call reference.</em></p></div>
+        <div><span class="lbl">Why it matters</span><p class="why">Choosing sync or async is a requirements decision: a booking that must not double-book is synchronous; a reminder that can fire and forget is asynchronous. <em>Her exam note (52:22): this distinction is not asked — the sequence question stops at if/then/else, loop, parallel and call reference.</em></p></div>
         <div class="example"><b>Example.</b> Booking: <code>reserveSlot()</code> is synchronous — the receptionist cannot confirm until the answer arrives. Reminder: <code>sendSMS()</code> is asynchronous — the booking does not wait for the phone.</div>
       </div>
       <p class="trap"><b>Exam trap</b>Drawing an asynchronous call with a filled arrowhead, the same as a synchronous one.</p>
@@ -7039,7 +7045,7 @@ body[data-th="off"] .ex-th{display:none}
       <p class="guide"><b>Use</b> Lesson 8 · <a href="#" data-card="l8-goal">clause 6</a>, <a href="#" data-card="l8-testable">clause 9</a>, <a href="#" data-card="l8-metrics">clause 10</a> · Lesson 11 · <a href="#" data-card="l11-accept">clause 8</a></p>
       <p class="marker">Marker wants: two NFRs, each written as a measurable statement with a source; the technique named; one architecture consequence per NFR that can be seen in the deployment diagram. A wish with an adjective scores nothing.</p>
       <button class="reveal" aria-expanded="false">Show model answer</button>
-      <div class="answer"><p>เทคนิคคือ <strong>goal decomposition</strong> จากเป้าหมายธุรกิจ (Lesson 8 clause 6) แล้วทำให้วัดได้ด้วย <strong>quality attribute scenario</strong> (clause 9) เขียนสองข้อนี้ <strong>(1) Availability:</strong> source = สมาชิกและ PT, stimulus = เปิดตารางจองหรือบันทึก session, environment = เวลาทำการ จ.–ส. 06:00–22:00, artifact = ระบบ PTSIMS, response = ระบบให้บริการต่อโดยไม่ต้องให้ผู้ใช้ลองใหม่, measure = พร้อมใช้งาน 99.5% ของเวลาทำการ และกู้คืนภายใน 5 นาทีเมื่อ node หนึ่งล้ม <strong>(2) Security:</strong> source = ผู้ใช้ทั่วไปบนอินเทอร์เน็ต, stimulus = ส่งข้อมูลบัตรเพื่อซื้อโปรแกรม, environment = การชำระเงินผ่านหน้าเว็บ, artifact = โมดูลชำระเงิน, response = ข้อมูลบัตรไม่ถูกเก็บในฐานข้อมูลของเราและการสื่อสารทุกเส้นเข้ารหัส, measure = TLS 1.2 ขึ้นไปทุกเส้น, ไม่มี PAN ในฐานข้อมูล, และตรวจ PCI-DSS ได้ ผลต่อสถาปัตยกรรม: availability บังคับให้มี <strong>load balancer กับ application server สองตัว</strong> และฐานข้อมูลที่มี backup/replica; security บังคับให้ <strong>gateway ของบริษัทบัตรอยู่นอกขอบเขต</strong> ระบบเราเห็นแค่ผลอนุมัติ ไม่เห็นเลขบัตร และทุกเส้นทางเป็น TLS — ทั้งสองข้อนี้คือสิ่งที่ต้องเห็นใน deployment diagram ของข้อ 2</p></div>
+      <div class="answer"><p>เทคนิคคือ <strong>goal decomposition</strong> จากเป้าหมายธุรกิจ (Lesson 8 clause 6) แล้วทำให้วัดได้ด้วย <strong>quality attribute scenario</strong> (clause 9) เขียนสองข้อนี้ <strong>(1) Availability:</strong> source = สมาชิกและ PT, stimulus = เปิดตารางจองหรือบันทึก session, environment = เวลาทำการ จ.–ส. 06:00–22:00, artifact = ระบบ PTSIMS, response = ระบบให้บริการต่อโดยไม่ต้องให้ผู้ใช้ลองใหม่, measure = พร้อมใช้งาน 99.5% ต่อเดือน (วัดด้วย external uptime monitor), กู้คืนภายใน 30 นาทีเมื่อ node หนึ่งล้ม (RTO ≤ 30 นาที) และเสียข้อมูลไม่เกิน 5 นาที (RPO ≤ 5 นาที ด้วย continuous replication + backup รายวัน) <strong>(2) Security:</strong> source = ผู้ใช้ทั่วไปบนอินเทอร์เน็ต, stimulus = ส่งข้อมูลบัตรเพื่อซื้อโปรแกรม, environment = การชำระเงินผ่านหน้าเว็บ, artifact = โมดูลชำระเงิน, response = ข้อมูลบัตรไม่ถูกเก็บในฐานข้อมูลของเราและการสื่อสารทุกเส้นเข้ารหัส, measure = TLS 1.2 ขึ้นไปทุกเส้น, เข้ารหัส at rest ด้วย AES-256, ไม่มี PAN ในฐานข้อมูล (เก็บเฉพาะ token, last 4 หลัก และ transaction ID), จำกัดสิทธิ์ตาม role — PT-AM จัดการข้อมูล PT และออกรายงาน ส่วน PT อัปเดต session ของตัวเอง — และ penetration test ก่อน go-live ต้องไม่มี finding ระดับ critical/high ผลต่อสถาปัตยกรรม: availability บังคับให้มี <strong>load balancer กับ application server สองตัว</strong> และฐานข้อมูลแบบ primary + standby ที่ promote ได้; security บังคับให้มี <strong>firewall/WAF ที่ขอบเครือข่าย</strong>, วาง database ใน private subnet ที่ไม่มี public IP, ให้ <strong>gateway ของบริษัทบัตรอยู่นอกขอบเขต</strong> ระบบเราเห็นแค่ผลอนุมัติ ไม่เห็นเลขบัตร, ส่งอีเมลด้วย SMTP over TLS และส่งไฟล์เงินเดือนด้วย SFTP ไม่ใช่อีเมล — ทั้งสองข้อนี้คือสิ่งที่ต้องเห็นใน deployment diagram ของข้อ 2. ในคำตอบจริงควรผูก NFR กับเลข requirement ของโจทย์ด้วย: security ครอบข้อ 1, 2, 4 และ 5; availability ครอบข้อ 6 และ 7</p></div>
     </div>
 
     <div class="qa quiz-item wide" data-search="quiz4 deployment diagram nodes device execution environment artifact communication path responsive web ptsims">
@@ -7065,12 +7071,12 @@ body[data-th="off"] .ex-th{display:none}
                 <text x="475" y="108" text-anchor="middle" fill="var(--muted)" font-size="9">PT tablet</text>
                 <text x="475" y="122" text-anchor="middle" fill="var(--muted)" font-size="9">PT-AM desktop</text>
 
-                <rect x="600" y="46" width="120" height="86" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
-                <text x="660" y="62" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
-                <text x="660" y="78" text-anchor="middle" fill="var(--ink)">Load balancer</text>
-                <text x="660" y="94" text-anchor="middle" fill="var(--muted)" font-size="9">TLS termination</text>
-                <text x="660" y="108" text-anchor="middle" fill="var(--muted)" font-size="9">routes to two</text>
-                <text x="660" y="122" text-anchor="middle" fill="var(--muted)" font-size="9">app servers</text>
+                <rect x="580" y="46" width="140" height="86" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="650" y="62" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+                <text x="650" y="78" text-anchor="middle" fill="var(--ink)">Firewall / load balancer</text>
+                <text x="650" y="94" text-anchor="middle" fill="var(--muted)" font-size="9">WAF · TLS termination</text>
+                <text x="650" y="108" text-anchor="middle" fill="var(--muted)" font-size="9">routes to two</text>
+                <text x="650" y="122" text-anchor="middle" fill="var(--muted)" font-size="9">app servers</text>
 
                 <rect x="770" y="36" width="150" height="106" rx="3" fill="var(--accent-soft)" stroke="var(--accent)"/>
                 <text x="845" y="52" text-anchor="middle" fill="var(--muted)" font-size="9">«execution environment»</text>
@@ -7111,8 +7117,8 @@ body[data-th="off"] .ex-th{display:none}
                 <text x="850" y="342" text-anchor="middle" fill="var(--ink)">Employee payroll system</text>
                 <text x="850" y="358" text-anchor="middle" fill="var(--muted)" font-size="9">receives CSV / Excel (8.2)</text>
 
-                <line x1="554" y1="88" x2="596" y2="88" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fhw4a)"/>
-                <text x="575" y="80" text-anchor="middle" fill="var(--muted)" font-size="8.5">HTTPS</text>
+                <line x1="554" y1="88" x2="576" y2="88" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fhw4a)"/>
+                <text x="565" y="80" text-anchor="middle" fill="var(--muted)" font-size="8.5">HTTPS</text>
                 <line x1="724" y1="88" x2="766" y2="88" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fhw4a)"/>
                 <text x="745" y="80" text-anchor="middle" fill="var(--muted)" font-size="8.5">HTTPS</text>
 
@@ -7129,14 +7135,14 @@ body[data-th="off"] .ex-th{display:none}
                 <path d="M930 130 H 935 V 342 H 932" fill="none" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fhw4a)"/>
                 <text x="770" y="302" fill="var(--muted)" font-size="8.5">SFTP · CSV / Excel</text>
 
-                <text x="40" y="400" fill="var(--accent)" font-size="10">1 · availability NFR — two application servers behind the load balancer; database replica and nightly backup</text>
+                <text x="40" y="400" fill="var(--accent)" font-size="10">1 · availability NFR — two application servers behind the firewall/load balancer; database replica and nightly backup</text>
                 <text x="40" y="418" fill="var(--bad)" font-size="10">2 · security NFR — the card gateway sits outside the boundary; TLS on every path; no card number stored</text>
               </g>
             </svg>
           </div>
           <figcaption>The three actor types share one client node; every path is labelled; the card company, mail server and payroll system are outside the boundary. <span lang="th">ผู้ใช้ทั้งสามประเภทอยู่ใน client node เดียว ทุกเส้นเชื่อมมี protocol กำกับ และระบบภายนอกสามตัว — บริษัทบัตร เมลเซิร์ฟเวอร์ และระบบจ่ายเงินพนักงาน — อยู่นอกขอบเขต สังเกตว่า replica กับ backup ถูกวาดเป็น node จริง ไม่ใช่แค่ข้อความใน legend เพราะ availability ที่เป็น NFR ต้องเห็นเป็นโครงสร้าง</span></figcaption>
         </figure>
-        <p>อ่านแผนภาพเป็นสามชั้น: <strong>client node</strong> เดียวรับทั้ง member phone, PT tablet และ PT-AM desktop แล้วผ่าน HTTPS ไปที่ load balancer ซึ่งตัด TLS และกระจายไปยัง application server สองตัวที่มี artifact <code>ptsims.war</code> เหมือนกัน; ชั้นหลังคือ database server ที่มี replica และ backup, mail server สำหรับใบเสร็จและการแจ้งเตือน, บริษัทบัตรที่อยู่นอก boundary และระบบจ่ายเงินพนักงานที่รับไฟล์ CSV/Excel ของข้อ 8.2 ผ่าน SFTP — สามเส้นภายนอกนี้คือสิ่งที่โจทย์บังคับให้ต้องมี และหมายเลข 1 กับ 2 คือจุดที่ NFR สองข้อจากข้อ 1 กลายเป็นโครงสร้าง</p>
+        <p>อ่านแผนภาพเป็นสามชั้น: <strong>client node</strong> เดียวรับทั้ง member phone, PT tablet และ PT-AM desktop แล้วผ่าน HTTPS ไปที่ load balancer ซึ่งตัด TLS และกระจายไปยัง application server สองตัวที่มี artifact <code>ptsims.war</code> เหมือนกัน; ชั้นหลังคือ database server ที่มี replica และ backup, mail server สำหรับใบเสร็จและการแจ้งเตือน, บริษัทบัตรที่อยู่นอก boundary และระบบจ่ายเงินพนักงานที่รับไฟล์ CSV/Excel ของข้อ 8.2 ผ่าน SFTP — สามเส้นภายนอกนี้คือสิ่งที่โจทย์บังคับให้ต้องมี และหมายเลข 1 กับ 2 คือจุดที่ NFR สองข้อจากข้อ 1 กลายเป็นโครงสร้าง ใน UML จริงควรมีกรอบ private network ครอบ app กับ database และวาง firewall/WAF ไว้ที่ขอบ — แผนภาพนี้รวม firewall กับ load balancer เป็น node เดียวเพื่อความอ่านง่าย ส่วน ID card image ของ requirement 2 ต้องมีที่เก็บ: เก็บเข้ารหัสบน database server หรือ file store ข้าง ๆ ได้ ไม่จำเป็นต้องมี node แยก</p>
       </div>
     </div>
 
@@ -7148,7 +7154,7 @@ body[data-th="off"] .ex-th{display:none}
       <div class="answer">
         <p><strong>วิธีที่ครูบอกให้ทำข้อนี้</strong> (คาบ 20 พ.ย. <a class="memo-time" href="https://youtu.be/rJTZXJR3Wy8?t=6864" target="_blank" rel="noopener" aria-label="Watch 1:54:24 in the recording">1:54:24</a>): ไม่ต้องวาดภาพสวย ๆ — วาดเป็นกล่องสี่เหลี่ยมแทนรูปหรือปุ่มได้ เพราะสิ่งที่ตรวจคือ “แต่ละหน้าจอมีอะไรปรากฏ” ไม่ใช่ศิลปะ และ flow ต้องตรงกับ use case description (สไลด์ 82)</p>
         <p><strong>ขั้นตอนตาม use case (scenario):</strong> เปิดเมนู Reports → เลือกโหมด (Mode 1 summary หรือ Mode 2 export) → เลือกเดือนและปี → Preview → ถ้าเป็น Mode 2 เลือกฟอร์แมต Excel หรือ CSV แล้ว Export ไปยังระบบจ่ายเงินพนักงาน; ถ้าเป็น Mode 1 กด Print</p>
-        <p><strong>ข้อความที่ผู้ใช้จะเจอ:</strong> delay ระหว่างประมวลผล (“กำลังสร้างรายงาน อาจใช้เวลาถึง 30 วินาที”), acknowledgment เมื่อ Mode 1 พร้อม (“รายงานถูกสร้างแล้ว — พิมพ์หรือดูบนจอ”), acknowledgment เมื่อ Mode 2 ส่งสำเร็จ (“ไฟล์ CSV ถูกส่งไปยังระบบจ่ายเงินพนักงานแล้ว”), confirmation ก่อนออกจากหน้าที่ยังไม่บันทึก, error เมื่อเดือนที่เลือกไม่มีข้อมูล (“ไม่พบ session ที่เสร็จสิ้นในเดือนนี้”)</p>
+        <p><strong>ข้อความที่ผู้ใช้จะเจอ:</strong> delay ระหว่างประมวลผล (“กำลังสร้างรายงาน อาจใช้เวลาถึง 30 วินาที”), acknowledgment เมื่อ Mode 1 พร้อม (“รายงานถูกสร้างแล้ว — พิมพ์หรือดูบนจอ”), acknowledgment เมื่อ Mode 2 ส่งสำเร็จ (“ไฟล์ CSV ถูกส่งไปยังระบบจ่ายเงินพนักงานแล้ว”), confirmation ก่อนออกจากหน้าที่ยังไม่บันทึก, error เมื่อเดือนที่เลือกไม่มีข้อมูล (“ไม่พบ session ที่เสร็จสิ้นในเดือนนี้”), และ confirmation เมื่อเลือกเดือนปัจจุบัน (“เดือนนี้ยังไม่จบ ตัวเลขอาจเปลี่ยน — ดูต่อหรือไม่?”)</p>
         <figure class="fig hw4fig">
           <div class="fig-scroll">
             <svg viewBox="0 0 940 440" role="img" aria-label="Wireframe of the PTSIMS reports screen: title bar, a mode row with two radio options, a period row with month, year and a preview button, a results table with five columns and a total row, and an action row with export CSV, export Excel and print">
@@ -7213,9 +7219,62 @@ body[data-th="off"] .ex-th{display:none}
           </div>
           <figcaption>Wireframe answer: two principles named and pointed at — <strong>Layout</strong> (the four zones follow the task) and <strong>Minimal user effort</strong> (three clicks from the main menu).</figcaption>
         </figure>
-        <p><strong>สองหลักการที่ระบุ:</strong> <strong>Layout</strong> — สี่โซนเรียงตามลำดับงานจริง คือหัวเรื่อง/ตัวเลือกโหมด/ผลลัพธ์/การกระทำ และกลุ่มที่เกี่ยวข้องอยู่ติดกัน; <strong>minimal user effort</strong> — Reports → mode → Export รวมสามคลิก และค่าเริ่มต้นเป็นเดือนปัจจุบัน ไม่ต้องพิมพ์วันที่</p>
+        <figure class="fig hw4fig">
+          <div class="fig-scroll">
+            <svg viewBox="0 0 940 420" role="img" aria-label="Wireframe of the Mode 2 export screen: format choice Excel or CSV, destination choice send to the employee payment system over SFTP or download, a summary line naming the period, counts and file name, Cancel and Export buttons, and success and failure result banners shown as alternatives">
+              <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10">
+                <rect x="40" y="20" width="860" height="360" rx="5" fill="var(--surface-2)" stroke="var(--line)"/>
+                <rect x="40" y="20" width="860" height="30" rx="5" fill="var(--surface)" stroke="var(--line)"/>
+                <circle cx="58" cy="35" r="4" fill="var(--muted)"/>
+                <circle cx="72" cy="35" r="4" fill="var(--muted)"/>
+                <circle cx="86" cy="35" r="4" fill="var(--muted)"/>
+                <text x="110" y="39" fill="var(--ink)" font-size="11">PTSIMS — Reports · Export (Mode 2)</text>
+                <text x="884" y="39" text-anchor="end" fill="var(--muted)" font-size="9">step 5 of 5</text>
+
+                <rect x="60" y="64" width="400" height="90" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="72" y="82" fill="var(--muted)" font-size="9" font-weight="600">1 · FORMAT</text>
+                <circle cx="88" cy="102" r="6" fill="none" stroke="var(--accent)" stroke-width="2"/>
+                <circle cx="88" cy="102" r="2.5" fill="var(--accent)"/>
+                <text x="102" y="106" fill="var(--ink)">Excel (.xlsx)</text>
+                <circle cx="248" cy="102" r="6" fill="none" stroke="var(--line)" stroke-width="2"/>
+                <text x="262" y="106" fill="var(--ink)">CSV</text>
+                <text x="72" y="136" fill="var(--muted)" font-size="8.5">same five fields as Mode 1 — PT, member, used, left, amount</text>
+
+                <rect x="480" y="64" width="400" height="90" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="492" y="82" fill="var(--muted)" font-size="9" font-weight="600">2 · DESTINATION</text>
+                <circle cx="508" cy="100" r="6" fill="none" stroke="var(--accent)" stroke-width="2"/>
+                <circle cx="508" cy="100" r="2.5" fill="var(--accent)"/>
+                <text x="522" y="104" fill="var(--ink)">Send to employee payment system (SFTP)</text>
+                <circle cx="508" cy="126" r="6" fill="none" stroke="var(--line)" stroke-width="2"/>
+                <text x="522" y="130" fill="var(--ink)">Download to this computer</text>
+
+                <rect x="60" y="166" width="820" height="66" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="72" y="184" fill="var(--muted)" font-size="9" font-weight="600">3 · SUMMARY — check before sending</text>
+                <text x="72" y="204" fill="var(--ink)" font-size="9.5">October 2026 · All PTs · 6 PTs, 41 members · amount payable 26,400 THB</text>
+                <text x="72" y="220" fill="var(--muted)" font-size="9">File: PT_payment_2026-10.xlsx · destination: employee monthly payment system</text>
+
+                <rect x="672" y="246" width="96" height="26" rx="3" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="720" y="263" text-anchor="middle" fill="var(--ink)">Cancel</text>
+                <rect x="782" y="246" width="98" height="26" rx="3" fill="var(--accent)"/>
+                <text x="831" y="263" text-anchor="middle" fill="var(--accent-ink)" font-weight="600">Export</text>
+
+                <rect x="60" y="288" width="820" height="34" rx="3" fill="var(--good-bg)" stroke="var(--good)"/>
+                <text x="72" y="309" fill="var(--ink)">✔ PT_payment_2026-10.xlsx sent to the employee monthly payment system.</text>
+
+                <rect x="60" y="332" width="820" height="34" rx="3" fill="var(--bad-bg)" stroke="var(--bad)"/>
+                <text x="72" y="353" fill="var(--ink)">✖ Couldn't connect to the payment system. Try again, or download the file instead.</text>
+
+                <text x="40" y="406" fill="var(--muted)" font-size="9">The two banners are alternatives — only one appears after Export. The failure path keeps a download as the fallback.</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Mode 2 is its own screen: format, destination, and a summary to check before sending; success names the file and destination, failure offers the download fallback. <span lang="th">หน้าจอ Mode 2 แยกจากหน้าหลัก: ผู้ใช้เลือกฟอร์แมต (Excel/CSV) และปลายทาง (ส่งเข้าระบบจ่ายเงินพนักงานทาง SFTP หรือดาวน์โหลด) ก่อนกด Export สังเกตบรรทัด summary ที่ให้ตรวจเดือน จำนวน PT/สมาชิก ยอดเงิน และชื่อไฟล์ก่อนส่ง — เป็น content awareness และ error prevention ในตัว แบนเนอร์สองอันล่างเป็นทางเลือก: หลัง Export จะขึ้นเพียงอันเดียว ถ้าส่งไม่สำเร็จต้องมี fallback ให้ดาวน์โหลด</span></figcaption>
+        </figure>
+
+        <p><strong>สองหลักการที่ระบุ:</strong> <strong>Layout</strong> — สี่โซนเรียงตามลำดับงานจริง คือหัวเรื่อง/ตัวเลือกโหมด/ผลลัพธ์/การกระทำ และกลุ่มที่เกี่ยวข้องอยู่ติดกัน; <strong>minimal user effort</strong> — Reports → mode → Export รวมสามคลิก และค่าเริ่มต้นเป็นเดือนก่อนหน้า (ตุลาคม เมื่อสร้างรายงานปลายพฤศจิกายน) ไม่ต้องพิมพ์วันที่</p>
+        <p><strong>ช่องว่างของโจทย์ที่ควรพูดถึง:</strong> 8.1 ขอ “amount of money payment to each PT” แต่ไม่ได้บอกวิธีคำนวณ — คำตอบที่ดีต้องระบุสมมติฐาน เช่น PT แต่ละคนมี rate ต่อ session แล้วเอา rate คูณจำนวน session ที่ใช้ในเดือนนั้น ก่อนรวมเป็นยอดจ่าย; ถ้าไม่ระบุ ผู้อ่านจะถือว่าคำตอบเดา และเป็นจุดที่โจทย์ RE ตั้งใจให้เห็นว่าข้อมูลยังขาด</p>
         <p><strong>Interface standards ที่ใช้</strong> (สไลด์ 43): template = โครงสี่โซนเดียวกันทุกหน้ารายงาน; objects = Mode 1 / Mode 2 / Preview / Export; actions = Preview, Export, Print; icons = ชุด export/print ชุดเดียวทั้งระบบ</p>
-        <p><strong>Input validation และการรับมือข้อผิดพลาด</strong> (สไลด์ 72): ตรวจเดือนและปีว่าไม่เกินเดือนปัจจุบันก่อนกด Preview; Export ปิดไว้จนกว่า preview สำเร็จ; ข้อความ error เขียนเป็นภาษาคนพร้อมวิธีแก้ ไม่ใช่รหัส</p>
+        <p><strong>Input validation และการรับมือข้อผิดพลาด</strong> (สไลด์ 72): ตรวจเดือนและปีว่าไม่เกินเดือนปัจจุบันก่อนกด Preview และถ้าเลือกเดือนปัจจุบันให้เตือนว่ายังไม่จบเดือน ตัวเลขอาจเปลี่ยน; Export ปิดไว้จนกว่า preview สำเร็จ; ข้อความ error เขียนเป็นภาษาคนพร้อมวิธีแก้ ไม่ใช่รหัส</p>
       </div>
     </div>
   </div>
@@ -8349,11 +8408,11 @@ body[data-th="off"] .ex-th{display:none}
 <section class="view" id="mock" role="tabpanel" aria-label="Mock test" hidden>
   <div class="eyebrow">Self-marking multiple choice</div>
   <h1>Mock test</h1>
-  <p class="lede">Fifteen questions from the scope you pick, marked on submit, each with the reason. The midterm scope is Lessons 1–6; the final scope is Lessons 7–12.</p>
+  <p class="lede">Fifteen questions from the scope you pick, marked on submit, each with the reason. The midterm scope is Lessons 1–6; the final scope is everything after the midterm, Lessons 6–12, and includes the sixteen Part 1 items of the Mock final.</p>
 
   <div class="mock-scope" role="group" aria-label="Choose the scope">
     <button class="btn" type="button" data-scope="mid" aria-pressed="true">Midterm · Lessons 1–6</button>
-    <button class="btn" type="button" data-scope="final" aria-pressed="false">Final · Lessons 7–12</button>
+    <button class="btn" type="button" data-scope="final" aria-pressed="false">Final · Lessons 6–12</button>
     <button class="btn" type="button" data-scope="all" aria-pressed="false">Both</button>
   </div>
 
@@ -8366,6 +8425,739 @@ body[data-th="off"] .ex-th{display:none}
 
   <p class="mock-score" id="mock-score" aria-live="polite"></p>
   <div id="mock-list"></div>
+</section>
+
+<!-- ============ MOCK FINAL ============ -->
+<section class="view" id="final" role="tabpanel" aria-label="Mock final" hidden>
+  <div class="eyebrow">Practice paper · post-midterm scope</div>
+  <h1>Mock final</h1>
+  <p class="lede">One full paper in the shape the lecturer described: Part 1 multiple choice (16 marks), Part 2 nine written questions on one case (44 marks), Part 3 modelling (20 marks). Sit it in three hours with one computer and no internet, then reveal.</p>
+  <div class="callout accent" style="margin-top:16px">
+    <p><strong>Where this paper comes from.</strong> The structure, the four diagram types, and the two case domains — <strong>Smart Farm</strong> for the long case and <strong>Robotaxi</strong> for goal decomposition — follow the study document <em>SRE-สิ่งที่อาจารย์บอกว่าออกสอบ-แยกตามบท</em>, compiled from a clip that is not in this project. Your own 24 Nov recording names an <em>Online Ticket Reservation</em> case instead, so practise the method, not the domain. Every question was checked against a deck slide or a class recording; topics she said are not examined (sync/async messages, entity-control-boundary, network model, cloud, hardware tables) are left out.</p>
+    <p style="margin-top:8px"><strong>Suggested timing (180 min):</strong> Part 1 · 20 min · Part 2 · 100 min · Part 3 · 50 min · re-read · 10 min.</p>
+    <p class="th-line" lang="th">ข้อสอบจำลองชุดเต็มตามโครงที่อาจารย์บอก: Part 1 ปรนัย 16 คะแนน · Part 2 ข้อเขียนเก้าข้อจากกรณีเดียว 44 คะแนน · Part 3 สร้างแบบจำลอง 20 คะแนน (class, sequence, state machine, deployment) โดเมนตามเอกสารเตรียมสอบคือ Smart Farm และ Robotaxi แต่ไฟล์เสียงวันที่ 24 พ.ย. พูดถึง Online Ticket Reservation จึงควรฝึกวิธีคิดมากกว่าจำโดเมน</p>
+  </div>
+
+  <div class="section-head"><div><h2>Part 1 — accuracy, 16 marks</h2><p>Sixteen items, one mark each; some need a step of analysis. The same items are in the Mock test tab under the final scope, where they mark themselves.</p></div></div>
+  <div class="grid" style="gap:12px">
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 6 which operation belongs in an analysis level class diagram for the smart farm ">
+      <p class="q"><span>1</span>Which operation belongs in an analysis-level class diagram for the Smart Farm?</p>
+      <ol class="mc" type="a"><li>getCrop()</li><li>setStatus()</li><li>recordHarvest()</li><li>createPlot()</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 6</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(c) recordHarvest().</b> Get/set and create/delete are assumed for every class and omitted; recordHarvest() is a problem-domain operation. <span class="th-line" lang="th">get/set และ create/delete ละไว้เพราะทุกคลาสทำได้อยู่แล้ว recordHarvest() เป็น operation ของ problem domain</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 6 a plot s  totalyield is shown with a leading slash because it is ">
+      <p class="q"><span>2</span>A plot's /totalYield is shown with a leading slash because it is:</p>
+      <ol class="mc" type="a"><li>private</li><li>static</li><li>optional</li><li>derived from other attributes</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 6</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(d) derived from other attributes.</b> A slash marks a derived attribute — here the sum of the plot's lots. Private is the minus sign. <span class="th-line" lang="th">slash นำหน้า = derived attribute (คำนวณจากผลรวมของ lot) ส่วน private คือเครื่องหมายลบ</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 6 textual analysis of  each greenhouse has many plots  points to ">
+      <p class="q"><span>3</span>Textual analysis of “each greenhouse has many plots” points to:</p>
+      <ol class="mc" type="a"><li>aggregation or composition</li><li>generalisation</li><li>a constraint</li><li>an operation</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 6</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(a) aggregation or composition.</b> A having verb maps to aggregation or composition; decide logical (aggregation) or physical (composition) next. <span class="th-line" lang="th">having verb → aggregation หรือ composition แล้วค่อยดูว่าเป็นเชิง logical หรือ physical</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 7 a message that  plot receives on a sequence diagram must exist as ">
+      <p class="q"><span>4</span>A message that :Plot receives on a sequence diagram must exist as:</p>
+      <ol class="mc" type="a"><li>an attribute of Plot</li><li>an operation of Plot in the class diagram</li><li>a state of Plot</li><li>a separate actor</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 7</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(b) an operation of Plot in the class diagram.</b> A received message is an operation of the receiving class; if the class diagram lacks it, go back and add it. <span class="th-line" lang="th">message ที่ object รับต้องเป็น operation ของคลาสนั้น ถ้าไม่มีต้องกลับไปเพิ่มใน class diagram</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 7  record harvest  includes  generate qr code   on the sequence diagram the included behaviour is drawn as ">
+      <p class="q"><span>5</span>“Record harvest” includes “Generate QR code”. On the sequence diagram the included behaviour is drawn as:</p>
+      <ol class="mc" type="a"><li>ref, placed where it is called, outside any alt</li><li>ref inside an opt</li><li>an asynchronous message</li><li>a second sequence diagram with no link</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 7</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(a) ref, placed where it is called, outside any alt.</b> Include is mandatory, so the ref is always called at its point in the flow; extend is the conditional one. <span class="th-line" lang="th">include บังคับเรียกเสมอ จึงเป็น ref ที่ตำแหน่งที่เรียก ส่วน extend มีเงื่อนไขจึงอยู่ใน alt/opt</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 7 which is not one of the deck s three kinds of event that trigger a transition ">
+      <p class="q"><span>6</span>Which is NOT one of the deck's three kinds of event that trigger a transition?</p>
+      <ol class="mc" type="a"><li>a designated condition becoming true</li><li>receipt of a signal from another object</li><li>passage of a designated time</li><li>an attribute of the object being read</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 7</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(d) an attribute of the object being read.</b> The three are condition, signal and time. Reading a value changes nothing, so it cannot move the state. <span class="th-line" lang="th">event มีสามแบบ: เงื่อนไขเป็นจริง · signal · เวลาผ่านไป การอ่านค่าไม่เปลี่ยน state</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 7 what does a behavioural state machine help an analyst validate ">
+      <p class="q"><span>7</span>What does a behavioural state machine help an analyst validate?</p>
+      <ol class="mc" type="a"><li>the network topology</li><li>the colour scheme</li><li>the completeness of the functional requirements</li><li>the database index plan</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 7</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(c) the completeness of the functional requirements.</b> Every transition needs an actor action from a use case; a state no use case can reach means a missing function. <span class="th-line" lang="th">state machine ช่วยตรวจว่า functional requirement ครบ — ถ้ามี state ที่ไม่มี use case ไหนพาไปถึง แปลว่าขาด function</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 8  the buyer s certification scheme requires chemical records to be kept for 2 years  is best classified as ">
+      <p class="q"><span>8</span>“The buyer's certification scheme requires chemical records to be kept for 2 years” is best classified as:</p>
+      <ol class="mc" type="a"><li>an external requirement stated as a fact</li><li>a process requirement</li><li>a functional requirement</li><li>a usability requirement</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 8</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(a) an external requirement stated as a fact.</b> External requirements arrive as facts and rules of the outside world; the analyst turns them into capabilities. <span class="th-line" lang="th">external requirement มาในรูปข้อเท็จจริงหรือกฎภายนอก นักวิเคราะห์ต้องแปลงเป็นความสามารถของระบบ</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 8 which ordering is the deck s goal decomposition ">
+      <p class="q"><span>9</span>Which ordering is the deck's goal decomposition?</p>
+      <ol class="mc" type="a"><li>NFR → goal → sub-goal → metric</li><li>use case → goal → NFR</li><li>metric → NFR → goal</li><li>goal → sub-goal → NFR → quantitative NFR</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 8</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(d) goal → sub-goal → NFR → quantitative NFR.</b> Goal decomposition runs from the enterprise goal down until the statement can be measured, which keeps it traceable. <span class="th-line" lang="th">goal → sub-goal → NFR → quantitative NFR และตามรอยกลับไปหา goal ขององค์กรได้</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 8  protect customer data from unauthorised access  becomes a functional requirement when it is rewritten as ">
+      <p class="q"><span>10</span>“Protect customer data from unauthorised access” becomes a functional requirement when it is rewritten as:</p>
+      <ol class="mc" type="a"><li>“security shall be high”</li><li>“log in with a password and a 6-digit SMS code”</li><li>“data shall be safe”</li><li>“follow good practice”</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 8</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(b) “log in with a password and a 6-digit SMS code”.</b> The FR/NFR boundary moves with the level of detail: concrete steps the developers must build make it functional. <span class="th-line" lang="th">เส้นแบ่ง FR/NFR ขยับตาม level of detail — พอเป็นขั้นตอนที่ต้องสร้างจริงก็กลายเป็น FR</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 8  the dashboard shall be easy to use  fails because it is not ">
+      <p class="q"><span>11</span>“The dashboard shall be easy to use” fails because it is not:</p>
+      <ol class="mc" type="a"><li>functional</li><li>short</li><li>objective and testable</li><li>written in Thai</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 8</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(c) objective and testable.</b> An NFR must be objective and testable; rewrite it with a measure such as time to learn or errors per hour. <span class="th-line" lang="th">NFR ต้อง objective และ testable — เขียนใหม่ด้วยตัววัด เช่น เวลาเรียนรู้หรือจำนวน error</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 10 a paper storyboard of the harvest screens can be evaluated by ">
+      <p class="q"><span>12</span>A paper storyboard of the harvest screens can be evaluated by:</p>
+      <ol class="mc" type="a"><li>interactive evaluation</li><li>formal usability testing in a lab</li><li>heuristic evaluation</li><li>keystroke logging</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 10</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(c) heuristic evaluation.</b> Interactive evaluation and formal testing need something the user can operate; a storyboard supports heuristic review or a walkthrough. <span class="th-line" lang="th">storyboard ใช้ interactive หรือ formal testing ไม่ได้ ต้องเป็น heuristic หรือ walkthrough</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 10 rejecting a harvest date earlier than the plot s planting date is which validation check ">
+      <p class="q"><span>13</span>Rejecting a harvest date earlier than the plot's planting date is which validation check?</p>
+      <ol class="mc" type="a"><li>format</li><li>range</li><li>check digit</li><li>consistency</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 10</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(d) consistency.</b> It compares two related data items, which is a consistency check; a range check tests one value against fixed bounds. <span class="th-line" lang="th">เทียบข้อมูลสองตัวที่สัมพันธ์กัน = consistency check ส่วน range คือค่าเดียวเทียบกับขอบเขตคงที่</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 10  printing label  tap cancel to stop  is which message type ">
+      <p class="q"><span>14</span>“Printing label… tap Cancel to stop” is which message type?</p>
+      <ol class="mc" type="a"><li>delay</li><li>acknowledgment</li><li>confirmation</li><li>help</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 10</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(a) delay.</b> A delay message says the process is running; the deck adds that it should let the user cancel. <span class="th-line" lang="th">delay message บอกว่ากำลังทำงานอยู่ และควรให้ผู้ใช้ยกเลิกได้</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 11 in a requirements review  a requirement with no identifier and no source fails which checklist group ">
+      <p class="q"><span>15</span>In a requirements review, a requirement with no identifier and no source fails which checklist group?</p>
+      <ol class="mc" type="a"><li>organisation and structure</li><li>traceability</li><li>special issues</li><li>aesthetics</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 11</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(b) traceability.</b> Traceability asks for a unique ID and a traceable source; without them no change can be tracked. <span class="th-line" lang="th">traceability ต้องมี ID เฉพาะและตามรอยกลับไปหาแหล่งที่มาได้</span></p></div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 1 multiple choice lesson 12 in a web based 3 tier deployment diagram  the dbms and the farm schema are ">
+      <p class="q"><span>16</span>In a web-based 3-tier deployment diagram, the DBMS and the farm schema are:</p>
+      <ol class="mc" type="a"><li>nodes of their own</li><li>artifacts on the database server node</li><li>communication paths</li><li>stereotypes of the client</li></ol>
+      <p class="guide"><b>1 mark</b> · Lesson 12</p>
+      <button class="reveal" aria-expanded="false">Show answer</button>
+      <div class="answer"><p><b>(b) artifacts on the database server node.</b> Software is an artifact and cannot stand alone; it sits on the node that runs it. <span class="th-line" lang="th">ซอฟต์แวร์และ schema เป็น artifact อยู่ลำพังไม่ได้ ต้องอยู่บน node</span></p></div>
+    </div>
+
+  </div>
+
+  <div class="section-head"><div><h2>Part 2 — written answers on one case, 44 marks</h2><p>Read the case once, index it, then answer. Q2 uses its own short Robotaxi prompt.</p></div></div>
+  <div class="callout" style="margin-top:16px" data-search="mock final smart farm case greenleaf greenhouse plot sensor harvest lot qr">
+    <p><strong>Case — GreenLeaf Smart Farm</strong> (a fictional company; all numbers are part of the case)</p>
+    <p style="margin-top:8px">GreenLeaf grows hydroponic vegetables in four greenhouses in Nakhon Pathom and wants a <strong>web-based</strong> Smart Farm system used by the owner, the farm manager, workers on tablets, and wholesale buyers on their phones.</p>
+    <ol style="margin:8px 0 0 1.3em">
+      <li>Each greenhouse is divided into plots. Each plot has sensors (water level in the growing channel, temperature, humidity, nutrient EC, pH, light) that send a reading every 5 minutes through an on-site LoRaWAN gateway.</li>
+      <li>The farm manager sets a growing plan per plot: the crop, the planting date, and a target range for each sensor type.</li>
+      <li>When a reading stays outside its target range for more than 10 minutes, the system raises an alert and notifies the farm manager through an external messaging service (LINE or SMS). If nobody acknowledges it within 30 minutes, the owner is notified as well.</li>
+      <li>Irrigation valves open and close automatically by the plan, or a worker opens them manually from a tablet. Every command is logged with who sent it and when.</li>
+      <li>Workers record tasks — fertilising, pest inspection — and harvests: the plot, the date, the quantity in kilograms and a grade (A, B or C). Only a plot whose status is READY can be harvested.</li>
+      <li>Each harvest creates a lot with a QR code. A buyer who scans it sees the plot, the planting date and the chemicals used. The buyer sees no personal data.</li>
+      <li>The buyers' certification scheme requires every chemical and fertiliser record of a lot to be kept for at least 2 years and shown to an auditor on request.</li>
+      <li>The owner views a monthly dashboard of yield per plot and water use.</li>
+      <li>The system reads a rain forecast from an external weather service and skips scheduled irrigation when rain probability is 70% or more — unless the channel's water level is already below the plan's minimum.</li>
+    </ol>
+    <p class="th-line" lang="th" style="margin-top:8px">กรณีศึกษา GreenLeaf Smart Farm (บริษัทสมมติ): ฟาร์มผักไฮโดรโปนิกส์สี่โรงเรือนที่นครปฐม ต้องการระบบ web-based สำหรับเจ้าของ ผู้จัดการฟาร์ม คนงาน (แท็บเล็ต) และผู้ซื้อขายส่ง (มือถือ) — (1) แต่ละโรงเรือนแบ่งเป็นแปลง มีเซนเซอร์ (ระดับน้ำในรางปลูก อุณหภูมิ ความชื้น ค่า EC ของสารละลาย pH แสง) ส่งค่าทุก 5 นาทีผ่าน LoRaWAN gateway (2) ผู้จัดการตั้งแผนการปลูกต่อแปลง: พืช วันปลูก และช่วงค่าเป้าหมาย (3) ถ้าค่าอยู่นอกช่วงเกิน 10 นาที ระบบสร้าง alert แจ้งผู้จัดการผ่าน LINE/SMS ถ้าไม่มีใครรับใน 30 นาที แจ้งเจ้าของด้วย (4) วาล์วน้ำเปิดปิดอัตโนมัติตามแผน หรือคนงานสั่งเองได้ ทุกคำสั่งบันทึกว่าใครสั่งเมื่อไร (5) คนงานบันทึกงานและการเก็บเกี่ยว: แปลง วันที่ จำนวน กก. และเกรด A/B/C เก็บได้เฉพาะแปลงสถานะ READY (6) ทุกการเก็บเกี่ยวสร้าง lot พร้อม QR ผู้ซื้อสแกนเห็นแปลง วันปลูก และสารเคมีที่ใช้ แต่ไม่เห็นข้อมูลส่วนบุคคล (7) มาตรฐานรับรองของผู้ซื้อกำหนดให้เก็บบันทึกสารเคมีและปุ๋ยของทุก lot อย่างน้อย 2 ปี และแสดงต่อผู้ตรวจได้ (8) เจ้าของดู dashboard รายเดือน (9) ระบบอ่านพยากรณ์ฝนจากบริการภายนอก ถ้าโอกาสฝน ≥ 70% ให้ข้ามการรดน้ำ เว้นแต่ระดับน้ำในรางต่ำกว่าเกณฑ์ขั้นต่ำแล้ว</p>
+  </div>
+  <div class="grid" style="gap:12px;margin-top:12px">
+
+    <div class="qa quiz-item" data-search="mock final part 2 concern decomposition crop loss water stress function measurable">
+      <p class="q"><span>Q1</span>The owner's main concern is <strong>crop loss from water stress</strong>. Using concerns decomposition, break the concern down and declare at least three functional requirements that can be measured. (5 marks)<span class="th-line" lang="th">เจ้าของกังวลเรื่องพืชเสียหายจากการขาดหรือเกินน้ำ จงใช้ concerns decomposition แตกประเด็น แล้วระบุ functional requirement ที่วัดได้อย่างน้อยสามข้อ</span></p>
+      <p class="guide"><b>Use</b> Lesson 8 · <a href="#" data-card="l8-concerns">clause 7</a> · Lesson 11 memo (42:47, the Sky Train example)</p>
+      <p class="marker">Marker wants: the concern broken into sub-concerns and causes; the questions asked at each branch; at least three requirements, each with a condition, a number and a response.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <p><strong>แตกประเด็น (concern → sub-concern → สาเหตุ):</strong> crop loss from water stress → (ก) ขาดน้ำ — ระดับน้ำในรางต่ำ (ข) น้ำเกิน — น้ำล้นรางหรือปั๊มไม่หยุด → สาเหตุ: วาล์วค้างปิดหรือค้างเปิด, เซนเซอร์ระดับน้ำเสียหรือเงียบ, แผนรดน้ำไม่ตรงกับสภาพอากาศ, gateway หรือเครือข่ายล่ม</p>
+        <p><strong>คำถามที่ต้องตอบทีละกิ่ง:</strong> “ขาดน้ำ” วัดจากระดับน้ำในราง ต่ำกว่าเท่าไร นานเท่าไร? ระบบรู้ได้อย่างไรว่าวาล์วไม่ทำงานจริง? ถ้าเซนเซอร์เงียบ ระบบควรถือว่าเป็นความเสี่ยงหรือไม่?</p>
+        <p><strong>Functional requirement ที่วัดได้:</strong> (1) เมื่อระดับน้ำในรางของแปลงใดต่ำกว่าค่าต่ำสุดของแผนติดต่อกัน 10 นาที ระบบต้องเปิดวาล์วของแปลงนั้นภายใน 1 นาที และแจ้งผู้จัดการภายใน 2 นาที (2) หลังสั่งเปิดวาล์ว ถ้า flow sensor ไม่รายงานการไหลภายใน 2 นาที ระบบต้องตั้งสถานะวาล์วเป็น FAULTY และส่ง alert (3) ถ้าเซนเซอร์ตัวใดไม่ส่งค่า 3 รอบติดกัน (15 นาที) ระบบต้องสร้าง alert “sensor silent” (4) เมื่อโอกาสฝน ≥ 70% ระบบข้ามการรดน้ำตามตาราง <em>ยกเว้น</em>ระดับน้ำต่ำกว่าเกณฑ์ขั้นต่ำแล้ว — ความปลอดภัยของพืชมาก่อน</p>
+        <p>วิธีเดียวกับตัวอย่างรถไฟฟ้าของอาจารย์: concern ยังเป็น NFR กว้าง ๆ จนกว่าจะถามต่อจนได้ function ที่มีเงื่อนไข ตัวเลข และการตอบสนองที่ทดสอบได้ ตัวเลขในคำตอบเป็นค่าสมมติที่ต้องยืนยันกับผู้เชี่ยวชาญด้านพืช และค่า EC เป็นตัววัดความเข้มข้นของสารละลาย ไม่ใช่ปริมาณน้ำ จึงไม่ใช้เป็นตัวบอกการขาดน้ำ</p>
+      </div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 2 robotaxi goal decomposition enterprise goal sub-goal nfr quantitative functional requirement">
+      <p class="q"><span>Q2</span><strong>Robotaxi.</strong> CityGo runs robotaxis in central Bangkok. Its enterprise goal: “be the robotaxi service passengers trust for safe, on-time trips.” Hint: consider safety and availability. Decompose the goal and declare functional requirements, including at least two quantitative NFRs. (5 marks)<span class="th-line" lang="th">CityGo ให้บริการ robotaxi ใจกลางกรุงเทพฯ เป้าหมายองค์กรคือเป็นบริการที่ผู้โดยสารไว้ใจว่าปลอดภัยและตรงเวลา (hint: safety และ availability) จงแตก goal แล้วระบุ functional requirement พร้อม quantitative NFR อย่างน้อยสองข้อ</span></p>
+      <p class="guide"><b>Use</b> Lesson 8 · <a href="#" data-card="l8-goal">clause 6</a> and <a href="#" data-card="l8-fr">clause 1</a> (soft goal → hard goal)</p>
+      <p class="marker">Marker wants: goal → sub-goal → NFR → quantitative NFR, in order; numbers that can be tested; functional requirements derived from the hard goals, traceable to the enterprise goal.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <p><strong>Goal:</strong> ผู้โดยสารไว้ใจว่าเดินทางปลอดภัยและตรงเวลา → <strong>Sub-goals:</strong> (ก) ไม่มีอุบัติเหตุจากรถ (ข) รถมารับตรงเวลา (ค) ผู้โดยสารรู้สถานะและขอความช่วยเหลือได้</p>
+        <p><strong>NFR:</strong> safety, availability, performance, usability → <strong>Quantitative NFR</strong> (ค่าสมมติ ต้องได้จาก benchmark และใช้ตรวจรับ): safety — เมื่อพบสิ่งกีดขวางในเส้นทาง รถต้องเริ่มเบรกภายใน 0.2 วินาที; availability — ระบบจองพร้อมใช้งาน 99.9% ระหว่าง 05:00–24:00; รถถึงจุดรับภายใน 8 นาทีสำหรับ 95% ของคำขอในเขตบริการ; ปุ่มฉุกเฉินต่อสายถึงเจ้าหน้าที่ภายใน 10 วินาที</p>
+        <p><strong>Functional requirements จาก hard goal:</strong> (1) ระบบต้องแสดง ETA สดและอัปเดตทุก 10 วินาที (2) เมื่อเซนเซอร์สำคัญของรถผิดปกติ ระบบต้องจอดรถในจุดปลอดภัยและเรียก remote operator (3) ระบบต้องไม่เริ่มเดินทางถ้าประตูยังไม่ปิด (4) ปุ่ม emergency ต้องเปิดการสนทนากับเจ้าหน้าที่และส่งพิกัดรถ (5) ถ้ารถคันที่จองไว้ไม่พร้อม ระบบต้องจัดคันใหม่และแจ้งผู้โดยสารพร้อม ETA ใหม่</p>
+        <p>ประโยคปิดที่ได้คะแนน: ทุก requirement ตามรอยกลับไปหา goal ได้ — นี่คือข้อดีของ goal decomposition ตามสไลด์</p>
+      </div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 2 external fact regulation certification chemical record two years pdpa capability">
+      <p class="q"><span>Q3</span>Requirement 7 and Thailand's PDPA are external facts. State what capabilities each one forces the Smart Farm system to have. (4 marks)<span class="th-line" lang="th">ข้อ 7 (มาตรฐานรับรองของผู้ซื้อ) และ PDPA เป็นข้อเท็จจริงภายนอก จงระบุความสามารถที่ระบบต้องมีเพราะข้อเท็จจริงแต่ละข้อ</span></p>
+      <p class="guide"><b>Use</b> Lesson 8 · <a href="#" data-card="l8-external">clause 5</a> (memo 1:07:50)</p>
+      <p class="marker">Marker wants: the fact restated; the part of the system it touches; a capability per fact written as something the system must store, check, exchange or keep, with a number where possible.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <p><strong>ข้อ 7 — การรับรองของผู้ซื้อ:</strong> ระบบต้อง (1) บันทึกการใช้สารเคมีและปุ๋ยทุกครั้งโดยผูกกับแปลง วันที่ และผู้บันทึก (2) เชื่อมบันทึกเหล่านั้นกับ lot ที่เกิดจากแปลงนั้น (3) เก็บอย่างน้อย 2 ปีนับจากวันเก็บเกี่ยว และห้ามลบหรือแก้ย้อนหลังโดยไม่มีประวัติ (4) ออกรายงานต่อ lot ให้ผู้ตรวจได้ภายในวันเดียว</p>
+        <p><strong>PDPA:</strong> ระบบต้อง (1) เก็บข้อมูลส่วนบุคคลของคนงานและผู้ซื้อเท่าที่จำเป็นตามวัตถุประสงค์ (2) ขอความยินยอมก่อนเก็บและแจ้งวัตถุประสงค์ (3) ให้เจ้าของข้อมูลขอดูหรือขอลบได้ (4) จำกัดสิทธิ์เข้าถึงตาม role และหน้า QR ของผู้ซื้อต้องไม่แสดงข้อมูลส่วนบุคคล (ตรงกับข้อ 6)</p>
+        <p>สังเกตว่าทั้งสองข้อไม่ได้มาในรูป “The system shall…” — นักวิเคราะห์เป็นคนแปลงข้อเท็จจริงเป็นความสามารถ ซึ่งคือสิ่งที่อาจารย์บอกว่าจะถาม</p>
+      </div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 2 metric experiment functional adequacy 1 - a/b alert irrigation test design">
+      <p class="q"><span>Q4</span>The owner will accept the alert and irrigation module only if <strong>functional adequacy X = 1 − A/B</strong> is at least 0.95, where A is the number of functions in which a problem is detected and B is the number of functions evaluated. Design the evaluation. (4 marks)<span class="th-line" lang="th">เจ้าของจะตรวจรับโมดูล alert และรดน้ำก็ต่อเมื่อ X = 1 − A/B ≥ 0.95 จงออกแบบการทดสอบ: ค่า A และ B มาจากไหน เก็บข้อมูลอย่างไร และแปลผลอย่างไร</span></p>
+      <p class="guide"><b>Use</b> Lesson 8 · <a href="#" data-card="l8-metrics">clause 10</a> · Video lab section 7 (the functional-adequacy calculation, 2:00:56)</p>
+      <p class="marker">Marker wants: the four steps — what is measured and why, the metric, how A and B are collected, how the result is judged.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <p><strong>(1) วัดอะไรเพื่อตอบอะไร:</strong> function ของโมดูล alert และรดน้ำทำงานถูกตามที่ผู้ใช้ต้องการแค่ไหน (ข้อ 3, 4, 9)</p>
+        <p><strong>(2) ตัววัด:</strong> X = 1 − A/B</p>
+        <p><strong>(3) เก็บข้อมูล:</strong> B = รายการ function ที่จะประเมิน เช่น 12 function — สร้าง alert เมื่อนอกช่วงเกิน 10 นาที, แจ้งผู้จัดการ, escalate หลัง 30 นาที, เปิด/ปิดวาล์วตามแผน, สั่งวาล์วเอง, บันทึกผู้สั่ง, ข้ามรดน้ำเมื่อฝน ≥ 70%, ไม่ข้ามเมื่อค่าต่ำกว่าเกณฑ์ ฯลฯ เขียน test case ต่อ function แล้วป้อนค่าเซนเซอร์จำลองผ่าน test harness ในสภาพแวดล้อม staging ผู้ทดสอบบันทึกผลแต่ละ case; A = จำนวน function ที่พบปัญหาอย่างน้อยหนึ่ง case</p>
+        <p><strong>(4) แปลผล:</strong> ถ้าพบปัญหา 1 function จาก 12 ได้ X = 1 − 1/12 ≈ 0.92 &lt; 0.95 → ยังไม่ผ่าน ต้องแก้แล้วทดสอบซ้ำ ค่ายิ่งใกล้ 1 ยิ่งดี อาจารย์ไม่ให้คิดตัววัดเอง แต่ให้ออกแบบว่าจะได้ A กับ B มาอย่างไร</p>
+      </div>
+    </div>
+
+    <div class="qa quiz-item wide" data-search="mock final part 2 requirements validation six point frame purpose responsible environment input steps output prototyping">
+      <p class="q"><span>Q5</span>Before contracting a developer, GreenLeaf wants to validate the requirements. Most workers have little IT experience. Choose a validation technique and answer in the six-point frame: purpose, who is responsible, environment, input, steps, output. (5 marks)<span class="th-line" lang="th">ก่อนจ้างผู้พัฒนา GreenLeaf ต้องการทำ requirements validation และคนงานส่วนใหญ่ใช้ IT ไม่คล่อง จงเลือกเทคนิคและตอบตามกรอบหกข้อ</span></p>
+      <p class="guide"><b>Use</b> Lesson 11 · <a href="#" data-card="l11-four">clause 2</a>, <a href="#" data-card="l11-review">clause 3</a> · Lesson 10 · <a href="#" data-card="l10-valid">clause 3</a></p>
+      <p class="marker">Marker wants: one technique chosen with a reason tied to the case; all six points answered; steps in order; outputs that someone can act on.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <p><strong>เลือก prototyping</strong> สำหรับหน้าจอของคนงาน เพราะคนงานอ่าน SRS ไม่คล่อง แต่ตัดสินได้จากหน้าจอที่ลองกดจริง (เสริมด้วย requirements review ของ SRS สำหรับเจ้าของและผู้จัดการ)</p>
+        <div class="table-scroll"><table class="spec"><thead><tr><th>กรอบ</th><th>คำตอบ</th></tr></thead><tbody>
+          <tr><td>1 · ทำเพื่ออะไร</td><td>ตรวจว่า requirement ของการบันทึกการเก็บเกี่ยว งาน และวาล์วตรงกับวิธีทำงานจริง หาสิ่งที่ขาดหรือเข้าใจผิดก่อนทำสัญญา</td></tr>
+          <tr><td>2 · ใครรับผิดชอบ</td><td>requirements engineer จัดและสังเกต; ผู้ทดสอบคือคนงานที่มีประสบการณ์และเปิดใจ ครบทุกโรงเรือน และผู้จัดการฟาร์ม</td></tr>
+          <tr><td>3 · สภาพแวดล้อม</td><td>ในโรงเรือนจริง ใช้แท็บเล็ตที่จะใช้งานจริง ช่วงเช้าก่อนงานเก็บเกี่ยว</td></tr>
+          <tr><td>4 · Input</td><td>prototype แบบกดได้ของหน้าจอหลัก, use case description, test scenario, checklist เกณฑ์ประเมิน และนิยาม defect type</td></tr>
+          <tr><td>5 · ขั้นตอน</td><td>เลือกผู้ทดสอบ → เขียน scenario ที่ครอบคลุม (เช่น เก็บเกี่ยวแปลง READY, กรอกจำนวนเกิน, เน็ตหลุดตอนบันทึก) → ให้ผู้ใช้ทำเองโดย engineer สังเกตไม่ช่วย → บันทึกปัญหาและการเปลี่ยนแปลงที่ต้องทำ</td></tr>
+          <tr><td>6 · ผลลัพธ์</td><td>รายการ defect พร้อมประเภท, requirement ที่ต้องแก้หรือเพิ่ม, รายงานการประเมิน และ requirement ที่ยืนยันแล้วพร้อมเป็น baseline</td></tr>
+        </tbody></table></div>
+      </div>
+    </div>
+
+    <div class="qa quiz-item wide" data-search="mock final part 2 requirements review defect ambiguous incomplete contradictory infeasible checklist rewrite">
+      <p class="q"><span>Q6</span>Review these four requirements from the Smart Farm SRS. For each, name the defect type and the checklist group, and rewrite it.<br>R1 “The system shall alert the manager quickly when a reading is abnormal.”<br>R2 “The system shall delete old sensor readings.”<br>R3 “Sensor readings shall be kept for 30 days.” (read with requirement 7)<br>R4 “The system shall predict each plot's yield with 100% accuracy one month ahead.” (5 marks)<span class="th-line" lang="th">ตรวจ requirement สี่ข้อจาก SRS ของ Smart Farm: ระบุประเภท defect และกลุ่มใน checklist แล้วเขียนใหม่</span></p>
+      <p class="guide"><b>Use</b> Lesson 11 · <a href="#" data-card="l11-check">clause 4</a> and <a href="#" data-card="l11-defects">clause 5</a></p>
+      <p class="marker">Marker wants: four defect types named correctly; a checklist group for each; rewrites that add a number, a condition or a definition.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <div class="table-scroll"><table class="spec"><thead><tr><th></th><th>Defect · กลุ่ม checklist</th><th>เขียนใหม่</th></tr></thead><tbody>
+          <tr><td>R1</td><td>Ambiguous — “quickly”, “abnormal” · consistency and clarity</td><td>เมื่อค่าเซนเซอร์อยู่นอกช่วงเป้าหมายของแผนติดต่อกัน 10 นาที ระบบต้องแจ้งผู้จัดการภายใน 2 นาที (นิยาม “นอกช่วง” ใน term definition table)</td></tr>
+          <tr><td>R2</td><td>Incomplete — ไม่นิยาม “old” และไม่บอกว่าข้อมูลที่ผูกกับ lot เป็นอย่างไร · completeness and correctness</td><td>ระบบต้องลบค่าดิบที่เก่ากว่า 30 วันและไม่ผูกกับ lot ใด โดยเก็บค่าเฉลี่ยรายวันไว้ และไม่ลบค่าที่ผูกกับ lot ที่ยังอยู่ในระยะเก็บ 2 ปี</td></tr>
+          <tr><td>R3</td><td>Contradictory — ขัดกับข้อ 7 ที่ต้องเก็บบันทึกของ lot 2 ปี · consistency and clarity</td><td>ค่าดิบเก็บออนไลน์ 30 วัน; บันทึกที่ผูกกับ lot ย้ายไป archive และเก็บอย่างน้อย 2 ปี</td></tr>
+          <tr><td>R4</td><td>Infeasible — ความแม่นยำ 100% ทำไม่ได้ · completeness and correctness</td><td>ระบบต้องแสดงผลผลิตคาดการณ์ล่วงหน้า 1 เดือน โดยคลาดเคลื่อนไม่เกิน ±15% เทียบกับผลจริงของ 3 รอบปลูกล่าสุด</td></tr>
+        </tbody></table></div>
+        <p>อาจารย์ชอบให้นิยามคำกำกวมไว้ใน term definition table เพราะเปลี่ยนนิยามแล้วแก้ที่เดียว</p>
+      </div>
+    </div>
+
+    <div class="qa quiz-item wide" data-search="mock final part 2 acceptance criteria dr card input type length valid invalid output harvest">
+      <p class="q"><span>Q7</span>Generate acceptance criteria for requirement 5 (record a harvest): for each input give the type and length, valid and invalid values, then the output for valid and invalid input. (4 marks)<span class="th-line" lang="th">จงสร้าง acceptance criteria ของข้อ 5 (บันทึกการเก็บเกี่ยว): input แต่ละตัวมี type/length, ค่าที่ valid และ invalid และ output ของแต่ละกรณี</span></p>
+      <p class="guide"><b>Use</b> Lesson 11 · <a href="#" data-card="l11-accept">clause 8</a> (the DR card, 49:22) · Lesson 10 · <a href="#" data-card="l10-uireq">clause 17</a></p>
+      <p class="marker">Marker wants: every input with a type and a rule; at least one data rule beyond format (status READY, date not before planting); outputs for both cases; numbers or formats that can be checked.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <div class="table-scroll"><table class="spec"><thead><tr><th>Input</th><th>Type · length</th><th>Valid</th><th>Invalid</th></tr></thead><tbody>
+          <tr><td>Plot ID</td><td>String · 4 (P-NN)</td><td>มีอยู่จริง และสถานะ READY</td><td>ไม่มีในระบบ หรือสถานะไม่ใช่ READY</td></tr>
+          <tr><td>Harvest date</td><td>Date · dd/mm/yyyy</td><td>ไม่เกินวันนี้ และไม่ก่อนวันปลูก</td><td>วันในอนาคต หรือก่อนวันปลูก</td></tr>
+          <tr><td>Quantity</td><td>Decimal · 1 ตำแหน่ง</td><td>0.1–500 kg</td><td>ว่าง, 0, ติดลบ, เกิน 500</td></tr>
+          <tr><td>Grade</td><td>Enum · A/B/C</td><td>A, B หรือ C</td><td>ไม่เลือก</td></tr>
+        </tbody></table></div>
+        <p><strong>Output เมื่อ valid:</strong> สร้าง lot ที่มี lot ID ไม่ซ้ำและ QR, เปลี่ยนสถานะแปลงเป็น HARVESTED, แสดง acknowledgment พร้อม lot ID <strong>Output เมื่อ invalid:</strong> ไม่สร้าง lot, ข้อความระบุช่องที่ผิดและวิธีแก้ เช่น “Enter 0.1–500 kg for one plot.”</p>
+        <p><strong>ในรูป Given–When–Then:</strong> Given แปลง P-07 สถานะ READY, When คนงานบันทึก 42.5 kg เกรด A วันนี้, Then ระบบสร้าง lot ใหม่และ P-07 เป็น HARVESTED · Given แปลง P-09 สถานะ GROWING, When คนงานพยายามบันทึก, Then ระบบไม่สร้าง lot และแจ้งว่าแปลงยังไม่พร้อมเก็บเกี่ยว</p>
+      </div>
+    </div>
+
+    <div class="qa quiz-item" data-search="mock final part 2 requirements management change request committee feasibility baseline traceability drone spraying">
+      <p class="q"><span>Q8</span>Three months after the SRS was approved as a baseline, the owner asks to add <strong>drone spraying schedules</strong>. Walk the request through requirements management. (4 marks)<span class="th-line" lang="th">สามเดือนหลัง SRS ถูกอนุมัติเป็น baseline เจ้าของขอเพิ่มการตั้งตารางพ่นสารด้วยโดรน จงอธิบายการจัดการคำขอนี้ตาม requirements management</span></p>
+      <p class="guide"><b>Use</b> Lesson 11 · <a href="#" data-card="l11-mgmt">clause 9</a>, <a href="#" data-card="l11-change">clause 10</a>, <a href="#" data-card="l11-trace">clause 11</a></p>
+      <p class="marker">Marker wants: the change-request route in order; the three feasibility checks; the baseline and version; tracing both ways; the creep risk.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <p><strong>เส้นทาง:</strong> คำขอเข้าที่ project manager → เขียน change request พร้อม feasibility, ต้นทุน และประโยชน์ → change committee (ตัวแทนฝั่ง client และ supplier) วิเคราะห์ feasibility สามด้าน — <strong>economic</strong> (คุ้มไหม), <strong>technical</strong> (มีเทคโนโลยีรองรับไหม เช่น API ของโดรน), <strong>stakeholder satisfaction</strong> (ผู้ใช้พอใจ function ใหม่ไหม) — แล้วจัด priority → analyst ปรับ SRS และโมเดล → design → programmer พัฒนาโดยมี QA ตรวจ → ได้ระบบที่เปลี่ยนแล้ว</p>
+        <p><strong>Baseline:</strong> SRS เดิมถูก lock ไว้ การแก้ต้องผ่าน change request และออกเวอร์ชันใหม่ เช่น v1.0 → v1.1</p>
+        <p><strong>Traceability:</strong> backward — ที่มาคือคำขอของเจ้าของ; forward — use case ที่กระทบ, คลาสใหม่ (เช่น SprayJob), และที่สำคัญคือข้อ 7 เพราะการพ่นคือการใช้สารเคมีที่ต้องบันทึกต่อ lot และเก็บ 2 ปี — test case ของข้อ 7 ต้องแก้ด้วย</p>
+        <p><strong>Attribute</strong> ที่ต้องปรับ: ID ใหม่, source, priority, status, version ถ้ารับคำขอโดยไม่ผ่านเส้นทางนี้คือ requirements creep ที่จบด้วยงบบานปลายหรือล่าช้า</p>
+      </div>
+    </div>
+
+    <div class="qa quiz-item wide" data-search="mock final part 2 ui design record harvest screens wnd messages input validation principles standards exception">
+      <p class="q"><span>Q9</span>Design the tablet screens for <strong>record a harvest</strong>. The steps: (1) the worker is logged in; (2) chooses a greenhouse and sees the plots; (3) picks a plot and enters the date, quantity and grade; (4) confirms; (5) the system saves the lot, shows its QR code and prints a label. Handle: no READY plot, quantity out of range, a failed save, and a printer that does not respond. Show the messages, the input validation, two UI design principles and the interface standards you applied. (8 marks)<span class="th-line" lang="th">ออกแบบหน้าจอแท็บเล็ตสำหรับบันทึกการเก็บเกี่ยวตามห้าขั้นตอน พร้อมกรณียกเว้น: ไม่มีแปลง READY, จำนวนเกินช่วง, บันทึกไม่สำเร็จ, เครื่องพิมพ์ไม่ตอบสนอง แสดง message, input validation, หลักการออกแบบสองข้อ และ interface standards ที่ใช้</span></p>
+      <p class="guide"><b>Use</b> Lesson 10 · <a href="#" data-card="l10-principles">clause 7</a>, <a href="#" data-card="l10-wnd">clause 12</a>, <a href="#" data-card="l10-nav">clause 14</a>, <a href="#" data-card="l10-input">clause 15</a> · Lesson 11 memo (the longer UI question)</p>
+      <p class="marker">Marker wants: screens as boxes with what appears on each; the flow matching the steps; normal and exception paths; error and confirmation messages done properly; validation named by type; two principles pointed at on the drawing; standards named.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <figure class="fig hw4fig">
+          <div class="fig-scroll">
+            <svg viewBox="0 0 940 540" role="img" aria-label="Three tablet screens for Record harvest linked as in a window navigation diagram: screen one selects a plot and shows only READY plots; screen two enters date, quantity and grade with an inline range error; screen three acknowledges the saved lot with its QR code and a print delay message; below, a confirmation box between screens two and three and an error box for a failed save">
+              <defs>
+                <marker id="fmf5a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--muted)"/></marker>
+              </defs>
+              <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="9.5">
+                <rect x="20" y="30" width="280" height="310" rx="6" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="30" y="22" fill="var(--muted)" font-size="9">«window» 1 · Select plot</text>
+                <rect x="20" y="30" width="280" height="28" rx="6" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="32" y="48" fill="var(--ink)" font-size="10.5">Record harvest</text>
+                <text x="290" y="48" text-anchor="end" fill="var(--muted)">step 1 of 3</text>
+                <rect x="32" y="68" width="256" height="22" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="40" y="83" fill="var(--ink)">Greenhouse: GH-2 ▾</text>
+                <rect x="32" y="100" width="256" height="34" rx="3" fill="var(--accent-soft)" stroke="var(--accent)"/>
+                <text x="40" y="115" fill="var(--ink)">P-07 · Lettuce</text><text x="280" y="115" text-anchor="end" fill="var(--accent)">READY</text>
+                <text x="40" y="128" fill="var(--muted)" font-size="8.5">planted 02/10/2026</text>
+                <rect x="32" y="140" width="256" height="34" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="40" y="155" fill="var(--ink)">P-08 · Kale</text><text x="280" y="155" text-anchor="end" fill="var(--accent)">READY</text>
+                <text x="40" y="168" fill="var(--muted)" font-size="8.5">planted 05/10/2026</text>
+                <text x="40" y="196" fill="var(--muted)" font-size="8.5">Only plots in READY are listed.</text>
+                <rect x="208" y="292" width="80" height="26" rx="3" fill="var(--accent)"/>
+                <text x="248" y="309" text-anchor="middle" fill="var(--accent-ink)" font-weight="600">Next ›</text>
+                <text x="32" y="334" fill="var(--muted)" font-size="8.5">Somchai (worker) · online</text>
+
+                <rect x="330" y="30" width="280" height="310" rx="6" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="340" y="22" fill="var(--muted)" font-size="9">«form» 2 · Enter harvest</text>
+                <rect x="330" y="30" width="280" height="28" rx="6" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="342" y="48" fill="var(--ink)" font-size="10.5">Record harvest · P-07 Lettuce</text>
+                <text x="600" y="48" text-anchor="end" fill="var(--muted)">2 of 3</text>
+                <text x="342" y="78" fill="var(--muted)">Harvest date *</text>
+                <rect x="342" y="84" width="256" height="22" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="350" y="99" fill="var(--ink)">27/11/2026 (today) ▾</text>
+                <text x="342" y="126" fill="var(--muted)">Quantity (kg) *</text>
+                <rect x="342" y="132" width="256" height="22" rx="3" fill="var(--surface)" stroke="var(--bad)" stroke-width="1.5"/>
+                <text x="350" y="147" fill="var(--ink)">650</text>
+                <text x="342" y="168" fill="var(--bad)" font-size="9">Enter 0.1–500 kg for one plot.</text>
+                <text x="342" y="190" fill="var(--muted)">Grade *</text>
+                <circle cx="352" cy="206" r="5" fill="none" stroke="var(--accent)" stroke-width="2"/><circle cx="352" cy="206" r="2" fill="var(--accent)"/>
+                <text x="362" y="210" fill="var(--ink)">A</text>
+                <circle cx="402" cy="206" r="5" fill="none" stroke="var(--line)" stroke-width="2"/><text x="412" y="210" fill="var(--ink)">B</text>
+                <circle cx="452" cy="206" r="5" fill="none" stroke="var(--line)" stroke-width="2"/><text x="462" y="210" fill="var(--ink)">C</text>
+                <rect x="342" y="292" width="80" height="26" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="382" y="309" text-anchor="middle" fill="var(--ink)">‹ Back</text>
+                <rect x="518" y="292" width="80" height="26" rx="3" fill="var(--accent)"/>
+                <text x="558" y="309" text-anchor="middle" fill="var(--accent-ink)" font-weight="600">Save</text>
+                <text x="342" y="334" fill="var(--muted)" font-size="8.5">* required</text>
+
+                <rect x="640" y="30" width="280" height="310" rx="6" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="650" y="22" fill="var(--muted)" font-size="9">«window» 3 · Lot created</text>
+                <rect x="640" y="30" width="280" height="28" rx="6" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="652" y="48" fill="var(--ink)" font-size="10.5">Record harvest</text>
+                <text x="910" y="48" text-anchor="end" fill="var(--muted)">3 of 3</text>
+                <rect x="652" y="68" width="256" height="30" rx="3" fill="var(--good-bg)" stroke="var(--good)"/>
+                <text x="660" y="87" fill="var(--ink)">✓ Lot L-1127-07 saved · 42.5 kg · grade A</text>
+                <rect x="730" y="110" width="100" height="100" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="780" y="164" text-anchor="middle" fill="var(--muted)">QR code</text>
+                <rect x="652" y="226" width="256" height="24" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="660" y="242" fill="var(--muted)">Printing label… (Cancel)</text>
+                <rect x="652" y="292" width="110" height="26" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="707" y="309" text-anchor="middle" fill="var(--ink)">Print label</text>
+                <rect x="798" y="292" width="110" height="26" rx="3" fill="var(--accent)"/>
+                <text x="853" y="309" text-anchor="middle" fill="var(--accent-ink)" font-weight="600">Record another</text>
+
+                <line x1="300" y1="190" x2="326" y2="190" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#fmf5a)"/>
+                <line x1="610" y1="190" x2="636" y2="190" stroke="var(--muted)" stroke-width="1.3" marker-end="url(#fmf5a)"/>
+
+                <rect x="330" y="380" width="280" height="96" rx="4" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="340" y="372" fill="var(--muted)" font-size="9">«Msg Box» confirmation</text>
+                <text x="342" y="402" fill="var(--ink)">Save 42.5 kg, grade A, from P-07?</text>
+                <text x="342" y="418" fill="var(--ink)">P-07 will be set to HARVESTED.</text>
+                <rect x="420" y="440" width="80" height="24" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="460" y="456" text-anchor="middle" fill="var(--ink)">Cancel</text>
+                <rect x="518" y="440" width="80" height="24" rx="3" fill="var(--accent)"/>
+                <text x="558" y="456" text-anchor="middle" fill="var(--accent-ink)" font-weight="600">Confirm</text>
+                <line x1="470" y1="342" x2="470" y2="376" stroke="var(--muted)" stroke-width="1.3" marker-start="url(#fmf5a)" marker-end="url(#fmf5a)"/>
+
+                <rect x="640" y="380" width="280" height="96" rx="4" fill="var(--bad-bg)" stroke="var(--bad)"/>
+                <text x="650" y="372" fill="var(--muted)" font-size="9">«Msg Box» error</text>
+                <text x="652" y="402" fill="var(--ink)">E-210 · The lot could not be saved.</text>
+                <text x="652" y="418" fill="var(--ink)">Your entries are kept. Check Wi-Fi,</text>
+                <text x="652" y="434" fill="var(--ink)">then tap Retry.</text>
+                <rect x="828" y="440" width="80" height="24" rx="3" fill="var(--surface)" stroke="var(--line)"/>
+                <text x="868" y="456" text-anchor="middle" fill="var(--ink)">Retry</text>
+                <line x1="612" y1="428" x2="636" y2="428" stroke="var(--muted)" stroke-width="1.3" marker-start="url(#fmf5a)" marker-end="url(#fmf5a)"/>
+                <text x="616" y="494" fill="var(--muted)" font-size="8.5">save fails</text>
+
+                <text x="20" y="514" fill="var(--accent)" font-size="9.5">Content awareness — every screen says the step (1 of 3) and carries the plot; the user always knows where they are and what is shown.</text>
+                <text x="20" y="532" fill="var(--accent)" font-size="9.5">Minimal user effort — only READY plots listed, date defaults to today, grade is a tap: three screens, three taps to a saved lot.</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Screens as boxes, linked as a window navigation diagram: single arrows go forward, double arrows go and come back. <span lang="th">อ่านเป็น WND: หน้าจอ 1 เลือกแปลง (แสดงเฉพาะแปลง READY) → หน้าจอ 2 กรอกวันที่ จำนวน และเกรด (ช่อง quantity ขอบแดงพร้อมข้อความ error ใต้ช่อง) → กล่องยืนยันด้านล่าง (ลูกศรสองหัว เพราะกด Cancel แล้วกลับมาหน้าเดิม) → หน้าจอ 3 แจ้งว่าบันทึกแล้วพร้อม QR และ delay message ตอนพิมพ์ ถ้าบันทึกไม่สำเร็จจะขึ้นกล่อง error ที่บอกปัญหาก่อน แล้วบอกวิธีแก้ และข้อมูลที่กรอกยังอยู่ ไม่ต้องวาดสวย — ตามที่อาจารย์บอก รูปภาพตีกรอบสี่เหลี่ยมก็พอ</span></figcaption>
+        </figure>
+        <p><strong>Message:</strong> confirmation ก่อนบันทึก (“Save 42.5 kg, grade A, from P-07? P-07 will be set to HARVESTED.”); acknowledgment หลังบันทึก (“Lot L-1127-07 saved”); delay ระหว่างพิมพ์ (“Printing label… Cancel”); error เมื่อบันทึกไม่สำเร็จ — บอกปัญหาก่อนแล้วบอกวิธีแก้ พร้อมเลขข้อความสำหรับ help desk (“E-210 · The lot could not be saved. Your entries are kept. Check Wi-Fi, then tap Retry.”); เมื่อไม่มีแปลง READY แสดงในหน้าจอ 1 ว่า “No plot in GH-2 is ready to harvest. Choose another greenhouse.”; เครื่องพิมพ์ไม่ตอบ: “Printer not responding. The lot is saved — print later from Lots.”</p>
+        <p><strong>Input validation:</strong> completeness (ช่องที่มี * ต้องกรอก), range (0.1–500 kg), format (ทศนิยม 1 ตำแหน่ง), consistency (วันที่ไม่เกินวันนี้และไม่ก่อนวันปลูก), database check (แปลงยังเป็น READY ตอนกด Save — ตรวจที่ฝั่ง server เพราะต้องดึงข้อมูล ส่วนชนิดข้อมูลตรวจฝั่ง client ได้ ตามที่อาจารย์อธิบายจากงานรุ่นก่อน) ข้อความ error เป็นสีแดงใต้ช่องที่ผิด</p>
+        <p><strong>สองหลักการ:</strong> <strong>content awareness</strong> — ทุกหน้าจอบอก step และชื่อแปลง ผู้ใช้รู้ว่าอยู่ตรงไหนและกำลังดูอะไร; <strong>minimal user effort</strong> — แสดงเฉพาะแปลง READY, วันที่ตั้งเป็นวันนี้, เกรดเป็นปุ่มกด จบในสามแตะ</p>
+        <p><strong>Interface standards:</strong> template = แถบหัว (ชื่องาน + step) · พื้นที่ทำงาน · แถบปุ่มล่าง เหมือนกันทุกหน้าจอ; actions = ใช้คำว่า Save และ Back คำเดียวทั้งระบบ; objects = Plot, Lot, Grade; icons = ✓ สำหรับสำเร็จ และสีแดงสำหรับ error เท่านั้น</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-head"><div><h2>Part 3 — modelling, 20 marks</h2><p>Four diagrams from the same case. She wants to see that you can deliver the models alone, under time, at the level of the individual assignments — keep them simple and consistent with each other.</p></div></div>
+  <div class="grid" style="gap:12px">
+
+    <div class="qa quiz-item wide" data-search="mock final part 3 class diagram smart farm greenhouse plot sensor growing plan harvest lot alert enum derived">
+      <p class="q"><span>M1</span>Draw the class diagram of the problem domain for the Smart Farm case. Show attributes, domain operations, multiplicities, and at least one composition and one aggregation. (6 marks)<span class="th-line" lang="th">วาด class diagram ของ problem domain จากกรณี Smart Farm แสดง attribute, operation ของโดเมน, multiplicity และ composition กับ aggregation อย่างน้อยอย่างละหนึ่ง</span></p>
+      <p class="guide"><b>Use</b> Lesson 6 · <a href="#" data-card="l6-box">clause 4</a>, <a href="#" data-card="l6-assoc">clause 5</a>, <a href="#" data-card="l6-agg">clause 6</a>, <a href="#" data-card="l6-textual">clause 10</a></p>
+      <p class="marker">Marker wants: only what the case names; domain operations taken from the case's events, no get/set; visibility; multiplicity at both ends; the whole-part choices justified.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <figure class="fig hw4fig">
+          <div class="fig-scroll">
+            <svg viewBox="0 0 940 480" role="img" aria-label="Class diagram for the Smart Farm: Greenhouse composed of one or more Plots; Plot aggregates Sensors, follows one GrowingPlan, produces HarvestLots and raises Alerts; Plot's status is typed by the PlotStatus enumeration; Plot carries a derived attribute totalYield">
+              <defs>
+                <marker id="fmf1a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="var(--muted)" stroke-width="1.3"/></marker>
+              </defs>
+              <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10">
+<rect x="30" y="30" width="170" height="96" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="30" y="30" width="170" height="22" fill="var(--accent-soft)" stroke="var(--line)"/>
+<text x="115" y="45" text-anchor="middle" fill="var(--ink)" font-weight="600">Greenhouse</text>
+<text x="38" y="69" fill="var(--ink)">− greenhouseID</text>
+<text x="38" y="85" fill="var(--ink)">− location</text>
+<line x1="30" y1="93" x2="200" y2="93" stroke="var(--line)"/>
+<text x="38" y="110" fill="var(--ink)">+ addPlot()</text>
+<rect x="330" y="30" width="210" height="160" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="330" y="30" width="210" height="22" fill="var(--accent-soft)" stroke="var(--line)"/>
+<text x="435" y="45" text-anchor="middle" fill="var(--ink)" font-weight="600">Plot</text>
+<text x="338" y="69" fill="var(--ink)">− plotID</text>
+<text x="338" y="85" fill="var(--ink)">− crop</text>
+<text x="338" y="101" fill="var(--ink)">− status : PlotStatus</text>
+<text x="338" y="117" fill="var(--ink)">− /totalYield : kg</text>
+<line x1="330" y1="125" x2="540" y2="125" stroke="var(--line)"/>
+<text x="338" y="142" fill="var(--ink)">+ setGrowingPlan()</text>
+<text x="338" y="158" fill="var(--ink)">+ recordHarvest()</text>
+<text x="338" y="174" fill="var(--ink)">+ updateStatus()</text>
+<rect x="720" y="30" width="180" height="130" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="720" y="30" width="180" height="36" fill="var(--accent-soft)" stroke="var(--line)"/>
+<text x="810" y="44" text-anchor="middle" fill="var(--muted)" font-size="9">«Enum»</text>
+<text x="810" y="59" text-anchor="middle" fill="var(--ink)" font-weight="600">PlotStatus</text>
+<text x="728" y="83" fill="var(--ink)">EMPTY</text>
+<text x="728" y="99" fill="var(--ink)">PLANTED</text>
+<text x="728" y="115" fill="var(--ink)">GROWING</text>
+<text x="728" y="131" fill="var(--ink)">READY</text>
+<text x="728" y="147" fill="var(--ink)">HARVESTED</text>
+<rect x="30" y="300" width="170" height="130" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="30" y="300" width="170" height="22" fill="var(--accent-soft)" stroke="var(--line)"/>
+<text x="115" y="315" text-anchor="middle" fill="var(--ink)" font-weight="600">Sensor</text>
+<text x="38" y="339" fill="var(--ink)">− sensorID</text>
+<text x="38" y="355" fill="var(--ink)">− type</text>
+<line x1="30" y1="363" x2="200" y2="363" stroke="var(--line)"/>
+<text x="38" y="380" fill="var(--ink)">+ sendReading()</text>
+<rect x="250" y="300" width="190" height="130" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="250" y="300" width="190" height="22" fill="var(--accent-soft)" stroke="var(--line)"/>
+<text x="345" y="315" text-anchor="middle" fill="var(--ink)" font-weight="600">GrowingPlan</text>
+<text x="258" y="339" fill="var(--ink)">− plantingDate</text>
+<text x="258" y="355" fill="var(--ink)">− targetRanges</text>
+<line x1="250" y1="363" x2="440" y2="363" stroke="var(--line)"/>
+<text x="258" y="380" fill="var(--ink)">+ checkReading()</text>
+<rect x="490" y="300" width="190" height="130" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="490" y="300" width="190" height="22" fill="var(--accent-soft)" stroke="var(--line)"/>
+<text x="585" y="315" text-anchor="middle" fill="var(--ink)" font-weight="600">HarvestLot</text>
+<text x="498" y="339" fill="var(--ink)">− lotID</text>
+<text x="498" y="355" fill="var(--ink)">− quantityKg</text>
+<text x="498" y="371" fill="var(--ink)">− grade</text>
+<text x="498" y="387" fill="var(--ink)">− recordedBy</text>
+<line x1="490" y1="395" x2="680" y2="395" stroke="var(--line)"/>
+<text x="498" y="412" fill="var(--ink)">+ generateQR()</text>
+<rect x="730" y="300" width="180" height="130" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="730" y="300" width="180" height="22" fill="var(--accent-soft)" stroke="var(--line)"/>
+<text x="820" y="315" text-anchor="middle" fill="var(--ink)" font-weight="600">Alert</text>
+<text x="738" y="339" fill="var(--ink)">− alertID</text>
+<text x="738" y="355" fill="var(--ink)">− raisedAt</text>
+<text x="738" y="371" fill="var(--ink)">− status</text>
+<line x1="730" y1="379" x2="910" y2="379" stroke="var(--line)"/>
+<text x="738" y="396" fill="var(--ink)">+ acknowledge()</text>
+<text x="738" y="412" fill="var(--ink)">+ escalate()</text>
+
+                <line x1="222" y1="78" x2="330" y2="78" stroke="var(--muted)" stroke-width="1.3"/>
+                <path d="M200 78 L211 71 L222 78 L211 85 Z" fill="var(--ink)" stroke="var(--ink)"/>
+                <text x="228" y="72" fill="var(--muted)">1</text><text x="304" y="72" fill="var(--muted)">1..*</text>
+
+                <path d="M360 212 V 245 H 115 V 300" fill="none" stroke="var(--muted)" stroke-width="1.3"/>
+                <path d="M360 190 L366 201 L360 212 L354 201 Z" fill="var(--bg)" stroke="var(--muted)" stroke-width="1.2"/>
+                <text x="368" y="226" fill="var(--muted)">1</text><text x="122" y="292" fill="var(--muted)">0..*</text>
+
+                <line x1="420" y1="190" x2="420" y2="300" stroke="var(--muted)" stroke-width="1.3"/>
+                <text x="426" y="206" fill="var(--muted)">1</text><text x="426" y="292" fill="var(--muted)">0..1</text>
+                <text x="426" y="252" fill="var(--muted)" font-style="italic">follows</text>
+
+                <path d="M500 190 V 260 H 585 V 300" fill="none" stroke="var(--muted)" stroke-width="1.3"/>
+                <text x="506" y="206" fill="var(--muted)">1</text><text x="592" y="292" fill="var(--muted)">0..*</text>
+                <text x="520" y="254" fill="var(--muted)" font-style="italic">produces</text>
+
+                <path d="M540 175 H 820 V 300" fill="none" stroke="var(--muted)" stroke-width="1.3"/>
+                <text x="546" y="168" fill="var(--muted)">1</text><text x="826" y="292" fill="var(--muted)">0..*</text>
+                <text x="660" y="168" fill="var(--muted)" font-style="italic">raises</text>
+
+                <text x="30" y="456" fill="var(--muted)" font-size="9.5">Filled diamond: a plot dies with its greenhouse. Hollow diamond: a sensor can be moved to another plot. No get/set, no create/delete.</text>
+                <text x="30" y="472" fill="var(--muted)" font-size="9.5">Worker and Buyer are actors, not classes — the case only needs who recorded a lot, which is an attribute of the record.</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>Seven classes from the case's nouns, with the relationship each having-verb implies. <span lang="th">อ่านจากบนลงล่าง: Greenhouse ประกอบด้วย Plot หนึ่งแปลงขึ้นไป (เพชรทึบ เพราะลบโรงเรือนแล้วแปลงหายด้วย), Plot รวม Sensor (เพชรกลวง เพราะย้าย sensor ไปแปลงอื่นได้), Plot มี GrowingPlan ได้หนึ่งแผน ผลิต HarvestLot และทำให้เกิด Alert ได้หลายรายการ status ของ Plot ใช้ enum PlotStatus และ /totalYield เป็น derived attribute ที่คำนวณจากผลรวมของ lot สังเกตว่า Worker ไม่เป็นคลาส เพราะเป็นแค่ actor และ operation มีเฉพาะของโดเมน ไม่มี get/set</span></figcaption>
+        </figure>
+        <p>ทำเท่าที่โจทย์บอก: คลาสมาจากคำนามในโจทย์ (greenhouse, plot, sensor, growing plan, lot, alert) และ operation มาจาก event (ข้อ 2 setGrowingPlan, ข้อ 5 recordHarvest, ข้อ 6 generateQR, ข้อ 3 acknowledge/escalate) Worker กับ Buyer ไม่เป็นคลาสเพราะเป็นแค่ actor — นี่คือขั้นกรอง candidate ของสไลด์</p>
+      </div>
+    </div>
+
+    <div class="qa quiz-item wide" data-search="mock final part 3 sequence diagram record harvest alt ref include create validate">
+      <p class="q"><span>M2</span>Draw the sequence diagram for <strong>record a harvest</strong>, including the failure path and the included use case <em>Generate QR code</em>. (5 marks)<span class="th-line" lang="th">วาด sequence diagram ของการบันทึกการเก็บเกี่ยว รวมกรณีไม่ผ่าน และ use case Generate QR code ที่ถูก include</span></p>
+      <p class="guide"><b>Use</b> Lesson 7 · <a href="#" data-card="l7-frag">clause 6</a>, <a href="#" data-card="l7-build">clause 7</a>, <a href="#" data-card="l7-msg">clause 5</a></p>
+      <p class="marker">Marker wants: lifelines as objects; messages in order and matching class operations; validation before work; alt with guards; ref for the include; a result back to the user.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <figure class="fig hw4fig">
+          <div class="fig-scroll">
+            <svg viewBox="0 0 940 500" role="img" aria-label="Sequence diagram for Record harvest: the Worker sends recordHarvest to aPlot, which validates the quantity; in an alt fragment, if the quantity is valid and the plot is READY, aPlot creates aLot, a ref fragment calls Generate QR code, aPlot updates its status to HARVESTED and returns the lot ID and QR label; else aPlot returns an error to the Worker">
+              <defs>
+                <marker id="fmf2a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--ink)"/></marker>
+                <marker id="fmf2o" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M1,1 L11,6 L1,11" fill="none" stroke="var(--muted)" stroke-width="1.3"/></marker>
+              </defs>
+              <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10.5">
+                <rect x="20" y="10" width="900" height="470" fill="none" stroke="var(--line)"/>
+                <path d="M20 10 H 196 V 24 L 188 32 H 20 Z" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="28" y="26" fill="var(--ink)" font-size="10">sd Record harvest</text>
+
+                <g stroke="var(--ink)" fill="none" stroke-width="1.5">
+                  <circle cx="110" cy="50" r="8"/><line x1="110" y1="58" x2="110" y2="80"/><line x1="96" y1="68" x2="124" y2="68"/><line x1="110" y1="80" x2="98" y2="98"/><line x1="110" y1="80" x2="122" y2="98"/>
+                </g>
+                <text x="110" y="114" text-anchor="middle" fill="var(--ink)">Worker</text>
+                <rect x="220" y="50" width="140" height="24" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="290" y="66" text-anchor="middle" fill="var(--ink)">aPlot : Plot</text>
+
+                <g stroke="var(--muted)" stroke-dasharray="4 4">
+                  <line x1="110" y1="120" x2="110" y2="460"/>
+                  <line x1="290" y1="74" x2="290" y2="460"/>
+                  <line x1="525" y1="252" x2="525" y2="460"/>
+                </g>
+                <rect x="105" y="140" width="10" height="290" fill="var(--accent-soft)" stroke="var(--accent)"/>
+                <rect x="285" y="140" width="10" height="290" fill="var(--accent-soft)" stroke="var(--accent)"/>
+                <rect x="520" y="252" width="10" height="56" fill="var(--accent-soft)" stroke="var(--accent)"/>
+
+                <line x1="115" y1="140" x2="283" y2="140" stroke="var(--ink)" stroke-width="1.4" marker-end="url(#fmf2a)"/>
+                <text x="132" y="132" fill="var(--ink)">recordHarvest(qtyKg, grade)</text>
+
+                <path d="M295 160 H 330 V 180 H 297" fill="none" stroke="var(--ink)" stroke-width="1.3" marker-end="url(#fmf2a)"/>
+                <text x="338" y="174" fill="var(--ink)">validate(qtyKg)</text>
+
+                <rect x="40" y="198" width="860" height="250" fill="none" stroke="var(--line)"/>
+                <path d="M40 198 H 86 V 210 L 80 218 H 40 Z" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="50" y="212" fill="var(--ink)" font-size="10">alt</text>
+                <text x="124" y="214" fill="var(--muted)" font-style="italic">[qty valid and status = READY]</text>
+
+                <line x1="295" y1="240" x2="451" y2="240" stroke="var(--muted)" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#fmf2o)"/>
+                <text x="320" y="234" fill="var(--muted)">«create»</text>
+                <rect x="455" y="228" width="140" height="24" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="525" y="244" text-anchor="middle" fill="var(--ink)">aLot : HarvestLot</text>
+
+                <rect x="440" y="266" width="300" height="36" fill="var(--bg)" stroke="var(--line)"/>
+                <path d="M440 266 H 476 V 278 L 470 286 H 440 Z" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="448" y="280" fill="var(--ink)" font-size="10">ref</text>
+                <text x="486" y="290" fill="var(--ink)" font-size="10">Generate QR code — included, always called</text>
+
+                <path d="M295 322 H 330 V 342 H 297" fill="none" stroke="var(--ink)" stroke-width="1.3" marker-end="url(#fmf2a)"/>
+                <text x="338" y="336" fill="var(--ink)">updateStatus(HARVESTED)</text>
+
+                <line x1="285" y1="366" x2="117" y2="366" stroke="var(--muted)" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#fmf2o)"/>
+                <text x="140" y="360" fill="var(--muted)">lotID, QR label</text>
+
+                <line x1="40" y1="384" x2="900" y2="384" stroke="var(--line)" stroke-dasharray="6 4"/>
+                <text x="50" y="400" fill="var(--muted)" font-style="italic">[else]</text>
+                <line x1="285" y1="420" x2="117" y2="420" stroke="var(--muted)" stroke-width="1.3" stroke-dasharray="5 4" marker-end="url(#fmf2o)"/>
+                <text x="140" y="414" fill="var(--muted)">showError(reason)</text>
+
+                <text x="40" y="472" fill="var(--muted)" font-size="9.5">Marked on logic: validate first, the owning object does the work, alt for the failure path, a result back to the user, and ref for the included use case.</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>One use case, one scenario family: the normal path and its failure in one alt, with the included use case as a ref. <span lang="th">อ่านจากบนลงล่าง: Worker ส่ง recordHarvest ให้ aPlot ซึ่งเรียก validate ของตัวเอง (self-message) จากนั้นเข้า alt — ถ้าจำนวนถูกต้องและแปลงอยู่ในสถานะ READY จะสร้าง aLot (เส้นประ «create» ชี้หัว lifeline ใหม่) เรียก ref Generate QR code ซึ่งเป็น include จึงเรียกทุกครั้ง แล้วเปลี่ยนสถานะแปลงเป็น HARVESTED และส่ง lotID กับ QR กลับไป ถ้าไม่ผ่านจะส่ง error กลับ อาจารย์ตรวจที่ logic ไม่ได้บังคับต้องมี controller หรือ boundary</span></figcaption>
+        </figure>
+        <p>ความสอดคล้องระหว่างโมเดล: message ที่ aPlot รับ (recordHarvest, validate, updateStatus) ต้องเป็น operation ของ Plot ใน M1 และค่า HARVESTED ต้องมีอยู่ใน enum PlotStatus — ถ้าโมเดลหนึ่งมีแต่อีกโมเดลไม่มี แปลว่าโมเดลหนึ่งผิด</p>
+      </div>
+    </div>
+
+    <div class="qa quiz-item wide" data-search="mock final part 3 state machine alert raised acknowledged escalated resolved time event guard">
+      <p class="q"><span>M3</span>Draw the behavioural state machine for an <strong>Alert</strong> (requirement 3). (4 marks)<span class="th-line" lang="th">วาด behavioural state machine ของ Alert (ข้อ 3)</span></p>
+      <p class="guide"><b>Use</b> Lesson 7 · <a href="#" data-card="l7-smcomp">clause 9</a>, <a href="#" data-card="l7-smsyn">clause 10</a>, <a href="#" data-card="l7-smguide">clause 11</a></p>
+      <p class="marker">Marker wants: named states; event [guard] / action on transitions; the time event from the case; one final state; no black hole or miracle.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <figure class="fig hw4fig">
+          <div class="fig-scroll">
+            <svg viewBox="0 0 940 330" role="img" aria-label="State machine for an Alert: from the initial state, when a reading stays out of range for more than ten minutes the alert is Raised and the manager notified; acknowledge moves it to Acknowledged; after thirty minutes unacknowledged it moves to Escalated and the owner is notified, and acknowledge from there also reaches Acknowledged; resolve with the reading back in range moves it to Resolved, then to the single final state">
+              <defs>
+                <marker id="fmf3a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--muted)"/></marker>
+              </defs>
+              <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10.5">
+                <circle cx="40" cy="90" r="9" fill="var(--ink)"/>
+                <line x1="50" y1="90" x2="116" y2="90" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#fmf3a)"/>
+                <text x="24" y="44" fill="var(--ink)" font-style="italic" font-size="10">outOfRange [&gt; 10 min]</text>
+                <text x="24" y="58" fill="var(--muted)" font-style="italic" font-size="10">/ notifyManager()</text>
+
+                <rect x="120" y="66" width="130" height="48" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="185" y="95" text-anchor="middle" fill="var(--ink)">Raised</text>
+
+                <line x1="250" y1="90" x2="380" y2="90" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#fmf3a)"/>
+                <text x="315" y="82" text-anchor="middle" fill="var(--ink)" font-style="italic">acknowledge()</text>
+
+                <rect x="384" y="66" width="150" height="48" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="459" y="95" text-anchor="middle" fill="var(--ink)">Acknowledged</text>
+
+                <line x1="534" y1="90" x2="680" y2="90" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#fmf3a)"/>
+                <text x="607" y="76" text-anchor="middle" fill="var(--ink)" font-style="italic">resolve()</text>
+                <text x="607" y="106" text-anchor="middle" fill="var(--muted)" font-style="italic">[reading back in range]</text>
+
+                <rect x="684" y="66" width="130" height="48" rx="14" fill="var(--surface-2)" stroke="var(--line)"/>
+                <text x="749" y="95" text-anchor="middle" fill="var(--ink)">Resolved</text>
+
+                <line x1="749" y1="114" x2="749" y2="156" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#fmf3a)"/>
+                <circle cx="749" cy="170" r="11" fill="none" stroke="var(--ink)" stroke-width="1.4"/>
+                <circle cx="749" cy="170" r="5.5" fill="var(--ink)"/>
+
+                <line x1="185" y1="114" x2="185" y2="196" stroke="var(--trap)" stroke-width="1.4" marker-end="url(#fmf3a)"/>
+                <text x="194" y="150" fill="var(--trap)" font-style="italic">after (30 min)</text>
+                <text x="194" y="164" fill="var(--trap)" font-style="italic">/ notifyOwner()</text>
+
+                <rect x="120" y="200" width="130" height="48" rx="14" fill="var(--surface-2)" stroke="var(--trap-line)"/>
+                <text x="185" y="229" text-anchor="middle" fill="var(--ink)">Escalated</text>
+
+                <path d="M250 224 H 459 V 118" fill="none" stroke="var(--muted)" stroke-width="1.4" marker-end="url(#fmf3a)"/>
+                <text x="300" y="218" fill="var(--ink)" font-style="italic">acknowledge()</text>
+
+                <text x="24" y="290" fill="var(--muted)" font-size="9.5">All three event kinds: a condition becoming true (out of range &gt; 10 min), a signal (acknowledge()), and time (after (30 min)).</text>
+                <text x="24" y="308" fill="var(--muted)" font-size="9.5">One final state; every state reachable from the initial state; no black hole, no miracle; guards in brackets.</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>The Alert's life: the one object in the case whose behaviour changes with time. <span lang="th">อ่านจากซ้ายไปขวา: alert เกิดขึ้นเมื่อค่าเซนเซอร์อยู่นอกช่วงเกิน 10 นาที (event แบบเงื่อนไขเป็นจริง) แล้วแจ้งผู้จัดการ เมื่อมีคนกด acknowledge (event แบบ signal) จะไปเป็น Acknowledged ถ้าไม่มีใครรับใน 30 นาที (event แบบเวลา after) จะไปเป็น Escalated และแจ้งเจ้าของ ซึ่งยังกด acknowledge ต่อได้ เมื่อค่ากลับเข้าช่วงจึง resolve แล้วไป final state เดียว สังเกตว่าทุก state มีทางเข้าและทางออก ไม่มี black hole หรือ miracle</span></figcaption>
+        </figure>
+        <p>ทำไมเลือก Alert: ใช้ state machine เฉพาะ object ที่ซับซ้อน และ Alert เป็น object เดียวในโจทย์ที่เปลี่ยนสถานะตามเวลา (ข้อ 3 บอก 10 นาทีและ 30 นาทีไว้ชัด) ทุก transition ต้องตรงกับ operation ใน M1 — acknowledge() และ escalate() อยู่ในคลาส Alert แล้ว</p>
+      </div>
+    </div>
+
+    <div class="qa quiz-item wide" data-search="mock final part 3 deployment diagram web based 3-tier node artifact communication path protocol nfr availability security">
+      <p class="q"><span>M4</span>Draw a deployment diagram for the Smart Farm as a <strong>web-based 3-tier</strong> application. Include the sensor gateway and the two external services, label every path with its protocol, and apply one availability NFR and one security NFR. (5 marks)<span class="th-line" lang="th">วาด deployment diagram ของระบบแบบ web-based 3-tier รวม sensor gateway และบริการภายนอกสองตัว ระบุ protocol ทุกเส้น และใช้ NFR ด้าน availability หนึ่งข้อและ security หนึ่งข้อ</span></p>
+      <p class="guide"><b>Use</b> Lesson 12 · <a href="#" data-card="l12-deploy">clause 9</a>, <a href="#" data-card="l12-tier">clause 6</a>, <a href="#" data-card="l12-nfr">clause 12</a></p>
+      <p class="marker">Marker wants: nodes as 3-D boxes; artifacts inside nodes; client, web, application and database tiers; external systems; a protocol on every path; the NFRs visible as structure.</p>
+      <button class="reveal" aria-expanded="false">Show model answer</button>
+      <div class="answer">
+        <figure class="fig hw4fig">
+          <div class="fig-scroll">
+            <svg viewBox="0 0 940 410" role="img" aria-label="Deployment diagram for the Smart Farm as a web-based three-tier application: client devices with a browser connect over HTTPS to a web server, which connects over HTTPS to two application servers holding farm-app.war; the application servers use JDBC over TLS to a database server with primary and replica holding PostgreSQL and the farm schema; a LoRaWAN sensor gateway sends readings over MQTT with TLS to the application servers; the application servers call an external messaging service and an external weather API over HTTPS REST">
+              <defs>
+                <marker id="fmf4a" markerUnits="userSpaceOnUse" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="12" markerHeight="12" orient="auto-start-reverse"><path d="M0,0 L12,6 L0,12 z" fill="var(--muted)"/></marker>
+              </defs>
+              <g font-family="Public Sans, Noto Sans Thai, sans-serif" font-size="10">
+<polygon points="30,60 40,50 200,50 190,60" fill="var(--surface-2)" stroke="var(--line)"/>
+<polygon points="190,60 200,50 200,160 190,170" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="30" y="60" width="160" height="110" fill="var(--surface-2)" stroke="var(--line)"/>
+<text x="110" y="76" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+<text x="110" y="92" text-anchor="middle" fill="var(--ink)" font-size="10.5">Client devices</text>
+<text x="110" y="107" text-anchor="middle" fill="var(--muted)" font-size="8.5">owner / manager PC</text>
+<text x="110" y="120" text-anchor="middle" fill="var(--muted)" font-size="8.5">worker tablet</text>
+<text x="110" y="133" text-anchor="middle" fill="var(--muted)" font-size="8.5">buyer phone</text>
+<rect x="42" y="136" width="136" height="17" rx="2" fill="var(--surface)" stroke="var(--line)"/>
+<text x="110" y="148" text-anchor="middle" fill="var(--ink)" font-size="8.5">«artifact» web browser</text>
+<polygon points="250,60 260,50 410,50 400,60" fill="var(--surface-2)" stroke="var(--line)"/>
+<polygon points="400,60 410,50 410,160 400,170" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="250" y="60" width="150" height="110" fill="var(--surface-2)" stroke="var(--line)"/>
+<text x="325" y="76" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+<text x="325" y="92" text-anchor="middle" fill="var(--ink)" font-size="10.5">Web server</text>
+<text x="325" y="107" text-anchor="middle" fill="var(--muted)" font-size="8.5">serves pages</text>
+<rect x="262" y="110" width="126" height="17" rx="2" fill="var(--surface)" stroke="var(--line)"/>
+<text x="325" y="122" text-anchor="middle" fill="var(--ink)" font-size="8.5">«artifact» web pages (HTML/JS)</text>
+<polygon points="460,60 470,50 650,50 640,60" fill="var(--accent-soft)" stroke="var(--accent)"/>
+<polygon points="640,60 650,50 650,160 640,170" fill="var(--accent-soft)" stroke="var(--accent)"/>
+<rect x="460" y="60" width="180" height="110" fill="var(--accent-soft)" stroke="var(--accent)"/>
+<text x="550" y="76" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+<text x="550" y="92" text-anchor="middle" fill="var(--ink)" font-size="10.5">Application server (2)</text>
+<text x="550" y="107" text-anchor="middle" fill="var(--muted)" font-size="8.5">same build on both</text>
+<rect x="472" y="110" width="156" height="17" rx="2" fill="var(--surface)" stroke="var(--line)"/>
+<text x="550" y="122" text-anchor="middle" fill="var(--ink)" font-size="8.5">«artifact» farm-app.war</text>
+<polygon points="460,240 470,230 650,230 640,240" fill="var(--surface-2)" stroke="var(--line)"/>
+<polygon points="640,240 650,230 650,340 640,350" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="460" y="240" width="180" height="110" fill="var(--surface-2)" stroke="var(--line)"/>
+<text x="550" y="256" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+<text x="550" y="272" text-anchor="middle" fill="var(--ink)" font-size="10.5">Database server</text>
+<text x="550" y="287" text-anchor="middle" fill="var(--muted)" font-size="8.5">primary + replica</text>
+<rect x="472" y="290" width="156" height="17" rx="2" fill="var(--surface)" stroke="var(--line)"/>
+<text x="550" y="302" text-anchor="middle" fill="var(--ink)" font-size="8.5">«artifact» PostgreSQL DBMS</text>
+<rect x="472" y="311" width="156" height="17" rx="2" fill="var(--surface)" stroke="var(--line)"/>
+<text x="550" y="323" text-anchor="middle" fill="var(--ink)" font-size="8.5">«artifact» farm schema</text>
+<polygon points="250,240 260,230 410,230 400,240" fill="var(--surface-2)" stroke="var(--line)"/>
+<polygon points="400,240 410,230 410,340 400,350" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="250" y="240" width="150" height="110" fill="var(--surface-2)" stroke="var(--line)"/>
+<text x="325" y="256" text-anchor="middle" fill="var(--muted)" font-size="9">«device»</text>
+<text x="325" y="272" text-anchor="middle" fill="var(--ink)" font-size="10.5">Sensor gateway</text>
+<text x="325" y="287" text-anchor="middle" fill="var(--muted)" font-size="8.5">LoRaWAN, ×40 sensors</text>
+<rect x="262" y="290" width="126" height="17" rx="2" fill="var(--surface)" stroke="var(--line)"/>
+<text x="325" y="302" text-anchor="middle" fill="var(--ink)" font-size="8.5">«artifact» reading forwarder</text>
+<polygon points="720,40 730,30 920,30 910,40" fill="var(--surface-2)" stroke="var(--line)"/>
+<polygon points="910,40 920,30 920,96 910,106" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="720" y="40" width="190" height="66" fill="var(--surface-2)" stroke="var(--line)"/>
+<text x="815" y="56" text-anchor="middle" fill="var(--muted)" font-size="9">«external system»</text>
+<text x="815" y="72" text-anchor="middle" fill="var(--ink)" font-size="10.5">Messaging service</text>
+<text x="815" y="87" text-anchor="middle" fill="var(--muted)" font-size="8.5">LINE / SMS alerts</text>
+<polygon points="720,140 730,130 920,130 910,140" fill="var(--surface-2)" stroke="var(--line)"/>
+<polygon points="910,140 920,130 920,196 910,206" fill="var(--surface-2)" stroke="var(--line)"/>
+<rect x="720" y="140" width="190" height="66" fill="var(--surface-2)" stroke="var(--line)"/>
+<text x="815" y="156" text-anchor="middle" fill="var(--muted)" font-size="9">«external system»</text>
+<text x="815" y="172" text-anchor="middle" fill="var(--ink)" font-size="10.5">Weather service API</text>
+<text x="815" y="187" text-anchor="middle" fill="var(--muted)" font-size="8.5">rain forecast</text>
+                <line x1="202" y1="115" x2="246" y2="115" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fmf4a)"/>
+                <text x="224" y="107" text-anchor="middle" fill="var(--muted)" font-size="8.5">HTTPS</text>
+                <line x1="412" y1="115" x2="456" y2="115" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fmf4a)"/>
+                <text x="434" y="107" text-anchor="middle" fill="var(--muted)" font-size="8.5">HTTPS</text>
+                <line x1="550" y1="172" x2="550" y2="226" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fmf4a)"/>
+                <text x="558" y="202" fill="var(--muted)" font-size="8.5">JDBC / SQL over TLS</text>
+                <path d="M412 300 H 432 V 145 H 456" fill="none" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fmf4a)"/>
+                <text x="438" y="232" fill="var(--muted)" font-size="8.5">MQTT</text>
+                <text x="438" y="244" fill="var(--muted)" font-size="8.5">over TLS</text>
+                <line x1="652" y1="73" x2="716" y2="73" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fmf4a)"/>
+                <text x="684" y="65" text-anchor="middle" fill="var(--muted)" font-size="8.5">HTTPS · REST</text>
+                <path d="M652 140 H 690 V 173 H 716" fill="none" stroke="var(--muted)" stroke-width="1.2" marker-end="url(#fmf4a)"/>
+                <text x="696" y="162" fill="var(--muted)" font-size="8.5">HTTPS · REST</text>
+
+                <circle cx="632" cy="68" r="9" fill="var(--accent)"/>
+                <text x="632" y="72" text-anchor="middle" fill="var(--accent-ink)" font-size="10" font-weight="700">1</text>
+                <circle cx="632" cy="248" r="9" fill="var(--accent)"/>
+                <text x="632" y="252" text-anchor="middle" fill="var(--accent-ink)" font-size="10" font-weight="700">1</text>
+                <circle cx="182" cy="68" r="9" fill="var(--bad)"/>
+                <text x="182" y="72" text-anchor="middle" fill="var(--accent-ink)" font-size="10" font-weight="700">2</text>
+
+                <text x="30" y="378" fill="var(--accent)" font-size="10">1 · availability NFR — two application servers; database primary + replica; readings keep arriving if one server fails</text>
+                <text x="30" y="396" fill="var(--bad)" font-size="10">2 · security NFR — TLS on every path; the database is reachable only from the application tier; the buyer QR page is read-only</text>
+              </g>
+            </svg>
+          </div>
+          <figcaption>A basic web-based 3-tier deployment, drawn the simple way she prefers: 3-D nodes, artifacts inside, protocols on every path. <span lang="th">อ่านจากซ้ายไปขวา: อุปกรณ์ผู้ใช้ทั้งสามกลุ่มรวมใน client node เดียวที่มี browser → web server → application server สองตัว (artifact farm-app.war) → database server แบบ primary + replica ที่มี DBMS และ schema เป็น artifact ด้านล่างซ้ายคือ sensor gateway ที่ส่งค่าเซนเซอร์ผ่าน MQTT over TLS และด้านขวาคือระบบภายนอกสองตัวที่เรียกผ่าน HTTPS REST สังเกตว่า node วาดเป็นกล่องสามมิติ ไม่ใช่สี่เหลี่ยมแบน (อาจารย์ย้ำ) และหมายเลข 1–2 คือจุดที่ NFR สองข้อกลายเป็นโครงสร้าง</span></figcaption>
+        </figure>
+        <p><strong>NFR ที่ใช้:</strong> availability — ระบบรับค่าเซนเซอร์และส่ง alert ได้ 99.5% ของเวลาต่อเดือน และไม่หยุดเมื่อ server หนึ่งตัวล่ม → application server สองตัวและฐานข้อมูล primary + replica; security — ทุกเส้นเข้ารหัส TLS และฐานข้อมูลเข้าถึงได้จาก application tier เท่านั้น → HTTPS/TLS ทุกเส้นและไม่มีเส้นจาก client ถึง database ตรง ๆ อาจารย์บอกว่าอยากให้เขียนง่าย ๆ แบบ 3-tier พื้นฐาน — ไม่ต้องมี cloud, microservice หรือ property ละเอียด</p>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <!-- ============ FLASHCARDS ============ -->
@@ -8872,7 +9664,7 @@ window.__SAID__ = {
 window.__TH__ = {
   tabs: {
     overview: "ภาพรวม", lesson1: "บทที่ 1", lesson2: "บทที่ 2", lesson3: "บทที่ 3", lesson4: "บทที่ 4", lesson5: "บทที่ 5", lesson6: "บทที่ 6", lesson7: "บทที่ 7", lesson8: "บทที่ 8", lesson9: "บทที่ 9", lesson10: "บทที่ 10", lesson11: "บทที่ 11", lesson12: "บทที่ 12",
-    video: "วิดีโอ", mock: "ข้อสอบจำลอง", practice: "แบบฝึกหัด", hw: "งาน", cards: "แฟลชการ์ด", cheat: "สรุปย่อ"
+    video: "วิดีโอ", mock: "ข้อสอบจำลอง", final: "ข้อสอบจำลองปลายภาค", practice: "แบบฝึกหัด", hw: "งาน", cards: "แฟลชการ์ด", cheat: "สรุปย่อ"
   },
   cards: {
     "l1-sdlc": "SDLC คือวงจรชีวิตของระบบ แบ่งเป็น 4 ระยะ: วางแผน วิเคราะห์ ออกแบบ และพัฒนา แต่ละระยะมีเอกสารส่งมอบ (deliverable) ของตัวเอง งานด้านความต้องการอยู่ที่ระยะวิเคราะห์มากที่สุด แต่เริ่มตั้งแต่ระยะวางแผนและย้อนกลับมาตอนออกแบบ กับดัก: SDLC ไม่ใช่ Waterfall — Waterfall เป็นเพียงวิธีจัดลำดับระยะวิธีหนึ่ง",
@@ -9222,7 +10014,23 @@ window.__MOCK__ = [
   {l:2,s:"mid",q:"Which is one of the four set characteristics?",o:["Affordable", "Singular", "Unambiguous", "Implementation free"],a:0,why:"The set is complete, consistent, affordable and bounded; the others are individual characteristics.",th:"ชุด requirement ต้อง affordable ด้วย"},
   {l:3,s:"mid",q:"Which pairing cancels each other's weakness?",o:["Two questionnaires", "A questionnaire followed by interviews", "Two JAD sessions", "Observation twice"],a:1,why:"The questionnaire is broad, the interview is deep — one finds the population, the other finds the detail.",th:"จับคู่กว้าง (questionnaire) กับลึก (interview)"},
   {l:5,s:"mid",q:"Which use-case relationship is optional at run time?",o:["include", "extend", "generalisation", "association"],a:1,why:"Extend runs only when its condition holds and points from the extension to the base.",th:"extend ไม่บังคับ ต่างจาก include"},
-  {l:6,s:"mid",q:"Which is an association class?",o:["Patient", "Appointment between Patient and Doctor", "Person as a superclass", "Ward containing Bed"],a:1,why:"A many-to-many link that carries its own attributes — date, reason, status.",th:"association class เก็บ attribute ของความสัมพันธ์ many-to-many"}
+  {l:6,s:"mid",q:"Which is an association class?",o:["Patient", "Appointment between Patient and Doctor", "Person as a superclass", "Ward containing Bed"],a:1,why:"A many-to-many link that carries its own attributes — date, reason, status.",th:"association class เก็บ attribute ของความสัมพันธ์ many-to-many"},
+  {l:6,s:"final",q:"Which operation belongs in an analysis-level class diagram for the Smart Farm?",o:["getCrop()", "setStatus()", "recordHarvest()", "createPlot()"],a:2,why:"Get/set and create/delete are assumed for every class and omitted; recordHarvest() is a problem-domain operation.",th:"get/set และ create/delete ละไว้เพราะทุกคลาสทำได้อยู่แล้ว recordHarvest() เป็น operation ของ problem domain"},
+  {l:6,s:"final",q:"A plot's /totalYield is shown with a leading slash because it is:",o:["private", "static", "optional", "derived from other attributes"],a:3,why:"A slash marks a derived attribute — here the sum of the plot's lots. Private is the minus sign.",th:"slash นำหน้า = derived attribute (คำนวณจากผลรวมของ lot) ส่วน private คือเครื่องหมายลบ"},
+  {l:6,s:"final",q:"Textual analysis of “each greenhouse has many plots” points to:",o:["aggregation or composition", "generalisation", "a constraint", "an operation"],a:0,why:"A having verb maps to aggregation or composition; decide logical (aggregation) or physical (composition) next.",th:"having verb → aggregation หรือ composition แล้วค่อยดูว่าเป็นเชิง logical หรือ physical"},
+  {l:7,s:"final",q:"A message that :Plot receives on a sequence diagram must exist as:",o:["an attribute of Plot", "an operation of Plot in the class diagram", "a state of Plot", "a separate actor"],a:1,why:"A received message is an operation of the receiving class; if the class diagram lacks it, go back and add it.",th:"message ที่ object รับต้องเป็น operation ของคลาสนั้น ถ้าไม่มีต้องกลับไปเพิ่มใน class diagram"},
+  {l:7,s:"final",q:"“Record harvest” includes “Generate QR code”. On the sequence diagram the included behaviour is drawn as:",o:["ref, placed where it is called, outside any alt", "ref inside an opt", "an asynchronous message", "a second sequence diagram with no link"],a:0,why:"Include is mandatory, so the ref is always called at its point in the flow; extend is the conditional one.",th:"include บังคับเรียกเสมอ จึงเป็น ref ที่ตำแหน่งที่เรียก ส่วน extend มีเงื่อนไขจึงอยู่ใน alt/opt"},
+  {l:7,s:"final",q:"Which is NOT one of the deck's three kinds of event that trigger a transition?",o:["a designated condition becoming true", "receipt of a signal from another object", "passage of a designated time", "an attribute of the object being read"],a:3,why:"The three are condition, signal and time. Reading a value changes nothing, so it cannot move the state.",th:"event มีสามแบบ: เงื่อนไขเป็นจริง · signal · เวลาผ่านไป การอ่านค่าไม่เปลี่ยน state"},
+  {l:7,s:"final",q:"What does a behavioural state machine help an analyst validate?",o:["the network topology", "the colour scheme", "the completeness of the functional requirements", "the database index plan"],a:2,why:"Every transition needs an actor action from a use case; a state no use case can reach means a missing function.",th:"state machine ช่วยตรวจว่า functional requirement ครบ — ถ้ามี state ที่ไม่มี use case ไหนพาไปถึง แปลว่าขาด function"},
+  {l:8,s:"final",q:"“The buyer's certification scheme requires chemical records to be kept for 2 years” is best classified as:",o:["an external requirement stated as a fact", "a process requirement", "a functional requirement", "a usability requirement"],a:0,why:"External requirements arrive as facts and rules of the outside world; the analyst turns them into capabilities.",th:"external requirement มาในรูปข้อเท็จจริงหรือกฎภายนอก นักวิเคราะห์ต้องแปลงเป็นความสามารถของระบบ"},
+  {l:8,s:"final",q:"Which ordering is the deck's goal decomposition?",o:["NFR → goal → sub-goal → metric", "use case → goal → NFR", "metric → NFR → goal", "goal → sub-goal → NFR → quantitative NFR"],a:3,why:"Goal decomposition runs from the enterprise goal down until the statement can be measured, which keeps it traceable.",th:"goal → sub-goal → NFR → quantitative NFR และตามรอยกลับไปหา goal ขององค์กรได้"},
+  {l:8,s:"final",q:"“Protect customer data from unauthorised access” becomes a functional requirement when it is rewritten as:",o:["“security shall be high”", "“log in with a password and a 6-digit SMS code”", "“data shall be safe”", "“follow good practice”"],a:1,why:"The FR/NFR boundary moves with the level of detail: concrete steps the developers must build make it functional.",th:"เส้นแบ่ง FR/NFR ขยับตาม level of detail — พอเป็นขั้นตอนที่ต้องสร้างจริงก็กลายเป็น FR"},
+  {l:8,s:"final",q:"“The dashboard shall be easy to use” fails because it is not:",o:["functional", "short", "objective and testable", "written in Thai"],a:2,why:"An NFR must be objective and testable; rewrite it with a measure such as time to learn or errors per hour.",th:"NFR ต้อง objective และ testable — เขียนใหม่ด้วยตัววัด เช่น เวลาเรียนรู้หรือจำนวน error"},
+  {l:10,s:"final",q:"A paper storyboard of the harvest screens can be evaluated by:",o:["interactive evaluation", "formal usability testing in a lab", "heuristic evaluation", "keystroke logging"],a:2,why:"Interactive evaluation and formal testing need something the user can operate; a storyboard supports heuristic review or a walkthrough.",th:"storyboard ใช้ interactive หรือ formal testing ไม่ได้ ต้องเป็น heuristic หรือ walkthrough"},
+  {l:10,s:"final",q:"Rejecting a harvest date earlier than the plot's planting date is which validation check?",o:["format", "range", "check digit", "consistency"],a:3,why:"It compares two related data items, which is a consistency check; a range check tests one value against fixed bounds.",th:"เทียบข้อมูลสองตัวที่สัมพันธ์กัน = consistency check ส่วน range คือค่าเดียวเทียบกับขอบเขตคงที่"},
+  {l:10,s:"final",q:"“Printing label… tap Cancel to stop” is which message type?",o:["delay", "acknowledgment", "confirmation", "help"],a:0,why:"A delay message says the process is running; the deck adds that it should let the user cancel.",th:"delay message บอกว่ากำลังทำงานอยู่ และควรให้ผู้ใช้ยกเลิกได้"},
+  {l:11,s:"final",q:"In a requirements review, a requirement with no identifier and no source fails which checklist group?",o:["organisation and structure", "traceability", "special issues", "aesthetics"],a:1,why:"Traceability asks for a unique ID and a traceable source; without them no change can be tracked.",th:"traceability ต้องมี ID เฉพาะและตามรอยกลับไปหาแหล่งที่มาได้"},
+  {l:12,s:"final",q:"In a web-based 3-tier deployment diagram, the DBMS and the farm schema are:",o:["nodes of their own", "artifacts on the database server node", "communication paths", "stereotypes of the client"],a:1,why:"Software is an artifact and cannot stand alone; it sits on the node that runs it.",th:"ซอฟต์แวร์และ schema เป็น artifact อยู่ลำพังไม่ได้ ต้องอยู่บน node"}
 ];
 
 document.addEventListener("DOMContentLoaded", function(){
